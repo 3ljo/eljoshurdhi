@@ -71,7 +71,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative min-h-screen min-h-[100dvh] flex items-center overflow-hidden bg-light-bg dark:bg-dark-bg pt-20 pb-16">
+    <section className="relative min-h-screen min-h-[100dvh] flex items-center overflow-hidden bg-light-bg dark:bg-dark-bg">
       {/* Floating gradient orbs */}
       <motion.div
         className="absolute top-20 left-10 w-72 h-72 rounded-full bg-emerald-accent/10 blur-3xl"
@@ -83,65 +83,71 @@ export default function Hero() {
         animate={{ x: [0, -40, 0], y: [0, 30, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
       />
-      <motion.div
-        className="absolute top-1/2 left-1/3 w-64 h-64 rounded-full bg-emerald-light/5 blur-3xl"
-        animate={{ x: [0, 50, 0], y: [0, -40, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-      />
 
-      <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-8 lg:gap-12 items-center relative z-10">
-        {/* Text Side */}
-        <div ref={textRef} className="order-2 lg:order-1 text-center lg:text-left">
-          <p className="hero-greeting text-emerald-accent font-medium text-lg mb-4">
-            Hi, I'm
-          </p>
-          <h1 className="hero-name text-4xl sm:text-6xl lg:text-7xl font-heading font-extrabold text-gray-900 dark:text-white leading-tight mb-4">
+      {/* Desktop Layout */}
+      <div className="hidden lg:grid max-w-7xl mx-auto px-6 w-full grid-cols-2 gap-12 items-center relative z-10">
+        <div ref={textRef} className="text-left">
+          <p className="hero-greeting text-emerald-accent font-medium text-lg mb-4">Hi, I'm</p>
+          <h1 className="hero-name text-7xl font-heading font-extrabold text-gray-900 dark:text-white leading-tight mb-4">
             Eljo<br />Shurdhi<span className="text-emerald-accent">.</span>
           </h1>
-          <div className="hero-title flex items-center gap-2 justify-center lg:justify-start mb-6">
+          <div className="hero-title flex items-center gap-2 mb-6">
             <div className="w-8 h-0.5 bg-emerald-accent" />
-            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 font-medium">
-              Full Stack Developer
-            </p>
+            <p className="text-xl text-gray-600 dark:text-gray-400 font-medium">Full Stack Developer</p>
           </div>
-          <p className="hero-tagline text-gray-500 dark:text-gray-500 text-base sm:text-lg max-w-md mx-auto lg:mx-0 mb-8 leading-relaxed">
+          <p className="hero-tagline text-gray-500 text-lg max-w-md mb-8 leading-relaxed">
             Computer Engineer crafting robust digital experiences with clean architecture,
             modern tech stacks, and a passion for pixel-perfect design.
           </p>
-          <div className="flex gap-3 sm:gap-4 justify-center lg:justify-start flex-wrap">
-            <a
-              href="#portfolio"
-              onClick={e => handleScroll(e, '#portfolio')}
-              className="hero-cta px-5 sm:px-7 py-3 sm:py-3.5 bg-emerald-accent hover:bg-emerald-dark text-white font-semibold text-sm sm:text-base rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-emerald-accent/25"
-            >
+          <div className="hero-cta flex gap-4">
+            <a href="#portfolio" onClick={e => handleScroll(e, '#portfolio')} className="px-7 py-3.5 bg-emerald-accent hover:bg-emerald-dark text-white font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-emerald-accent/25">
               View My Work
             </a>
-            <a
-              href="#contact"
-              onClick={e => handleScroll(e, '#contact')}
-              className="hero-cta px-5 sm:px-7 py-3 sm:py-3.5 border-2 border-gray-300 dark:border-dark-border text-gray-900 dark:text-white font-semibold text-sm sm:text-base rounded-full hover:border-emerald-accent hover:text-emerald-accent transition-all duration-300"
-            >
+            <a href="#contact" onClick={e => handleScroll(e, '#contact')} className="px-7 py-3.5 border-2 border-gray-300 dark:border-dark-border text-gray-900 dark:text-white font-semibold rounded-full hover:border-emerald-accent hover:text-emerald-accent transition-all duration-300">
               Let's Talk
             </a>
           </div>
         </div>
-
-        {/* Portrait Side */}
-        <div className="order-1 lg:order-2 flex justify-center">
-          <motion.div
-            className="relative"
-            animate={{ y: [0, -12, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-          >
+        <div className="flex justify-center">
+          <motion.div className="relative" animate={{ y: [0, -12, 0] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}>
             <div className="absolute inset-0 bg-gradient-to-b from-emerald-accent/20 to-transparent rounded-2xl blur-3xl scale-110" />
             <Lens hovering={lensHovering} setHovering={setLensHovering} zoomFactor={1.6} lensSize={150}>
-              <img
-                src={dark ? heroImgDark : heroImgLight}
-                alt="Eljo Shurdhi"
-                className="relative w-52 sm:w-72 lg:w-[420px] object-cover drop-shadow-2xl"
-              />
+              <img src={dark ? heroImgDark : heroImgLight} alt="Eljo Shurdhi" className="relative w-[420px] object-cover drop-shadow-2xl" />
             </Lens>
           </motion.div>
+        </div>
+      </div>
+
+      {/* Mobile Layout */}
+      <div className="flex lg:hidden flex-col items-center justify-center w-full px-6 pt-24 pb-20 relative z-10">
+        <div className="relative mb-8">
+          <div className="absolute inset-0 bg-emerald-accent/15 rounded-full blur-2xl scale-125" />
+          <img
+            src={dark ? heroImgDark : heroImgLight}
+            alt="Eljo Shurdhi"
+            className="relative w-36 h-36 sm:w-44 sm:h-44 object-cover object-top rounded-full border-2 border-emerald-accent/20 shadow-xl"
+          />
+        </div>
+        <div className="text-center">
+          <p className="hero-greeting text-emerald-accent font-medium text-base mb-2">Hi, I'm</p>
+          <h1 className="hero-name text-4xl sm:text-5xl font-heading font-extrabold text-gray-900 dark:text-white leading-tight mb-3">
+            Eljo Shurdhi<span className="text-emerald-accent">.</span>
+          </h1>
+          <div className="hero-title flex items-center gap-2 justify-center mb-4">
+            <div className="w-6 h-0.5 bg-emerald-accent" />
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 font-medium">Full Stack Developer</p>
+          </div>
+          <p className="hero-tagline text-gray-500 text-sm sm:text-base max-w-sm mx-auto mb-6 leading-relaxed">
+            Computer Engineer crafting robust digital experiences with clean architecture and modern tech stacks.
+          </p>
+          <div className="hero-cta flex gap-3 justify-center">
+            <a href="#portfolio" onClick={e => handleScroll(e, '#portfolio')} className="px-5 py-3 bg-emerald-accent hover:bg-emerald-dark text-white font-semibold text-sm rounded-full transition-all duration-300">
+              View My Work
+            </a>
+            <a href="#contact" onClick={e => handleScroll(e, '#contact')} className="px-5 py-3 border-2 border-gray-300 dark:border-dark-border text-gray-900 dark:text-white font-semibold text-sm rounded-full hover:border-emerald-accent hover:text-emerald-accent transition-all duration-300">
+              Let's Talk
+            </a>
+          </div>
         </div>
       </div>
 
