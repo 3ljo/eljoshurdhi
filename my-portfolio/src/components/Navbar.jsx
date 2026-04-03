@@ -19,6 +19,16 @@ export default function Navbar() {
   const lastScroll = useRef(0)
   const navRef = useRef(null)
 
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
+
   useEffect(() => {
     const onScroll = () => {
       const current = window.scrollY
@@ -113,57 +123,74 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden w-10 h-10 flex items-center justify-center"
+          className="md:hidden w-10 h-10 flex items-center justify-center relative z-50"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
           <div className="flex flex-col gap-1.5">
             <motion.span
               animate={menuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.2 }}
               className="block w-6 h-0.5 bg-gray-900 dark:bg-white origin-center"
             />
             <motion.span
               animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
+              transition={{ duration: 0.15 }}
               className="block w-6 h-0.5 bg-gray-900 dark:bg-white"
             />
             <motion.span
               animate={menuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.2 }}
               className="block w-6 h-0.5 bg-gray-900 dark:bg-white origin-center"
             />
           </div>
         </button>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Fullscreen Menu */}
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 top-20 bg-white dark:bg-dark-bg z-40 flex flex-col items-center pt-12 gap-8 md:hidden"
-          >
-            {navLinks.map((link, i) => (
-              <motion.a
-                key={link.href}
-                href={link.href}
-                onClick={e => handleNavClick(e, link.href)}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.05 + 0.1 }}
-                className="text-2xl font-heading font-semibold text-gray-900 dark:text-white hover:text-emerald-accent transition-colors"
-              >
-                {link.label}
-              </motion.a>
-            ))}
-            <button
-              onClick={toggle}
-              className="mt-4 px-6 py-3 rounded-full bg-gray-100 dark:bg-dark-card text-sm font-medium"
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 md:hidden"
+              onClick={() => setMenuOpen(false)}
+            />
+            {/* Menu */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="fixed inset-0 top-0 bg-white dark:bg-dark-bg z-40 flex flex-col items-center justify-center gap-7 md:hidden"
             >
-              {dark ? 'Light Mode' : 'Dark Mode'}
-            </button>
-          </motion.div>
+              {navLinks.map((link, i) => (
+                <motion.a
+                  key={link.href}
+                  href={link.href}
+                  onClick={e => handleNavClick(e, link.href)}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.05 + 0.1, duration: 0.3 }}
+                  className="text-3xl font-heading font-semibold text-gray-900 dark:text-white hover:text-emerald-accent transition-colors"
+                >
+                  {link.label}
+                </motion.a>
+              ))}
+              <div className="flex items-center gap-4 mt-4">
+                <button
+                  onClick={toggle}
+                  className="px-6 py-3 rounded-full bg-gray-100 dark:bg-dark-card text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  {dark ? 'Light Mode' : 'Dark Mode'}
+                </button>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>
