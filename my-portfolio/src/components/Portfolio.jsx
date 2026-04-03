@@ -76,7 +76,7 @@ export default function Portfolio() {
               key={project.title}
               variants={fadeUp}
               className={`group relative rounded-2xl overflow-hidden cursor-pointer ${
-                project.size === 'large' ? 'md:col-span-2 h-72 sm:h-80 lg:h-96' : 'h-64 sm:h-72'
+                project.size === 'large' ? 'md:col-span-2 h-56 sm:h-80 lg:h-96' : 'h-48 sm:h-72'
               }`}
             >
               {/* Image */}
@@ -86,8 +86,8 @@ export default function Portfolio() {
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
 
-              {/* Overlay — visible on hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-100 sm:opacity-60 sm:group-hover:opacity-100 transition-opacity duration-500" />
 
               {/* Number */}
               <span className="absolute top-5 right-6 text-7xl font-heading font-extrabold text-white/10 leading-none select-none">
@@ -96,7 +96,7 @@ export default function Portfolio() {
 
               {/* Content — slides up on hover */}
               <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                <div className="flex flex-wrap gap-2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                <div className="flex flex-wrap gap-2 mb-3 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-500 delay-100">
                   {project.tags.map(tag => (
                     <span
                       key={tag}
@@ -109,7 +109,7 @@ export default function Portfolio() {
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-heading font-bold text-white mb-2">
                   {project.title}
                 </h3>
-                <p className="text-gray-300 text-sm leading-relaxed max-w-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-75">
+                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed max-w-lg opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-500 delay-75">
                   {project.description}
                 </p>
               </div>

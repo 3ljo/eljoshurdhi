@@ -65,7 +65,7 @@ export default function Contact() {
           <motion.div variants={slideLeft}>
             <Globe3D
               markers={globeMarkers}
-              className="h-[400px] sm:h-[500px]"
+              className="h-[280px] sm:h-[400px] lg:h-[500px]"
               config={{
                 atmosphereColor: "#10B981",
                 atmosphereIntensity: 0.6,

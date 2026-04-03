@@ -151,40 +151,32 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <>
-            {/* Backdrop */}
+            {/* Menu - full screen solid background */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 md:hidden"
-              onClick={() => setMenuOpen(false)}
-            />
-            {/* Menu */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="fixed inset-0 bg-white/90 dark:bg-dark-bg/90 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-8 md:hidden"
+              className="fixed inset-0 w-full h-full bg-white dark:bg-dark-bg z-40 md:hidden"
+              style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, minHeight: '100vh', minHeight: '100dvh' }}
             >
-              {navLinks.map((link, i) => (
-                <motion.a
-                  key={link.href}
-                  href={link.href}
-                  onClick={e => handleNavClick(e, link.href)}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05 + 0.1, duration: 0.3 }}
-                  className="text-3xl font-heading font-semibold text-gray-900 dark:text-white hover:text-emerald-accent transition-colors"
-                >
-                  {link.label}
-                </motion.a>
-              ))}
-              <div className="flex items-center gap-4 mt-4">
+              <div className="flex flex-col items-center justify-center h-full gap-8">
+                {navLinks.map((link, i) => (
+                  <motion.a
+                    key={link.href}
+                    href={link.href}
+                    onClick={e => handleNavClick(e, link.href)}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.05 + 0.1, duration: 0.3 }}
+                    className="text-3xl font-heading font-semibold text-gray-900 dark:text-white hover:text-emerald-accent transition-colors"
+                  >
+                    {link.label}
+                  </motion.a>
+                ))}
                 <button
                   onClick={toggle}
-                  className="px-6 py-3 rounded-full bg-gray-100 dark:bg-dark-card text-sm font-medium text-gray-700 dark:text-gray-300"
+                  className="mt-4 px-6 py-3 rounded-full bg-gray-100 dark:bg-dark-card text-sm font-medium text-gray-700 dark:text-gray-300"
                 >
                   {dark ? 'Light Mode' : 'Dark Mode'}
                 </button>

@@ -71,7 +71,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-light-bg dark:bg-dark-bg pt-20">
+    <section className="relative min-h-screen min-h-[100dvh] flex items-center overflow-hidden bg-light-bg dark:bg-dark-bg pt-20 pb-16">
       {/* Floating gradient orbs */}
       <motion.div
         className="absolute top-20 left-10 w-72 h-72 rounded-full bg-emerald-accent/10 blur-3xl"
@@ -89,13 +89,13 @@ export default function Hero() {
         transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-12 items-center relative z-10">
+      <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-8 lg:gap-12 items-center relative z-10">
         {/* Text Side */}
         <div ref={textRef} className="order-2 lg:order-1 text-center lg:text-left">
           <p className="hero-greeting text-emerald-accent font-medium text-lg mb-4">
             Hi, I'm
           </p>
-          <h1 className="hero-name text-5xl sm:text-6xl lg:text-7xl font-heading font-extrabold text-gray-900 dark:text-white leading-tight mb-4">
+          <h1 className="hero-name text-4xl sm:text-6xl lg:text-7xl font-heading font-extrabold text-gray-900 dark:text-white leading-tight mb-4">
             Eljo<br />Shurdhi<span className="text-emerald-accent">.</span>
           </h1>
           <div className="hero-title flex items-center gap-2 justify-center lg:justify-start mb-6">
@@ -108,18 +108,18 @@ export default function Hero() {
             Computer Engineer crafting robust digital experiences with clean architecture,
             modern tech stacks, and a passion for pixel-perfect design.
           </p>
-          <div className="flex gap-4 justify-center lg:justify-start">
+          <div className="flex gap-3 sm:gap-4 justify-center lg:justify-start flex-wrap">
             <a
               href="#portfolio"
               onClick={e => handleScroll(e, '#portfolio')}
-              className="hero-cta px-7 py-3.5 bg-emerald-accent hover:bg-emerald-dark text-white font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-emerald-accent/25"
+              className="hero-cta px-5 sm:px-7 py-3 sm:py-3.5 bg-emerald-accent hover:bg-emerald-dark text-white font-semibold text-sm sm:text-base rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-emerald-accent/25"
             >
               View My Work
             </a>
             <a
               href="#contact"
               onClick={e => handleScroll(e, '#contact')}
-              className="hero-cta px-7 py-3.5 border-2 border-gray-300 dark:border-dark-border text-gray-900 dark:text-white font-semibold rounded-full hover:border-emerald-accent hover:text-emerald-accent transition-all duration-300"
+              className="hero-cta px-5 sm:px-7 py-3 sm:py-3.5 border-2 border-gray-300 dark:border-dark-border text-gray-900 dark:text-white font-semibold text-sm sm:text-base rounded-full hover:border-emerald-accent hover:text-emerald-accent transition-all duration-300"
             >
               Let's Talk
             </a>
@@ -138,7 +138,7 @@ export default function Hero() {
               <img
                 src={dark ? heroImgDark : heroImgLight}
                 alt="Eljo Shurdhi"
-                className="relative w-72 sm:w-80 lg:w-[420px] object-cover drop-shadow-2xl"
+                className="relative w-52 sm:w-72 lg:w-[420px] object-cover drop-shadow-2xl"
               />
             </Lens>
           </motion.div>
