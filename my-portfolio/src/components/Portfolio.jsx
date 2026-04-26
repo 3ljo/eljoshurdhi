@@ -3,46 +3,54 @@ import { useScrollAnimation, fadeUp, staggerContainer } from '../hooks/useScroll
 
 const projects = [
   {
-    title: 'E-Commerce Platform',
-    description: 'Full-stack shopping platform with cart, auth, and payment integration.',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
-    tags: ['React', 'Node.js', 'MongoDB'],
+    title: 'CV Climber',
+    niche: 'Career SaaS',
+    description: 'AI-powered resume builder that helps job seekers craft standout CVs and climb the career ladder faster.',
+    image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1600&h=900&fit=crop',
+    tags: ['Next.js', 'AI', 'Tailwind', 'Stripe'],
     size: 'large',
+    href: 'https://www.cvclimber.lol/',
+    accent: 'from-emerald-500/30 via-emerald-900/40 to-black/90',
   },
   {
-    title: 'Task Management App',
-    description: 'Drag-and-drop project board with real-time updates.',
-    image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop',
-    tags: ['React', 'Firebase', 'Tailwind'],
+    title: 'AI Receptionist',
+    niche: 'AI Automation',
+    description: 'Voice AI that answers calls, books appointments, and handles customer queries 24/7 for service businesses.',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=900&fit=crop',
+    tags: ['Next.js', 'OpenAI', 'Twilio', 'Supabase'],
     size: 'small',
+    href: 'https://ai-recepsionist-codo.vercel.app/dashboard',
+    accent: 'from-violet-500/30 via-indigo-900/40 to-black/90',
   },
   {
-    title: 'AI Business Automation',
-    description: 'AI-powered workflows and predictive analytics for businesses.',
-    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop',
-    tags: ['Python', 'OpenAI', 'React'],
+    title: 'Nderto',
+    niche: 'Construction SaaS',
+    description: 'A management platform for construction crews — projects, materials, and team coordination in one dashboard.',
+    image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1200&h=900&fit=crop',
+    tags: ['Next.js', 'Auth', 'Postgres', 'Tailwind'],
     size: 'small',
+    href: 'https://nderto.vercel.app/login',
+    accent: 'from-amber-500/30 via-orange-900/40 to-black/90',
   },
   {
-    title: 'Brand Identity System',
-    description: 'Complete branding package with logo, typography, and color system.',
-    image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&h=600&fit=crop',
-    tags: ['Figma', 'Illustrator'],
+    title: 'ESHB',
+    niche: 'Brand & Agency',
+    description: 'A modern agency landing site with bold typography, smooth scroll animations, and a clear conversion path.',
+    image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=1200&h=900&fit=crop',
+    tags: ['React', 'Framer Motion', 'Tailwind'],
     size: 'small',
+    href: 'https://eshb.vercel.app/',
+    accent: 'from-rose-500/30 via-pink-900/40 to-black/90',
   },
   {
-    title: 'Portfolio Dashboard',
-    description: 'Analytics dashboard with charts, filters, and data export.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
-    tags: ['Next.js', 'TypeScript', 'Chart.js'],
+    title: 'El Josh Urdhi',
+    niche: 'Personal Brand',
+    description: 'Personal portfolio showcasing services, selected work, and a way for clients to get in touch.',
+    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=900&fit=crop',
+    tags: ['React', 'Vite', 'Tailwind', 'Framer Motion'],
     size: 'small',
-  },
-  {
-    title: 'CLI Automation Tool',
-    description: 'Command-line utility for automating deployment workflows.',
-    image: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&h=600&fit=crop',
-    tags: ['Node.js', 'Bash', 'Docker'],
-    size: 'large',
+    href: 'https://eljoshurdhi.vercel.app/',
+    accent: 'from-sky-500/30 via-cyan-900/40 to-black/90',
   },
 ]
 
@@ -65,17 +73,20 @@ export default function Portfolio() {
             Selected Work<span className="text-emerald-accent">.</span>
           </h2>
           <p className="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
-            A showcase of projects I've built — from full-stack apps to design systems.
+            A showcase of projects I've built — from AI tools and SaaS platforms to brand sites.
           </p>
         </motion.div>
 
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {projects.map((project, i) => (
-            <motion.div
+            <motion.a
               key={project.title}
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
               variants={fadeUp}
-              className={`group relative rounded-2xl overflow-hidden cursor-pointer ${
+              className={`group relative rounded-2xl overflow-hidden cursor-pointer block ${
                 project.size === 'large' ? 'md:col-span-2 h-56 sm:h-80 lg:h-96' : 'h-48 sm:h-72'
               }`}
             >
@@ -86,12 +97,25 @@ export default function Portfolio() {
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-100 sm:opacity-60 sm:group-hover:opacity-100 transition-opacity duration-500" />
+              {/* Niche-tinted overlay */}
+              <div className={`absolute inset-0 bg-gradient-to-t ${project.accent} opacity-100 sm:opacity-70 sm:group-hover:opacity-100 transition-opacity duration-500`} />
+
+              {/* Niche badge */}
+              <span className="absolute top-5 left-6 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-white/90 bg-white/10 backdrop-blur-md border border-white/15 px-3 py-1 rounded-full">
+                {project.niche}
+              </span>
 
               {/* Number */}
               <span className="absolute top-5 right-6 text-7xl font-heading font-extrabold text-white/10 leading-none select-none">
                 {String(i + 1).padStart(2, '0')}
+              </span>
+
+              {/* Visit arrow — appears on hover */}
+              <span className="absolute top-5 right-6 sm:right-8 sm:top-auto sm:bottom-auto sm:translate-x-0 hidden sm:flex items-center justify-center w-11 h-11 rounded-full bg-white text-gray-900 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7" />
+                  <polyline points="7 7 17 7 17 17" />
+                </svg>
               </span>
 
               {/* Content — slides up on hover */}
@@ -113,7 +137,7 @@ export default function Portfolio() {
                   {project.description}
                 </p>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </motion.div>
