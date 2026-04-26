@@ -43,7 +43,7 @@ const projects = [
     accent: 'from-rose-500/30 via-pink-900/40 to-black/90',
   },
   {
-    title: 'El Josh Urdhi',
+    title: 'Eljo Shurdhi',
     niche: 'Personal Brand',
     description: 'Personal portfolio showcasing services, selected work, and a way for clients to get in touch.',
     image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=900&fit=crop',
