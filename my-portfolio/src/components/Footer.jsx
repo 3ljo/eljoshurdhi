@@ -2,9 +2,8 @@ import { motion } from 'framer-motion'
 
 const navLinks = [
   { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Portfolio', href: '#portfolio' },
-  { label: 'Testimonials', href: '#testimonials' },
+  { label: 'Skills', href: '#services' },
+  { label: 'Work', href: '#portfolio' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -58,7 +57,7 @@ export default function Footer() {
               eljo<span className="text-emerald-accent">.</span>
             </p>
             <p className="text-gray-500 text-sm max-w-xs">
-              Computer Engineer & Full Stack Developer crafting digital experiences.
+              Full Stack Developer — open to junior/mid roles, remote-first.
             </p>
           </div>
 

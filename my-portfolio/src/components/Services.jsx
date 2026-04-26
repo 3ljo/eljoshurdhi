@@ -1,42 +1,46 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useScrollAnimation, fadeUp, staggerContainer } from '../hooks/useScrollAnimation'
 
-const services = [
+const skills = [
   {
     num: '01',
-    title: 'Web Development',
-    description: 'Full-stack web applications built with React, Node.js, and modern frameworks. Responsive, fast, and scalable.',
+    title: 'Frontend Engineering',
+    description: 'React, Next.js, TypeScript, Tailwind. Component architecture, state management, and accessible, responsive UIs.',
+    tags: ['React', 'Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
   },
   {
     num: '02',
-    title: 'Mobile-First Design',
-    description: 'Interfaces designed for every screen size. Your users get a seamless experience on any device.',
+    title: 'Backend & APIs',
+    description: 'REST and server-action APIs with Node.js and Next.js. Auth flows, role-based access, and data validation.',
+    tags: ['Node.js', 'REST', 'Auth', 'Zod'],
   },
   {
     num: '03',
-    title: 'API & Backend',
-    description: 'RESTful APIs, database design, and server-side logic that powers your application reliably.',
+    title: 'Databases',
+    description: 'Relational schema design and queries with PostgreSQL and Supabase. Comfortable with row-level security and migrations.',
+    tags: ['PostgreSQL', 'Supabase', 'SQL'],
   },
   {
     num: '04',
-    title: 'AI & Automation',
-    description: 'Smart automation powered by AI — from intelligent workflows and chatbots to data pipelines that eliminate repetitive tasks.',
+    title: 'AI Integrations',
+    description: 'Shipping production AI features — OpenAI for chat and structured output, Twilio for voice agents, and prompt engineering.',
+    tags: ['OpenAI', 'Twilio', 'Prompt Engineering'],
   },
   {
     num: '05',
-    title: 'UI/UX Design',
-    description: 'Clean, intuitive interfaces that prioritize user experience and visual clarity.',
+    title: 'UI / UX',
+    description: 'Figma to code. Translating designs into clean, maintainable components without losing visual fidelity.',
+    tags: ['Figma', 'Design Systems', 'Responsive'],
   },
   {
     num: '06',
-    title: 'Maintenance & Support',
-    description: 'Ongoing technical support, performance optimization, and feature updates for existing projects.',
+    title: 'DevOps & Deployment',
+    description: 'Vercel, GitHub Actions, environment management, and shipping to production with confidence.',
+    tags: ['Vercel', 'Git', 'CI/CD'],
   },
 ]
 
 export default function Services() {
-  const [expanded, setExpanded] = useState(null)
   const { ref, controls } = useScrollAnimation()
 
   return (
@@ -52,65 +56,49 @@ export default function Services() {
         variants={staggerContainer}
         initial="hidden"
         animate={controls}
-        className="max-w-4xl mx-auto px-6 relative z-10"
+        className="max-w-6xl mx-auto px-6 relative z-10"
       >
         {/* Section Header */}
-        <motion.div variants={fadeUp} className="text-center mb-16">
+        <motion.div variants={fadeUp} className="text-center mb-14">
           <p className="text-emerald-accent font-semibold text-sm uppercase tracking-widest mb-3">What I Do</p>
           <h2 className="text-3xl sm:text-4xl font-heading font-bold text-gray-900 dark:text-white mb-4">
-            Services & Expertise<span className="text-emerald-accent">.</span>
+            Skills & Stack<span className="text-emerald-accent">.</span>
           </h2>
           <p className="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
-            End-to-end solutions from planning to production. Here's how I can help bring your vision to life.
+            The areas I work in day-to-day, with the tools I actually use in production.
           </p>
         </motion.div>
 
-        {/* Accordion List */}
-        <div className="flex flex-col">
-          {services.map((service) => {
-            const isOpen = expanded === service.num
-            return (
-              <motion.div
-                key={service.num}
-                variants={fadeUp}
-                onClick={() => setExpanded(isOpen ? null : service.num)}
-                className="group border-t border-gray-200 dark:border-white/10 last:border-b cursor-pointer"
-              >
-                <div className="flex items-center gap-6 py-6 sm:py-8">
-                  <span className="text-sm font-mono text-emerald-accent/60 group-hover:text-emerald-accent transition-colors">
-                    {service.num}
-                  </span>
-                  <h3 className={`flex-1 text-xl sm:text-2xl font-heading font-semibold transition-colors duration-300 ${
-                    isOpen ? 'text-emerald-accent' : 'text-gray-900 dark:text-white group-hover:text-emerald-accent'
-                  }`}>
-                    {service.title}
-                  </h3>
-                  <motion.span
-                    animate={{ rotate: isOpen ? 45 : 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="text-2xl text-gray-500 group-hover:text-emerald-accent transition-colors"
+        {/* Skills Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {skills.map(skill => (
+            <motion.div
+              key={skill.num}
+              variants={fadeUp}
+              whileHover={{ y: -4 }}
+              className="group p-6 sm:p-7 rounded-2xl bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border hover:border-emerald-accent/40 hover:shadow-lg hover:shadow-emerald-accent/5 transition-all duration-300"
+            >
+              <span className="text-xs font-mono text-emerald-accent/60 group-hover:text-emerald-accent transition-colors">
+                {skill.num}
+              </span>
+              <h3 className="mt-2 mb-3 text-xl font-heading font-semibold text-gray-900 dark:text-white group-hover:text-emerald-accent transition-colors">
+                {skill.title}
+              </h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4">
+                {skill.description}
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {skill.tags.map(tag => (
+                  <span
+                    key={tag}
+                    className="text-[11px] font-medium text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-dark-bg border border-gray-200 dark:border-dark-border px-2.5 py-0.5 rounded-full"
                   >
-                    +
-                  </motion.span>
-                </div>
-                <AnimatePresence>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
-                      className="overflow-hidden"
-                    >
-                      <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base leading-relaxed pl-12 pb-8 max-w-lg">
-                        {service.description}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            )
-          })}
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </motion.div>
     </section>

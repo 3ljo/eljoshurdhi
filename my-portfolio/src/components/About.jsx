@@ -1,56 +1,42 @@
-import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useScrollAnimation, fadeUp, slideLeft, slideRight, staggerContainer } from '../hooks/useScrollAnimation'
-gsap.registerPlugin(ScrollTrigger)
 
+// Stack actually used across the portfolio projects.
 const techStack = [
   { name: 'React', icon: '⚛' },
-  { name: 'Node.js', icon: '▲' },
+  { name: 'Next.js', icon: 'N' },
   { name: 'TypeScript', icon: 'TS' },
-  { name: 'Python', icon: 'Py' },
-  { name: 'MongoDB', icon: '🍃' },
+  { name: 'Node.js', icon: '▲' },
+  { name: 'Tailwind', icon: '🌊' },
+  { name: 'Supabase', icon: '⚡' },
   { name: 'PostgreSQL', icon: '🐘' },
-  { name: 'Docker', icon: '🐳' },
-  { name: 'AWS', icon: '☁' },
+  { name: 'OpenAI API', icon: 'AI' },
+  { name: 'Framer Motion', icon: '◆' },
+  { name: 'Vite', icon: 'V' },
   { name: 'Git', icon: '⎇' },
   { name: 'Figma', icon: '◈' },
-  { name: 'Tailwind', icon: '🌊' },
-  { name: 'Next.js', icon: 'N' },
 ]
 
-const stats = [
-  { value: 25, suffix: '+', label: 'Projects Done' },
-  { value: 15, suffix: '+', label: 'Happy Clients' },
-  { value: 4, suffix: '+', label: 'Years Experience' },
+// TODO: Replace these placeholder entries with real dates, school name, and roles.
+const timeline = [
+  {
+    type: 'work',
+    title: 'Freelance Full Stack Developer',
+    org: 'Self-employed',
+    period: '2023 — Present',
+    detail: 'Building production web apps and AI-powered tools for clients (CV Climber, AI Receptionist, Nderto).',
+  },
+  {
+    type: 'edu',
+    title: 'BSc Computer Engineering',
+    org: 'University — update with school name',
+    period: '2020 — 2024',
+    detail: 'Coursework in software engineering, data structures, databases, and web development.',
+  },
 ]
 
 export default function About() {
   const { ref, controls } = useScrollAnimation()
-  const statsRef = useRef(null)
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const counters = gsap.utils.toArray('.stat-value')
-      counters.forEach(el => {
-        const target = parseInt(el.dataset.value, 10)
-        gsap.fromTo(el, { innerText: 0 }, {
-          innerText: target,
-          duration: 2,
-          ease: 'power2.out',
-          snap: { innerText: 1 },
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 80%',
-            once: true,
-          },
-        })
-      })
-    }, statsRef)
-
-    return () => ctx.revert()
-  }, [])
 
   return (
     <section id="about" className="py-24 lg:py-32 bg-white dark:bg-dark-bg">
@@ -59,12 +45,12 @@ export default function About() {
         variants={staggerContainer}
         initial="hidden"
         animate={controls}
-        className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center"
+        className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-start"
       >
         {/* Tech Stack Grid */}
-        <motion.div variants={slideLeft} className="flex justify-center">
+        <motion.div variants={slideLeft} className="flex justify-center lg:sticky lg:top-28">
           <div className="grid grid-cols-3 gap-4 w-full max-w-md">
-            {techStack.map((tech, i) => (
+            {techStack.map(tech => (
               <motion.div
                 key={tech.name}
                 whileHover={{ y: -4, scale: 1.05 }}
@@ -90,37 +76,58 @@ export default function About() {
           </div>
 
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-            I'm Eljo Shurdhi, a Computer Engineer with an IT degree and a deep passion
-            for full-stack development. I specialize in crafting clean, scalable web
-            applications that merge technical excellence with intuitive design.
+            I'm Eljo Shurdhi, a Computer Engineer focused on full-stack web development.
+            I build production apps end-to-end — from the database schema and API layer
+            to the UI components users actually touch.
           </p>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-            From concept to deployment, I bring ideas to life using modern technologies
-            like React, Node.js, and cloud-native architectures. I believe great software
-            isn't just functional — it should feel effortless.
+            Most of my recent work uses Next.js, React, TypeScript, and Supabase / Postgres
+            on the backend. I'm comfortable shipping AI features (OpenAI, Twilio voice) and
+            writing the kind of clean, typed code teams can actually maintain.
           </p>
 
-          {/* Quote */}
-          <blockquote className="mb-10 pl-5 border-l-2 border-emerald-accent">
-            <p className="text-gray-500 dark:text-gray-400 italic text-sm leading-relaxed">
-              "The only way to do great work is to love what you do."
-            </p>
-            <cite className="text-xs text-gray-400 dark:text-gray-500 not-italic mt-2 block">
-              — Steve Jobs
-            </cite>
-          </blockquote>
+          {/* Availability status — replaces the old quote */}
+          <div className="mb-10 flex items-start gap-3 p-4 rounded-xl bg-emerald-accent/5 border border-emerald-accent/20">
+            <span className="relative flex h-2.5 w-2.5 mt-1.5 flex-shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-accent opacity-75" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-accent" />
+            </span>
+            <div>
+              <p className="text-sm font-semibold text-gray-900 dark:text-white">
+                Open to junior / mid full-stack roles
+              </p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                Remote-first or based in Tirana, Albania.
+              </p>
+            </div>
+          </div>
 
-          {/* Stats */}
-          <div ref={statsRef} className="grid grid-cols-3 gap-6">
-            {stats.map(stat => (
-              <div key={stat.label} className="text-center lg:text-left">
-                <p className="text-3xl sm:text-4xl font-heading font-bold text-gray-900 dark:text-white">
-                  <span className="stat-value" data-value={stat.value}>0</span>
-                  {stat.suffix}
-                </p>
-                <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
-              </div>
-            ))}
+          {/* Timeline — replaces stats */}
+          <div className="relative">
+            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-5">
+              Experience & Education
+            </p>
+            <div className="relative pl-6 border-l border-gray-200 dark:border-dark-border space-y-6">
+              {timeline.map((item, i) => (
+                <div key={i} className="relative">
+                  <span className={`absolute -left-[31px] top-1.5 w-3 h-3 rounded-full border-2 ${
+                    item.type === 'work'
+                      ? 'bg-emerald-accent border-emerald-accent'
+                      : 'bg-white dark:bg-dark-bg border-emerald-accent'
+                  }`} />
+                  <div className="flex flex-wrap items-baseline gap-2 mb-1">
+                    <h4 className="text-base font-semibold text-gray-900 dark:text-white">
+                      {item.title}
+                    </h4>
+                    <span className="text-xs font-mono text-emerald-accent">{item.period}</span>
+                  </div>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">{item.org}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                    {item.detail}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </motion.div>
