@@ -94,6 +94,24 @@ const projects = [
       'Optimized for fast first paint and accessibility',
     ],
   },
+  {
+    title: 'Sage Commerce',
+    niche: 'E-commerce',
+    description: 'A modern online store with product browsing, cart, and a smooth checkout flow built for conversion.',
+    image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&h=900&fit=crop',
+    tags: ['Next.js', 'Tailwind', 'Stripe', 'React'],
+    size: 'large',
+    href: 'https://ecomerce-sage-eight.vercel.app/',
+    github: null,
+    accent: 'from-teal-500/30 via-emerald-900/40 to-black/90',
+    problem: 'Small brands need a fast, clean storefront that handles product discovery and checkout without the bloat of off-the-shelf platforms.',
+    role: 'Designed and built the storefront end-to-end — product catalog, cart logic, and a frictionless checkout experience.',
+    highlights: [
+      'Responsive product grid with category filtering',
+      'Persistent cart with quantity and total updates',
+      'Clean, conversion-focused checkout flow',
+    ],
+  },
 ]
 
 function ProjectModal({ project, onClose }) {
