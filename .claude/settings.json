@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "Bash(curl -s http://localhost:5173)",
+      "WebFetch(domain:ui.aceternity.com)",
+      "Bash(npx shadcn@latest add @aceternity/3d-globe)",
+      "Bash(npm uninstall:*)",
+      "Bash(npx shadcn@latest add @aceternity/lens)",
+      "Bash(npm list:*)"
+    ]
+  }
+}

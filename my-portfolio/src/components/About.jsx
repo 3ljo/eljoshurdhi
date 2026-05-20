@@ -17,24 +17,6 @@ const techStack = [
   { name: 'Figma', icon: '◈' },
 ]
 
-// TODO: Replace these placeholder entries with real dates, school name, and roles.
-const timeline = [
-  {
-    type: 'work',
-    title: 'Freelance Full Stack Developer',
-    org: 'Self-employed',
-    period: '2023 — Present',
-    detail: 'Building production web apps and AI-powered tools for clients (CV Climber, AI Receptionist, Nderto).',
-  },
-  {
-    type: 'edu',
-    title: 'BSc Computer Engineering',
-    org: 'University — update with school name',
-    period: '2020 — 2024',
-    detail: 'Coursework in software engineering, data structures, databases, and web development.',
-  },
-]
-
 export default function About() {
   const { ref, controls } = useScrollAnimation()
 
@@ -85,36 +67,6 @@ export default function About() {
             on the backend. I'm comfortable shipping AI features (OpenAI, Twilio voice) and
             writing the kind of clean, typed code teams can actually maintain.
           </p>
-
-        
-
-          {/* Timeline — replaces stats */}
-          <div className="relative">
-            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-5">
-              Experience & Education
-            </p>
-            <div className="relative pl-6 border-l border-gray-200 dark:border-dark-border space-y-6">
-              {timeline.map((item, i) => (
-                <div key={i} className="relative">
-                  <span className={`absolute -left-[31px] top-1.5 w-3 h-3 rounded-full border-2 ${
-                    item.type === 'work'
-                      ? 'bg-emerald-accent border-emerald-accent'
-                      : 'bg-white dark:bg-dark-bg border-emerald-accent'
-                  }`} />
-                  <div className="flex flex-wrap items-baseline gap-2 mb-1">
-                    <h4 className="text-base font-semibold text-gray-900 dark:text-white">
-                      {item.title}
-                    </h4>
-                    <span className="text-xs font-mono text-emerald-accent">{item.period}</span>
-                  </div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">{item.org}</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
-                    {item.detail}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
         </motion.div>
       </motion.div>
     </section>
