@@ -57,7 +57,7 @@ export default function Footer() {
               eljo<span className="text-emerald-accent">.</span>
             </p>
             <p className="text-gray-500 text-sm max-w-xs">
-              Full Stack Developer — open to junior/mid roles, remote-first.
+              Full Stack Developer — remote-first.
             </p>
           </div>
 

@@ -97,7 +97,7 @@ export default function Hero() {
           </div>
           <p className="hero-tagline text-gray-500 text-lg max-w-md mb-8 leading-relaxed">
             Computer Engineer building production web apps with React, Next.js,
-            and TypeScript. Open to junior / mid full-stack roles.
+            and TypeScript for fast-growing businesses.
           </p>
           <div className="hero-cta flex flex-wrap gap-3">
             <a href="/eljo-shurdhi-cv.pdf" download className="inline-flex items-center gap-2 px-7 py-3.5 bg-emerald-accent hover:bg-emerald-dark text-white font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-emerald-accent/25">
@@ -147,7 +147,7 @@ export default function Hero() {
             <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 font-medium">Full Stack Developer</p>
           </div>
           <p className="hero-tagline text-gray-500 text-sm sm:text-base max-w-sm mx-auto mb-6 leading-relaxed">
-            Computer Engineer building production web apps with React, Next.js, and TypeScript. Open to junior / mid full-stack roles.
+            Computer Engineer building production web apps with React, Next.js, and TypeScript for fast-growing businesses.
           </p>
           <div className="hero-cta flex flex-wrap gap-3 justify-center">
             <a href="/eljo-shurdhi-cv.pdf" download className="inline-flex items-center gap-2 px-5 py-3 bg-emerald-accent hover:bg-emerald-dark text-white font-semibold text-sm rounded-full transition-all duration-300">

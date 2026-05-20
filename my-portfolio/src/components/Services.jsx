@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { useScrollAnimation, fadeUp, staggerContainer } from '../hooks/useScrollAnimation'
 
 const skills = [
@@ -99,6 +100,22 @@ export default function Services() {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        <div className="mt-16 rounded-3xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-card p-10 text-center">
+          <p className="text-emerald-accent font-semibold text-sm uppercase tracking-widest mb-3">Dedicated pricing page</p>
+          <h3 className="text-3xl sm:text-4xl font-heading font-bold text-gray-900 dark:text-white mb-4">
+            View complete packages on a separate page.
+          </h3>
+          <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-8">
+            I created a dedicated pricing view so your packages feel more polished and easier to compare.
+          </p>
+          <Link
+            to="/pricing"
+            className="inline-flex items-center justify-center rounded-full bg-emerald-accent px-7 py-4 text-sm font-semibold text-white hover:bg-emerald-dark transition-colors"
+          >
+            See pricing packages
+          </Link>
         </div>
       </motion.div>
     </section>

@@ -1,13 +1,15 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { gsap } from 'gsap'
 import { useTheme } from '../context/ThemeContext'
 
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#services' },
-  { label: 'Work', href: '#portfolio' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '#about', type: 'hash' },
+  { label: 'Skills', href: '#services', type: 'hash' },
+  { label: 'Work', href: '#portfolio', type: 'hash' },
+  { label: 'Pricing', href: '/pricing', type: 'route' },
+  { label: 'Contact', href: '#contact', type: 'hash' },
 ]
 
 export default function Navbar() {
@@ -17,6 +19,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const lastScroll = useRef(0)
   const navRef = useRef(null)
+  const navigate = useNavigate()
+  const location = useLocation()
 
   // Lock body scroll when menu is open
   useEffect(() => {
@@ -49,11 +53,24 @@ export default function Navbar() {
     }
   }, [visible])
 
-  const handleNavClick = (e, href) => {
+  const handleNavClick = (e, link) => {
     e.preventDefault()
     setMenuOpen(false)
-    const el = document.querySelector(href)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
+
+    if (link.type === 'route') {
+      navigate(link.href)
+      return
+    }
+
+    if (location.pathname !== '/') {
+      window.location.href = `${window.location.origin}/${link.href}`
+      return
+    }
+
+    const el = document.querySelector(link.href)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
   return (
@@ -74,14 +91,25 @@ export default function Navbar() {
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map(link => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={e => handleNavClick(e, link.href)}
-              className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-emerald-accent dark:hover:text-emerald-accent transition-colors duration-200"
-            >
-              {link.label}
-            </a>
+            link.type === 'route' ? (
+              <Link
+                key={link.href}
+                to={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-emerald-accent dark:hover:text-emerald-accent transition-colors duration-200"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={e => handleNavClick(e, link)}
+                className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-emerald-accent dark:hover:text-emerald-accent transition-colors duration-200"
+              >
+                {link.label}
+              </a>
+            )
           ))}
 
           {/* Theme Toggle */}
@@ -161,17 +189,33 @@ export default function Navbar() {
             >
               <div className="flex flex-col items-center justify-center h-full gap-8">
                 {navLinks.map((link, i) => (
-                  <motion.a
-                    key={link.href}
-                    href={link.href}
-                    onClick={e => handleNavClick(e, link.href)}
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.05 + 0.1, duration: 0.3 }}
-                    className="text-3xl font-heading font-semibold text-gray-900 dark:text-white hover:text-emerald-accent transition-colors"
-                  >
-                    {link.label}
-                  </motion.a>
+                  link.type === 'route' ? (
+                    <motion.button
+                      key={link.href}
+                      type="button"
+                      onClick={() => {
+                        handleNavClick({ preventDefault: () => {} }, link)
+                      }}
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: i * 0.05 + 0.1, duration: 0.3 }}
+                      className="text-3xl font-heading font-semibold text-gray-900 dark:text-white hover:text-emerald-accent transition-colors"
+                    >
+                      {link.label}
+                    </motion.button>
+                  ) : (
+                    <motion.a
+                      key={link.href}
+                      href={link.href}
+                      onClick={e => handleNavClick(e, link)}
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: i * 0.05 + 0.1, duration: 0.3 }}
+                      className="text-3xl font-heading font-semibold text-gray-900 dark:text-white hover:text-emerald-accent transition-colors"
+                    >
+                      {link.label}
+                    </motion.a>
+                  )
                 ))}
                 <button
                   onClick={toggle}

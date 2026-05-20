@@ -12,7 +12,7 @@ const techStack = [
   { name: 'PostgreSQL', icon: '🐘' },
   { name: 'OpenAI API', icon: 'AI' },
   { name: 'Framer Motion', icon: '◆' },
-  { name: 'Vite', icon: 'V' },
+  { name: 'Angular', icon: 'A' },
   { name: 'Git', icon: '⎇' },
   { name: 'Figma', icon: '◈' },
 ]
@@ -86,21 +86,7 @@ export default function About() {
             writing the kind of clean, typed code teams can actually maintain.
           </p>
 
-          {/* Availability status — replaces the old quote */}
-          <div className="mb-10 flex items-start gap-3 p-4 rounded-xl bg-emerald-accent/5 border border-emerald-accent/20">
-            <span className="relative flex h-2.5 w-2.5 mt-1.5 flex-shrink-0">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-accent opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-accent" />
-            </span>
-            <div>
-              <p className="text-sm font-semibold text-gray-900 dark:text-white">
-                Open to junior / mid full-stack roles
-              </p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-                Remote-first or based in Tirana, Albania.
-              </p>
-            </div>
-          </div>
+        
 
           {/* Timeline — replaces stats */}
           <div className="relative">
