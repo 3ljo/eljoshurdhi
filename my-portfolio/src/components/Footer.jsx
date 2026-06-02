@@ -56,9 +56,6 @@ export default function Footer() {
             <p className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-2">
               eljo<span className="text-emerald-accent">.</span>
             </p>
-            <p className="text-gray-500 text-sm max-w-xs">
-              Full Stack Developer — remote-first.
-            </p>
           </div>
 
           {/* Nav Links */}

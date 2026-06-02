@@ -1,6 +1,5 @@
 import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
-import emailjs from '@emailjs/browser'
 import { useScrollAnimation, fadeUp, slideLeft, slideRight, staggerContainer } from '../hooks/useScrollAnimation'
 import { Globe3D } from './ui/3d-globe'
 
@@ -21,22 +20,24 @@ export default function Contact() {
   const formRef = useRef(null)
   const [status, setStatus] = useState('idle')
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    setStatus('sending')
 
-    try {
-      await emailjs.sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        formRef.current,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      )
-    } catch {
-      // silent fail
-    }
+    const form = formRef.current
+    const name = form.user_name.value.trim()
+    const email = form.user_email.value.trim()
+    const message = form.message.value.trim()
+
+    const subject = `New message from ${name}`
+    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`
+
+    // Open the visitor's email client pre-addressed to me
+    window.location.href = `mailto:shurdhieljo@outlook.com?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`
+
     setStatus('success')
-    formRef.current.reset()
+    form.reset()
     setTimeout(() => setStatus('idle'), 4000)
   }
 
