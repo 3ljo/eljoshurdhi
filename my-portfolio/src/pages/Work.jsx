@@ -21,18 +21,18 @@ function CaseStudyModal({ project, onClose }) {
     <motion.div
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
       onClick={onClose}
-      className="fixed inset-0 z-[100] bg-ink/70 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-6"
+      className="fixed inset-0 z-[100] bg-black/70 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-6"
     >
       <motion.div
         initial={{ y: 60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 40, opacity: 0 }}
         transition={{ type: 'spring', damping: 28, stiffness: 260 }}
         onClick={e => e.stopPropagation()}
-        className="relative bg-surface dark:bg-surface-dark w-full sm:max-w-2xl max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-3xl shadow-2xl"
+        className="relative bg-white dark:bg-dark-card w-full sm:max-w-2xl max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-3xl shadow-2xl"
       >
         <button
           onClick={onClose}
           aria-label="Close"
-          className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-ink/50 hover:bg-ink/70 text-white flex items-center justify-center backdrop-blur transition-colors"
+          className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur transition-colors"
         >
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -43,15 +43,15 @@ function CaseStudyModal({ project, onClose }) {
           <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
           <div className={`absolute inset-0 bg-gradient-to-t ${project.accent}`} />
           <div className="absolute bottom-5 left-5 right-5">
-            <span className="inline-block text-xs font-mono uppercase tracking-widest text-white/90 bg-white/10 backdrop-blur-md border border-white/15 px-3 py-1 rounded-full mb-3">
+            <span className="inline-block text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-white/90 bg-white/10 backdrop-blur-md border border-white/15 px-3 py-1 rounded-full mb-3">
               {project.niche}
             </span>
-            <h3 className="text-2xl sm:text-3xl font-display font-bold text-white">{project.title}</h3>
+            <h3 className="text-2xl sm:text-3xl font-heading font-bold text-white">{project.title}</h3>
           </div>
         </div>
 
         <div className="p-6 sm:p-8">
-          <p className="font-display text-lg font-semibold text-ink dark:text-ink-dark leading-snug mb-6">
+          <p className="font-heading text-lg font-semibold text-gray-900 dark:text-white leading-snug mb-6">
             {project.outcome}
           </p>
 
@@ -63,7 +63,7 @@ function CaseStudyModal({ project, onClose }) {
 
           <div className="flex flex-wrap gap-2 mb-7">
             {project.tags.map(tag => (
-              <span key={tag} className="text-xs font-mono text-signal dark:text-signal-dark bg-signal/10 dark:bg-signal-dark/10 border border-signal/20 dark:border-signal-dark/20 px-3 py-1 rounded-full">
+              <span key={tag} className="text-xs font-medium text-emerald-accent bg-emerald-accent/10 border border-emerald-accent/20 px-3 py-1 rounded-full">
                 {tag}
               </span>
             ))}
@@ -71,19 +71,19 @@ function CaseStudyModal({ project, onClose }) {
 
           <div className="space-y-6">
             <div>
-              <p className="text-xs font-mono uppercase tracking-widest text-signal dark:text-signal-dark mb-2">The problem</p>
-              <p className="text-slate dark:text-slate-dark leading-relaxed">{project.problem}</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-emerald-accent mb-2">The Problem</p>
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{project.problem}</p>
             </div>
             <div>
-              <p className="text-xs font-mono uppercase tracking-widest text-signal dark:text-signal-dark mb-2">What I built</p>
-              <p className="text-slate dark:text-slate-dark leading-relaxed">{project.role}</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-emerald-accent mb-2">What I Built</p>
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{project.role}</p>
             </div>
             <div>
-              <p className="text-xs font-mono uppercase tracking-widest text-signal dark:text-signal-dark mb-2">Highlights</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-emerald-accent mb-2">Highlights</p>
               <ul className="space-y-2">
                 {project.highlights.map(h => (
-                  <li key={h} className="flex items-start gap-3 text-slate dark:text-slate-dark">
-                    <svg className="w-5 h-5 text-signal dark:text-signal-dark flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <li key={h} className="flex items-start gap-3 text-gray-600 dark:text-gray-300">
+                    <svg className="w-5 h-5 text-emerald-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                     <span className="leading-relaxed">{h}</span>
@@ -103,14 +103,14 @@ export default function Work() {
   const [active, setActive] = useState(null)
 
   return (
-    <main className="bg-bg dark:bg-bg-dark">
+    <main className="bg-light-bg dark:bg-dark-bg">
       <section className="pt-32 pb-16 lg:pt-40 lg:pb-20">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-signal dark:text-signal-dark mb-4">Work</p>
-          <h1 className="font-display text-4xl sm:text-5xl font-bold text-ink dark:text-ink-dark mb-5 text-balance">
+          <p className="text-emerald-accent font-semibold text-sm uppercase tracking-widest mb-3">Work</p>
+          <h1 className="font-heading text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
             Case studies, not a screenshot gallery.
           </h1>
-          <p className="text-slate dark:text-slate-dark leading-relaxed max-w-xl mx-auto">
+          <p className="text-gray-500 dark:text-gray-400 leading-relaxed max-w-xl mx-auto">
             Every project shipped to a real, working product. Click any card for the problem, what I built, and the live link.
           </p>
         </div>
@@ -132,15 +132,15 @@ export default function Work() {
                 <img src={project.image} alt={project.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 <div className={`absolute inset-0 bg-gradient-to-t ${project.accent} opacity-90 sm:opacity-70 sm:group-hover:opacity-90 transition-opacity duration-500`} />
 
-                <span className="absolute top-5 left-6 text-xs font-mono uppercase tracking-widest text-white/90 bg-white/10 backdrop-blur-md border border-white/15 px-3 py-1 rounded-full">
+                <span className="absolute top-5 left-6 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-white/90 bg-white/10 backdrop-blur-md border border-white/15 px-3 py-1 rounded-full">
                   {project.niche}
                 </span>
-                <span className="absolute top-5 right-6 text-6xl font-display font-extrabold text-white/10 leading-none select-none pointer-events-none">
+                <span className="absolute top-5 right-6 text-6xl font-heading font-extrabold text-white/10 leading-none select-none pointer-events-none">
                   {String(i + 1).padStart(2, '0')}
                 </span>
 
                 <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7">
-                  <h3 className="text-xl sm:text-2xl font-display font-bold text-white mb-2">{project.title}</h3>
+                  <h3 className="text-xl sm:text-2xl font-heading font-bold text-white mb-2">{project.title}</h3>
                   <p className="text-white/80 text-sm leading-relaxed max-w-md line-clamp-2">{project.outcome}</p>
                   <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-white/15 backdrop-blur-md border border-white/20 px-3 py-1.5 rounded-full">
                     Read case study
@@ -153,13 +153,15 @@ export default function Work() {
         </motion.div>
       </section>
 
-      <section className="py-20 bg-ink dark:bg-surface-dark">
-        <div className="max-w-2xl mx-auto px-6 text-center">
-          <h2 className="font-display text-3xl font-bold text-ink-dark mb-4">Want a project like these?</h2>
-          <p className="text-ink-dark/70 leading-relaxed mb-8">
-            Tell me what you're building — I'll tell you honestly what it takes to ship it.
-          </p>
-          <CTAButton to="/contact" size="lg">Start your project</CTAButton>
+      <section className="py-20 bg-gray-100 dark:bg-dark-bg">
+        <div className="max-w-2xl mx-auto px-6">
+          <div className="rounded-3xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-card p-10 text-center">
+            <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-4">Want a project like these?</h2>
+            <p className="text-gray-500 dark:text-gray-400 leading-relaxed mb-8">
+              Tell me what you're building — I'll tell you honestly what it takes to ship it.
+            </p>
+            <CTAButton to="/contact" size="lg">Start your project</CTAButton>
+          </div>
         </div>
       </section>
 

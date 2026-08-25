@@ -11,16 +11,16 @@ export default function ProofStrip({ className = '' }) {
       <div className="flex gap-8 sm:gap-10">
         {proofStats.map(stat => (
           <div key={stat.label}>
-            <p className="font-mono text-2xl sm:text-3xl font-semibold text-ink dark:text-ink-dark">
+            <p className="font-heading text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
               {stat.value}
             </p>
-            <p className="text-xs sm:text-sm text-slate dark:text-slate-dark leading-snug max-w-[10rem]">
+            <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-snug max-w-[10rem]">
               {stat.label}
             </p>
           </div>
         ))}
       </div>
-      <p className="text-sm text-slate dark:text-slate-dark leading-relaxed sm:border-l sm:border-line sm:dark:border-line-dark sm:pl-6 max-w-sm">
+      <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed sm:border-l sm:border-gray-200 sm:dark:border-dark-border sm:pl-6 max-w-sm">
         {proofNote}
       </p>
     </div>

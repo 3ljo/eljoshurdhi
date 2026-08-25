@@ -36,23 +36,23 @@ export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   return (
-    <footer className="py-16 bg-surface dark:bg-bg-dark border-t border-line dark:border-line-dark">
+    <footer className="py-16 bg-gray-100 dark:bg-dark-bg border-t border-gray-200 dark:border-white/5">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-10 mb-12">
           <div className="text-center md:text-left">
-            <p className="font-display text-2xl font-bold text-ink dark:text-ink-dark mb-2">
-              eljo<span className="text-signal dark:text-signal-dark">.</span>
+            <p className="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-2">
+              eljo<span className="text-emerald-accent">.</span>
             </p>
-            <p className="text-sm text-slate dark:text-slate-dark">{brand.role} · {brand.location}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{brand.role} · {brand.location}</p>
           </div>
 
           <div className="flex flex-wrap justify-center gap-6">
             {navLinks.map(link => (
-              <Link key={link.href} to={link.href} className="text-sm text-slate dark:text-slate-dark hover:text-signal dark:hover:text-signal-dark transition-colors">
+              <Link key={link.href} to={link.href} className="text-sm text-gray-500 dark:text-gray-400 hover:text-emerald-accent transition-colors">
                 {link.label}
               </Link>
             ))}
-            <Link to="/contact" className="text-sm text-slate dark:text-slate-dark hover:text-signal dark:hover:text-signal-dark transition-colors">
+            <Link to="/contact" className="text-sm text-gray-500 dark:text-gray-400 hover:text-emerald-accent transition-colors">
               Contact
             </Link>
           </div>
@@ -65,7 +65,7 @@ export default function Footer() {
                 target={s.href.startsWith('http') ? '_blank' : undefined}
                 rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 whileHover={{ scale: 1.1, y: -2 }}
-                className="w-10 h-10 rounded-full border border-line dark:border-line-dark flex items-center justify-center text-slate dark:text-slate-dark hover:text-signal hover:border-signal dark:hover:text-signal-dark dark:hover:border-signal-dark transition-colors"
+                className="w-10 h-10 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-gray-400 hover:text-emerald-accent hover:border-emerald-accent/50 transition-colors"
                 aria-label={s.label}
               >
                 {s.icon}
@@ -74,17 +74,17 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="w-full h-px bg-line dark:bg-line-dark mb-8" />
+        <div className="w-full h-px bg-gray-200 dark:bg-white/5 mb-8" />
 
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-slate dark:text-slate-dark">
+          <p className="text-xs text-gray-400 dark:text-gray-600">
             &copy; {new Date().getFullYear()} Eljo Shurdhi. All rights reserved.
           </p>
 
           <motion.button
             onClick={scrollToTop}
             whileHover={{ y: -3 }}
-            className="w-10 h-10 rounded-full border border-line dark:border-line-dark flex items-center justify-center text-slate dark:text-slate-dark hover:text-signal hover:border-signal dark:hover:text-signal-dark dark:hover:border-signal-dark transition-colors"
+            className="w-10 h-10 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-gray-400 hover:text-emerald-accent hover:border-emerald-accent/50 transition-colors"
             aria-label="Back to top"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

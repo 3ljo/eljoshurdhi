@@ -6,64 +6,45 @@ export default function PricingCard({ pkg, variants }) {
     <motion.div
       variants={variants}
       whileHover={{ y: -6 }}
-      className={`relative flex flex-col rounded-3xl p-8 transition-shadow duration-300 ${
+      className={`rounded-[2rem] border p-8 bg-white dark:bg-dark-card transition-all duration-300 ${
         pkg.recommended
-          ? 'bg-ink dark:bg-surface-dark text-ink-dark border-2 border-signal dark:border-signal-dark shadow-xl shadow-ink/10 lg:-translate-y-3'
-          : 'bg-surface dark:bg-surface-dark border border-line dark:border-line-dark text-ink dark:text-ink-dark hover:border-signal/50 dark:hover:border-signal-dark/50'
+          ? 'border-emerald-accent/40 shadow-2xl shadow-emerald-accent/10'
+          : 'border-gray-200 dark:border-dark-border hover:border-emerald-accent/40 hover:shadow-lg hover:shadow-emerald-accent/5'
       }`}
     >
-      {pkg.recommended && (
-        <span className="absolute -top-3 left-8 rounded-full bg-signal dark:bg-signal-dark text-signal-ink text-[11px] font-display font-semibold uppercase tracking-[0.15em] px-3 py-1">
-          Most popular
-        </span>
-      )}
-
-      <p
-        className={`font-mono text-xs uppercase tracking-[0.2em] ${
-          pkg.recommended ? 'text-signal-dark' : 'text-signal dark:text-signal-dark'
-        }`}
-      >
-        {pkg.name}
-      </p>
-      <p
-        className={`mt-2 text-sm ${
-          pkg.recommended ? 'text-ink-dark/70' : 'text-slate dark:text-slate-dark'
-        }`}
-      >
-        {pkg.forWho}
-      </p>
+      <div className="flex items-center justify-between gap-4">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-accent">
+            {pkg.name}
+          </p>
+          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{pkg.forWho}</p>
+        </div>
+        {pkg.recommended && (
+          <span className="flex-shrink-0 rounded-full bg-emerald-accent/10 px-3 py-2 text-[11px] font-semibold uppercase text-emerald-accent">
+            Recommended
+          </span>
+        )}
+      </div>
 
       <div className="mt-6 flex items-baseline gap-2">
-        <span className="font-display text-4xl font-bold">{pkg.price}</span>
-        <span className={pkg.recommended ? 'text-ink-dark/60 text-sm' : 'text-slate dark:text-slate-dark text-sm'}>
-          {pkg.priceNote}
-        </span>
+        <span className="text-3xl font-heading font-black text-gray-900 dark:text-white">{pkg.price}</span>
+        <span className="text-sm text-gray-400 dark:text-gray-500">{pkg.priceNote}</span>
       </div>
-      <p className={`mt-1 font-mono text-xs ${pkg.recommended ? 'text-ink-dark/60' : 'text-slate dark:text-slate-dark'}`}>
-        {pkg.timeframe}
-      </p>
+      <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">{pkg.timeframe}</p>
 
-      <ul className="mt-7 space-y-3 flex-1">
+      <div className="mt-8 space-y-4">
         {pkg.includes.map(item => (
-          <li key={item} className="flex items-start gap-3 text-sm leading-relaxed">
-            <svg
-              className={`w-4 h-4 mt-0.5 flex-shrink-0 ${pkg.recommended ? 'text-signal-dark' : 'text-signal dark:text-signal-dark'}`}
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2.5}
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
-            <span className={pkg.recommended ? 'text-ink-dark/85' : 'text-ink/85 dark:text-ink-dark/85'}>{item}</span>
-          </li>
+          <div key={item} className="flex items-start gap-3">
+            <span className="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-accent flex-shrink-0" />
+            <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{item}</p>
+          </div>
         ))}
-      </ul>
+      </div>
 
       <CTAButton
         to={`/contact?type=${pkg.slug}`}
         variant={pkg.recommended ? 'primary' : 'secondary'}
-        className={`mt-8 w-full ${pkg.recommended ? '' : ''}`}
+        className="mt-8 w-full"
       >
         {pkg.slug === 'maintenance' ? 'Get a quote' : 'Start this project'}
       </CTAButton>

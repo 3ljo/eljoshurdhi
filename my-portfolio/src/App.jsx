@@ -21,7 +21,7 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <div className="bg-bg dark:bg-bg-dark min-h-screen transition-colors duration-300">
+    <div className="bg-light-bg dark:bg-dark-bg min-h-screen transition-colors duration-300">
       <Navbar />
       <ScrollToTop />
       <Routes>

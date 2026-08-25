@@ -39,7 +39,7 @@ export const proofStats = [
 ]
 
 export const proofNote =
-  "Currently building production software at WhiteDesk. Every project below is live — click through and use it."
+  "Every project below is live — click through and use it."
 
 export const packages = [
   {

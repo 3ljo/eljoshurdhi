@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-full font-display font-semibold transition-colors duration-200 disabled:opacity-60 disabled:pointer-events-none'
+  'inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 disabled:opacity-60 disabled:pointer-events-none'
 
 const sizes = {
   md: 'px-6 py-3 text-sm',
@@ -9,10 +9,10 @@ const sizes = {
 }
 
 const variants = {
-  primary: 'bg-signal dark:bg-signal-dark text-signal-ink hover:brightness-95',
+  primary: 'bg-emerald-accent text-white hover:bg-emerald-dark',
   secondary:
-    'border-2 border-ink/15 dark:border-white/15 text-ink dark:text-ink-dark hover:border-signal hover:text-signal dark:hover:border-signal-dark dark:hover:text-signal-dark',
-  ghost: 'text-ink dark:text-ink-dark hover:text-signal dark:hover:text-signal-dark underline underline-offset-4',
+    'border-2 border-gray-300 dark:border-dark-border text-gray-900 dark:text-white hover:border-emerald-accent hover:text-emerald-accent',
+  ghost: 'text-gray-900 dark:text-white hover:text-emerald-accent underline underline-offset-4',
 }
 
 /**
