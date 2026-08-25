@@ -2,70 +2,84 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+  Token system — "Field Notes for a working developer."
+  Cool paper background (not cream), ink-navy text, a warm signal-amber
+  reserved only for calls to action, and a quiet slate-blue for secondary
+  brand marks. Space Grotesk carries headings, IBM Plex Sans carries body
+  copy, and IBM Plex Mono marks anything that reads like a spec — prices,
+  eyebrows, timelines — a small, deliberate nod to "built by a developer."
+*/
 @theme {
-  --color-emerald-accent: #10B981;
-  --color-emerald-light: #34D399;
-  --color-emerald-dark: #059669;
-  --color-dark-bg: #0A0A0A;
-  --color-dark-card: #141414;
-  --color-dark-border: #1F1F1F;
-  --color-light-bg: #FAFAFA;
-  --color-light-card: #FFFFFF;
-  --color-light-border: #E5E7EB;
-  --font-heading: 'Plus Jakarta Sans', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --color-bg: #F3F5F7;
+  --color-bg-dark: #12151B;
+  --color-surface: #FFFFFF;
+  --color-surface-dark: #1A1E26;
+  --color-ink: #14181F;
+  --color-ink-dark: #ECEEF1;
+  --color-slate: #545D6B;
+  --color-slate-dark: #9AA3AF;
+  --color-line: #CBD1D7;
+  --color-line-dark: #262B34;
+  --color-signal: #DD8A22;
+  --color-signal-dark: #F2B85B;
+  --color-signal-ink: #201404;
+  --color-navy: #1F3A5F;
+  --color-navy-dark: #8FB4E0;
+  --color-ok: #2F7A55;
+  --color-ok-dark: #5FBF8E;
+
+  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --font-body: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    scrollbar-width: none;
-  }
-
-  html::-webkit-scrollbar {
-    display: none;
   }
 
   body {
     margin: 0;
     font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-ink);
     transition: background-color 0.3s ease, color 0.3s ease;
-    background-color: var(--color-light-bg);
-    color: #1F2937;
   }
 
   .dark body,
-  body.dark,
-  .dark {
-    background-color: var(--color-dark-bg);
-    color: #F9FAFB;
+  body.dark {
+    background-color: var(--color-bg-dark);
+    color: var(--color-ink-dark);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
+    font-family: var(--font-display);
+  }
+
+  /* Visible keyboard focus everywhere, including inside dark surfaces */
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 }
 
 @layer utilities {
-  .text-gradient {
-    background: linear-gradient(135deg, #10B981, #34D399);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
   .glass {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(243, 245, 247, 0.78);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
   }
 
   .dark .glass {
-    background: rgba(10, 10, 10, 0.8);
+    background: rgba(18, 21, 27, 0.82);
   }
 
-  .glow-border {
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+  /* Signature spec-sheet texture used behind the hero and pricing hero band */
+  .grid-texture {
+    background-image: radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0);
+    background-size: 28px 28px;
   }
 }
 
@@ -74,5 +88,6 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
