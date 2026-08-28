@@ -1,28 +1,40 @@
-import { proofStats, proofNote } from '../lib/siteConfig'
+import { proofChips } from '../lib/siteConfig'
 
 /**
- * Real, checkable proof — meant to sit next to a CTA, not live alone in an
- * "About" corner. No client quotes or invented metrics: years of experience
- * and shipped-project count only.
+ * A continuously-scrolling trust strip — the pattern used under the hero on
+ * sites like Linear, Vercel, and Stripe for compact proof/trust content
+ * (there it's usually customer logos; here it's honest, checkable claims,
+ * since there are no recognizable client logos to show yet).
+ *
+ * Deliberately NOT a slide-by-slide carousel: hero-area carousels are a
+ * well-documented conversion killer (NN/g and others have measured ~20x
+ * lower interaction versus a static hero). A one-direction marquee ticker
+ * doesn't have that problem — nothing to wait for, nothing to miss, it's
+ * just texture that keeps moving in the background.
+ *
+ * Built with a plain CSS keyframe (see .animate-marquee in index.css), not
+ * a carousel library — this is a single looping strip, nothing to drag or
+ * paginate. Pauses on hover so it's easy to actually read a claim.
  */
 export default function ProofStrip({ className = '' }) {
   return (
-    <div className={`flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10 ${className}`}>
-      <div className="flex gap-8 sm:gap-10">
-        {proofStats.map(stat => (
-          <div key={stat.label}>
-            <p className="font-heading text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
-              {stat.value}
-            </p>
-            <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-snug max-w-[10rem]">
-              {stat.label}
-            </p>
+    <div
+      className={`group relative min-w-0 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] ${className}`}
+    >
+      <div className="flex w-max animate-marquee">
+        {[0, 1].map(copy => (
+          <div key={copy} className="flex items-center flex-shrink-0" aria-hidden={copy === 1}>
+            {proofChips.map(chip => (
+              <span key={chip} className="flex items-center flex-shrink-0">
+                <span className="text-sm font-medium text-gray-600 dark:text-gray-300 whitespace-nowrap px-4">
+                  {chip}
+                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-accent/50 flex-shrink-0" />
+              </span>
+            ))}
           </div>
         ))}
       </div>
-      <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed sm:border-l sm:border-gray-200 sm:dark:border-dark-border sm:pl-6 max-w-sm">
-        {proofNote}
-      </p>
     </div>
   )
 }

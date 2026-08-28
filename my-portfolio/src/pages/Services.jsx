@@ -43,7 +43,7 @@ export default function Services() {
             </Link>
           </motion.div>
           <motion.div variants={fadeUp}>
-            <ProofStrip className="justify-center" />
+            <ProofStrip />
           </motion.div>
         </motion.div>
       </section>

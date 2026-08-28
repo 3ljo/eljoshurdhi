@@ -35,19 +35,18 @@ export const navLinks = [
   { label: 'Why Me', href: '/about', type: 'route' },
 ]
 
-// Plain-language, client-facing proof — no tech-stack names, no "years of
-// experience" framing. Real and checkable (project count matches
-// `caseStudies`, "5 days" matches the Launch package timeframe), but the
-// label ties the fact directly to the visitor's fear/desire instead of
-// stating it as a neutral resume fact.
-export const proofStats = [
-  { value: '6', label: 'businesses that stopped blending in with the competition' },
-  { value: '100%', label: 'custom-built to convert — never a recycled template' },
-  { value: '5 days', label: 'from kickoff to a live site that sells' },
+// Short, punchy, honest proof chips for the scrolling trust strip
+// (<ProofStrip />). Every claim is real and checkable against `packages`
+// and `caseStudies` below — no invented numbers, no tech-stack names, no
+// "years of experience" framing.
+export const proofChips = [
+  '6 live projects shipped',
+  '100% custom-built — no templates',
+  '5-day turnaround on Launch',
+  'Fixed price, in writing',
+  'Direct line to the person building it',
+  'No agency bloat',
 ]
-
-export const proofNote =
-  "Every project below is live right now — not a mockup, not a template. Click through and see for yourself."
 
 export const packages = [
   {

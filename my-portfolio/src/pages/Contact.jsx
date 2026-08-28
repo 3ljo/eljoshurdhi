@@ -70,7 +70,7 @@ export default function Contact() {
 
           <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-14">
             {/* Left — proof + alternative contact */}
-            <motion.div variants={slideLeft} className="space-y-10">
+            <motion.div variants={slideLeft} className="space-y-10 min-w-0">
               <ProofStrip />
 
               <div className="rounded-2xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-card p-6">
