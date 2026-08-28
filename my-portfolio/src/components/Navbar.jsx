@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { gsap } from 'gsap'
 import { useTheme } from '../context/ThemeContext'
-import { navLinks } from '../lib/siteConfig'
+import { navLinks, primaryCta } from '../lib/siteConfig'
 import CTAButton from './ui/CTAButton'
 
 export default function Navbar() {
@@ -13,6 +13,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const lastScroll = useRef(0)
   const navRef = useRef(null)
+  const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
@@ -43,6 +45,20 @@ export default function Navbar() {
         : 'text-gray-600 dark:text-gray-400 hover:text-emerald-accent dark:hover:text-emerald-accent'
     }`
 
+  // Hash links point at a section on Home (e.g. "/#how-it-works"). If we're
+  // already on "/", just scroll; otherwise navigate there and let App's
+  // ScrollToHash effect handle scrolling once the page has rendered.
+  const handleHashClick = (e, href) => {
+    e.preventDefault()
+    setMenuOpen(false)
+    const id = href.split('#')[1]
+    if (location.pathname === '/') {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      navigate(href)
+    }
+  }
+
   return (
     <nav
       ref={navRef}
@@ -57,9 +73,15 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map(link => (
-            <NavLink key={link.href} to={link.href} className={linkClass}>
-              {link.label}
-            </NavLink>
+            link.type === 'hash' ? (
+              <a key={link.href} href={link.href} onClick={e => handleHashClick(e, link.href)} className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-emerald-accent dark:hover:text-emerald-accent transition-colors duration-200">
+                {link.label}
+              </a>
+            ) : (
+              <NavLink key={link.href} to={link.href} className={linkClass}>
+                {link.label}
+              </NavLink>
+            )
           ))}
 
           <button
@@ -86,7 +108,7 @@ export default function Navbar() {
             </AnimatePresence>
           </button>
 
-          <CTAButton to="/contact" variant="primary">Start a project</CTAButton>
+          <CTAButton to="/contact" variant="primary">{primaryCta}</CTAButton>
         </div>
 
         <button
@@ -116,18 +138,28 @@ export default function Navbar() {
                   key={link.href}
                   initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 + 0.1, duration: 0.3 }}
                 >
-                  <NavLink
-                    to={link.href}
-                    onClick={() => setMenuOpen(false)}
-                    className="text-3xl font-heading font-semibold text-gray-900 dark:text-white hover:text-emerald-accent transition-colors"
-                  >
-                    {link.label}
-                  </NavLink>
+                  {link.type === 'hash' ? (
+                    <a
+                      href={link.href}
+                      onClick={e => handleHashClick(e, link.href)}
+                      className="text-3xl font-heading font-semibold text-gray-900 dark:text-white hover:text-emerald-accent transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <NavLink
+                      to={link.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="text-3xl font-heading font-semibold text-gray-900 dark:text-white hover:text-emerald-accent transition-colors"
+                    >
+                      {link.label}
+                    </NavLink>
+                  )}
                 </motion.div>
               ))}
               <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: navLinks.length * 0.05 + 0.1, duration: 0.3 }}>
                 <CTAButton to="/contact" variant="primary" size="lg" onClick={() => setMenuOpen(false)}>
-                  Start a project
+                  {primaryCta}
                 </CTAButton>
               </motion.div>
               <button

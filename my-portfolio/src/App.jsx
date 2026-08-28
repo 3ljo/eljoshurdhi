@@ -9,12 +9,22 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 
+// Scrolls to top on every route change, or to an in-page anchor (e.g. a nav
+// link to "/#how-it-works" clicked from a page other than Home) once the
+// target route has rendered.
 function ScrollToTop() {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
 
   useEffect(() => {
+    if (hash) {
+      const id = hash.replace('#', '')
+      const scrollToElement = () => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+      scrollToElement()
+      const timeoutId = window.setTimeout(scrollToElement, 100)
+      return () => window.clearTimeout(timeoutId)
+    }
     window.scrollTo(0, 0)
-  }, [pathname])
+  }, [pathname, hash])
 
   return null
 }

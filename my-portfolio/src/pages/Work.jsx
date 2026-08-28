@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { caseStudies } from '../lib/siteConfig'
+import { caseStudies, primaryCta } from '../lib/siteConfig'
 import { useScrollAnimation, fadeUp, staggerContainer } from '../hooks/useScrollAnimation'
 import CTAButton from '../components/ui/CTAButton'
 
@@ -75,8 +75,12 @@ function CaseStudyModal({ project, onClose }) {
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{project.problem}</p>
             </div>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-emerald-accent mb-2">What I Built</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-emerald-accent mb-2">What I Changed</p>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{project.role}</p>
+            </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-emerald-accent mb-2">Result</p>
+              <p className="text-gray-900 dark:text-white font-medium leading-relaxed">{project.result}</p>
             </div>
             <div>
               <p className="text-xs font-semibold uppercase tracking-widest text-emerald-accent mb-2">Highlights</p>
@@ -160,7 +164,7 @@ export default function Work() {
             <p className="text-gray-500 dark:text-gray-400 leading-relaxed mb-8">
               Tell me what you're building — I'll tell you honestly what it takes to ship it.
             </p>
-            <CTAButton to="/contact" size="lg">Start your project</CTAButton>
+            <CTAButton to="/contact" size="lg">{primaryCta}</CTAButton>
           </div>
         </div>
       </section>

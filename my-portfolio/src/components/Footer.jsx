@@ -48,9 +48,15 @@ export default function Footer() {
 
           <div className="flex flex-wrap justify-center gap-6">
             {navLinks.map(link => (
-              <Link key={link.href} to={link.href} className="text-sm text-gray-500 dark:text-gray-400 hover:text-emerald-accent transition-colors">
-                {link.label}
-              </Link>
+              link.type === 'hash' ? (
+                <a key={link.href} href={link.href} className="text-sm text-gray-500 dark:text-gray-400 hover:text-emerald-accent transition-colors">
+                  {link.label}
+                </a>
+              ) : (
+                <Link key={link.href} to={link.href} className="text-sm text-gray-500 dark:text-gray-400 hover:text-emerald-accent transition-colors">
+                  {link.label}
+                </Link>
+              )
             ))}
             <Link to="/contact" className="text-sm text-gray-500 dark:text-gray-400 hover:text-emerald-accent transition-colors">
               Contact

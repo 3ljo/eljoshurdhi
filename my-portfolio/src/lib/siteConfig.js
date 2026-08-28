@@ -1,11 +1,11 @@
 // ---------------------------------------------------------------------------
 // Single source of truth for anything commercial on the site: brand info,
-// service packages, pricing, process, objection-handling copy, and proof
-// points. Edit numbers and copy here — nothing below is hardcoded again
+// positioning copy, packages, pricing, methodology, proof, and objection
+// handling. Edit copy and numbers here — nothing below is hardcoded again
 // inside a component.
 //
 // FLAGGED AS PLACEHOLDER: every `price` and `timeframe` in `packages` below.
-// Structure, inclusions, and copy are real; the numbers are starting points
+// Structure, positioning, and copy are real; the numbers are starting points
 // until real pricing is locked in.
 // ---------------------------------------------------------------------------
 
@@ -13,7 +13,7 @@ export const brand = {
   name: 'Eljo Shurdhi',
   role: 'Frontend Developer',
   location: 'Tirana, Albania',
-  // Where the "Start a project" form sends leads. Currently delivered via a
+  // Where the "Start My Project" form sends leads. Currently delivered via a
   // mailto fallback — see src/lib/leadForm.js for the swap-in point once a
   // real form backend (Formspree / EmailJS / Resend) is wired up.
   leadEmail: 'eljoshurdhi3095@gmail.com',
@@ -24,79 +24,95 @@ export const brand = {
   github: 'https://github.com/3ljo',
 }
 
+// One dominant CTA phrase, repeated everywhere on purpose — recognition beats
+// variety for a primary CTA. Secondary CTAs stay contextual per-section.
+export const primaryCta = 'Start My Project'
+
 export const navLinks = [
-  { label: 'Work', href: '/work' },
-  { label: 'Services & Pricing', href: '/pricing' },
-  { label: 'About', href: '/about' },
+  { label: 'Work', href: '/work', type: 'route' },
+  { label: 'How It Works', href: '/#how-it-works', type: 'hash' },
+  { label: 'Pricing', href: '/pricing', type: 'route' },
+  { label: 'Why Me', href: '/about', type: 'route' },
 ]
 
-// Real, verifiable — years counted from the WhiteDesk start date on record,
-// project count from the shipped projects listed in `caseStudies` below.
+// Plain-language, client-facing proof — no tech-stack names, no "years of
+// experience" framing. Real and checkable (project count matches
+// `caseStudies`, "5 days" matches the Launch package timeframe), but the
+// label ties the fact directly to the visitor's fear/desire instead of
+// stating it as a neutral resume fact.
 export const proofStats = [
-  { value: '4+ yrs', label: 'building production web apps' },
-  { value: '6', label: 'live projects shipped end-to-end' },
-  { value: 'React / Next.js', label: 'day-to-day stack, every build' },
+  { value: '6', label: 'businesses that stopped blending in with the competition' },
+  { value: '100%', label: 'custom-built to convert — never a recycled template' },
+  { value: '5 days', label: 'from kickoff to a live site that sells' },
 ]
 
 export const proofNote =
-  "Every project below is live — click through and use it."
+  "Every project below is live right now — not a mockup, not a template. Click through and see for yourself."
 
 export const packages = [
   {
-    slug: 'landing',
-    name: 'Landing Page',
-    forWho: 'One offer, one page, built to convert',
+    slug: 'launch',
+    name: 'Launch',
+    forWho: 'You need to look legitimate online — today',
+    problem: "No website, or one so outdated it's actively costing you trust and customers.",
     price: '$650',
     priceNote: 'starting at',
-    timeframe: '5 business days',
+    timeframe: '5 days',
     recommended: false,
+    ctaLabel: 'Start My Project',
     includes: [
-      'One page, built around a single offer',
-      'Mobile-first, fast-loading build',
-      'Contact form or booking link wired in',
-      'Deployed live on your domain',
+      'One high-impact page built around your best offer',
+      'Mobile-first — loads fast on any device',
+      'Contact form or booking link wired in, leads land in your inbox',
+      'Live on your domain, ready to send traffic to',
       '1 round of revisions included',
     ],
   },
   {
-    slug: 'business',
-    name: 'Business Website',
-    forWho: 'The site that does your selling for you',
+    slug: 'growth',
+    name: 'Growth',
+    forWho: 'Your site gets visitors, but too few of them convert',
+    problem: 'Your business looks smaller and less credible online than it really is — and visitors leave without a word.',
     price: '$1,800',
     priceNote: 'starting at',
     timeframe: '2–3 weeks',
     recommended: true,
+    ctaLabel: "Yes, Let's Build This",
     includes: [
-      'Up to 5 pages (Home, About, Services, Work, Contact)',
-      'Mobile-first, accessible, SEO-ready structure',
-      'Lead form wired to your inbox',
-      'On-page SEO basics + analytics set up',
+      'Up to 5 pages, built to move visitors toward contacting you',
+      'Mobile-first, accessible, built to rank on Google',
+      'Lead form wired straight to your inbox',
+      'Analytics set up so you can see what visitors actually do',
       '2 rounds of revisions included',
     ],
   },
   {
-    slug: 'webapp',
-    name: 'Web App / Custom Build',
-    forWho: 'A product with logins, data, or logic',
+    slug: 'conversion',
+    name: 'Conversion',
+    forWho: 'Your business runs on logins, bookings, or data — not just pages',
+    problem: 'Manual processes, spreadsheets, and back-and-forth emails are quietly costing you hours and leads every week.',
     price: '$4,500',
     priceNote: 'starting at',
     timeframe: 'Scoped on a discovery call',
     recommended: false,
+    ctaLabel: 'Scope My Project',
     includes: [
-      'Accounts, dashboards, and databases — built to spec',
-      'API and third-party integrations (payments, email, data)',
-      'Built in React / Next.js on a codebase you can hand off',
-      'Fixed price once scope is locked, no surprise invoices',
+      'Custom web app — logins, dashboards, bookings, or payments',
+      'Built around the exact bottleneck costing you time or leads',
+      'Integrates with the tools you already use',
+      'One fixed price once scope is locked, no surprise invoices',
     ],
   },
   {
-    slug: 'maintenance',
-    name: 'Maintenance & Support',
-    forWho: 'Keep an existing site current and working',
+    slug: 'care',
+    name: 'Care',
+    forWho: 'Your site is live and needs to stay that way',
+    problem: "Sites rot — broken forms, stale content, and slow load times quietly bleed leads if nobody's watching.",
     price: '$150',
     priceNote: '/mo',
     timeframe: 'Monthly retainer',
     recommended: false,
+    ctaLabel: 'Get a Quote',
     includes: [
       'Content updates and small feature requests',
       'Uptime and dependency monitoring',
@@ -106,54 +122,141 @@ export const packages = [
   },
 ]
 
+// The business case for the methodology — why each phase matters, not what
+// framework it's built in. This is the "Solution" section: a transformation,
+// not a coding process.
+export const methodology = [
+  {
+    phase: 'Strategy',
+    description:
+      "Before any design happens, we get clear on who your customer is and what has to happen for them to contact you. Skip this and you get a pretty site that still doesn't sell.",
+  },
+  {
+    phase: 'Design',
+    description:
+      'Every layout decision moves a stranger toward one action — not toward a design award. Credible, fast, and built around your offer.',
+  },
+  {
+    phase: 'Build',
+    description:
+      "Hand-coded, not templated. Fast on every device, because a slow site loses customers before they even see what you sell.",
+  },
+  {
+    phase: 'Launch',
+    description:
+      'Live on your domain, tested on real phones and browsers, connected to the tools you already use.',
+  },
+  {
+    phase: 'Optimize',
+    description:
+      "A website is never really 'done.' Small fixes after launch — copy, forms, page speed — compound into more inquiries over time.",
+  },
+]
+
+// The buying journey, in plain terms. This is the "How It Works" section —
+// the goal is a visitor thinking "that's easy, let's do it."
 export const processSteps = [
   {
     step: '01',
-    title: 'Inquiry',
-    description: "You tell me what you need and what “done” looks like. I ask questions until the scope is actually clear.",
+    title: 'Tell me what you need',
+    description: "A quick message — what's the business problem, and what does success look like.",
   },
   {
     step: '02',
-    title: 'Proposal',
-    description: 'A fixed price and timeline, in writing, before any work starts. No hourly surprises.',
+    title: 'We define the offer',
+    description: 'A fixed price and scope, in writing. You know exactly what you\'re getting before anything starts.',
   },
   {
     step: '03',
-    title: 'Build',
-    description: "You see progress as it happens, not just a reveal at the end.",
+    title: 'I design the experience',
+    description: 'Not just what it looks like — how it moves a stranger toward contacting you.',
   },
   {
     step: '04',
-    title: 'Launch',
-    description: 'Live on your domain, tested on real devices, handed off with everything you need to make future edits.',
+    title: 'I build it',
+    description: 'You see real progress as it happens, not a surprise reveal at the end.',
   },
   {
     step: '05',
-    title: 'Support',
-    description: "I'm reachable after launch. A maintenance plan is there if you want it — not required.",
+    title: 'You launch',
+    description: "Live on your domain, tested on real devices, ready to start earning its keep.",
+  },
+]
+
+// The symptoms a business owner recognizes in themselves — this drives the
+// Pain/Problem section.
+export const painPoints = [
+  "Your website looks like it hasn't been touched since 2015.",
+  "You don't have a website at all, and you know it's costing you customers.",
+  "You get visitors, but the phone doesn't ring and the inbox stays empty.",
+  "Your competitors' websites look more professional than yours.",
+  "People land on your site and can't tell what you actually do.",
+  "It's slow, it's not mobile-friendly, and people leave before it loads.",
+]
+
+// Why trust him with the project — risk-reducers, not a biography.
+export const whyMe = [
+  {
+    title: 'Direct line to the person building it',
+    description: 'No account manager, no relay, no agency layers. You talk to me, I write the code.',
+  },
+  {
+    title: 'Custom-built, never templated',
+    description: "No page builder, no recycled theme. Every site is built around your business, not squeezed into one.",
+  },
+  {
+    title: 'Fast, because slow costs you customers',
+    description: 'Most projects launch in days or weeks, not months — with a fixed timeline confirmed before we start.',
+  },
+  {
+    title: 'Built around one goal: conversions',
+    description: 'Every layout and word choice exists to move a visitor toward contacting you, not to win design awards.',
+  },
+  {
+    title: 'No bloat, no unnecessary complexity',
+    description: "You get exactly what your business needs to convert — nothing you're paying for and never using.",
+  },
+  {
+    title: 'Fixed price, in writing, before we start',
+    description: 'No hourly billing surprises. You know the cost and the timeline upfront.',
   },
 ]
 
 export const objections = [
   {
-    question: 'Why a solo freelancer instead of an agency?',
+    question: 'I already have a website.',
     answer:
-      "You talk directly to the person writing the code — no account manager, no relay, no agency markup. Decisions happen in one message instead of one meeting.",
+      "Good — that means you already know it's not pulling its weight, or you wouldn't be reading this. I can rebuild it around conversion, or tell you exactly what's costing you leads on a quick call.",
   },
   {
-    question: 'What do revisions actually look like?',
+    question: "I don't have a big budget.",
     answer:
-      'Each package includes a set number of revision rounds (see the package for the exact count). Changes inside the original scope are free; new features or a different direction are quoted separately before any work starts — no surprise invoices.',
+      'Neither did most of my clients when they started. The Launch package exists for exactly that — a real, working site for less than most businesses spend on ads in a month.',
   },
   {
-    question: "What's a realistic turnaround?",
+    question: 'Can you do it quickly?',
     answer:
-      'The timeframe listed on each package is the real one, confirmed in writing before work starts. Custom builds get a specific date after the discovery call, once scope is locked.',
+      "Yes — Launch ships in 5 days, Growth in 2–3 weeks. You get a specific date in writing before any work starts, not a vague estimate.",
+  },
+  {
+    question: 'Will I be able to edit it myself?',
+    answer:
+      'Yes. You get a site built on tools you can actually update yourself — text, images, and content — without calling me for every small change.',
+  },
+  {
+    question: 'What happens after launch?',
+    answer:
+      "I'm reachable, and the Care plan exists if you want ongoing updates and monitoring handled for you. Nothing gets abandoned the day it goes live.",
+  },
+  {
+    question: 'Why not just use Wix or a template?',
+    answer:
+      "You can — plenty of businesses do, and plenty of visitors can tell within five seconds. A custom build loads faster, looks like nobody else's site, and is built around getting YOU customers instead of fitting a generic layout.",
   },
 ]
 
-// Reframed as outcomes for the visitor, not a list of technologies used.
-// No client metrics are invented — only what actually shipped.
+// Case studies as proof, not a portfolio gallery: Problem → What I Changed →
+// Result. Results are stated honestly in plain terms — no invented numbers.
 export const caseStudies = [
   {
     title: 'CV Climber',
@@ -167,6 +270,7 @@ export const caseStudies = [
     accent: 'from-emerald-600/30 via-emerald-950/50 to-black/90',
     problem: 'Job seekers struggle to translate their experience into a CV that ranks well on ATS systems and stands out to recruiters.',
     role: 'Designed the product end-to-end, built the AI resume generator, payment flow, and templated PDF export.',
+    result: 'Launched with Stripe payments live from day one — a working, paid SaaS product, not a prototype.',
     highlights: [
       'AI-assisted bullet rewriting tuned for ATS keywords',
       'Multiple modern templates with one-click PDF export',
@@ -185,6 +289,7 @@ export const caseStudies = [
     accent: 'from-violet-600/30 via-indigo-950/50 to-black/90',
     problem: 'Small businesses lose leads when calls go unanswered outside hours or while staff are busy with clients.',
     role: 'Built the dashboard, the Twilio voice integration, and the OpenAI prompt layer that handles real-time conversations.',
+    result: 'Went from missed calls to a 24/7 answering system — every call now logged, transcribed, and turned into a lead.',
     highlights: [
       'Real-time voice conversations powered by OpenAI',
       'Call logs, transcripts, and lead capture in one dashboard',
@@ -203,6 +308,7 @@ export const caseStudies = [
     accent: 'from-amber-600/30 via-orange-950/50 to-black/90',
     problem: 'Construction teams juggle projects, materials, and crew assignments across spreadsheets and chat apps.',
     role: 'Designed the data model, built the auth and project workflows, and shipped a clean dashboard UI.',
+    result: 'Replaced spreadsheets and group chats with one login-protected dashboard the whole crew actually uses.',
     highlights: [
       'Authenticated multi-role access (admin / crew)',
       'Projects, tasks, and material tracking in one place',
@@ -221,6 +327,7 @@ export const caseStudies = [
     accent: 'from-rose-600/30 via-pink-950/50 to-black/90',
     problem: 'A new agency needed a landing page that communicates premium positioning and converts visitors into leads.',
     role: 'Designed and built the entire site — typography system, scroll-triggered animations, and contact flow.',
+    result: 'Went live with a premium-feeling site and a working contact funnel in place from day one.',
     highlights: [
       'Custom typography and color system',
       'Scroll-triggered animations with Framer Motion',
@@ -239,6 +346,7 @@ export const caseStudies = [
     accent: 'from-teal-600/30 via-emerald-950/50 to-black/90',
     problem: 'Small brands need a fast, clean storefront that handles product discovery and checkout without the bloat of off-the-shelf platforms.',
     role: 'Designed and built the storefront end-to-end — product catalog, cart logic, and a frictionless checkout experience.',
+    result: 'Went from no online store to a full browse-to-checkout flow, live and taking orders.',
     highlights: [
       'Responsive product grid with category filtering',
       'Persistent cart with quantity and total updates',
@@ -257,6 +365,7 @@ export const caseStudies = [
     accent: 'from-lime-600/30 via-green-950/50 to-black/90',
     problem: 'People juggle finances across notes, banking apps, and spreadsheets without a clear picture of where their money goes.',
     role: 'Designed the dashboard and built the tracking flows, charting, and authenticated user accounts.',
+    result: 'Replaced scattered notes and banking apps with one dashboard showing exactly where the money goes.',
     highlights: [
       'Track income, expenses, and budget categories in one place',
       'Visual breakdowns of spending with interactive charts',
@@ -266,10 +375,10 @@ export const caseStudies = [
 ]
 
 export const projectTypeOptions = [
-  { value: 'landing', label: 'Landing Page' },
-  { value: 'business', label: 'Business Website' },
-  { value: 'webapp', label: 'Web App / Custom Build' },
-  { value: 'maintenance', label: 'Maintenance & Support' },
+  { value: 'launch', label: 'Launch' },
+  { value: 'growth', label: 'Growth' },
+  { value: 'conversion', label: 'Conversion' },
+  { value: 'care', label: 'Care' },
   { value: 'not-sure', label: "Not sure yet" },
 ]
 

@@ -28,7 +28,7 @@ export default function Services() {
           className="relative max-w-3xl mx-auto px-6 text-center"
         >
           <motion.p variants={fadeUp} className="text-emerald-accent font-semibold text-sm uppercase tracking-widest mb-3">
-            Services &amp; Pricing
+            Pricing
           </motion.p>
           <motion.h1 variants={fadeUp} className="font-heading text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
             Packages built to launch, not just look good.
