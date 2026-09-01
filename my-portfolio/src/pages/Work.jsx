@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { caseStudies, primaryCta } from '../lib/siteConfig'
+import { caseStudies, templateStyles, primaryCta } from '../lib/siteConfig'
 import { useScrollAnimation, fadeUp, staggerContainer } from '../hooks/useScrollAnimation'
 import CTAButton from '../components/ui/CTAButton'
+import CaseStudyTile from '../components/CaseStudyTile'
+import TemplateTile from '../components/TemplateTile'
 
 function CaseStudyModal({ project, onClose }) {
   useEffect(() => {
@@ -102,6 +104,47 @@ function CaseStudyModal({ project, onClose }) {
   )
 }
 
+function TemplateStyles() {
+  const { ref, controls } = useScrollAnimation()
+
+  return (
+    <section id="templates" className="py-20 bg-gray-100 dark:bg-dark-bg scroll-mt-24">
+      <motion.div ref={ref} variants={staggerContainer} initial="hidden" animate={controls} className="max-w-7xl mx-auto px-6">
+        <div className="max-w-2xl mb-10">
+          <p className="text-emerald-accent font-semibold text-sm uppercase tracking-widest mb-3">Need It Faster?</p>
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Or start from a proven layout.
+          </h2>
+          <p className="text-gray-500 dark:text-gray-400 leading-relaxed">
+            These aren't from my portfolio — they're licensed templates I customize with your brand, copy, and
+            content for a faster, lower-cost launch than a fully custom build. Good fit for the Launch package.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {templateStyles.map(t => (
+            <motion.a
+              key={t.title}
+              href={t.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              variants={fadeUp}
+              className="group relative rounded-2xl overflow-hidden h-64 sm:h-72 flex flex-col justify-end"
+            >
+              <TemplateTile template={t} />
+            </motion.a>
+          ))}
+        </div>
+
+        <p className="mt-6 text-xs text-gray-400 dark:text-gray-500 max-w-2xl">
+          Licensed templates, not original designs — layout, colors, and content get customized to your business.
+          Mention a style by name when you reach out.
+        </p>
+      </motion.div>
+    </section>
+  )
+}
+
 export default function Work() {
   const { ref, controls } = useScrollAnimation()
   const [active, setActive] = useState(null)
@@ -133,33 +176,18 @@ export default function Work() {
                   project.size === 'large' ? 'md:col-span-2 h-64 sm:h-80 lg:h-96' : 'h-64 sm:h-80'
                 }`}
               >
-                <img src={project.image} alt={project.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className={`absolute inset-0 bg-gradient-to-t ${project.accent} opacity-90 sm:opacity-70 sm:group-hover:opacity-90 transition-opacity duration-500`} />
-
-                <span className="absolute top-5 left-6 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-white/90 bg-white/10 backdrop-blur-md border border-white/15 px-3 py-1 rounded-full">
-                  {project.niche}
-                </span>
-                <span className="absolute top-5 right-6 text-6xl font-heading font-extrabold text-white/10 leading-none select-none pointer-events-none">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-
-                <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7">
-                  <h3 className="text-xl sm:text-2xl font-heading font-bold text-white mb-2">{project.title}</h3>
-                  <p className="text-white/80 text-sm leading-relaxed max-w-md line-clamp-2">{project.outcome}</p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-white/15 backdrop-blur-md border border-white/20 px-3 py-1.5 rounded-full">
-                    Read case study
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-                  </span>
-                </div>
+                <CaseStudyTile project={project} index={i} />
               </motion.button>
             ))}
           </div>
         </motion.div>
       </section>
 
-      <section className="py-20 bg-gray-100 dark:bg-dark-bg">
+      <TemplateStyles />
+
+      <section className="py-20 bg-white dark:bg-dark-bg">
         <div className="max-w-2xl mx-auto px-6">
-          <div className="rounded-3xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-card p-10 text-center">
+          <div className="rounded-3xl border border-gray-200 dark:border-dark-border bg-gray-100 dark:bg-dark-card p-10 text-center">
             <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-4">Want a project like these?</h2>
             <p className="text-gray-500 dark:text-gray-400 leading-relaxed mb-8">
               Tell me what you're building — I'll tell you honestly what it takes to ship it.

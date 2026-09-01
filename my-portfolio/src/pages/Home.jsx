@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { packages, caseStudies, brand, primaryCta } from '../lib/siteConfig'
+import { packages, caseStudies, templateStyles, brand, primaryCta } from '../lib/siteConfig'
 import { useScrollAnimation, fadeUp, staggerContainer } from '../hooks/useScrollAnimation'
 import CTAButton from '../components/ui/CTAButton'
 import ProofStrip from '../components/ProofStrip'
@@ -8,6 +9,8 @@ import Methodology from '../components/Methodology'
 import WhyMeGrid from '../components/WhyMeGrid'
 import ProcessStrip from '../components/ProcessStrip'
 import Objections from '../components/Objections'
+import CaseStudyTile from '../components/CaseStudyTile'
+import TemplateTile from '../components/TemplateTile'
 
 const heroImgLight = '/Confident young man in black T-shirt.png'
 const heroImgDark = '/Confident portrait with casual style.png'
@@ -69,21 +72,24 @@ function Pain() {
   const { ref, controls } = useScrollAnimation()
 
   return (
-    <section className="py-24 bg-dark-bg">
-      <motion.div ref={ref} variants={staggerContainer} initial="hidden" animate={controls} className="max-w-5xl mx-auto px-6">
+    <section className="relative overflow-hidden py-24 bg-gray-50 dark:bg-dark-bg">
+      <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-rose-400/10 dark:bg-rose-500/10 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full bg-emerald-accent/5 blur-3xl pointer-events-none" />
+
+      <motion.div ref={ref} variants={staggerContainer} initial="hidden" animate={controls} className="relative max-w-5xl mx-auto px-6">
         <motion.div variants={fadeUp} className="max-w-2xl mb-12">
           <p className="text-emerald-accent font-semibold text-sm uppercase tracking-widest mb-3">The Problem</p>
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Your website might be losing you customers right now.
           </h2>
-          <p className="text-gray-400 leading-relaxed">
+          <p className="text-gray-500 dark:text-gray-400 leading-relaxed">
             Any of this sound familiar?
           </p>
         </motion.div>
 
         <PainPoints />
 
-        <motion.p variants={fadeUp} className="mt-10 text-lg text-white font-medium max-w-2xl">
+        <motion.p variants={fadeUp} className="mt-10 text-lg text-gray-900 dark:text-white font-medium max-w-2xl">
           That's not a marketing problem. That's a website problem — and it's fixable.
         </motion.p>
       </motion.div>
@@ -93,24 +99,56 @@ function Pain() {
 
 function Solution() {
   const { ref, controls } = useScrollAnimation()
+  const previews = caseStudies.slice(0, 3)
+  const tilt = ['-rotate-6 top-0 left-2 z-30', 'rotate-3 top-16 right-0 z-20', 'rotate-[10deg] bottom-0 left-20 z-10']
 
   return (
-    <section className="py-24 bg-white dark:bg-dark-bg">
+    <section className="py-24 bg-white dark:bg-dark-bg overflow-hidden">
       <div className="max-w-6xl mx-auto px-6" ref={ref}>
-        <motion.div variants={fadeUp} initial="hidden" animate={controls} className="max-w-2xl mb-14">
-          <p className="text-emerald-accent font-semibold text-sm uppercase tracking-widest mb-3">The Fix</p>
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            A website built like a sales tool, not a brochure.
-          </h2>
-          <p className="text-gray-500 dark:text-gray-400 leading-relaxed">
-            Not React, not Next.js, not framework talk — a business transformation with five parts, each one
-            earning its place.
-          </p>
-        </motion.div>
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-14 items-center mb-16">
+          <motion.div variants={fadeUp} initial="hidden" animate={controls}>
+            <p className="text-emerald-accent font-semibold text-sm uppercase tracking-widest mb-3">The Fix</p>
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              A website built like a sales tool, not a brochure.
+            </h2>
+            <p className="text-gray-500 dark:text-gray-400 leading-relaxed">
+              Not React, not Next.js, not framework talk — a business transformation with five parts, each one
+              earning its place.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            animate={controls}
+            className="relative hidden lg:block h-[280px]"
+          >
+            {previews.map((p, i) => (
+              <div
+                key={p.title}
+                className={`absolute w-52 rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-dark-card bg-white dark:bg-dark-card ${tilt[i]}`}
+              >
+                <img src={p.image} alt={p.title} className="w-full h-32 object-cover" />
+                <div className="p-3">
+                  <p className="text-xs font-semibold text-gray-900 dark:text-white">{p.title}</p>
+                  <p className="text-[10px] text-emerald-accent font-medium">{p.niche}</p>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
         <Methodology />
       </div>
     </section>
   )
+}
+
+const tierGradients = {
+  launch: 'from-sky-400 via-sky-600 to-blue-700 shadow-sky-600/20',
+  growth: 'from-emerald-400 via-emerald-600 to-teal-700 shadow-emerald-600/20',
+  conversion: 'from-violet-400 via-violet-600 to-purple-700 shadow-violet-600/20',
+  care: 'from-amber-400 via-amber-500 to-orange-600 shadow-amber-500/20',
 }
 
 function Offer() {
@@ -129,33 +167,33 @@ function Offer() {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5 items-stretch">
           {packages.map(pkg => (
             <motion.div
               key={pkg.slug}
               variants={fadeUp}
-              whileHover={{ y: -4 }}
-              className={`flex flex-col h-full rounded-2xl p-6 bg-white dark:bg-dark-card border transition-all duration-300 ${
-                pkg.recommended
-                  ? 'border-emerald-accent/40 shadow-lg shadow-emerald-accent/10'
-                  : 'border-gray-200 dark:border-dark-border hover:border-emerald-accent/40 hover:shadow-lg hover:shadow-emerald-accent/5'
+              className={`relative overflow-hidden rounded-3xl p-6 flex flex-col justify-between text-white bg-gradient-to-br shadow-xl ${tierGradients[pkg.slug]} ${
+                pkg.recommended ? 'lg:col-span-2' : ''
               }`}
             >
-              <span className="block h-4 text-[10px] font-semibold uppercase tracking-widest text-emerald-accent mb-2">
-                {pkg.recommended ? 'Most popular' : ''}
-              </span>
-              <h3 className="font-heading font-semibold text-gray-900 dark:text-white">{pkg.name}</h3>
-              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400 line-clamp-2">{pkg.forWho}</p>
-
-              <div className="mt-auto pt-4">
-                <p className="text-lg font-heading font-bold text-gray-900 dark:text-white">
-                  {pkg.price} <span className="text-xs font-sans font-normal text-gray-400 dark:text-gray-500">{pkg.priceNote}</span>
+              <div className="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-white/10 blur-2xl pointer-events-none" />
+              <div className="relative">
+                {pkg.recommended && (
+                  <span className="inline-block text-[10px] font-semibold uppercase tracking-widest bg-white/20 px-3 py-1.5 rounded-full mb-4">
+                    Most Popular
+                  </span>
+                )}
+                <h3 className="font-heading text-xl font-bold mb-1.5">{pkg.name}</h3>
+                <p className="text-white/85 text-sm leading-relaxed line-clamp-2">{pkg.forWho}</p>
+              </div>
+              <div className="relative mt-6">
+                <p className="text-2xl font-heading font-black">
+                  {pkg.price} <span className="text-xs font-sans font-normal text-white/70">{pkg.priceNote}</span>
                 </p>
                 <CTAButton
                   to={`/contact?type=${pkg.slug}`}
-                  variant={pkg.recommended ? 'primary' : 'secondary'}
                   size="md"
-                  className="w-full mt-4"
+                  className="w-full mt-4 !bg-white !text-gray-900 hover:!bg-white/90"
                 >
                   {pkg.ctaLabel}
                 </CTAButton>
@@ -191,44 +229,92 @@ function WhyMe() {
 }
 
 function Proof() {
-  const { ref, controls } = useScrollAnimation()
-  const featured = caseStudies.slice(0, 3)
+  const spotlightAnim = useScrollAnimation()
+  const stripAnim = useScrollAnimation()
+  const [spotlight, ...rest] = caseStudies
+  const featuredTemplates = templateStyles.slice(0, 3)
 
   return (
-    <section className="py-24 bg-gray-100 dark:bg-dark-bg">
-      <motion.div ref={ref} variants={staggerContainer} initial="hidden" animate={controls} className="max-w-7xl mx-auto px-6">
-        <motion.div variants={fadeUp} className="max-w-2xl mb-14">
-          <p className="text-emerald-accent font-semibold text-sm uppercase tracking-widest mb-3">Proof, Not Promises</p>
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Real businesses. Real websites. Judge for yourself.
-          </h2>
-        </motion.div>
+    <section className="bg-gray-100 dark:bg-dark-bg">
+      {/* Spotlight: the strongest proof point on the site gets room to
+          actually land — full-screen photo, huge type — instead of being
+          squeezed into a third of a small card. */}
+      <div ref={spotlightAnim.ref} className="relative min-h-[90vh] flex items-end overflow-hidden">
+        <img src={spotlight.image} alt={spotlight.title} className="absolute inset-0 w-full h-full object-cover" />
+        <div className={`absolute inset-0 bg-gradient-to-t ${spotlight.accent}`} />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent" />
 
-        <div className="grid md:grid-cols-3 gap-5">
-          {featured.map(project => (
-            <motion.div key={project.title} variants={fadeUp} className="rounded-2xl overflow-hidden bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border flex flex-col">
-              <div className="relative h-40 overflow-hidden">
-                <img src={project.image} alt={project.title} className="absolute inset-0 w-full h-full object-cover" />
-                <div className={`absolute inset-0 bg-gradient-to-t ${project.accent}`} />
-                <span className="absolute bottom-3 left-4 text-[10px] font-semibold uppercase tracking-widest text-white/90">{project.niche}</span>
-              </div>
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-white mb-3">{project.title}</h3>
-                <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500 mb-1">Problem</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-3">{project.problem}</p>
-                <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500 mb-1">Result</p>
-                <p className="text-sm text-emerald-accent font-medium leading-relaxed mb-4">{project.result}</p>
-                <a href={project.href} target="_blank" rel="noopener noreferrer" className="mt-auto text-sm font-semibold text-gray-900 dark:text-white hover:text-emerald-accent transition-colors inline-flex items-center gap-1">
-                  View live site
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-                </a>
-              </div>
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate={spotlightAnim.controls}
+          className="relative w-full max-w-7xl mx-auto px-6 pb-16 sm:pb-24"
+        >
+          <p className="text-emerald-accent font-bold text-sm sm:text-base uppercase tracking-[0.3em] mb-5">
+            Proof, Not Promises
+          </p>
+          <span className="inline-block text-xs font-semibold uppercase tracking-widest text-white/90 bg-white/10 backdrop-blur-md border border-white/15 px-3 py-1 rounded-full mb-6">
+            {spotlight.niche}
+          </span>
+          <h2 className="font-heading text-5xl sm:text-7xl lg:text-8xl font-extrabold text-white leading-[0.95] mb-6 max-w-4xl">
+            {spotlight.title}
+          </h2>
+          <p className="text-white/85 text-lg sm:text-xl max-w-2xl leading-relaxed mb-9">
+            {spotlight.outcome}
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <CTAButton href={spotlight.href} size="lg">View live site</CTAButton>
+            <CTAButton
+              to="/work"
+              size="lg"
+              variant="secondary"
+              className="!border-white/30 !text-white hover:!border-white hover:!text-white"
+            >
+              See all work &amp; case studies
+            </CTAButton>
+          </div>
+        </motion.div>
+      </div>
+
+      <motion.div
+        ref={stripAnim.ref}
+        variants={staggerContainer}
+        initial="hidden"
+        animate={stripAnim.controls}
+        className="max-w-7xl mx-auto px-6 py-20"
+      >
+        {/* The rest of the real work — compact, since the spotlight already
+            made the case */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-10">
+          {rest.map(project => (
+            <motion.div key={project.title} variants={fadeUp} className="group relative rounded-2xl overflow-hidden h-44">
+              <CaseStudyTile project={project} compact />
+              <Link to="/work" className="absolute inset-0" aria-label={`Read the ${project.title} case study`} />
             </motion.div>
           ))}
         </div>
 
-        <motion.div variants={fadeUp} className="mt-10 text-center">
-          <CTAButton to="/work" variant="ghost">See all work &amp; case studies</CTAButton>
+        {/* Template teaser — cheaper/faster starting points, not portfolio work */}
+        <motion.div variants={fadeUp} className="pt-14 border-t border-gray-200 dark:border-dark-border">
+          <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
+            <div>
+              <p className="text-emerald-accent font-semibold text-sm uppercase tracking-widest mb-2">Need It Faster?</p>
+              <h3 className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">Or start from a proven layout.</h3>
+            </div>
+            <Link to="/work#templates" className="text-sm font-semibold text-gray-900 dark:text-white hover:text-emerald-accent transition-colors inline-flex items-center gap-1">
+              See all templates
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </Link>
+          </div>
+
+          <div className="grid sm:grid-cols-3 gap-5">
+            {featuredTemplates.map(t => (
+              <motion.div key={t.title} variants={fadeUp} className="group relative rounded-2xl overflow-hidden h-56 sm:h-64">
+                <TemplateTile template={t} compact />
+                <a href={t.href} target="_blank" rel="noopener noreferrer" className="absolute inset-0" aria-label={`Preview the ${t.title} template`} />
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </motion.div>
     </section>
@@ -275,8 +361,10 @@ function FinalCTA() {
   const { ref, controls } = useScrollAnimation()
 
   return (
-    <section className="py-28 bg-gray-900 dark:bg-black">
-      <motion.div ref={ref} variants={staggerContainer} initial="hidden" animate={controls} className="max-w-3xl mx-auto px-6 text-center">
+    <section className="relative overflow-hidden py-28 bg-gradient-to-br from-emerald-950 via-gray-900 to-black">
+      <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-emerald-accent/20 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-teal-500/10 blur-3xl pointer-events-none" />
+      <motion.div ref={ref} variants={staggerContainer} initial="hidden" animate={controls} className="relative max-w-3xl mx-auto px-6 text-center">
         <motion.h2 variants={fadeUp} className="font-heading text-3xl sm:text-5xl font-extrabold text-white mb-6 leading-tight">
           Let's build the website your business should have had already.
         </motion.h2>

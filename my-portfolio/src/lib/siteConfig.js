@@ -35,17 +35,16 @@ export const navLinks = [
   { label: 'Why Me', href: '/about', type: 'route' },
 ]
 
-// Short, punchy, honest proof chips for the scrolling trust strip
-// (<ProofStrip />). Every claim is real and checkable against `packages`
-// and `caseStudies` below — no invented numbers, no tech-stack names, no
-// "years of experience" framing.
+// Short, punchy marketing lines for the scrolling trust strip (<ProofStrip />)
+// — adjectives and value statements, not stats or invented numbers. Each
+// pairs with an icon key rendered in ProofStrip.jsx.
 export const proofChips = [
-  '6 live projects shipped',
-  '100% custom-built — no templates',
-  '5-day turnaround on Launch',
-  'Fixed price, in writing',
-  'Direct line to the person building it',
-  'No agency bloat',
+  { icon: 'sparkles', text: 'Fully custom-built, never templated' },
+  { icon: 'bolt', text: 'Fast without cutting corners' },
+  { icon: 'document', text: 'Fixed price, always in writing' },
+  { icon: 'chat', text: 'Direct line to the person building it' },
+  { icon: 'shield', text: 'No agency layers, no runaround' },
+  { icon: 'check', text: 'Live, working products — not prototypes' },
 ]
 
 export const packages = [
@@ -54,7 +53,7 @@ export const packages = [
     name: 'Launch',
     forWho: 'You need to look legitimate online — today',
     problem: "No website, or one so outdated it's actively costing you trust and customers.",
-    price: '$650',
+    price: '$649',
     priceNote: 'starting at',
     timeframe: '5 days',
     recommended: false,
@@ -72,7 +71,7 @@ export const packages = [
     name: 'Growth',
     forWho: 'Your site gets visitors, but too few of them convert',
     problem: 'Your business looks smaller and less credible online than it really is — and visitors leave without a word.',
-    price: '$1,800',
+    price: '$1,797',
     priceNote: 'starting at',
     timeframe: '2–3 weeks',
     recommended: true,
@@ -90,7 +89,7 @@ export const packages = [
     name: 'Conversion',
     forWho: 'Your business runs on logins, bookings, or data — not just pages',
     problem: 'Manual processes, spreadsheets, and back-and-forth emails are quietly costing you hours and leads every week.',
-    price: '$4,500',
+    price: '$4,497',
     priceNote: 'starting at',
     timeframe: 'Scoped on a discovery call',
     recommended: false,
@@ -107,7 +106,7 @@ export const packages = [
     name: 'Care',
     forWho: 'Your site is live and needs to stay that way',
     problem: "Sites rot — broken forms, stale content, and slow load times quietly bleed leads if nobody's watching.",
-    price: '$150',
+    price: '$147',
     priceNote: '/mo',
     timeframe: 'Monthly retainer',
     recommended: false,
@@ -258,13 +257,32 @@ export const objections = [
 // Result. Results are stated honestly in plain terms — no invented numbers.
 export const caseStudies = [
   {
+    title: 'Sage Commerce',
+    niche: 'E-commerce',
+    outcome: 'Built a storefront that takes a shopper from browsing to checkout without the bloat of an off-the-shelf platform.',
+    description: 'A modern online store with product browsing, cart, and a smooth checkout flow built for conversion.',
+    image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&h=900&fit=crop',
+    tags: ['Next.js', 'Tailwind', 'Stripe', 'React'],
+    size: 'large',
+    href: 'https://ecomerce-sage-eight.vercel.app/',
+    accent: 'from-teal-600/30 via-emerald-950/50 to-black/90',
+    problem: 'Small brands need a fast, clean storefront that handles product discovery and checkout without the bloat of off-the-shelf platforms.',
+    role: 'Designed and built the storefront end-to-end — product catalog, cart logic, and a frictionless checkout experience.',
+    result: 'Went from no online store to a full browse-to-checkout flow, live and taking orders.',
+    highlights: [
+      'Responsive product grid with category filtering',
+      'Persistent cart with quantity and total updates',
+      'Clean, conversion-focused checkout flow',
+    ],
+  },
+  {
     title: 'CV Climber',
     niche: 'Career SaaS',
     outcome: 'Built the AI resume tool that turns a rough work history into an ATS-ready CV in minutes.',
     description: 'AI-powered resume builder that helps job seekers craft standout CVs and climb the career ladder faster.',
     image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1600&h=900&fit=crop',
     tags: ['Next.js', 'AI', 'Tailwind', 'Stripe'],
-    size: 'large',
+    size: 'small',
     href: 'https://www.cvclimber.lol/',
     accent: 'from-emerald-600/30 via-emerald-950/50 to-black/90',
     problem: 'Job seekers struggle to translate their experience into a CV that ranks well on ATS systems and stands out to recruiters.',
@@ -334,25 +352,6 @@ export const caseStudies = [
     ],
   },
   {
-    title: 'Sage Commerce',
-    niche: 'E-commerce',
-    outcome: 'Built a storefront that takes a shopper from browsing to checkout without the bloat of an off-the-shelf platform.',
-    description: 'A modern online store with product browsing, cart, and a smooth checkout flow built for conversion.',
-    image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&h=900&fit=crop',
-    tags: ['Next.js', 'Tailwind', 'Stripe', 'React'],
-    size: 'small',
-    href: 'https://ecomerce-sage-eight.vercel.app/',
-    accent: 'from-teal-600/30 via-emerald-950/50 to-black/90',
-    problem: 'Small brands need a fast, clean storefront that handles product discovery and checkout without the bloat of off-the-shelf platforms.',
-    role: 'Designed and built the storefront end-to-end — product catalog, cart logic, and a frictionless checkout experience.',
-    result: 'Went from no online store to a full browse-to-checkout flow, live and taking orders.',
-    highlights: [
-      'Responsive product grid with category filtering',
-      'Persistent cart with quantity and total updates',
-      'Clean, conversion-focused checkout flow',
-    ],
-  },
-  {
     title: 'Denaro',
     niche: 'Fintech',
     outcome: 'Built the dashboard, budgeting flows, and charts behind a finance app people actually read at a glance.',
@@ -372,6 +371,53 @@ export const caseStudies = [
     ],
   },
 ]
+
+// Template starting points — licensed, pre-built designs Eljo customizes with a
+// client's brand, copy, and content for a faster, lower-cost launch than a fully
+// custom build. These are NOT his own designs — never label them as case studies
+// or portfolio work, always as licensed templates open for customization.
+export const templateStyles = [
+  {
+    title: 'Grandeur',
+    niche: 'Real Estate',
+    description: 'Property listings, agent profiles, and inquiry forms — a starting point for realtors and property managers.',
+    href: 'https://st.ourhtmldemo.com/new/Grandeur/?storefront=envato-elements',
+    accent: 'from-amber-600/30 via-orange-950/60 to-black/90',
+  },
+  {
+    title: 'Doctor',
+    niche: 'Medical & Clinics',
+    description: 'Appointment booking, doctor profiles, and service pages — a starting point for clinics and private practices.',
+    href: 'https://demoxml.com/html/doctor/?storefront=envato-elements',
+    accent: 'from-sky-600/30 via-blue-950/60 to-black/90',
+  },
+  {
+    title: 'Construct',
+    niche: 'Construction & Contracting',
+    description: 'Project galleries, service breakdowns, and quote requests — a starting point for contractors and builders.',
+    href: 'https://demoxml.com/html/construct/?storefront=envato-elements',
+    accent: 'from-yellow-600/30 via-amber-950/60 to-black/90',
+  },
+  {
+    title: 'MaxMuseum',
+    niche: 'Museums & Culture',
+    description: 'Exhibit showcases, event calendars, and visitor info — a starting point for museums and cultural venues.',
+    href: 'https://demoxml.com/html/maxmuseum/?storefront=envato-elements',
+    accent: 'from-violet-600/30 via-purple-950/60 to-black/90',
+  },
+  {
+    title: 'Admin Dashboard',
+    niche: 'Internal Tools',
+    description: 'Data tables, charts, and role-based views — a starting point for internal or client-facing dashboards.',
+    href: 'https://innap.dexignzone.com/codeigniter/demo/index_2',
+    accent: 'from-emerald-600/30 via-teal-950/60 to-black/90',
+  },
+]
+
+// Live thumbnail for a template demo link, via thum.io's public screenshot
+// service — no API key, no manual asset sourcing. Renders the actual current
+// page, so it stays accurate if the template demo changes.
+export const templateScreenshot = href => `https://image.thum.io/get/width/1200/${href}`
 
 export const projectTypeOptions = [
   { value: 'launch', label: 'Launch' },
