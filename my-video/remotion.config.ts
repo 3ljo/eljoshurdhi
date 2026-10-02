@@ -10,3 +10,5 @@ import { Config } from "@remotion/cli/config";
 Config.setRspack(true);
 Config.setVideoImageFormat("jpeg");
 Config.setOverwriteOutput(true);
+// Light leaks, the starburst background and the 3D gem use WebGL.
+Config.setChromiumOpenGlRenderer("angle");
