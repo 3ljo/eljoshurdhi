@@ -29,9 +29,14 @@ async function download(url) {
 }
 
 const index = []
-for (const { id, url } of list) {
+for (const { id, url, webp } of list) {
   try {
-    const bytes = await download(url)
+    let bytes = await download(url)
+    // Optional re-encode (e.g. "webp": 90) keeps big renders to one part.
+    if (webp) {
+      const { default: sharp } = await import('sharp')
+      bytes = await sharp(bytes).webp({ quality: webp, effort: 5 }).toBuffer()
+    }
     const sha = createHash('sha256').update(bytes).digest('hex')
     const b64 = bytes.toString('base64')
     const parts = Math.max(1, Math.ceil(b64.length / CHUNK))
