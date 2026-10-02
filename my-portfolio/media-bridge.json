@@ -1,11 +1,10 @@
 [
- {
-  "id": "comp-spread",
-  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3CrbFOdNU3DBmTymIPmfgaN8M2P/hf_20261002_230830_c760cd39-fd60-4e15-ac23-1aa1dcd985e9.png",
-  "webp": 92
- },
- {
-  "id": "project-shots",
-  "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3CrbFOdNU3DBmTymIPmfgaN8M2P/22f6d21e-ed89-485c-ba6f-c93240cc3f58.zip"
- }
+ {"id":"plate-portrait","url":"https://d8j0ntlcm91z4.cloudfront.net/user_3CrbFOdNU3DBmTymIPmfgaN8M2P/hf_20261002_234248_600415ed-4c0b-4916-979a-a0a167c8af55.png","webp":92},
+ {"id":"cover-bottle","url":"https://d8j0ntlcm91z4.cloudfront.net/user_3CrbFOdNU3DBmTymIPmfgaN8M2P/hf_20261002_234248_e6d073ab-7477-4e6a-a9d6-2d164e2cd185.png","webp":90},
+ {"id":"cover-stairs","url":"https://d8j0ntlcm91z4.cloudfront.net/user_3CrbFOdNU3DBmTymIPmfgaN8M2P/hf_20261002_234248_0d8d965b-bccc-407b-9021-796d1eb355ef.png","webp":90},
+ {"id":"cover-payphone","url":"https://d8j0ntlcm91z4.cloudfront.net/user_3CrbFOdNU3DBmTymIPmfgaN8M2P/hf_20261002_234248_40946737-853f-4ee7-a2cd-b57e71d5f5fb.png","webp":90},
+ {"id":"cover-site","url":"https://d8j0ntlcm91z4.cloudfront.net/user_3CrbFOdNU3DBmTymIPmfgaN8M2P/hf_20261002_234247_962d740d-1aec-4514-ac1a-296e6d0bb1c4.png","webp":90},
+ {"id":"cover-posters","url":"https://d8j0ntlcm91z4.cloudfront.net/user_3CrbFOdNU3DBmTymIPmfgaN8M2P/hf_20261002_234248_a7e0ed50-cc75-451c-8312-63b2e8147409.png","webp":90},
+ {"id":"cover-wallet","url":"https://d8j0ntlcm91z4.cloudfront.net/user_3CrbFOdNU3DBmTymIPmfgaN8M2P/hf_20261002_234247_75e52c4e-d8c0-4f3a-a045-4c43077a7dc0.png","webp":90},
+ {"id":"about-laptop","url":"https://d8j0ntlcm91z4.cloudfront.net/user_3CrbFOdNU3DBmTymIPmfgaN8M2P/hf_20261002_234249_7bfcf153-1765-43a8-9ab9-2e9611aa8b13.png","webp":90}
 ]
