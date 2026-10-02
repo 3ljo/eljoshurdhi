@@ -9,21 +9,22 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 
-// Scrolls to top on every route change, or to an in-page anchor (e.g. a nav
-// link to "/#how-it-works" clicked from a page other than Home) once the
-// target route has rendered.
+// Starts every new page at the top, or at an in-page anchor (e.g. a nav link
+// to "/#how-it-works" clicked from a page other than Home) once the target
+// route has rendered. Anchor scrolls follow the CSS scroll-behavior, which is
+// smooth only when the visitor allows motion.
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
 
   useEffect(() => {
     if (hash) {
       const id = hash.replace('#', '')
-      const scrollToElement = () => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+      const scrollToElement = () => document.getElementById(id)?.scrollIntoView()
       scrollToElement()
       const timeoutId = window.setTimeout(scrollToElement, 100)
       return () => window.clearTimeout(timeoutId)
     }
-    window.scrollTo(0, 0)
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
   }, [pathname, hash])
 
   return null
@@ -31,7 +32,7 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <div className="bg-light-bg dark:bg-dark-bg min-h-screen transition-colors duration-300">
+    <div className="min-h-svh">
       <Navbar />
       <ScrollToTop />
       <Routes>

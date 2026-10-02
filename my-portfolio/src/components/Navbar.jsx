@@ -1,177 +1,246 @@
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
-import { gsap } from 'gsap'
-import { useTheme } from '../context/ThemeContext'
-import { navLinks, primaryCta } from '../lib/siteConfig'
+import { useTheme } from '../context/theme'
+import { navLinks, primaryCta, brand } from '../lib/siteConfig'
+import { sheetFor } from '../lib/sheets'
 import CTAButton from './ui/CTAButton'
+import { Icon } from './drawing/Icons'
+
+function Mark() {
+  return (
+    <svg viewBox="0 0 48 48" className="h-9 w-9 flex-none" aria-hidden="true">
+      <rect x="0.75" y="0.75" width="46.5" height="46.5" rx="3" fill="none" stroke="var(--line)" strokeWidth="1.5" />
+      <path d="M11 13H21M11 24H19M11 35H21M11 13V35" stroke="var(--ink)" strokeWidth="3" strokeLinecap="square" fill="none" />
+      <path
+        d="M37 15.5C37 13.5 35.2 12.5 32.5 12.5C29.6 12.5 27.5 13.9 27.5 16.8C27.5 22.6 37.5 20.4 37.5 27.6C37.5 30.9 35 32.6 32 32.6C29 32.6 27 31.3 26.8 28.6"
+        stroke="var(--ink)"
+        strokeWidth="3"
+        strokeLinecap="square"
+        fill="none"
+      />
+      <circle cx="38" cy="38" r="4" fill="var(--action)" />
+    </svg>
+  )
+}
+
+// The nav is the set's sheet index: each link carries its sheet number
+// where the header has room for it.
+function SheetNumber({ href }) {
+  return <span className="t-mono mr-2 hidden text-[0.6875rem] text-ink-2 xl:inline">{sheetFor(href).number}</span>
+}
+
+// White print (light) / blue print (dark), the two prints of the drawing.
+function PrintToggle({ className = '' }) {
+  const { dark, toggle } = useTheme()
+  return (
+    <button
+      type="button"
+      onClick={toggle}
+      className={`inline-flex items-center gap-2 rounded-[2px] border border-rule text-[0.95rem] font-medium transition-colors duration-200 hover:border-line ${className}`}
+      aria-label={dark ? 'Switch to the white print (light mode)' : 'Switch to the blue print (dark mode)'}
+    >
+      <span
+        className="h-4 w-4 rounded-[2px] border border-line"
+        style={{ background: dark ? '#f1f4f6' : '#0d2c4d' }}
+        aria-hidden="true"
+      />
+      {dark ? 'White print' : 'Blue print'}
+    </button>
+  )
+}
 
 export default function Navbar() {
-  const { dark, toggle } = useTheme()
   const [menuOpen, setMenuOpen] = useState(false)
-  const [visible, setVisible] = useState(true)
-  const [scrolled, setScrolled] = useState(false)
+  const [hidden, setHidden] = useState(false)
   const lastScroll = useRef(0)
-  const navRef = useRef(null)
+  const openButton = useRef(null)
+  const closeButton = useRef(null)
+  const menu = useRef(null)
   const location = useLocation()
   const navigate = useNavigate()
+  const sheet = sheetFor(location.pathname)
 
+  // While the sheet index is open: lock the page, move focus in, keep Tab
+  // inside, close on Escape, and hand focus back to the button on close.
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    if (!menuOpen) return undefined
+    const opener = openButton.current
+    document.body.style.overflow = 'hidden'
+    closeButton.current?.focus()
+
+    const onKey = e => {
+      if (e.key === 'Escape') {
+        setMenuOpen(false)
+        return
+      }
+      if (e.key !== 'Tab' || !menu.current) return
+      const focusable = menu.current.querySelectorAll('a[href], button:not([disabled])')
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', onKey)
+      opener?.focus()
+    }
   }, [menuOpen])
 
   useEffect(() => {
     const onScroll = () => {
       const current = window.scrollY
-      setVisible(current < lastScroll.current || current < 80)
-      setScrolled(current > 20)
+      setHidden(current > lastScroll.current && current > 160)
       lastScroll.current = current
     }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => {
-    if (navRef.current) {
-      gsap.to(navRef.current, { y: visible ? 0 : -100, duration: 0.3, ease: 'power2.out' })
-    }
-  }, [visible])
-
-  const linkClass = ({ isActive }) =>
-    `text-sm font-medium transition-colors duration-200 ${
-      isActive
-        ? 'text-emerald-accent'
-        : 'text-gray-600 dark:text-gray-400 hover:text-emerald-accent dark:hover:text-emerald-accent'
-    }`
-
-  // Hash links point at a section on Home (e.g. "/#how-it-works"). If we're
-  // already on "/", just scroll; otherwise navigate there and let App's
-  // ScrollToHash effect handle scrolling once the page has rendered.
-  const handleHashClick = (e, href) => {
+  // In-page links ("/#how-it-works"): scroll if already home, else navigate
+  // and let App scroll once the page renders.
+  const goToHash = (e, href) => {
     e.preventDefault()
     setMenuOpen(false)
     const id = href.split('#')[1]
     if (location.pathname === '/') {
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+      document.getElementById(id)?.scrollIntoView()
     } else {
       navigate(href)
     }
   }
 
-  return (
-    <nav
-      ref={navRef}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass border-b border-light-border dark:border-dark-border shadow-sm' : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <Link to="/" className="font-heading text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-          eljo<span className="text-emerald-accent">.</span>
-        </Link>
+  const desktopLink = ({ isActive }) =>
+    `relative py-2 text-[1rem] font-medium transition-colors duration-200 ${
+      isActive ? 'text-ink after:absolute after:inset-x-0 after:-bottom-px after:h-[2px] after:bg-action' : 'text-ink-2 hover:text-ink'
+    }`
 
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map(link => (
-            link.type === 'hash' ? (
-              <a key={link.href} href={link.href} onClick={e => handleHashClick(e, link.href)} className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-emerald-accent dark:hover:text-emerald-accent transition-colors duration-200">
-                {link.label}
-              </a>
-            ) : (
-              <NavLink key={link.href} to={link.href} className={linkClass}>
-                {link.label}
-              </NavLink>
-            )
-          ))}
+  const sheetLinks = [{ label: 'Home', href: '/', type: 'route' }, ...navLinks, { label: 'Contact', href: '/contact', type: 'route' }]
+
+  return (
+    <>
+      <header
+        className="fixed inset-x-0 top-0 z-50 border-b border-rule bg-paper transition-transform duration-300 motion-reduce:transition-none"
+        style={{
+          transform: hidden && !menuOpen ? 'translateY(-100%)' : 'translateY(0)',
+          transitionTimingFunction: 'var(--ease-out)',
+          paddingTop: 'env(safe-area-inset-top, 0px)',
+        }}
+      >
+        <nav className="wrap flex h-[68px] items-center justify-between gap-6" aria-label="Main">
+          <Link to="/" className="flex min-w-0 items-center gap-3 no-underline" aria-label={`${brand.name}, home`}>
+            <Mark />
+            <span className="min-w-0 leading-none">
+              <span className="block font-display text-[1.35rem] font-semibold tracking-[0.01em] text-ink">{brand.name}</span>
+              <span className="t-mono mt-1 block truncate text-[0.6875rem] text-ink-2">
+                {sheet.number} · {sheet.title}
+              </span>
+            </span>
+          </Link>
+
+          <div className="hidden items-center gap-7 lg:flex">
+            {navLinks.map(link =>
+              link.type === 'hash' ? (
+                <a key={link.href} href={link.href} onClick={e => goToHash(e, link.href)} className="py-2 text-[1rem] font-medium text-ink-2 no-underline transition-colors duration-200 hover:text-ink">
+                  <SheetNumber href="/" />
+                  {link.label}
+                </a>
+              ) : (
+                <NavLink key={link.href} to={link.href} className={desktopLink} style={{ textDecoration: 'none' }}>
+                  <SheetNumber href={link.href} />
+                  {link.label}
+                </NavLink>
+              ),
+            )}
+            <PrintToggle className="h-11 px-3" />
+            <CTAButton to="/contact" className="min-h-11 px-5 text-base">
+              {primaryCta}
+            </CTAButton>
+          </div>
 
           <button
-            onClick={toggle}
-            className="relative w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 dark:bg-dark-card hover:bg-gray-200 dark:hover:bg-dark-border transition-colors"
-            aria-label="Toggle theme"
+            ref={openButton}
+            type="button"
+            className="btn btn-secondary min-h-11 gap-2.5 px-4 text-base lg:hidden"
+            onClick={() => setMenuOpen(true)}
+            aria-expanded={menuOpen}
+            aria-controls="sheet-index"
           >
-            <AnimatePresence mode="wait">
-              {dark ? (
-                <motion.svg
-                  key="sun" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }} className="w-5 h-5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                </motion.svg>
-              ) : (
-                <motion.svg
-                  key="moon" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.2 }} className="w-5 h-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                </motion.svg>
-              )}
-            </AnimatePresence>
+            <Icon name="menu" className="h-5 w-5" strokeWidth={2} />
+            Menu
           </button>
+        </nav>
+      </header>
 
-          <CTAButton to="/contact" variant="primary">{primaryCta}</CTAButton>
+      <div
+        ref={menu}
+        id="sheet-index"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Sheet index"
+        data-open={menuOpen}
+        className="sheet-menu fixed inset-0 z-[60] flex flex-col bg-paper lg:hidden"
+        style={{ paddingTop: 'env(safe-area-inset-top, 0px)', paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
+      >
+        <div className="wrap flex h-[68px] flex-none items-center justify-between border-b border-rule">
+          <span className="t-mono text-ink-2">Sheet index</span>
+          <span className="flex items-center gap-2">
+            <PrintToggle className="h-11 px-3" />
+            <button
+              ref={closeButton}
+              type="button"
+              className="btn btn-secondary min-h-11 px-3"
+              onClick={() => setMenuOpen(false)}
+              aria-label="Close menu"
+            >
+              <Icon name="close" className="h-5 w-5" strokeWidth={2} />
+            </button>
+          </span>
         </div>
-
-        <button
-          className="md:hidden w-10 h-10 flex items-center justify-center relative z-50"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-          aria-expanded={menuOpen}
-        >
-          <div className="flex flex-col gap-1.5">
-            <motion.span animate={menuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }} transition={{ duration: 0.2 }} className="block w-6 h-0.5 bg-gray-900 dark:bg-white origin-center" />
-            <motion.span animate={menuOpen ? { opacity: 0 } : { opacity: 1 }} transition={{ duration: 0.15 }} className="block w-6 h-0.5 bg-gray-900 dark:bg-white" />
-            <motion.span animate={menuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }} transition={{ duration: 0.2 }} className="block w-6 h-0.5 bg-gray-900 dark:bg-white origin-center" />
-          </div>
-        </button>
+        <ul className="wrap mt-4 mb-0 flex-1 list-none overflow-y-auto p-0">
+          {sheetLinks.map(link => {
+            const number = sheetFor(link.type === 'route' ? link.href : '/').number
+            const current = link.type === 'route' && link.href === location.pathname
+            const inner = (
+              <>
+                <span className="t-mono w-16 text-ink-2">{number}</span>
+                <span className={`font-display text-[2.4rem] font-semibold leading-none ${current ? 'text-action' : 'text-ink'}`}>
+                  {link.label}
+                </span>
+              </>
+            )
+            return (
+              <li key={link.href} className="border-b border-rule">
+                {link.type === 'hash' ? (
+                  <a href={link.href} onClick={e => goToHash(e, link.href)} className="flex items-baseline gap-4 py-4 no-underline">
+                    {inner}
+                  </a>
+                ) : (
+                  <Link
+                    to={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-baseline gap-4 py-4 no-underline"
+                    aria-current={current ? 'page' : undefined}
+                  >
+                    {inner}
+                  </Link>
+                )}
+              </li>
+            )
+          })}
+        </ul>
+        <div className="wrap flex-none border-t border-rule py-5">
+          <CTAButton to="/contact" size="lg" arrow className="w-full" onClick={() => setMenuOpen(false)}>
+            {primaryCta}
+          </CTAButton>
+        </div>
       </div>
-
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}
-            className="fixed inset-0 w-full h-full bg-white dark:bg-dark-bg z-40 md:hidden"
-            style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, minHeight: '100vh', minHeight: '100dvh' }}
-          >
-            <div className="flex flex-col items-center justify-center h-full gap-8">
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 + 0.1, duration: 0.3 }}
-                >
-                  {link.type === 'hash' ? (
-                    <a
-                      href={link.href}
-                      onClick={e => handleHashClick(e, link.href)}
-                      className="text-3xl font-heading font-semibold text-gray-900 dark:text-white hover:text-emerald-accent transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  ) : (
-                    <NavLink
-                      to={link.href}
-                      onClick={() => setMenuOpen(false)}
-                      className="text-3xl font-heading font-semibold text-gray-900 dark:text-white hover:text-emerald-accent transition-colors"
-                    >
-                      {link.label}
-                    </NavLink>
-                  )}
-                </motion.div>
-              ))}
-              <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: navLinks.length * 0.05 + 0.1, duration: 0.3 }}>
-                <CTAButton to="/contact" variant="primary" size="lg" onClick={() => setMenuOpen(false)}>
-                  {primaryCta}
-                </CTAButton>
-              </motion.div>
-              <button
-                onClick={toggle}
-                className="mt-2 px-6 py-3 rounded-full bg-gray-100 dark:bg-dark-card text-sm font-medium text-gray-700 dark:text-gray-300"
-              >
-                {dark ? 'Light Mode' : 'Dark Mode'}
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
+    </>
   )
 }

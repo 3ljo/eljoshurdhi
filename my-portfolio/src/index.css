@@ -2,99 +2,788 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
-  --color-emerald-accent: #10B981;
-  --color-emerald-light: #34D399;
-  --color-emerald-dark: #059669;
-  --color-dark-bg: #0A0A0A;
-  --color-dark-card: #141414;
-  --color-dark-border: #1F1F1F;
-  --color-light-bg: #FAFAFA;
-  --color-light-card: #FFFFFF;
-  --color-light-border: #E5E7EB;
-  --font-heading: 'Plus Jakarta Sans', sans-serif;
-  --font-body: 'Inter', sans-serif;
+/* -------------------------------------------------------------------------
+   The drawing set. Two prints of one drawing:
+   - whiteprint (light): cool drafting paper, ink, diazo-blue linework
+   - blueprint (dark): Prussian blue ground, white linework
+   Safety orange marks every action. Fonts are self-hosted (src/main.jsx).
+   ------------------------------------------------------------------------- */
+
+:root {
+  --paper: #f1f4f6;
+  --paper-2: #e6ebef;
+  --ink: #0e1f2e;
+  --ink-2: #3e5468;
+  --line: #2457a5;
+  --line-soft: rgb(36 87 165 / 0.4);
+  --rule: rgb(14 31 46 / 0.16);
+  --grid-minor: rgb(36 87 165 / 0.055);
+  --grid-major: rgb(36 87 165 / 0.11);
+  --action: #f05a1a;
+  --action-hover: #d94b0d;
+  --action-ink: #0e1f2e;
+  /* Orange for lettering on paper (stamps, deltas): 4.7:1 where the safety
+     orange itself only reaches 3.1:1. */
+  --action-text: #c2410c;
+  --field-border: rgb(14 31 46 / 0.5);
+  --hatch: rgb(36 87 165 / 0.28);
+  --figure-shadow: rgb(14 31 46 / 0.18);
+  --danger: #b42318;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  color-scheme: light;
+}
+
+.dark {
+  --paper: #0d2c4d;
+  --paper-2: #0a2441;
+  --ink: #eaf2f9;
+  --ink-2: #a9c1d9;
+  --line: #cfe0f0;
+  --line-soft: rgb(207 224 240 / 0.42);
+  --rule: rgb(234 242 249 / 0.2);
+  --grid-minor: rgb(207 224 240 / 0.05);
+  --grid-major: rgb(207 224 240 / 0.1);
+  --action: #ff6a2b;
+  --action-hover: #ff8450;
+  --action-ink: #0b1b2b;
+  --action-text: #ff6a2b;
+  --field-border: rgb(234 242 249 / 0.5);
+  --hatch: rgb(207 224 240 / 0.26);
+  --figure-shadow: rgb(0 0 0 / 0.35);
+  --danger: #ffa094;
+
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Overpass Mono", ui-monospace, monospace;
+
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-line: var(--line);
+  --color-rule: var(--rule);
+  --color-action: var(--action);
+  --color-action-ink: var(--action-ink);
+  --color-action-text: var(--action-text);
 }
 
 @layer base {
   html {
-    scroll-behavior: smooth;
-    scrollbar-width: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scrollbar-color: var(--line-soft) var(--paper);
   }
 
-  html::-webkit-scrollbar {
-    display: none;
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
+  /* impeccable-disable-next-line codex-grid-background -- the site is a drawing set; this is the sheet's drafting grid */
   body {
     margin: 0;
-    font-family: var(--font-body);
-    transition: background-color 0.3s ease, color 0.3s ease;
-    background-color: var(--color-light-bg);
-    color: #1F2937;
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--ink);
+    background-color: var(--paper);
+    background-image:
+      linear-gradient(var(--grid-major) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+      linear-gradient(var(--grid-minor) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px);
+    background-size:
+      120px 120px,
+      120px 120px,
+      24px 24px,
+      24px 24px;
+    background-position: -1px -1px;
+    caret-color: var(--action);
+    transition:
+      background-color 300ms ease,
+      color 300ms ease;
   }
 
-  .dark body,
-  body.dark,
-  .dark {
-    background-color: var(--color-dark-bg);
-    color: #F9FAFB;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
+  ::selection {
+    background: var(--action);
+    color: var(--action-ink);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-emerald-accent);
+    outline: 2px solid var(--action);
     outline-offset: 3px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--paper);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--line-soft);
+    border: 3px solid var(--paper);
     border-radius: 2px;
   }
-}
 
-@layer utilities {
-  .text-gradient {
-    background: linear-gradient(135deg, #10B981, #34D399);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    margin: 0;
   }
 
-  .glass {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+  p {
+    margin: 0;
+    text-wrap: pretty;
   }
 
-  .dark .glass {
-    background: rgba(10, 10, 10, 0.8);
+  a {
+    color: inherit;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
   }
 
-  .glow-border {
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+  button,
+  a,
+  [role="button"],
+  label {
+    touch-action: manipulation;
   }
 
-  /* Seamless marquee: the track holds two copies of its content back to
-     back, and translates exactly -50% so the loop point is invisible.
-     Pauses on hover so it's readable, not just decorative motion. */
-  .animate-marquee {
-    animation: marquee 22s linear infinite;
+  input,
+  textarea,
+  select {
+    font: inherit;
+    font-size: max(16px, 1rem);
+    color: inherit;
   }
 
-  .group:hover .animate-marquee {
-    animation-play-state: paused;
-  }
-}
-
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  img {
+    display: block;
+    max-width: 100%;
   }
 }
+
+/* Components sit in Tailwind's components layer, so utilities can still
+   adjust them (lg:hidden on a .btn, px-3, ...). */
+@layer components {
+  /* ---------------------------------------------------------------- layout */
+
+  .wrap {
+    width: min(100% - 2 * clamp(1.25rem, 5vw, 4.5rem), 1320px);
+    margin-inline: auto;
+  }
+
+  .section {
+    padding-block: clamp(5rem, 4rem + 6vw, 9rem);
+  }
+
+  .rule-top {
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ------------------------------------------------------------ typography */
+
+  .t-display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(3.1rem, 1.4rem + 5vw, 6rem);
+    line-height: 0.93;
+    letter-spacing: -0.012em;
+  }
+
+  .t-h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.5rem, 1.5rem + 3.4vw, 4.4rem);
+    line-height: 0.96;
+    letter-spacing: -0.01em;
+  }
+
+  .t-h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.55rem, 1.2rem + 1vw, 2.1rem);
+    line-height: 1.04;
+  }
+
+  .t-h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.45rem;
+    line-height: 1.1;
+  }
+
+  .t-lead {
+    font-size: clamp(1.15rem, 1.05rem + 0.35vw, 1.3rem);
+    line-height: 1.55;
+    color: var(--ink-2);
+    max-width: 36em;
+  }
+
+  .t-muted {
+    color: var(--ink-2);
+  }
+
+  /* Drafting lettering for title blocks, dimensions, schedules and figures. */
+  .t-mono {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.35;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .t-figure {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+
+  /* Prices are the key dimension on a sheet: condensed, lining figures. */
+  .t-price {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-variant-numeric: lining-nums tabular-nums;
+    line-height: 1;
+  }
+
+  .measure {
+    max-width: 65ch;
+  }
+
+  /* --------------------------------------------------------------- actions */
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    min-height: 3.25rem;
+    padding: 0 1.5rem;
+    border-radius: 2px;
+    border: 1.5px solid transparent;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    transition:
+      transform 160ms var(--ease-out),
+      background-color 200ms ease,
+      color 200ms ease,
+      border-color 200ms ease;
+  }
+
+  .btn:active {
+    transform: scale(0.97);
+  }
+
+  .btn:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .btn-lg {
+    min-height: 3.75rem;
+    padding: 0 1.85rem;
+    font-size: 1.125rem;
+  }
+
+  .btn-primary {
+    background: var(--action);
+    color: var(--action-ink);
+  }
+
+  .btn-secondary {
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+
+  .btn-inverse {
+    background: var(--action-ink);
+    color: #fff6f0;
+  }
+
+  .btn .btn-arrow {
+    transition: transform 200ms var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .btn-primary:hover {
+      background: var(--action-hover);
+    }
+    .btn-secondary:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .btn-inverse:hover {
+      background: #000;
+    }
+    .btn:hover .btn-arrow {
+      transform: translateX(3px);
+    }
+  }
+
+  .link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--line-soft);
+    transition: text-decoration-color 200ms ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .link:hover {
+      text-decoration-color: var(--action);
+    }
+  }
+
+  /* Sheet index: the full-screen menu on small screens. It drops in like a
+     sheet pulled over the set; with reduced motion it simply fades. */
+  .sheet-menu {
+    transform: translateY(-100%);
+    visibility: hidden;
+    transition:
+      transform 260ms var(--ease-out),
+      visibility 0s linear 260ms;
+  }
+
+  .sheet-menu[data-open="true"] {
+    transform: none;
+    visibility: visible;
+    transition:
+      transform 380ms var(--ease-drawer),
+      visibility 0s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sheet-menu {
+      transform: none;
+      opacity: 0;
+      transition:
+        opacity 200ms ease,
+        visibility 0s linear 200ms;
+    }
+
+    .sheet-menu[data-open="true"] {
+      opacity: 1;
+      transition:
+        opacity 200ms ease,
+        visibility 0s;
+    }
+  }
+
+  /* ----------------------------------------------------------------- forms */
+
+  .field-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .field {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1.5px solid var(--field-border);
+    border-radius: 2px;
+    background: var(--paper);
+    line-height: 1.4;
+    transition: border-color 150ms ease;
+  }
+
+  .field::placeholder {
+    color: var(--ink-2);
+    opacity: 1;
+  }
+
+  .field:hover {
+    border-color: var(--ink-2);
+  }
+
+  .field:focus {
+    border-color: var(--line);
+  }
+
+  .field[aria-invalid="true"] {
+    border-color: var(--danger);
+  }
+
+  .field-error {
+    margin-top: 0.45rem;
+    color: var(--danger);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .choice {
+    position: relative;
+  }
+
+  .choice input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .choice span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0 1rem;
+    border: 1.5px solid var(--field-border);
+    border-radius: 2px;
+    background: var(--paper);
+    font-weight: 500;
+    user-select: none;
+    -webkit-user-select: none;
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease,
+      color 150ms ease,
+      transform 160ms var(--ease-out);
+  }
+
+  .choice input:checked + span {
+    border-color: var(--line);
+    background: var(--line);
+    color: var(--paper);
+  }
+
+  .choice input:active + span {
+    transform: scale(0.97);
+  }
+
+  .choice input:focus-visible + span {
+    outline: 2px solid var(--action);
+    outline-offset: 2px;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .choice input:not(:checked):hover + span {
+      border-color: var(--ink-2);
+    }
+  }
+
+  fieldset.choices-group[aria-invalid="true"] .choice span {
+    border-color: var(--danger);
+  }
+
+  /* ------------------------------------------------------------- drawing set */
+
+  /* Title block: the bordered table every drawing sheet carries. */
+  .title-block {
+    display: grid;
+    border: 1.5px solid var(--line);
+    background: var(--paper);
+  }
+
+  .title-block > * {
+    padding: 0.6rem 0.8rem 0.65rem;
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .title-block .tb-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+
+  .title-block .tb-value {
+    display: block;
+    margin-top: 0.15rem;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  /* Numbered callout bubble with a leader line. */
+  .bubble {
+    display: inline-grid;
+    place-items: center;
+    flex: none;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 1.5px solid var(--line);
+    background: var(--paper);
+    color: var(--line);
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.8rem;
+    line-height: 1;
+  }
+
+  /* A view number is a solid disc, so it never reads as a keynote. */
+  .bubble-solid {
+    border-color: var(--line);
+    background: var(--line);
+    color: var(--paper);
+  }
+
+  /* View title under a drawing: bubble, title on a heavy rule, scale note. */
+  .view-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .view-title .vt-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid var(--line);
+  }
+
+  .view-title .vt-note {
+    display: block;
+    margin-top: 0.3rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+
+  /* Schedules: the tables a drawing set uses for doors, windows and here,
+     packages. */
+  .schedule {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 2px solid var(--ink);
+  }
+
+  .schedule th {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    text-align: left;
+    padding: 0.85rem 1rem 0.75rem 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .schedule td,
+  .schedule tbody th {
+    padding: 1.35rem 1rem 1.35rem 0;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+
+  .schedule tr > :last-child {
+    padding-right: 0;
+  }
+
+  .schedule tbody th {
+    font-family: var(--font-sans);
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--ink);
+  }
+
+  /* Rubber stamp, lettered in the drawing's own condensed hand. */
+  .stamp {
+    display: inline-block;
+    padding: 0.3rem 0.6rem 0.25rem;
+    border: 2px solid var(--action-text);
+    border-radius: 3px;
+    color: var(--action-text);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.1;
+    rotate: -3deg;
+  }
+
+  /* On the solid orange field the stamp is inked in the action ink. */
+  .stamp-on-action {
+    border-color: var(--action-ink);
+    color: var(--action-ink);
+  }
+
+  /* Section hatch fills, used in the building section drawing. */
+  .hatch-diag {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      var(--hatch) 0 1px,
+      transparent 1px 9px
+    );
+  }
+  .hatch-cross {
+    background-image:
+      repeating-linear-gradient(45deg, var(--hatch) 0 1px, transparent 1px 11px),
+      repeating-linear-gradient(-45deg, var(--hatch) 0 1px, transparent 1px 11px);
+  }
+  .hatch-dots {
+    background-image: radial-gradient(var(--hatch) 1.2px, transparent 1.4px);
+    background-size: 10px 10px;
+  }
+  .hatch-vert {
+    background-image: repeating-linear-gradient(
+      90deg,
+      var(--hatch) 0 1px,
+      transparent 1px 12px
+    );
+  }
+
+  /* Linework. Drawings stroke with currentColor = the print's line colour. */
+  .drawing {
+    color: var(--line);
+    overflow: visible;
+  }
+  .drawing .ln {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .drawing .ln-thin {
+    stroke-width: 1;
+  }
+  .drawing .ln-soft {
+    stroke-opacity: 0.45;
+  }
+  .drawing .ln-dash {
+    stroke-dasharray: 5 5;
+  }
+  .drawing .ln-bold {
+    stroke-width: 2.6;
+  }
+  .drawing .f-ink {
+    fill: var(--ink);
+  }
+  .drawing .f-line {
+    fill: currentColor;
+  }
+  .drawing .f-action {
+    fill: var(--action);
+  }
+  .drawing .f-paper {
+    fill: var(--paper);
+  }
+  .drawing .f-soft {
+    fill: currentColor;
+    fill-opacity: 0.14;
+  }
+  .drawing .txt {
+    fill: var(--ink-2);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+
+  /* Plot, then build. Linework draws itself, then fills wipe in. Only when
+     the visitor allows motion; otherwise every drawing is simply finished. */
+  @media (prefers-reduced-motion: no-preference) {
+    .js-motion .plot:not(.in-view) .ln,
+    .js-motion .plot:not(.in-view) .build,
+    .js-motion .plot:not(.in-view) .appear {
+      animation-play-state: paused;
+    }
+
+    .js-motion .plot .ln {
+      stroke-dasharray: 1 1;
+      stroke-dashoffset: 1;
+      animation: plot 1100ms var(--ease-in-out) both;
+      animation-delay: calc(var(--d, 0) * 1ms);
+    }
+
+    .js-motion .plot .ln-dash {
+      stroke-dasharray: 5 5;
+      stroke-dashoffset: 0;
+      animation: fade-in 600ms ease both;
+      animation-delay: calc(var(--d, 0) * 1ms);
+    }
+
+    .js-motion .plot .build {
+      animation: build 700ms var(--ease-out) both;
+      animation-delay: calc(var(--d, 900) * 1ms);
+    }
+
+    .js-motion .plot .appear {
+      animation: appear 500ms var(--ease-out) both;
+      animation-delay: calc(var(--d, 1200) * 1ms);
+    }
+  }
+}
+
+@keyframes plot {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes build {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+

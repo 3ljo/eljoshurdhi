@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Impeccable review captures (large, regenerated on each review; the written review is kept)
+.impeccable/review/*.png

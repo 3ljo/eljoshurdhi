@@ -1,9 +1,8 @@
-import { motion } from 'framer-motion'
-import { useScrollAnimation, fadeUp, staggerContainer } from '../hooks/useScrollAnimation'
-import CTAButton from '../components/ui/CTAButton'
-import ProofStrip from '../components/ProofStrip'
-import WhyMeGrid from '../components/WhyMeGrid'
-import { primaryCta } from '../lib/siteConfig'
+import PageHeader from '../components/sections/PageHeader'
+import ProofLegend from '../components/sections/ProofLegend'
+import FinalCta from '../components/sections/FinalCta'
+import { Builder, WhyMeList } from '../components/sections/Specifications'
+import { Icon } from '../components/drawing/Icons'
 
 const fitFor = [
   'Founders and small businesses who need a site live in weeks, not a six-month agency retainer',
@@ -12,71 +11,57 @@ const fitFor = [
 ]
 
 const notFitFor =
-  "Large procurement processes or projects that need a full in-house team on-site — for those, an agency is the better call."
+  'Large procurement processes or projects that need a full in-house team on-site — for those, an agency is the better call.'
 
 export default function About() {
-  const { ref, controls } = useScrollAnimation()
-
   return (
-    <main className="bg-white dark:bg-dark-bg">
-      <section className="pt-32 pb-24 lg:pt-40 lg:pb-32">
-        <motion.div ref={ref} variants={staggerContainer} initial="hidden" animate={controls} className="max-w-5xl mx-auto px-6">
-          <motion.div variants={fadeUp} className="max-w-2xl mb-6">
-            <p className="text-emerald-accent font-semibold text-sm uppercase tracking-widest mb-3">Why Me</p>
-            <h1 className="text-3xl sm:text-4xl font-heading font-bold text-gray-900 dark:text-white mb-5">
-              No agency bloat. No templates. No excuses.
-            </h1>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              You're not hiring "a developer." You're hiring the person who builds it, talks to you directly,
-              and has a single goal for your site: get you more customers.
-            </p>
-          </motion.div>
+    <main>
+      <PageHeader
+        title="No agency bloat. No templates. No excuses."
+        lead={`You're not hiring "a developer." You're hiring the person who builds it, talks to you directly, and has a single goal for your site: get you more customers.`}
+      >
+        <Builder className="mx-auto max-w-[420px] lg:max-w-none" />
+      </PageHeader>
 
-          <motion.div variants={fadeUp} className="mb-16">
-            <ProofStrip />
-          </motion.div>
+      <div className="wrap">
+        <ProofLegend />
+      </div>
 
-          <motion.div variants={fadeUp} className="mb-16">
-            <WhyMeGrid />
-          </motion.div>
-
-          <motion.div variants={fadeUp} className="grid lg:grid-cols-2 gap-8 items-start">
-            <div className="rounded-3xl border border-gray-200 dark:border-dark-border bg-gray-50 dark:bg-dark-card p-8">
-              <h2 className="font-heading text-xl font-semibold text-gray-900 dark:text-white mb-5">
-                Who I work best with
-              </h2>
-              <ul className="space-y-4 mb-6">
-                {fitFor.map(item => (
-                  <li key={item} className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-emerald-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-gray-600 dark:text-gray-400 leading-relaxed">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="pt-5 border-t border-gray-200 dark:border-dark-border">
-                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
-                  <span className="font-semibold text-gray-900 dark:text-white">Not the right fit: </span>
-                  {notFitFor}
-                </p>
-              </div>
-            </div>
-
-            <div className="rounded-3xl bg-gray-900 dark:bg-black p-8 flex flex-col justify-between h-full">
-              <div>
-                <h2 className="font-heading text-xl font-semibold text-white mb-3">
-                  Ready to stop losing customers to a bad website?
-                </h2>
-                <p className="text-gray-400 leading-relaxed mb-6">
-                  Tell me about your business — I'll tell you honestly what it needs.
-                </p>
-              </div>
-              <CTAButton to="/contact" size="lg">{primaryCta}</CTAButton>
-            </div>
-          </motion.div>
-        </motion.div>
+      <section className="section" aria-labelledby="spec-heading">
+        <div className="wrap">
+          <h2 id="spec-heading" className="t-h2 max-w-[18ch]">
+            What you can hold me to.
+          </h2>
+          <WhyMeList className="mt-10" />
+        </div>
       </section>
+
+      <section className="section rule-top" aria-labelledby="fit-heading">
+        <div className="wrap grid gap-x-14 gap-y-10 lg:grid-cols-12">
+          <h2 id="fit-heading" className="t-h2 lg:col-span-5">
+            Who I work best with.
+          </h2>
+          <div className="lg:col-span-7">
+            <ul className="m-0 list-none p-0">
+              {fitFor.map(item => (
+                <li key={item} className="flex items-start gap-4 border-t border-rule py-5 text-[1.1rem] leading-snug">
+                  <Icon name="tick" className="mt-1 h-5 w-5 flex-none text-action" strokeWidth={2.25} />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div className="grid gap-1 border-t-2 border-ink pt-5 sm:grid-cols-[10rem_1fr] sm:gap-6">
+              <p className="t-mono pt-1 text-ink-2">Not the right fit</p>
+              <p className="t-muted">{notFitFor}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <FinalCta
+        title="Ready to stop losing customers to a bad website?"
+        body="Tell me about your business — I'll tell you honestly what it needs."
+      />
     </main>
   )
 }

@@ -1,205 +1,109 @@
-import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { caseStudies, templateStyles, primaryCta } from '../lib/siteConfig'
-import { useScrollAnimation, fadeUp, staggerContainer } from '../hooks/useScrollAnimation'
+import { caseStudies, templateStyles } from '../lib/siteConfig'
+import PageHeader from '../components/sections/PageHeader'
+import FinalCta from '../components/sections/FinalCta'
+import { TemplateTiles } from '../components/sections/ProofSection'
+import { projectSlug } from '../lib/slug'
+import ProjectPlan from '../components/drawing/ProjectPlan'
 import CTAButton from '../components/ui/CTAButton'
-import CaseStudyTile from '../components/CaseStudyTile'
-import TemplateTile from '../components/TemplateTile'
+import { TitleBlock, ViewTitle } from '../components/drawing/Marks'
+import { Icon } from '../components/drawing/Icons'
 
-function CaseStudyModal({ project, onClose }) {
-  useEffect(() => {
-    const onKey = e => e.key === 'Escape' && onClose()
-    document.addEventListener('keydown', onKey)
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
-    }
-  }, [onClose])
-
-  if (!project) return null
-
+function CaseStudy({ project, index }) {
+  const flip = index % 2 === 1
   return (
-    <motion.div
-      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-      onClick={onClose}
-      className="fixed inset-0 z-[100] bg-black/70 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-6"
-    >
-      <motion.div
-        initial={{ y: 60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 40, opacity: 0 }}
-        transition={{ type: 'spring', damping: 28, stiffness: 260 }}
-        onClick={e => e.stopPropagation()}
-        className="relative bg-white dark:bg-dark-card w-full sm:max-w-2xl max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-3xl shadow-2xl"
-      >
-        <button
-          onClick={onClose}
-          aria-label="Close"
-          className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur transition-colors"
-        >
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+    <article id={projectSlug(project.title)} className="section rule-top scroll-mt-16" aria-labelledby={`${projectSlug(project.title)}-title`}>
+      <div className="wrap grid gap-x-14 gap-y-10 lg:grid-cols-12 lg:items-start">
+        <figure className={`m-0 lg:sticky lg:top-24 lg:col-span-7 ${flip ? 'lg:order-2' : ''}`}>
+          <ProjectPlan project={project} />
+          <figcaption className="mt-5">
+            <ViewTitle number={index + 1} title={`${project.title} · as built`} note="Drawing of the shipped product" />
+          </figcaption>
+        </figure>
 
-        <div className="relative h-48 sm:h-56 overflow-hidden">
-          <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-          <div className={`absolute inset-0 bg-gradient-to-t ${project.accent}`} />
-          <div className="absolute bottom-5 left-5 right-5">
-            <span className="inline-block text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-white/90 bg-white/10 backdrop-blur-md border border-white/15 px-3 py-1 rounded-full mb-3">
-              {project.niche}
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-heading font-bold text-white">{project.title}</h3>
-          </div>
-        </div>
-
-        <div className="p-6 sm:p-8">
-          <p className="font-heading text-lg font-semibold text-gray-900 dark:text-white leading-snug mb-6">
-            {project.outcome}
-          </p>
-
-          <div className="flex flex-wrap gap-3 mb-6">
-            <CTAButton href={project.href} variant="primary" size="md">
-              View live site
-            </CTAButton>
-          </div>
-
-          <div className="flex flex-wrap gap-2 mb-7">
-            {project.tags.map(tag => (
-              <span key={tag} className="text-xs font-medium text-emerald-accent bg-emerald-accent/10 border border-emerald-accent/20 px-3 py-1 rounded-full">
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          <div className="space-y-6">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-emerald-accent mb-2">The Problem</p>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{project.problem}</p>
-            </div>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-emerald-accent mb-2">What I Changed</p>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{project.role}</p>
-            </div>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-emerald-accent mb-2">Result</p>
-              <p className="text-gray-900 dark:text-white font-medium leading-relaxed">{project.result}</p>
-            </div>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-emerald-accent mb-2">Highlights</p>
-              <ul className="space-y-2">
-                {project.highlights.map(h => (
-                  <li key={h} className="flex items-start gap-3 text-gray-600 dark:text-gray-300">
-                    <svg className="w-5 h-5 text-emerald-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="leading-relaxed">{h}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>
-  )
-}
-
-function TemplateStyles() {
-  const { ref, controls } = useScrollAnimation()
-
-  return (
-    <section id="templates" className="py-20 bg-gray-100 dark:bg-dark-bg scroll-mt-24">
-      <motion.div ref={ref} variants={staggerContainer} initial="hidden" animate={controls} className="max-w-7xl mx-auto px-6">
-        <div className="max-w-2xl mb-10">
-          <p className="text-emerald-accent font-semibold text-sm uppercase tracking-widest mb-3">Need It Faster?</p>
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Or start from a proven layout.
+        <div className={`lg:col-span-5 ${flip ? 'lg:order-1' : ''}`}>
+          <h2 id={`${projectSlug(project.title)}-title`} className="t-h2">
+            {project.title}
           </h2>
-          <p className="text-gray-500 dark:text-gray-400 leading-relaxed">
-            These aren't from my portfolio — they're licensed templates I customize with your brand, copy, and
-            content for a faster, lower-cost launch than a fully custom build. Good fit for the Launch package.
+          <p className="t-mono mt-3 text-ink-2">
+            {project.niche} · {project.tags.join(', ')}
           </p>
-        </div>
+          <p className="t-lead mt-6">{project.outcome}</p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {templateStyles.map(t => (
-            <motion.a
-              key={t.title}
-              href={t.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              variants={fadeUp}
-              className="group relative rounded-2xl overflow-hidden h-64 sm:h-72 flex flex-col justify-end"
-            >
-              <TemplateTile template={t} />
-            </motion.a>
-          ))}
-        </div>
+          <dl className="m-0 mt-8">
+            {[
+              ['The problem', project.problem],
+              ['What I changed', project.role],
+              ['Result', project.result],
+            ].map(([label, text]) => (
+              <div key={label} className="grid gap-1 border-t border-rule py-5 sm:grid-cols-[9rem_1fr] sm:gap-6">
+                <dt className="t-mono pt-1 text-ink-2">{label}</dt>
+                <dd className={`m-0 ${label === 'Result' ? 'font-semibold' : ''}`}>{text}</dd>
+              </div>
+            ))}
+          </dl>
 
-        <p className="mt-6 text-xs text-gray-400 dark:text-gray-500 max-w-2xl">
-          Licensed templates, not original designs — layout, colors, and content get customized to your business.
-          Mention a style by name when you reach out.
-        </p>
-      </motion.div>
-    </section>
+          <ul className="m-0 mt-2 list-none border-t border-rule p-0 pt-5">
+            {project.highlights.map(h => (
+              <li key={h} className="flex items-start gap-3 py-1.5">
+                <Icon name="tick" className="mt-1 h-4 w-4 flex-none text-action" strokeWidth={2.25} />
+                <span>{h}</span>
+              </li>
+            ))}
+          </ul>
+
+          <CTAButton href={project.href} size="lg" className="mt-8">
+            View live site
+          </CTAButton>
+        </div>
+      </div>
+    </article>
   )
 }
 
 export default function Work() {
-  const { ref, controls } = useScrollAnimation()
-  const [active, setActive] = useState(null)
-
   return (
-    <main className="bg-light-bg dark:bg-dark-bg">
-      <section className="pt-32 pb-16 lg:pt-40 lg:pb-20">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <p className="text-emerald-accent font-semibold text-sm uppercase tracking-widest mb-3">Work</p>
-          <h1 className="font-heading text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
-            Case studies, not a screenshot gallery.
-          </h1>
-          <p className="text-gray-500 dark:text-gray-400 leading-relaxed max-w-xl mx-auto">
-            Every project shipped to a real, working product. Click any card for the problem, what I built, and the live link.
+    <main>
+      <PageHeader
+        title="Case studies, not a screenshot gallery."
+        lead="Every project shipped to a real, working product. Each one is drawn here as built, with the problem, what I built and the live link."
+      >
+        <TitleBlock
+          className="grid-cols-2"
+          cells={[
+            { label: 'Sheet', value: 'A-101 · As-built drawings' },
+            { label: 'Projects', value: `${caseStudies.length}, all live` },
+            { label: 'Drawings', value: 'Illustrations of each product' },
+            { label: 'Live links', value: 'Open the real sites' },
+          ]}
+        />
+      </PageHeader>
+
+      {caseStudies.map((project, i) => (
+        <CaseStudy key={project.title} project={project} index={i} />
+      ))}
+
+      <section id="templates" className="section rule-top scroll-mt-16" aria-labelledby="templates-heading">
+        <div className="wrap">
+          <div className="grid gap-x-14 gap-y-6 lg:grid-cols-12">
+            <h2 id="templates-heading" className="t-h2 lg:col-span-6">
+              Or start from a proven layout.
+            </h2>
+            <p className="t-lead lg:col-span-5 lg:col-start-8 lg:self-end">
+              These aren't from my portfolio — they're licensed templates I customize with your brand, copy, and content
+              for a faster, lower-cost launch than a fully custom build. Good fit for the Launch package.
+            </p>
+          </div>
+          <div className="mt-12">
+            <TemplateTiles templates={templateStyles} />
+          </div>
+          <p className="mt-8 max-w-[60ch] text-[0.95rem] t-muted">
+            Licensed templates, not original designs — layout, colors, and content get customized to your business.
+            Mention a style by name when you reach out.
           </p>
         </div>
       </section>
 
-      <section className="pb-24">
-        <motion.div ref={ref} variants={staggerContainer} initial="hidden" animate={controls} className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {caseStudies.map((project, i) => (
-              <motion.button
-                key={project.title}
-                type="button"
-                onClick={() => setActive(project)}
-                variants={fadeUp}
-                className={`group relative rounded-2xl overflow-hidden text-left w-full ${
-                  project.size === 'large' ? 'md:col-span-2 h-64 sm:h-80 lg:h-96' : 'h-64 sm:h-80'
-                }`}
-              >
-                <CaseStudyTile project={project} index={i} />
-              </motion.button>
-            ))}
-          </div>
-        </motion.div>
-      </section>
-
-      <TemplateStyles />
-
-      <section className="py-20 bg-white dark:bg-dark-bg">
-        <div className="max-w-2xl mx-auto px-6">
-          <div className="rounded-3xl border border-gray-200 dark:border-dark-border bg-gray-100 dark:bg-dark-card p-10 text-center">
-            <h2 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-4">Want a project like these?</h2>
-            <p className="text-gray-500 dark:text-gray-400 leading-relaxed mb-8">
-              Tell me what you're building — I'll tell you honestly what it takes to ship it.
-            </p>
-            <CTAButton to="/contact" size="lg">{primaryCta}</CTAButton>
-          </div>
-        </div>
-      </section>
-
-      <AnimatePresence>
-        {active && <CaseStudyModal project={active} onClose={() => setActive(null)} />}
-      </AnimatePresence>
+      <FinalCta title="Want a project like these?" body="Tell me what you're building — I'll tell you honestly what it takes to ship it." />
     </main>
   )
 }

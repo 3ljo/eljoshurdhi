@@ -1,33 +1,48 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { ThemeContext } from './theme'
 
-const ThemeContext = createContext()
+const STORAGE_KEY = 'theme'
+const DARK_QUERY = '(prefers-color-scheme: dark)'
+// Browser chrome colours: the paper of each print.
+const CHROME = { light: '#F1F4F6', dark: '#0D2C4D' }
 
-export function ThemeProvider({ children }) {
-  const [dark, setDark] = useState(() => {
-    const saved = localStorage.getItem('theme')
-    if (saved) return saved === 'dark'
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-  })
-
-  useEffect(() => {
-    const root = document.documentElement
-    if (dark) {
-      root.classList.add('dark')
-      document.body.classList.add('dark')
-    } else {
-      root.classList.remove('dark')
-      document.body.classList.remove('dark')
-    }
-    localStorage.setItem('theme', dark ? 'dark' : 'light')
-  }, [dark])
-
-  const toggle = () => setDark(prev => !prev)
-
-  return (
-    <ThemeContext.Provider value={{ dark, toggle }}>
-      {children}
-    </ThemeContext.Provider>
-  )
+function readSaved() {
+  try {
+    return localStorage.getItem(STORAGE_KEY)
+  } catch {
+    return null
+  }
 }
 
-export const useTheme = () => useContext(ThemeContext)
+export function ThemeProvider({ children }) {
+  // A choice made with the toggle wins; until then, follow the system.
+  const [saved, setSaved] = useState(readSaved)
+  const [systemDark, setSystemDark] = useState(() => window.matchMedia(DARK_QUERY).matches)
+  const dark = saved ? saved === 'dark' : systemDark
+
+  useEffect(() => {
+    const query = window.matchMedia(DARK_QUERY)
+    const onChange = event => setSystemDark(event.matches)
+    query.addEventListener('change', onChange)
+    return () => query.removeEventListener('change', onChange)
+  }, [])
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', dark)
+    document.querySelectorAll('meta[name="theme-color"]').forEach(meta => {
+      meta.setAttribute('content', dark ? CHROME.dark : CHROME.light)
+    })
+  }, [dark])
+
+  const toggle = () => {
+    const next = dark ? 'light' : 'dark'
+    setSaved(next)
+    try {
+      localStorage.setItem(STORAGE_KEY, next)
+    } catch {
+      // Storage is blocked; the choice still holds for this visit.
+    }
+  }
+
+  return <ThemeContext.Provider value={{ dark, toggle }}>{children}</ThemeContext.Provider>
+}

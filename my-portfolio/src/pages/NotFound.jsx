@@ -1,20 +1,37 @@
 import CTAButton from '../components/ui/CTAButton'
+import RevisionCloud from '../components/drawing/RevisionCloud'
+import Plot from '../components/drawing/Plot'
+import { TitleBlock } from '../components/drawing/Marks'
 
 export default function NotFound() {
   return (
-    <main className="min-h-[70vh] flex items-center justify-center bg-light-bg dark:bg-dark-bg px-6">
-      <div className="text-center max-w-md">
-        <p className="text-emerald-accent font-semibold text-sm uppercase tracking-widest mb-4">404</p>
-        <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-4">
-          That page doesn't exist.
-        </h1>
-        <p className="text-gray-500 dark:text-gray-400 leading-relaxed mb-8">
-          The link might be old, or the URL has a typo. Here's where you probably meant to go.
-        </p>
-        <div className="flex flex-wrap justify-center gap-3">
-          <CTAButton to="/">Back to home</CTAButton>
-          <CTAButton to="/pricing" variant="secondary">See pricing</CTAButton>
+    <main className="pt-[calc(68px+env(safe-area-inset-top,0px))]">
+      <div className="wrap grid min-h-[70vh] items-center gap-12 py-16 lg:grid-cols-12">
+        <div className="lg:col-span-6">
+          <h1 className="t-display">That page doesn't exist.</h1>
+          <p className="t-lead mt-6">The link might be old, or the URL has a typo. Here's where you probably meant to go.</p>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <CTAButton to="/" size="lg" arrow>
+              Back to home
+            </CTAButton>
+            <CTAButton to="/pricing" size="lg" variant="secondary">
+              See pricing
+            </CTAButton>
+          </div>
         </div>
+        <Plot className="lg:col-span-5 lg:col-start-8">
+          <RevisionCloud className="p-6">
+            <TitleBlock
+              className="grid-cols-2"
+              cells={[
+                { label: 'Sheet', value: 'A-404' },
+                { label: 'Status', value: 'Not in this set' },
+                { label: 'Cover sheet', value: 'A-001 · Home' },
+                { label: 'Schedule', value: 'A-201 · Pricing' },
+              ]}
+            />
+          </RevisionCloud>
+        </Plot>
       </div>
     </main>
   )
