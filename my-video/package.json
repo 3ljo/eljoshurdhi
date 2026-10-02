@@ -11,7 +11,6 @@
     "@remotion/cli": "4.0.532",
     "@remotion/effects": "4.0.532",
     "@remotion/fonts": "4.0.532",
-    "@remotion/layout-utils": "4.0.532",
     "@remotion/media": "4.0.532",
     "@remotion/media-utils": "4.0.532",
     "@remotion/motion-blur": "4.0.532",
@@ -24,9 +23,7 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "remotion": "4.0.532",
-    "three": "0.186.1",
-    "topojson-client": "3.1.0",
-    "world-atlas": "2.0.2"
+    "three": "0.186.1"
   },
   "devDependencies": {
     "@remotion/eslint-config-flat": "4.0.532",
@@ -37,7 +34,9 @@
     "@types/web": "0.0.166",
     "eslint": "9.39.5",
     "prettier": "3.8.1",
-    "typescript": "5.9.3"
+    "topojson-client": "3.1.0",
+    "typescript": "5.9.3",
+    "world-atlas": "2.0.2"
   },
   "scripts": {
     "dev": "remotion studio",
