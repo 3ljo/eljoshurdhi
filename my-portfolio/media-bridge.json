@@ -1,5 +1,10 @@
 [
-  { "id": "decision-magazine", "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3CrbFOdNU3DBmTymIPmfgaN8M2P/hf_20261002_223312_a8ab6abf-66ef-411e-8323-b8c01d0839df.png" },
-  { "id": "decision-facades", "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3CrbFOdNU3DBmTymIPmfgaN8M2P/hf_20261002_223323_3fe1d290-2cb4-4df3-b55d-551b4817e993.png" },
-  { "id": "decision-studio", "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3CrbFOdNU3DBmTymIPmfgaN8M2P/hf_20261002_223331_5f055025-8325-48d5-8580-8f6cabe68616.png" }
+ {
+  "id": "comp-newsstand",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3CrbFOdNU3DBmTymIPmfgaN8M2P/hf_20261002_230818_bb561eba-818c-43c3-bd89-4608dfcc4301.png"
+ },
+ {
+  "id": "comp-spread",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3CrbFOdNU3DBmTymIPmfgaN8M2P/hf_20261002_230830_c760cd39-fd60-4e15-ac23-1aa1dcd985e9.png"
+ }
 ]
