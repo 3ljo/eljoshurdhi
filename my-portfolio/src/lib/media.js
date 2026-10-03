@@ -26,12 +26,16 @@ export const largest = name => {
 }
 
 // Cover lines, cover art, motion and real screenshots for each case study,
-// keyed by the project slug. Each cover line restates the project's own
-// result from siteConfig in the magazine's voice. `loginOnly` marks live apps whose product sits behind sign-in:
-// the screenshot shows the real login screen and says so.
+// keyed by the project slug. ESHB and Sage Commerce carry the approved
+// cover's own lines; the other four restate the project's siteConfig result
+// in the magazine's voice. `tone` is the story's print colour (one per story,
+// from the issue's four inks). `loginOnly` marks live apps whose product sits
+// behind sign-in: the screenshot shows the real login screen, at `shotUrl`,
+// and says so.
 export const projectMedia = {
   eshb: {
     coverline: ['The streets', 'build brands'],
+    tone: 'ink',
     cover: 'eshb',
     coverAlt: 'Black-and-white street photo of a hooded figure, face covered, in front of an old apartment block',
     shot: 'eshb',
@@ -39,6 +43,7 @@ export const projectMedia = {
   },
   'sage-commerce': {
     coverline: ['More than', 'just sneakers'],
+    tone: 'acid',
     cover: 'sage',
     coverAlt: 'Black-and-white sneakers and white socks resting on a concrete ledge under a deep blue sky',
     shot: 'sage',
@@ -46,6 +51,7 @@ export const projectMedia = {
   },
   'cv-climber': {
     coverline: ['Climb the', 'ladder faster'],
+    tone: 'red',
     cover: 'cvclimber',
     coverAlt: 'Low angle on sneakers climbing graffiti-covered concrete stairs toward a blue sky',
     video: 'stairs',
@@ -54,21 +60,26 @@ export const projectMedia = {
   },
   'ai-receptionist': {
     coverline: ['Every call', 'gets answered'],
+    tone: 'ink',
     cover: 'receptionist',
     coverAlt: 'A street payphone at night, its handset hanging off the hook',
     video: 'payphone',
     shot: 'aireceptionist',
     loginOnly: true,
+    shotUrl: 'https://ai-recepsionist-codo.vercel.app/login',
   },
   nderto: {
     coverline: ['One dashboard', 'for the whole crew'],
+    tone: 'acid',
     cover: 'nderto',
     coverAlt: 'Gloved hands holding a rugged tablet over rebar on a construction site',
     shot: 'nderto',
     loginOnly: true,
+    shotUrl: 'https://nderto.vercel.app/login',
   },
   denaro: {
     coverline: ['Know where', 'the money goes'],
+    tone: 'paper',
     cover: 'denaro',
     coverAlt: 'A hand pulling folded notes from a worn leather wallet on a café table',
     shot: 'denaro',

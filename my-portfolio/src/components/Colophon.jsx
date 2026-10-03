@@ -74,7 +74,7 @@ export default function Colophon() {
           <span>
             © {year} {brand.name} · Issue 01 · {brand.location}
           </span>
-          <span>Designed and built by hand. No templates.</span>
+          <span>Hand-coded in Tirana.</span>
         </div>
       </div>
     </footer>

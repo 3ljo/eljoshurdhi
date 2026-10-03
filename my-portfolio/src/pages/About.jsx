@@ -20,7 +20,7 @@ export default function About() {
           <Picture
             name="laptop"
             eager
-            alt="Eljo working on a laptop on concrete steps at night, the screen lighting his face"
+            alt="Black-and-white editorial portrait of Eljo at a laptop, lit by the screen"
             sizes="(min-width: 960px) 48vw, 100vw"
             style={{ objectPosition: '50% 30%' }}
           />

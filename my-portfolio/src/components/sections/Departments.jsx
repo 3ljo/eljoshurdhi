@@ -3,13 +3,13 @@ import { brand, objections, packages, painPoints, primaryCta, processSteps, whyM
 import { BrandIcon, Icon } from '../Icons'
 import { Picture } from '../Media'
 
-// Each department of the issue: a running folio on top, a headline in the
-// cover's face, the content in the reader's.
-function RunningFolio({ left, right }) {
+// Each department of the issue: a headline in the cover's face, the content
+// in the reader's, and the page's folio in its bottom corners.
+function Folio({ page }) {
   return (
     <div className="running-folio" aria-hidden="true">
-      <span>{left}</span>
-      <span>{right}</span>
+      <span>Eljo · Issue 01</span>
+      <span className="page">{page}</span>
     </div>
   )
 }
@@ -17,7 +17,7 @@ function RunningFolio({ left, right }) {
 export function SoundFamiliar() {
   return (
     <section className="dept dept--ink on-ink" aria-labelledby="familiar-title">
-      <RunningFolio left="Letters" right="Issue 01" />
+      <Folio page="04" />
       <div className="wrap">
         <div className="dept-head">
           <h2 id="familiar-title" className="display d-xl" style={{ color: 'var(--acid)' }}>
@@ -40,12 +40,12 @@ export function SoundFamiliar() {
 export function HowItWorks({ id }) {
   return (
     <section id={id} className="dept dept--acid" aria-labelledby="how-title">
-      <RunningFolio left="How it works" right="Five steps" />
+      <Folio page="06" />
       <div className="wrap feature">
         <div className="feature__photo">
           <Picture
             name="laptop"
-            alt="Eljo working on a laptop on concrete steps at night, the screen lighting his face"
+            alt="Black-and-white editorial portrait of Eljo at a laptop, lit by the screen"
             sizes="(min-width: 960px) 42vw, 100vw"
           />
         </div>
@@ -79,13 +79,13 @@ export function PriceList({ detailed = false, headingLevel = 2 }) {
   const H = `h${headingLevel}`
   return (
     <section className="dept" aria-labelledby="prices-title">
-      <RunningFolio left="The price list" right="Fixed, in writing" />
+      <Folio page="08" />
       <div className="wrap">
         <div className="dept-head">
           <H id="prices-title" className="display d-xl">
             The price list
           </H>
-          <p className="lead">Four ways to work together. Every one ships a live site built to bring you customers.</p>
+          <p className="lead">Three ways to launch a site built to bring you customers, and one way to keep it running.</p>
         </div>
         <ul className="prices">
           {packages.map(pkg => (
@@ -110,10 +110,7 @@ export function PriceList({ detailed = false, headingLevel = 2 }) {
               </div>
               <div>
                 <span className="price__note">{pkg.priceNote === '/mo' ? 'per month' : pkg.priceNote}</span>
-                <span className="price__amount">
-                  {pkg.price}
-                  {pkg.priceNote === '/mo' && <span style={{ fontSize: '0.5em' }}>/mo</span>}
-                </span>
+                <span className="price__amount">{pkg.price}</span>
                 <span className="price__time">{pkg.timeframe}</span>
               </div>
               <div>
@@ -144,7 +141,7 @@ export function PriceList({ detailed = false, headingLevel = 2 }) {
 export function HoldMeToIt({ title = 'What you can hold me to' }) {
   return (
     <section className="dept dept--ink on-ink" aria-labelledby="hold-title">
-      <RunningFolio left="The promise" right="Six things" />
+      <Folio page="10" />
       <div className="wrap">
         <h2 id="hold-title" className="display d-xl" style={{ color: 'var(--acid)', maxWidth: '14ch' }}>
           {title}
@@ -165,7 +162,7 @@ export function HoldMeToIt({ title = 'What you can hold me to' }) {
 export function Interview() {
   return (
     <section className="dept dept--paper-2" aria-labelledby="interview-title">
-      <RunningFolio left="The interview" right="Straight answers" />
+      <Folio page="12" />
       <div className="wrap">
         <div className="dept-head">
           <h2 id="interview-title" className="display d-xl">

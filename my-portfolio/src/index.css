@@ -129,6 +129,10 @@
   [hidden] {
     display: none !important;
   }
+  /* Sections and headings receive focus only to move the reading position. */
+  [tabindex='-1']:focus {
+    outline: none;
+  }
 }
 
 /* ---------------------------------------------------------------- utility */
@@ -407,12 +411,11 @@
   }
 }
 .runhead__cta {
-  display: none;
-  min-height: max(1.75rem, calc(var(--u) * 51));
-  padding-inline: max(0.9rem, calc(var(--u) * 21));
-  font-size: max(0.8125rem, calc(var(--u) * 25));
-  margin-left: calc(var(--u) * 62);
-  margin-top: calc(var(--u) * 8);
+  flex: none;
+  min-height: 2.5rem;
+  padding-inline: 1rem;
+  font-size: 0.8125rem;
+  margin-left: auto;
 }
 .runhead__menu {
   display: inline-flex;
@@ -430,9 +433,37 @@
 .runhead__menu:active {
   transform: scale(0.97);
 }
+.runhead__menu {
+  flex: none;
+}
 .runhead__menu svg {
+  flex: none;
   width: 1.15rem;
   height: 1.15rem;
+}
+.runhead__title {
+  min-width: 0;
+}
+/* Phones keep the call to action in the head; the title and the menu
+   button give way instead. */
+@media (max-width: 599px) {
+  .runhead__bar {
+    gap: 0.6rem;
+  }
+  .runhead__city,
+  .runhead__menu-label {
+    display: none;
+  }
+  .runhead__menu {
+    width: 2.75rem;
+    padding: 0;
+    justify-content: center;
+  }
+}
+@media (max-width: 359px) {
+  .runhead__issue {
+    display: none;
+  }
 }
 @media (min-width: 1024px) {
   /* On the open spread the running head is the comp's thin strip, scaled
@@ -443,13 +474,23 @@
   .runhead__title {
     font-size: max(0.75rem, calc(var(--u) * 26.5));
   }
-  .runhead__nav,
-  .runhead__cta {
+  .runhead__nav {
     display: inline-flex;
+  }
+  .runhead__cta {
+    min-height: max(1.75rem, calc(var(--u) * 51));
+    padding-inline: max(0.9rem, calc(var(--u) * 21));
+    font-size: max(0.8125rem, calc(var(--u) * 25));
+    margin-left: calc(var(--u) * 62);
+    margin-top: calc(var(--u) * 8);
   }
   .runhead__menu {
     display: none;
   }
+}
+/* Never slide the head away from a control that has focus. */
+.runhead:focus-within {
+  transform: none;
 }
 
 /* The contents page (mobile menu). */
@@ -582,7 +623,8 @@
   font-family: var(--font-display);
   font-weight: 400;
   text-transform: uppercase;
-  font-size: clamp(2.9rem, 13.2vw, 5.25rem);
+  /* Sized so the longest line ("better websites.") always fits its page. */
+  font-size: clamp(2.4rem, calc((100vw - 2 * var(--gutter)) / 6.95), 5.25rem);
   line-height: 0.923;
   letter-spacing: 0.006em;
 }
@@ -646,8 +688,10 @@
 @media (min-width: 1024px) {
   .spread {
     grid-template-columns: calc(var(--u) * 1337) calc(var(--u) * 1307);
+    width: calc(var(--u) * 2644);
     margin-left: calc(var(--u) * 18);
-    height: calc(var(--u) * 1120);
+    /* min-height, so text the reader enlarges or spaces out grows the spread */
+    min-height: calc(var(--u) * 1120);
   }
   /* page edges of the closed stack, left, right and bottom */
   .spread::before,
@@ -674,8 +718,16 @@
   }
   .cover-left {
     aspect-ratio: auto;
-    height: 100%;
     z-index: 1;
+  }
+  /* the fold: the photo page darkens into the spine */
+  .cover-left::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(270deg, rgb(0 0 0 / 0.5), rgb(0 0 0 / 0.18) 1.2%, rgb(0 0 0 / 0) 3.4%);
   }
   .cover-left img,
   .cover-left video {
@@ -692,18 +744,25 @@
     font-size: calc(var(--u) * 311);
   }
   .cover-right {
-    height: 100%;
     padding: 0;
+    padding-bottom: calc(var(--u) * 40);
     padding-left: calc(var(--u) * 81);
     padding-top: calc(var(--u) * 45.5);
-    box-shadow: none;
+    /* the page lifts off the table: a soft shadow under its outer edge */
+    box-shadow: calc(var(--u) * 6) calc(var(--u) * 10) calc(var(--u) * 28) calc(var(--u) * -10) rgb(0 0 0 / 0.28);
     background:
       linear-gradient(90deg, rgb(64 66 0 / 0.36), rgb(64 66 0 / 0.14) 1.6%, rgb(64 66 0 / 0) 4.6%),
       var(--acid);
   }
   .cover-title {
     font-size: calc(var(--u) * 143);
-    letter-spacing: 0.02em;
+    letter-spacing: 0.005em;
+  }
+  /* set slightly extended, as printed, to carry the comp's black density */
+  .cover-title .line > span {
+    display: inline-block;
+    scale: 1.07 1;
+    transform-origin: left center;
   }
   .promises {
     margin-top: calc(var(--u) * 16);
@@ -712,7 +771,7 @@
   .promises li {
     grid-template-columns: calc(var(--u) * 115) auto;
     gap: 0;
-    height: calc(var(--u) * 118.5);
+    min-height: calc(var(--u) * 118.5);
   }
   .promises .num {
     font-size: calc(var(--u) * 99);
@@ -720,7 +779,7 @@
     margin-left: calc(var(--u) * 6);
   }
   .promises .txt {
-    font-size: calc(var(--u) * 37);
+    font-size: max(1rem, calc(var(--u) * 37));
     line-height: 1.08;
     font-weight: 900;
     max-width: none;
@@ -746,14 +805,27 @@
     border-radius: calc(var(--u) * 16);
   }
   .cover-secondary {
-    font-size: calc(var(--u) * 31);
+    font-size: max(0.9375rem, calc(var(--u) * 31));
     text-decoration-thickness: calc(var(--u) * 3);
     text-underline-offset: calc(var(--u) * 10);
   }
   .folio {
     right: calc(var(--u) * 44);
     bottom: calc(var(--u) * 42.7);
-    font-size: calc(var(--u) * 30);
+    font-size: max(0.8125rem, calc(var(--u) * 30));
+  }
+}
+
+/* Tablets: the stacked cover keeps the headline and the call to action
+   within reach of the first screen. */
+@media (min-width: 600px) and (max-width: 1023px) {
+  .cover-left {
+    aspect-ratio: auto;
+    height: min(110vw, 58svh);
+  }
+  .promises .txt {
+    max-width: 28ch;
+    text-wrap: balance;
   }
 }
 
@@ -860,7 +932,34 @@
     filter: brightness(0.8);
   }
 }
+@media print {
+  .js-motion [data-turn] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
+  .contents,
+  .contents[data-open='true'] {
+    clip-path: none;
+    transition:
+      opacity 200ms ease-out,
+      visibility 0s linear 200ms;
+  }
+  .contents {
+    opacity: 0;
+  }
+  .contents[data-open='true'] {
+    opacity: 1;
+    transition:
+      opacity 200ms ease-out,
+      visibility 0s;
+  }
+  .runhead {
+    transition: none;
+  }
   .js-motion .cover-right,
   .js-motion .cover-left {
     animation: fade 300ms ease-out both;
@@ -877,7 +976,7 @@
 
 .motion-toggle {
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -888,7 +987,8 @@
   background: rgb(13 13 13 / 0.62);
   color: #fff;
   cursor: pointer;
-  opacity: 0;
+  opacity: 0.85;
+  animation: fade 300ms var(--ease-out) backwards;
   transition: opacity 200ms var(--ease-out), transform 160ms var(--ease-out);
 }
 .motion-toggle svg {
@@ -898,11 +998,13 @@
 .motion-toggle:active {
   transform: scale(0.94);
 }
-.motion-toggle[data-ready='true'] {
-  opacity: 0.85;
-}
 .motion-toggle:focus-visible {
   opacity: 1;
+}
+@media (hover: hover) and (pointer: fine) {
+  .motion-toggle:hover {
+    opacity: 1;
+  }
 }
 
 /* ----------------------------------------------------------- cover stories */
@@ -949,12 +1051,62 @@
 }
 
 .story {
+  --story-bg: var(--ink);
+  --story-fg: var(--on-ink);
+  --story-muted: var(--on-ink-2);
+  --story-niche: var(--acid);
   position: relative;
-  display: block;
-  color: var(--on-ink);
-  text-decoration: none;
-  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  color: var(--story-fg);
+  background: var(--story-bg);
   isolation: isolate;
+}
+/* One print colour per cover story, from the issue's four inks. */
+.story[data-tone='acid'],
+.case[data-tone='acid'] {
+  --story-bg: var(--acid);
+  --story-fg: var(--ink);
+  --story-muted: var(--ink-2);
+  --story-niche: var(--ink);
+}
+.story[data-tone='red'],
+.case[data-tone='red'] {
+  --story-bg: var(--signal);
+  --story-fg: var(--ink);
+  --story-muted: var(--ink);
+  --story-niche: var(--ink);
+}
+.story[data-tone='paper'],
+.case[data-tone='paper'] {
+  --story-bg: #fff;
+  --story-fg: var(--ink);
+  --story-muted: var(--ink-2);
+  --story-niche: var(--ink);
+}
+.story[data-tone='paper'] .story__meta {
+  box-shadow: inset 0 0 0 2px var(--ink);
+}
+/* The card's one link is stretched over the whole card. */
+.story__link {
+  color: inherit;
+  text-decoration: none;
+}
+.story__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+.story__link:focus-visible {
+  outline: none;
+}
+.story:has(.story__link:focus-visible) {
+  outline: 3px solid var(--signal);
+  outline-offset: 4px;
+}
+.nowrap {
+  white-space: nowrap;
 }
 .story__media {
   position: relative;
@@ -1035,24 +1187,26 @@
   }
 }
 .story__meta {
+  flex: 1;
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
   align-items: baseline;
   justify-content: space-between;
   gap: 0.35rem 1.5rem;
   padding: 1rem clamp(1rem, calc(var(--u) * 33), 2.5rem) 1.25rem;
-  background: var(--ink);
+  background: var(--story-bg);
 }
 .story__meta .niche {
-  color: var(--acid);
+  color: var(--story-niche);
   margin: 0;
 }
 .story__meta .niche-sep {
-  color: var(--on-ink-2);
+  color: var(--story-muted);
 }
 .story__meta p {
   flex-basis: 100%;
-  color: var(--on-ink-2);
+  color: var(--story-muted);
   font-size: 1rem;
   line-height: 1.45;
   max-width: 60ch;
@@ -1063,7 +1217,7 @@
   gap: 0.4rem;
   font-weight: 800;
   font-size: 0.95rem;
-  color: var(--on-ink);
+  color: var(--story-fg);
 }
 .story__go svg {
   width: 1rem;
@@ -1099,11 +1253,15 @@
 }
 @media (min-width: 1024px) {
   .stories__more {
-    grid-template-columns: repeat(4, 1fr);
     padding-left: calc(var(--u) * 67);
     padding-right: calc(var(--u) * 67);
     gap: calc(var(--u) * 35);
     margin-top: calc(var(--u) * 35);
+  }
+}
+@media (min-width: 1280px) {
+  .stories__more {
+    grid-template-columns: repeat(4, 1fr);
   }
   .stories__more .story__title {
     font-size: clamp(1.6rem, 1rem + 1.1vw, 2.4rem);
@@ -1150,7 +1308,7 @@
 }
 .running-folio {
   position: absolute;
-  top: 1.25rem;
+  bottom: 1.25rem;
   left: var(--gutter);
   right: var(--gutter);
   display: flex;
@@ -1160,6 +1318,12 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   opacity: 0.7;
+}
+.running-folio .page {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0;
+  line-height: 1;
 }
 
 /* Sound familiar: reader letters */
@@ -1272,9 +1436,9 @@
   margin-inline: calc(var(--gutter) * -1);
   padding-inline: var(--gutter);
 }
-@media (min-width: 900px) {
+@media (min-width: 1100px) {
   .price {
-    grid-template-columns: minmax(10rem, 1.1fr) minmax(0, 2fr) minmax(9rem, 0.9fr) auto;
+    grid-template-columns: minmax(14.5rem, 1.1fr) minmax(0, 2fr) minmax(9rem, 0.9fr) auto;
     align-items: center;
   }
   .price--pick {
@@ -1596,11 +1760,13 @@
 
 .case {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   border-top: 3px solid var(--ink);
 }
 @media (min-width: 1024px) {
   .case {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
   }
   .case:nth-of-type(even) .case__media {
     order: 2;
@@ -1610,13 +1776,18 @@
   position: relative;
   overflow: hidden;
   background: var(--ink);
-  min-height: 20rem;
+  width: 100%;
   aspect-ratio: 3 / 2;
 }
+/* On the open spread the cover page stays in view while its story is read,
+   one viewport tall, so the plate is never stretched up a long column. */
 @media (min-width: 1024px) {
   .case__media {
+    position: sticky;
+    top: max(2.5rem, calc(var(--u) * 74));
     aspect-ratio: auto;
-    min-height: 100%;
+    height: calc(100vh - max(2.5rem, calc(var(--u) * 74)));
+    max-height: 64rem;
   }
 }
 .case__media img,
@@ -1645,12 +1816,20 @@
   background: linear-gradient(160deg, rgb(0 0 0 / 0.55), rgb(0 0 0 / 0.1) 40%, rgb(0 0 0 / 0) 60%);
   pointer-events: none;
 }
-.case__body {
-  padding: clamp(2rem, 5vw, 4rem) var(--gutter);
-  background: var(--paper);
+.case {
+  --story-bg: var(--ink);
+  --story-fg: var(--on-ink);
+  --story-muted: var(--on-ink-2);
 }
-.case:nth-of-type(3n + 2) .case__body {
-  background: var(--acid);
+.case__body {
+  container-type: inline-size;
+  min-width: 0;
+  padding: clamp(2rem, 5vw, 4rem) var(--gutter);
+  background: var(--story-bg);
+  color: var(--story-fg);
+}
+.case[data-tone='ink'] .case__body {
+  --rule-strong: rgb(255 255 255 / 0.4);
 }
 .case__deck {
   font-size: clamp(1.25rem, 1.05rem + 0.6vw, 1.6rem);
@@ -1664,9 +1843,9 @@
   gap: 1.5rem 2rem;
   margin-top: 2rem;
 }
-@media (min-width: 640px) {
+@container (min-width: 36rem) {
   .case__cols {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 .case__cols h3 {
@@ -1675,13 +1854,14 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--ink);
+  border-bottom: 2px solid currentColor;
 }
 .case__cols p {
   margin-top: 0.6rem;
   font-size: 0.98rem;
   font-weight: 600;
   line-height: 1.5;
+  color: var(--story-muted);
 }
 .tags {
   display: flex;
@@ -1693,7 +1873,7 @@
 }
 .tags li {
   padding: 0.3rem 0.7rem;
-  border: 1.5px solid var(--ink);
+  border: 1.5px solid currentColor;
   border-radius: 999px;
   font-size: 0.85rem;
   font-weight: 800;
@@ -1704,6 +1884,9 @@
   gap: 1rem 1.75rem;
   align-items: center;
   margin-top: 2rem;
+}
+.case__actions .btn {
+  white-space: normal;
 }
 
 /* Real screenshots, in a plain browser frame */
@@ -1725,6 +1908,7 @@
   font-weight: 700;
 }
 .browser__bar i {
+  flex: none;
   width: 0.6rem;
   height: 0.6rem;
   border-radius: 50%;
@@ -1749,14 +1933,21 @@
   object-fit: cover;
   object-position: 50% 0%;
 }
-/* Long captures scroll the real page inside the frame on hover. */
-.browser__view--scroll img {
-  transition: object-position 7s var(--ease-in-out);
+/* Long captures are the real page, scrollable inside the frame. */
+.browser__view--scroll {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #8a8a8a #1a1a1a;
 }
-@media (hover: hover) and (pointer: fine) {
-  .browser:hover .browser__view--scroll img {
-    object-position: 50% 100%;
-  }
+.browser__view--scroll img {
+  position: static;
+  height: auto;
+  object-fit: fill;
+}
+.browser__view--scroll:focus-visible {
+  outline: 3px solid var(--signal);
+  outline-offset: -3px;
 }
 .browser__note {
   padding: 0.6rem 0.85rem 0.75rem;
@@ -1784,6 +1975,12 @@
   position: absolute;
   right: -0.5rem;
   bottom: -1.5rem;
+}
+@media (min-width: 640px) {
+  /* The caption is the disclosure for each capture: keep it clear of the phone. */
+  .shots .browser__note {
+    padding-right: calc(min(9.5rem, 32%) + 1rem);
+  }
 }
 @media (max-width: 639px) {
   .shots .phone {
@@ -1850,10 +2047,11 @@
 
 .reply {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
 }
 @media (min-width: 1024px) {
   .reply {
-    grid-template-columns: 0.85fr 1.15fr;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
     min-height: calc(100svh - 3.75rem);
   }
 }
@@ -1888,10 +2086,13 @@
   font-weight: 800;
   font-size: 1.1rem;
 }
-.reply__lines a span {
+.reply__lines a > span {
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
+  min-width: 0;
+}
+.reply__lines a > span > span {
   min-width: 0;
   overflow-wrap: anywhere;
 }
@@ -1948,6 +2149,12 @@
 .field[aria-invalid='true'] {
   border-color: var(--signal-ink);
   box-shadow: 0 0 0 1px var(--signal-ink);
+}
+/* Focus is drawn with an outline the invalid state never touches. */
+.field:focus-visible,
+.field[aria-invalid='true']:focus {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
 }
 textarea.field {
   min-height: 9.5rem;

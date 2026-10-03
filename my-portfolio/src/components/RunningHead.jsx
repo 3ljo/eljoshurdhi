@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { navLinks, primaryCta } from '../lib/siteConfig'
+import { focusSection } from '../lib/focusSection'
 import { Icon } from './Icons'
 
 // The magazine's running head: title and issue on the left, sections and
@@ -14,6 +15,9 @@ export default function RunningHead() {
   const openButton = useRef(null)
   const closeButton = useRef(null)
   const panel = useRef(null)
+  // False when the menu closes because a link was chosen: focus then goes to
+  // the destination, not back to the menu button.
+  const returnFocus = useRef(true)
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -34,8 +38,12 @@ export default function RunningHead() {
   useEffect(() => {
     if (!open) return undefined
     const opener = openButton.current
+    returnFocus.current = true
     document.body.style.overflow = 'hidden'
-    closeButton.current?.focus()
+    // Everything behind the contents page leaves the accessibility tree.
+    const behind = [document.querySelector('.runhead'), document.getElementById('main'), document.querySelector('.colophon')].filter(Boolean)
+    behind.forEach(el => el.setAttribute('inert', ''))
+    closeButton.current?.focus({ preventScroll: true })
     const onKey = e => {
       if (e.key === 'Escape') {
         setOpen(false)
@@ -56,19 +64,26 @@ export default function RunningHead() {
     window.addEventListener('keydown', onKey)
     return () => {
       document.body.style.overflow = ''
+      behind.forEach(el => el.removeAttribute('inert'))
       window.removeEventListener('keydown', onKey)
-      opener?.focus()
+      if (returnFocus.current) opener?.focus({ preventScroll: true })
     }
   }, [open])
 
   // "/#how-it-works": scroll when already home, otherwise navigate and let
   // the app scroll once Home renders.
   const goToHash = (e, href) => {
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
     e.preventDefault()
+    returnFocus.current = false
     setOpen(false)
     const id = href.split('#')[1]
-    if (location.pathname === '/') document.getElementById(id)?.scrollIntoView()
+    if (location.pathname === '/') requestAnimationFrame(() => focusSection(id))
     else navigate(href)
+  }
+  const chooseRoute = () => {
+    returnFocus.current = false
+    setOpen(false)
   }
 
   const contents = [{ label: 'Cover', href: '/', type: 'route' }, ...navLinks, { label: 'Contact', href: '/contact', type: 'route' }]
@@ -79,10 +94,10 @@ export default function RunningHead() {
         <nav className="runhead__bar" aria-label="Main">
           <Link to="/" className="runhead__title" aria-label="Eljo Shurdhi, Issue 01, Tirana. Home">
             <span>Eljo</span>
-            <span className="dot" aria-hidden="true" />
-            <span>Issue 01</span>
-            <span className="dot" aria-hidden="true" />
-            <span>Tirana</span>
+            <span className="dot runhead__issue" aria-hidden="true" />
+            <span className="runhead__issue">Issue 01</span>
+            <span className="dot runhead__city" aria-hidden="true" />
+            <span className="runhead__city">Tirana</span>
           </Link>
 
           <div className="runhead__nav">
@@ -109,9 +124,10 @@ export default function RunningHead() {
             onClick={() => setOpen(true)}
             aria-expanded={open}
             aria-controls="contents"
+            aria-label="Contents"
           >
             <Icon name="menu" />
-            Contents
+            <span className="runhead__menu-label">Contents</span>
           </button>
         </nav>
       </header>
@@ -139,7 +155,7 @@ export default function RunningHead() {
                     {inner}
                   </a>
                 ) : (
-                  <Link to={link.href} onClick={() => setOpen(false)} aria-current={current ? 'page' : undefined}>
+                  <Link to={link.href} onClick={chooseRoute} aria-current={current ? 'page' : undefined}>
                     {inner}
                   </Link>
                 )}
@@ -148,7 +164,7 @@ export default function RunningHead() {
           })}
         </ul>
         <div className="contents__foot">
-          <Link to="/contact" className="btn btn-lg" style={{ width: '100%' }} onClick={() => setOpen(false)}>
+          <Link to="/contact" className="btn btn-lg" style={{ width: '100%' }} onClick={chooseRoute}>
             {primaryCta}
             <Icon name="arrowRight" className="btn-arrow" />
           </Link>

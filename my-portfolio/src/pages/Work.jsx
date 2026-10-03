@@ -5,7 +5,7 @@ import { Icon } from '../components/Icons'
 import { LoopVideo, Picture } from '../components/Media'
 import { useTurnIn } from '../lib/useTurnIn'
 import { BackCover } from '../components/sections/Departments'
-import { projectMedia, templateShots } from '../lib/media'
+import { images, projectMedia, templateShots } from '../lib/media'
 import { caseStudies, templateStyles } from '../lib/siteConfig'
 import { projectSlug } from '../lib/slug'
 
@@ -15,11 +15,14 @@ function CaseStudy({ study }) {
   const ref = useTurnIn()
   const slug = projectSlug(study.title)
   const media = projectMedia[slug]
-  const host = study.href.replace(/^https?:\/\//, '').split('/')[0]
+  const { w, h } = images[media.cover]
+  // On the open spread the cover fills a viewport-tall page, so the crop
+  // needs the plate's width at that height, not half the screen.
+  const sizes = `(min-width: 1024px) max(50vw, calc((100vh - 3.5rem) * ${(w / h).toFixed(3)})), 100vw`
   return (
-    <article id={slug} className="case" aria-labelledby={`${slug}-title`}>
+    <article id={slug} className="case" data-tone={media.tone} aria-labelledby={`${slug}-title`}>
       <div ref={ref} className="case__media">
-        <Picture name={media.cover} fallback={plates[media.cover]} alt={media.coverAlt} sizes="(min-width: 1024px) 50vw, 100vw" />
+        <Picture name={media.cover} fallback={plates[media.cover]} alt={media.coverAlt} sizes={sizes} />
         {media.video && <LoopVideo name={media.video} label={`the ${study.title} cover loop`} toggleStyle={{ right: '1rem', bottom: '1rem' }} />}
         <p className="story__title display" aria-hidden="true">
           {media.coverline.map(line => (
@@ -28,10 +31,12 @@ function CaseStudy({ study }) {
         </p>
       </div>
       <div className="case__body">
-        <p className="label">{study.niche}</p>
-        <h2 id={`${slug}-title`} className="display d-lg" style={{ marginTop: '0.5rem' }}>
+        <h2 id={`${slug}-title`} className="display d-lg">
           {study.title}
         </h2>
+        <p className="label" style={{ marginTop: '0.6rem' }}>
+          {study.niche}
+        </p>
         <p className="case__deck" style={{ marginTop: '1rem' }}>
           {study.outcome}
         </p>
@@ -56,7 +61,7 @@ function CaseStudy({ study }) {
         </ul>
         <div className="shots">
           <Browser
-            url={study.href}
+            url={media.shotUrl ?? study.href}
             shot={media.shot}
             long={media.long}
             alt={`Screenshot of the live ${study.title} site`}
@@ -64,15 +69,21 @@ function CaseStudy({ study }) {
               media.loginOnly
                 ? 'The live app. The product sits behind sign-in, so this is its real login screen.'
                 : media.long
-                  ? 'The live site. Hover to scroll the whole page.'
+                  ? 'The live site. Scroll inside the frame to read the whole page.'
                   : 'The live site.'
             }
           />
           <Phone shot={media.shot} alt={`${study.title} on a phone`} />
         </div>
         <div className="case__actions">
-          <a href={study.href} target="_blank" rel="noopener noreferrer" className="btn">
-            Open {host}
+          <a
+            href={study.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`btn ${media.tone === 'ink' ? 'btn-acid' : ''}`}
+          >
+            Open the live site
+            <span className="sr-only">: {study.title}, opens in a new tab</span>
             <Icon name="arrowUpRight" className="btn-arrow" />
           </a>
         </div>
@@ -91,7 +102,7 @@ export default function Work() {
               Cover stories
             </h1>
             <p className="lead">
-              Six products, built and shipped. Every one is live: open it and click around.
+              Six products, built and shipped, all live. Four you can click straight through; two sit behind a sign-in.
             </p>
           </div>
           <nav aria-label="Stories in this issue" style={{ marginTop: 'clamp(2rem, 4vw, 3rem)' }}>

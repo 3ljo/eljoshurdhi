@@ -31,13 +31,14 @@ const motionAllowed = () =>
 
 // A silent loop laid over its still. It only loads once it is near the
 // viewport, plays while visible, and never runs for visitors who asked for
-// less motion or less data. The still underneath is the poster.
+// less motion or less data. The still underneath is the poster. The pause
+// control appears once the loop is actually playing and always reports what
+// the video is doing, not what was last clicked.
 export function LoopVideo({ name, label, className, toggleStyle }) {
   const ref = useRef(null)
   const [enabled] = useState(motionAllowed)
-  const [playing, setPlaying] = useState(false)
-  const [paused, setPaused] = useState(false)
-  const visible = useRef(false)
+  const [started, setStarted] = useState(false)
+  const [paused, setPaused] = useState(true)
 
   useEffect(() => {
     const video = ref.current
@@ -45,7 +46,6 @@ export function LoopVideo({ name, label, className, toggleStyle }) {
     video.muted = true
     const observer = new IntersectionObserver(
       ([entry]) => {
-        visible.current = entry.isIntersecting
         if (entry.isIntersecting) {
           if (!video.getAttribute('src')) video.setAttribute('src', `/media/video/${name}.mp4`)
           if (!video.dataset.userPaused) video.play().catch(() => {})
@@ -61,16 +61,16 @@ export function LoopVideo({ name, label, className, toggleStyle }) {
 
   if (!enabled) return null
 
-  const toggle = () => {
+  const toggle = e => {
+    e.preventDefault()
+    e.stopPropagation()
     const video = ref.current
     if (!video) return
     if (video.paused) {
       delete video.dataset.userPaused
-      setPaused(false)
       video.play().catch(() => {})
     } else {
       video.dataset.userPaused = 'true'
-      setPaused(true)
       video.pause()
     }
   }
@@ -79,25 +79,30 @@ export function LoopVideo({ name, label, className, toggleStyle }) {
     <>
       <video
         ref={ref}
-        className={`${className ?? ''} ${playing ? 'is-playing' : ''}`}
+        className={`${className ?? ''} ${started ? 'is-playing' : ''}`}
         muted
         loop
         playsInline
         preload="none"
         aria-hidden="true"
         tabIndex={-1}
-        onPlaying={() => setPlaying(true)}
+        onPlaying={() => {
+          setStarted(true)
+          setPaused(false)
+        }}
+        onPause={() => setPaused(true)}
       />
-      <button
-        type="button"
-        className="motion-toggle"
-        style={toggleStyle}
-        data-ready={playing}
-        onClick={toggle}
-        aria-label={paused ? `Play ${label}` : `Pause ${label}`}
-      >
-        <Icon name={paused ? 'play' : 'pause'} strokeWidth={2.4} />
-      </button>
+      {started && (
+        <button
+          type="button"
+          className="motion-toggle"
+          style={toggleStyle}
+          onClick={toggle}
+          aria-label={paused ? `Play ${label}` : `Pause ${label}`}
+        >
+          <Icon name={paused ? 'play' : 'pause'} strokeWidth={2.4} />
+        </button>
+      )}
     </>
   )
 }

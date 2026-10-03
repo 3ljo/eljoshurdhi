@@ -1,6 +1,7 @@
-// A real screenshot in a plain browser frame. Long captures scroll the page
-// inside the frame on hover, so the whole site can be read without leaving.
-export function Browser({ url, shot, long = false, alt, note, sizes = '(min-width: 1024px) 45vw, 100vw' }) {
+// A real screenshot in a plain browser frame. Long captures are scrollable
+// inside the frame (wheel, touch or keyboard), so the whole page can be read
+// without leaving.
+export function Browser({ url, shot, long = false, alt, note, sizes = '(min-width: 1024px) 45vw, 100vw', label }) {
   const host = url.replace(/^https?:\/\//, '').replace(/\/$/, '')
   const src = long ? `/media/shots/${shot}-long.webp` : `/media/shots/${shot}-desktop.webp`
   return (
@@ -11,7 +12,12 @@ export function Browser({ url, shot, long = false, alt, note, sizes = '(min-widt
         <i />
         <span>{host}</span>
       </div>
-      <div className={`browser__view ${long ? 'browser__view--scroll' : ''}`}>
+      <div
+        className={`browser__view ${long ? 'browser__view--scroll' : ''}`}
+        tabIndex={long ? 0 : undefined}
+        role={long ? 'region' : undefined}
+        aria-label={long ? label ?? `${alt}, scrollable` : undefined}
+      >
         <img
           src={src}
           srcSet={long ? undefined : `/media/shots/${shot}-desktop-720.webp 720w, /media/shots/${shot}-desktop.webp 1280w`}

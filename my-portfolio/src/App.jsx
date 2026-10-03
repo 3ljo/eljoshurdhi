@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import RunningHead from './components/RunningHead'
 import Colophon from './components/Colophon'
@@ -8,24 +8,48 @@ import Work from './pages/Work'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
+import { focusSection } from './lib/focusSection'
 
-// Starts every new page at the top, or at an in-page anchor (e.g. a nav link
-// to "/#how-it-works" clicked from a page other than Home) once the target
-// route has rendered. Anchor scrolls follow the CSS scroll-behavior, which is
-// smooth only when the visitor allows motion.
+const titles = {
+  '/': 'Eljo Shurdhi — Custom Websites That Convert',
+  '/work': 'Cover stories — Eljo Shurdhi',
+  '/pricing': 'Pricing — Eljo Shurdhi',
+  '/about': 'Why me — Eljo Shurdhi',
+  '/contact': 'Start your project — Eljo Shurdhi',
+}
+
+// Starts every new page at the top, or at an in-page anchor (e.g. a link to
+// "/#how-it-works" from another page) once the target route has rendered.
+// Each navigation also titles the page and moves focus to its heading or
+// anchor, so screen readers hear the change. Anchor scrolls follow the CSS
+// scroll-behavior, which is smooth only when the visitor allows motion.
 function ScrollToTop() {
-  const { pathname, hash } = useLocation()
+  const { pathname, hash, key } = useLocation()
+  const first = useRef(true)
 
   useEffect(() => {
+    document.title = titles[pathname] ?? 'Page not found — Eljo Shurdhi'
+  }, [pathname])
+
+  useEffect(() => {
+    const initial = first.current
+    first.current = false
     if (hash) {
       const id = hash.replace('#', '')
-      const scrollToElement = () => document.getElementById(id)?.scrollIntoView()
-      scrollToElement()
-      const timeoutId = window.setTimeout(scrollToElement, 100)
+      if (focusSection(id)) return undefined
+      const timeoutId = window.setTimeout(() => focusSection(id), 100)
       return () => window.clearTimeout(timeoutId)
     }
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
-  }, [pathname, hash])
+    if (!initial) {
+      const heading = document.querySelector('main h1')
+      if (heading) {
+        heading.setAttribute('tabindex', '-1')
+        heading.focus({ preventScroll: true })
+      }
+    }
+    return undefined
+  }, [pathname, hash, key])
 
   return null
 }

@@ -1,4 +1,5 @@
-import { useId, useRef, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
+import { flushSync } from 'react-dom'
 import { useSearchParams } from 'react-router-dom'
 import { BrandIcon, Icon } from '../components/Icons'
 import { validateLead, submitLead } from '../lib/leadForm'
@@ -31,18 +32,22 @@ function TextField({ label, error, multiline = false, ...props }) {
 function ChoiceField({ legend, name, options, value, onChange, error }) {
   const id = useId()
   return (
-    <fieldset
-      style={{ margin: 0, padding: 0, border: 0 }}
-      aria-invalid={error ? 'true' : undefined}
-      aria-describedby={error ? `${id}-error` : undefined}
-    >
+    <fieldset style={{ margin: 0, padding: 0, border: 0 }} aria-invalid={error ? 'true' : undefined}>
       <legend className="field-label" style={{ padding: 0 }}>
         {legend}
       </legend>
       <div className="choices">
         {options.map(option => (
           <label key={option.value} className="choice">
-            <input type="radio" name={name} value={option.value} checked={value === option.value} onChange={onChange} />
+            <input
+              type="radio"
+              name={name}
+              value={option.value}
+              checked={value === option.value}
+              onChange={onChange}
+              aria-invalid={error ? 'true' : undefined}
+              aria-describedby={error ? `${id}-error` : undefined}
+            />
             <span>{option.label}</span>
           </label>
         ))}
@@ -59,7 +64,8 @@ function ChoiceField({ legend, name, options, value, onChange, error }) {
 export default function Contact() {
   const [searchParams] = useSearchParams()
   const formRef = useRef(null)
-  const [status, setStatus] = useState('idle') // idle | sending | success
+  const resetTimer = useRef(null)
+  const [status, setStatus] = useState('idle') // idle | sending | handed-off
   const [errors, setErrors] = useState({})
   const [fields, setFields] = useState({
     name: '',
@@ -69,12 +75,21 @@ export default function Contact() {
     message: '',
   })
 
-  const update = key => e => setFields(prev => ({ ...prev, [key]: e.target.value }))
+  useEffect(() => () => clearTimeout(resetTimer.current), [])
+
+  // A field that is fixed stops reporting its error straight away.
+  const update = key => e => {
+    const { value } = e.target
+    setFields(prev => ({ ...prev, [key]: value }))
+    setErrors(prev => (prev[key] ? { ...prev, [key]: undefined } : prev))
+  }
 
   const handleSubmit = async e => {
     e.preventDefault()
     const validationErrors = validateLead(fields)
-    setErrors(validationErrors)
+    // Render the errors before moving focus, so the field is announced with
+    // its error rather than without it.
+    flushSync(() => setErrors(validationErrors))
     // Errors render on the next paint, so find the first invalid field by
     // name (in form order) rather than by its aria-invalid attribute.
     const firstInvalid = Object.keys(fields).find(key => validationErrors[key])
@@ -88,9 +103,11 @@ export default function Contact() {
     const budgetLabel = budgetOptions.find(o => o.value === fields.budget)?.label
     await submitLead(fields, { projectTypeLabel, budgetLabel })
 
-    setStatus('success')
-    setFields({ name: '', email: '', projectType: '', budget: '', message: '' })
-    setTimeout(() => setStatus('idle'), 6000)
+    // The page can't tell whether an email app opened, so the details stay
+    // in the form and the message says what to do if nothing happened.
+    setStatus('handed-off')
+    clearTimeout(resetTimer.current)
+    resetTimer.current = setTimeout(() => setStatus('idle'), 20000)
   }
 
   return (
@@ -120,7 +137,9 @@ export default function Contact() {
               <a href={brand.whatsapp} target="_blank" rel="noopener noreferrer">
                 <span>
                   <BrandIcon name="whatsapp" />
-                  WhatsApp {brand.whatsappLabel}
+                  <span>
+                    WhatsApp <span className="nowrap">{brand.whatsappLabel}</span>
+                  </span>
                 </span>
                 <Icon name="arrowUpRight" />
               </a>
@@ -189,14 +208,26 @@ export default function Contact() {
             />
           </div>
 
-          <button type="submit" className="btn btn-lg" style={{ width: '100%', marginTop: '2rem' }} disabled={status === 'sending'}>
+          <button type="submit" className="btn btn-lg" style={{ width: '100%', marginTop: '2rem', whiteSpace: 'normal' }} disabled={status === 'sending'}>
             {status === 'sending' ? 'Opening your email…' : 'Send project details'}
             {status !== 'sending' && <Icon name="arrowRight" className="btn-arrow" />}
           </button>
           <p style={{ marginTop: '0.9rem', textAlign: 'center', fontWeight: 600, fontSize: '0.95rem' }} aria-live="polite">
-            {status === 'success'
-              ? 'Opened in your email app. Hit send there and it reaches me.'
-              : 'Nothing sends until you press send in your own email app.'}
+            {status === 'handed-off' ? (
+              <>
+                Your email app should open with all of this filled in. Nothing opened? Email{' '}
+                <a href={`mailto:${brand.directEmail}`} style={{ fontWeight: 800 }}>
+                  {brand.directEmail}
+                </a>{' '}
+                or{' '}
+                <a href={brand.whatsapp} target="_blank" rel="noopener noreferrer" style={{ fontWeight: 800 }}>
+                  WhatsApp me
+                </a>
+                . Your details are still here.
+              </>
+            ) : (
+              'Nothing sends until you press send in your own email app.'
+            )}
           </p>
         </form>
       </section>
