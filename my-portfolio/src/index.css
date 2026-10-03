@@ -352,7 +352,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  height: max(3.75rem, calc(var(--u) * 74));
+  height: 3.75rem;
   padding-inline: max(var(--gutter), calc(var(--u) * 72));
   padding-right: max(var(--gutter), calc(var(--u) * 64));
 }
@@ -360,7 +360,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.85em;
-  font-size: max(0.8125rem, calc(var(--u) * 26.5));
+  font-size: 0.8125rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -381,7 +381,7 @@
 }
 .runhead__nav a {
   position: relative;
-  font-size: max(0.9375rem, calc(var(--u) * 25));
+  font-size: max(0.8125rem, calc(var(--u) * 25));
   font-weight: 700;
   text-decoration: none;
   padding-block: 0.4em;
@@ -408,9 +408,9 @@
 }
 .runhead__cta {
   display: none;
-  min-height: max(2.75rem, calc(var(--u) * 51));
-  padding-inline: max(1.1rem, calc(var(--u) * 21));
-  font-size: max(0.875rem, calc(var(--u) * 25));
+  min-height: max(1.75rem, calc(var(--u) * 51));
+  padding-inline: max(0.9rem, calc(var(--u) * 21));
+  font-size: max(0.8125rem, calc(var(--u) * 25));
   margin-left: calc(var(--u) * 62);
   margin-top: calc(var(--u) * 8);
 }
@@ -435,6 +435,14 @@
   height: 1.15rem;
 }
 @media (min-width: 1024px) {
+  /* On the open spread the running head is the comp's thin strip, scaled
+     with the page. */
+  .runhead__bar {
+    height: max(2.5rem, calc(var(--u) * 74));
+  }
+  .runhead__title {
+    font-size: max(0.75rem, calc(var(--u) * 26.5));
+  }
   .runhead__nav,
   .runhead__cta {
     display: inline-flex;
@@ -920,6 +928,9 @@
   padding-inline: var(--gutter);
 }
 @media (min-width: 1024px) {
+  .stories {
+    padding-top: calc(var(--u) * 38);
+  }
   .stories__head {
     padding-left: calc(var(--u) * 66);
     padding-right: calc(var(--u) * 67);
@@ -930,6 +941,8 @@
   }
   .stories__lead {
     grid-template-columns: 1fr 1fr;
+    gap: calc(var(--u) * 35);
+    margin-top: calc(var(--u) * 25);
     padding-left: calc(var(--u) * 67);
     padding-right: calc(var(--u) * 67);
   }
@@ -1011,7 +1024,7 @@
     left: calc(var(--u) * 32);
     top: calc(var(--u) * 29);
     max-width: none;
-    font-size: max(1.75rem, calc(var(--u) * 49));
+    font-size: max(1.5rem, calc(var(--u) * 49));
     letter-spacing: 0.01em;
   }
   .story--lead .story__title::after {
