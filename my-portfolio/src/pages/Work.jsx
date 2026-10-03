@@ -18,7 +18,7 @@ function CaseStudy({ study }) {
   const { w, h } = images[media.cover]
   // On the open spread the cover fills a viewport-tall page, so the crop
   // needs the plate's width at that height, not half the screen.
-  const sizes = `(min-width: 1024px) max(50vw, calc((100vh - 3.5rem) * ${(w / h).toFixed(3)})), 100vw`
+  const sizes = `(min-width: 1024px) max(50vw, calc(100vh * ${(w / h).toFixed(3)})), 100vw`
   return (
     <article id={slug} className="case" data-tone={media.tone} aria-labelledby={`${slug}-title`}>
       <div ref={ref} className="case__media">

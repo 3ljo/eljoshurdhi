@@ -41,7 +41,7 @@ export default function RunningHead() {
     returnFocus.current = true
     document.body.style.overflow = 'hidden'
     // Everything behind the contents page leaves the accessibility tree.
-    const behind = [document.querySelector('.runhead'), document.getElementById('main'), document.querySelector('.colophon')].filter(Boolean)
+    const behind = ['.skip-link', '.runhead', '#main', '.colophon'].map(sel => document.querySelector(sel)).filter(Boolean)
     behind.forEach(el => el.setAttribute('inert', ''))
     closeButton.current?.focus({ preventScroll: true })
     const onKey = e => {

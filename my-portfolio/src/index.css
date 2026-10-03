@@ -720,6 +720,17 @@
     aspect-ratio: auto;
     z-index: 1;
   }
+  /* the spine: the pages lift into the top margin where they meet */
+  .cover-right::before {
+    content: '';
+    position: absolute;
+    top: calc(var(--u) * -46);
+    left: calc(var(--u) * -34);
+    width: calc(var(--u) * 64);
+    height: calc(var(--u) * 46);
+    pointer-events: none;
+    background: radial-gradient(ellipse 50% 100% at 50% 100%, rgb(0 0 0 / 0.16), rgb(0 0 0 / 0) 72%);
+  }
   /* the fold: the photo page darkens into the spine */
   .cover-left::after {
     content: '';
@@ -761,8 +772,12 @@
   /* set slightly extended, as printed, to carry the comp's black density */
   .cover-title .line > span {
     display: inline-block;
+    max-width: calc(100% / 1.07);
     scale: 1.07 1;
     transform-origin: left center;
+  }
+  .cover-title {
+    -webkit-text-stroke: 0.012em var(--ink);
   }
   .promises {
     margin-top: calc(var(--u) * 16);
@@ -818,11 +833,17 @@
 
 /* Tablets: the stacked cover keeps the headline and the call to action
    within reach of the first screen. */
-@media (min-width: 600px) and (max-width: 1023px) {
+@media (min-width: 600px) and (max-width: 1023px) and (orientation: portrait) {
   .cover-left {
     aspect-ratio: auto;
     height: min(110vw, 58svh);
   }
+  /* the nameplate runs about 3.26 font-sizes long; keep it on the page */
+  .masthead span {
+    font-size: min(clamp(5.5rem, 31vw, 12rem), calc(min(110vw, 58svh) * 0.27));
+  }
+}
+@media (min-width: 600px) and (max-width: 1023px) {
   .promises .txt {
     max-width: 28ch;
     text-wrap: balance;
@@ -1766,7 +1787,6 @@
 @media (min-width: 1024px) {
   .case {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    align-items: start;
   }
   .case:nth-of-type(even) .case__media {
     order: 2;
@@ -1784,10 +1804,10 @@
 @media (min-width: 1024px) {
   .case__media {
     position: sticky;
-    top: max(2.5rem, calc(var(--u) * 74));
+    top: 0;
+    align-self: start;
     aspect-ratio: auto;
-    height: calc(100vh - max(2.5rem, calc(var(--u) * 74)));
-    max-height: 64rem;
+    height: 100vh;
   }
 }
 .case__media img,
@@ -1936,7 +1956,6 @@
 /* Long captures are the real page, scrollable inside the frame. */
 .browser__view--scroll {
   overflow-y: auto;
-  overscroll-behavior: contain;
   scrollbar-width: thin;
   scrollbar-color: #8a8a8a #1a1a1a;
 }
