@@ -10,7 +10,7 @@ export default function Services() {
             Pricing
           </h1>
           <p className="lead">
-            Fixed prices, in writing, before anything starts. Pick the package that matches where your business is today.
+            Pick where your business is today. Each one is built to bring you customers.
           </p>
         </div>
         <div className="page-head__media">
@@ -22,9 +22,9 @@ export default function Services() {
           />
         </div>
       </header>
-      <PriceList detailed />
+      <PriceList detailed hideHead />
       <Interview />
-      <BackCover title="Not sure which one fits?" body="Tell me about your business and I'll tell you honestly what it needs, and which package gets you there." />
+      <BackCover title="Not sure which one fits?" body="Tell me about your business. I'll tell you honestly which one you need." />
     </main>
   )
 }

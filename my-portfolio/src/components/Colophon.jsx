@@ -16,7 +16,7 @@ export default function Colophon() {
               Eljo
             </p>
             <p style={{ marginTop: '1.25rem', maxWidth: '34ch', fontWeight: 700, color: 'var(--on-ink-2)' }}>
-              {brand.name}, {brand.role.toLowerCase()} in {brand.location}. Websites and web apps for businesses that want more customers.
+              {brand.name}, {brand.location}. Websites built to bring small businesses more customers.
             </p>
           </div>
           <div>
@@ -74,7 +74,7 @@ export default function Colophon() {
           <span>
             © {year} {brand.name} · Issue 01 · {brand.location}
           </span>
-          <span>Hand-coded in Tirana.</span>
+          <span>Made in Tirana.</span>
         </div>
       </div>
     </footer>

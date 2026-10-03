@@ -24,7 +24,7 @@ export function SoundFamiliar() {
             Sound familiar?
           </h2>
           <p className="lead" style={{ color: 'var(--on-ink-2)' }}>
-            Six signs a website is quietly costing a business its customers. If one of them is yours, this issue is for you.
+            Every one of these sends customers somewhere else.
           </p>
         </div>
         <ul className="letters">
@@ -54,7 +54,7 @@ export function HowItWorks({ id }) {
             How it works
           </h2>
           <p className="lead" style={{ marginTop: '1.25rem' }}>
-            One person, one fixed price, one clear path from your first message to a site that earns.
+            Three steps from your first message to a site that earns.
           </p>
           <ol className="steps">
             {processSteps.map((step, i) => (
@@ -75,19 +75,27 @@ export function HowItWorks({ id }) {
   )
 }
 
-export function PriceList({ detailed = false, headingLevel = 2 }) {
+// `hideHead` is for /pricing, whose page head already says what this is: the
+// list keeps its name for screen readers and drops the repeated headline.
+export function PriceList({ detailed = false, hideHead = false, headingLevel = 2 }) {
   const H = `h${headingLevel}`
   return (
     <section className="dept" aria-labelledby="prices-title">
       <Folio page="08" />
       <div className="wrap">
-        <div className="dept-head">
-          <H id="prices-title" className="display d-xl">
+        {hideHead ? (
+          <H id="prices-title" className="sr-only">
             The price list
           </H>
-          <p className="lead">Three ways to launch a site built to bring you customers, and one way to keep it running.</p>
-        </div>
-        <ul className="prices">
+        ) : (
+          <div className="dept-head">
+            <H id="prices-title" className="display d-xl">
+              The price list
+            </H>
+            <p className="lead">Three sites built to bring you customers. One plan to keep yours running.</p>
+          </div>
+        )}
+        <ul className="prices" style={hideHead ? { marginTop: 0 } : undefined}>
           {packages.map(pkg => (
             <li key={pkg.slug} className={`price ${pkg.recommended ? 'price--pick' : ''}`}>
               <div>
@@ -96,7 +104,7 @@ export function PriceList({ detailed = false, headingLevel = 2 }) {
               </div>
               <div>
                 <p className="price__for">{pkg.forWho}</p>
-                <p className="price__problem">{pkg.problem}</p>
+                {detailed && <p className="price__problem">{pkg.problem}</p>}
                 {detailed && (
                   <ul className="price__includes">
                     {pkg.includes.map(item => (
@@ -124,11 +132,11 @@ export function PriceList({ detailed = false, headingLevel = 2 }) {
         </ul>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem 2rem', justifyContent: 'space-between', marginTop: '1.75rem' }}>
           <p className="muted" style={{ fontWeight: 700, maxWidth: '60ch' }}>
-            Prices are starting points. Every project gets a fixed quote in writing before any work begins.
+            Starting prices. Your exact price is fixed in writing before work starts.
           </p>
           {!detailed && (
             <Link to="/pricing" className="text-link">
-              What every package includes
+              See what's included
               <Icon name="arrowUpRight" />
             </Link>
           )}
@@ -166,9 +174,8 @@ export function Interview() {
       <div className="wrap">
         <div className="dept-head">
           <h2 id="interview-title" className="display d-xl">
-            The questions you're already asking
+            Straight answers
           </h2>
-          <p className="lead">Answered before you have to type them.</p>
         </div>
         <dl className="interview">
           {objections.map(item => (
@@ -183,7 +190,7 @@ export function Interview() {
   )
 }
 
-export function BackCover({ title = "Let's put your business on the cover.", body = "Tell me about your business and I'll tell you honestly what it needs. I read every message myself." }) {
+export function BackCover({ title = "Let's get you more customers.", body = "Tell me about your business. I'll tell you honestly what it needs." }) {
   return (
     <section className="back-cover" aria-labelledby="back-title">
       <Picture name="posters" alt="" sizes="100vw" />

@@ -25,11 +25,11 @@ export function validateLead(fields) {
     errors.email = 'Enter a valid email address.'
   }
 
-  if (!fields.projectType) errors.projectType = 'Choose a project type.'
-  if (!fields.budget) errors.budget = 'Choose a budget range.'
+  if (!fields.projectType) errors.projectType = 'Pick what you need.'
+  if (!fields.budget) errors.budget = 'Pick a budget.'
 
   if (!fields.message?.trim()) {
-    errors.message = 'Tell me a bit about the project.'
+    errors.message = 'Tell me a bit about your business.'
   } else if (fields.message.trim().length < 10) {
     errors.message = 'A few more details would help — one or two sentences is plenty.'
   }

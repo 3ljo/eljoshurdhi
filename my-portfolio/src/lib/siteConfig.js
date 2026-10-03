@@ -1,8 +1,11 @@
 // ---------------------------------------------------------------------------
 // Single source of truth for anything commercial on the site: brand info,
-// positioning copy, packages, pricing, methodology, proof, and objection
-// handling. Edit copy and numbers here — nothing below is hardcoded again
-// inside a component.
+// positioning copy, packages, pricing, proof, and objection handling. Edit
+// copy and numbers here — nothing below is hardcoded again inside a component.
+//
+// Voice: every line sells what the business gets (calls, bookings, orders,
+// trust, hours back), in words an owner uses. No tool names, no jargon, and
+// no claim the projects can't back up.
 //
 // FLAGGED AS PLACEHOLDER: every `price` and `timeframe` in `packages` below.
 // Structure, positioning, and copy are real; the numbers are starting points
@@ -35,119 +38,76 @@ export const navLinks = [
   { label: 'Why me', href: '/about', type: 'route' },
 ]
 
-// Short, punchy marketing lines for the scrolling trust strip (<ProofStrip />)
-// — adjectives and value statements, not stats or invented numbers. Each
-// pairs with an icon key rendered in ProofStrip.jsx.
-export const proofChips = [
-  { icon: 'sparkles', text: 'Fully custom-built, never templated' },
-  { icon: 'bolt', text: 'Fast without cutting corners' },
-  { icon: 'document', text: 'Fixed price, always in writing' },
-  { icon: 'chat', text: 'Direct line to the person building it' },
-  { icon: 'shield', text: 'No agency layers, no runaround' },
-  { icon: 'check', text: 'Live, working products — not prototypes' },
-]
-
 export const packages = [
   {
     slug: 'launch',
     name: 'Launch',
-    forWho: 'You need to look legitimate online — today',
-    problem: "No website, or one so outdated it's actively costing you trust and customers.",
+    forWho: 'Get online fast and start taking inquiries',
+    problem: 'One sharp page that turns visitors into messages and bookings.',
     price: '$649',
     priceNote: 'starting at',
     timeframe: '5 days',
     recommended: false,
     ctaLabel: 'Start My Project',
     includes: [
-      'One high-impact page built around your best offer',
-      'Mobile-first — loads fast on any device',
-      'Contact form or booking link wired in, leads land in your inbox',
-      'Live on your domain, ready to send traffic to',
-      '1 round of revisions included',
+      'One page built around your best offer',
+      'Fast on every phone',
+      'Messages and bookings land in your inbox',
+      'Live on your own web address',
+      '1 round of changes included',
     ],
   },
   {
     slug: 'growth',
     name: 'Growth',
-    forWho: 'Your site gets visitors, but too few of them convert',
-    problem: 'Your business looks smaller and less credible online than it really is — and visitors leave without a word.',
+    forWho: 'People visit, but too few get in touch',
+    problem: 'Look as established as you really are, so visitors trust you enough to call.',
     price: '$1,797',
     priceNote: 'starting at',
     timeframe: '2–3 weeks',
     recommended: true,
     ctaLabel: "Yes, Let's Build This",
     includes: [
-      'Up to 5 pages, built to move visitors toward contacting you',
-      'Mobile-first, accessible, built to rank on Google',
-      'Lead form wired straight to your inbox',
-      'Analytics set up so you can see what visitors actually do',
-      '2 rounds of revisions included',
+      'Up to 5 pages, each built to get you contacted',
+      'Built to show up on Google and work on any phone',
+      'Inquiries straight to your inbox',
+      'See what visitors actually do on your site',
+      '2 rounds of changes included',
     ],
   },
   {
     slug: 'conversion',
     name: 'Conversion',
-    forWho: 'Your business runs on logins, bookings, or data — not just pages',
-    problem: 'Manual processes, spreadsheets, and back-and-forth emails are quietly costing you hours and leads every week.',
+    forWho: 'You need a system that does the work, not just a website',
+    problem: 'Stop losing hours and customers to spreadsheets and back-and-forth emails.',
     price: '$4,497',
     priceNote: 'starting at',
     timeframe: 'Scoped on a discovery call',
     recommended: false,
-    ctaLabel: 'Scope My Project',
+    ctaLabel: 'Plan My Project',
     includes: [
-      'Custom web app — logins, dashboards, bookings, or payments',
-      'Built around the exact bottleneck costing you time or leads',
-      'Integrates with the tools you already use',
-      'One fixed price once scope is locked, no surprise invoices',
+      'Your own tool: bookings, payments, customer accounts or dashboards',
+      'Built around the exact job eating your time or customers',
+      'Works with the tools you already use',
+      'One fixed price once we agree the plan, no surprise bills',
     ],
   },
   {
     slug: 'care',
     name: 'Care',
-    forWho: 'Your site is live and needs to stay that way',
-    problem: "Sites rot — broken forms, stale content, and slow load times quietly bleed leads if nobody's watching.",
+    forWho: "Your site keeps working, so you don't have to think about it",
+    problem: 'Broken forms and stale pages quietly lose customers. I keep watch and fix them.',
     price: '$147',
     priceNote: '/mo',
     timeframe: 'Monthly retainer',
     recommended: false,
-    ctaLabel: 'Get a Quote',
+    ctaLabel: 'Start My Care Plan',
     includes: [
-      'Content updates and small feature requests',
-      'Uptime and dependency monitoring',
-      'Bug fixes, typically same-week',
-      'Cancel anytime — no lock-in contract',
+      'Text, photo and small updates done for you',
+      'Your site watched so it stays online',
+      'Problems fixed, usually the same week',
+      'Cancel anytime, no contract',
     ],
-  },
-]
-
-// The business case for the methodology — why each phase matters, not what
-// framework it's built in. This is the "Solution" section: a transformation,
-// not a coding process.
-export const methodology = [
-  {
-    phase: 'Strategy',
-    description:
-      "Before any design happens, we get clear on who your customer is and what has to happen for them to contact you. Skip this and you get a pretty site that still doesn't sell.",
-  },
-  {
-    phase: 'Design',
-    description:
-      'Every layout decision moves a stranger toward one action — not toward a design award. Credible, fast, and built around your offer.',
-  },
-  {
-    phase: 'Build',
-    description:
-      "Hand-coded, not templated. Fast on every device, because a slow site loses customers before they even see what you sell.",
-  },
-  {
-    phase: 'Launch',
-    description:
-      'Live on your domain, tested on real phones and browsers, connected to the tools you already use.',
-  },
-  {
-    phase: 'Optimize',
-    description:
-      "A website is never really 'done.' Small fixes after launch — copy, forms, page speed — compound into more inquiries over time.",
   },
 ]
 
@@ -157,203 +117,128 @@ export const processSteps = [
   {
     step: '01',
     title: 'Tell me what you need',
-    description: "A quick message — what's the business problem, and what does success look like.",
+    description: 'One message: what you sell, and what you want more of. Calls, bookings or sales.',
   },
   {
     step: '02',
-    title: 'We define the offer',
-    description: 'A fixed price and scope, in writing. You know exactly what you\'re getting before anything starts.',
+    title: 'Get your fixed price',
+    description: 'Price, plan and launch date in writing, before any work starts.',
   },
   {
     step: '03',
-    title: 'I design the experience',
-    description: 'Not just what it looks like — how it moves a stranger toward contacting you.',
-  },
-  {
-    step: '04',
-    title: 'I build it',
-    description: 'You see real progress as it happens, not a surprise reveal at the end.',
-  },
-  {
-    step: '05',
-    title: 'You launch',
-    description: "Live on your domain, tested on real devices, ready to start earning its keep.",
+    title: 'Go live',
+    description: 'Watch it come together, then launch a site ready to earn its keep.',
   },
 ]
 
 // The symptoms a business owner recognizes in themselves — this drives the
 // Pain/Problem section.
 export const painPoints = [
-  "Your website looks like it hasn't been touched since 2015.",
-  "You don't have a website at all, and you know it's costing you customers.",
-  "You get visitors, but the phone doesn't ring and the inbox stays empty.",
-  "Your competitors' websites look more professional than yours.",
-  "People land on your site and can't tell what you actually do.",
-  "It's slow, it's not mobile-friendly, and people leave before it loads.",
+  "No website, or one you'd be embarrassed to send a customer to.",
+  "People visit, but the phone doesn't ring.",
+  'Your competitors look more professional online than you do.',
+  "It's slow on a phone, so people leave before it loads.",
 ]
 
 // Why trust him with the project — risk-reducers, not a biography.
 export const whyMe = [
   {
-    title: 'Direct line to the person building it',
-    description: 'No account manager, no relay, no agency layers. You talk to me, I write the code.',
-  },
-  {
-    title: 'Custom-built, never templated',
-    description: "No page builder, no recycled theme. Every site is built around your business, not squeezed into one.",
-  },
-  {
-    title: 'Fast, because slow costs you customers',
-    description: 'Most projects launch in days or weeks, not months — with a fixed timeline confirmed before we start.',
-  },
-  {
-    title: 'Built around one goal: conversions',
-    description: 'Every layout and word choice exists to move a visitor toward contacting you, not to win design awards.',
-  },
-  {
-    title: 'No bloat, no unnecessary complexity',
-    description: "You get exactly what your business needs to convert — nothing you're paying for and never using.",
-  },
-  {
     title: 'Fixed price, in writing, before we start',
-    description: 'No hourly billing surprises. You know the cost and the timeline upfront.',
+    description: 'You know the cost and the date upfront. No surprise bills.',
+  },
+  {
+    title: 'Direct line to the person building it',
+    description: 'No account manager, no runaround. You talk to me.',
+  },
+  {
+    title: 'Live in days or weeks, not months',
+    description: 'Launch in 5 days, a full site in 2–3 weeks. It starts working for you sooner.',
+  },
+  {
+    title: 'Built to bring you customers',
+    description: 'Every word and button is there to get visitors to contact you.',
   },
 ]
 
 export const objections = [
   {
     question: 'I already have a website.',
-    answer:
-      "Good — that means you already know it's not pulling its weight, or you wouldn't be reading this. I can rebuild it around conversion, or tell you exactly what's costing you leads on a quick call.",
+    answer: "If it isn't bringing in customers, I'll tell you why on a quick call, or rebuild it so it does.",
   },
   {
     question: "I don't have a big budget.",
-    answer:
-      'Neither did most of my clients when they started. The Launch package exists for exactly that — a real, working site for less than most businesses spend on ads in a month.',
+    answer: 'Launch starts at $649 for a real, working site, live in 5 days.',
   },
   {
-    question: 'Can you do it quickly?',
-    answer:
-      "Yes — Launch ships in 5 days, Growth in 2–3 weeks. You get a specific date in writing before any work starts, not a vague estimate.",
+    question: 'How fast can I be live?',
+    answer: 'Launch: 5 days. Growth: 2–3 weeks. You get a firm date before work starts.',
   },
   {
-    question: 'Will I be able to edit it myself?',
-    answer:
-      'Yes. You get a site built on tools you can actually update yourself — text, images, and content — without calling me for every small change.',
-  },
-  {
-    question: 'What happens after launch?',
-    answer:
-      "I'm reachable, and the Care plan exists if you want ongoing updates and monitoring handled for you. Nothing gets abandoned the day it goes live.",
-  },
-  {
-    question: 'Why not just use Wix or a template?',
-    answer:
-      "You can — plenty of businesses do, and plenty of visitors can tell within five seconds. A custom build loads faster, looks like nobody else's site, and is built around getting YOU customers instead of fitting a generic layout.",
+    question: 'What about after it goes live?',
+    answer: "I'm still one message away. Want updates handled for you? Care covers it for $147 a month.",
   },
 ]
 
-// Case studies as proof, not a portfolio gallery: Problem → What I Changed →
-// Result. Results are stated honestly in plain terms — no invented numbers.
+// Case studies as proof, not a portfolio gallery: the result first (outcome),
+// then Before → The fix. Results are stated honestly in plain terms — no
+// invented numbers, and no tool names: the reader is a business owner.
 //
 // Cover art, motion and the real screenshots for each project live in
 // src/lib/media.js, keyed by the project slug.
 export const caseStudies = [
   {
     title: 'Sage Commerce',
-    niche: 'E-commerce',
-    outcome: 'Built a storefront that takes a shopper from browsing to checkout without the bloat of an off-the-shelf platform.',
-    description: 'A modern online store with product browsing, cart, and a smooth checkout flow built for conversion.',
-    tags: ['Next.js', 'Tailwind', 'Stripe', 'React'],
+    niche: 'Online store',
+    outcome: 'An online store, live and taking orders.',
+    description: 'An online store that takes shoppers from browsing to checkout.',
     href: 'https://ecomerce-sage-eight.vercel.app/',
-    problem: 'Small brands need a fast, clean storefront that handles product discovery and checkout without the bloat of off-the-shelf platforms.',
-    role: 'Designed and built the storefront end-to-end — product catalog, cart logic, and a frictionless checkout experience.',
-    result: 'Went from no online store to a full browse-to-checkout flow, live and taking orders.',
-    highlights: [
-      'Responsive product grid with category filtering',
-      'Persistent cart with quantity and total updates',
-      'Clean, conversion-focused checkout flow',
-    ],
+    problem: 'Small brands need a fast, simple shop, not a bloated one.',
+    role: 'The whole store, designed and built: products, cart and checkout.',
   },
   {
     title: 'CV Climber',
-    niche: 'Career SaaS',
-    outcome: 'Built the AI resume tool that turns a rough work history into an ATS-ready CV in minutes.',
-    description: 'AI-powered resume builder that helps job seekers craft standout CVs and climb the career ladder faster.',
-    tags: ['Next.js', 'AI', 'Tailwind', 'Stripe'],
+    niche: 'Career tool',
+    outcome: 'A polished CV in minutes, with payments live from day one.',
+    description: 'An AI CV builder that helps job seekers write a standout CV and climb the career ladder faster.',
     href: 'https://www.cvclimber.lol/',
-    problem: 'Job seekers struggle to translate their experience into a CV that ranks well on ATS systems and stands out to recruiters.',
-    role: 'Designed the product end-to-end, built the AI resume generator, payment flow, and templated PDF export.',
-    result: 'Launched with Stripe payments live from day one — a working, paid SaaS product, not a prototype.',
-    highlights: [
-      'AI-assisted bullet rewriting tuned for ATS keywords',
-      'Multiple modern templates with one-click PDF export',
-      'Stripe checkout for premium plans',
-    ],
+    problem: 'Job seekers struggle to write a CV recruiters notice.',
+    role: 'An AI CV writer, with payments and downloads built in.',
   },
   {
     title: 'AI Receptionist',
-    niche: 'AI Automation',
-    outcome: 'Built a voice AI that answers the phone and books the appointment, so leads stop going to voicemail.',
-    description: 'Voice AI that answers calls, books appointments, and handles customer queries 24/7 for service businesses.',
-    tags: ['Next.js', 'OpenAI', 'Twilio', 'Supabase'],
+    niche: 'Calls & bookings',
+    outcome: 'Answers 24/7 and books the appointment. No more voicemail.',
+    description: 'An AI that answers calls, books appointments and handles questions 24/7 for service businesses.',
     href: 'https://ai-recepsionist-codo.vercel.app/dashboard',
-    problem: 'Small businesses lose leads when calls go unanswered outside hours or while staff are busy with clients.',
-    role: 'Built the dashboard, the Twilio voice integration, and the OpenAI prompt layer that handles real-time conversations.',
-    result: 'Went from missed calls to a 24/7 answering system — every call now logged, transcribed, and turned into a lead.',
-    highlights: [
-      'Real-time voice conversations powered by OpenAI',
-      'Call logs, transcripts, and lead capture in one dashboard',
-      'Configurable per business — hours, services, knowledge base',
-    ],
+    problem: 'Calls go unanswered after hours, and those customers are gone.',
+    role: 'An AI voice that answers callers, plus a dashboard for every call.',
   },
   {
     title: 'Nderto',
-    niche: 'Construction SaaS',
-    outcome: "Replaced a construction team's spreadsheet-and-group-chat workflow with one dashboard for projects and crews.",
-    description: 'A management platform for construction crews — projects, materials, and team coordination in one dashboard.',
-    tags: ['Next.js', 'Auth', 'Postgres', 'Tailwind'],
+    niche: 'Construction',
+    outcome: 'Construction work and materials, organised in one place.',
+    description: 'A construction app that keeps work and materials organised in one place.',
     href: 'https://nderto.vercel.app/login',
-    problem: 'Construction teams juggle projects, materials, and crew assignments across spreadsheets and chat apps.',
-    role: 'Designed the data model, built the auth and project workflows, and shipped a clean dashboard UI.',
-    result: 'Replaced spreadsheets and group chats with one login-protected dashboard the whole crew actually uses.',
-    highlights: [
-      'Authenticated multi-role access (admin / crew)',
-      'Projects, tasks, and material tracking in one place',
-      'Postgres-backed schema with proper relations',
-    ],
+    problem: 'Jobs and materials juggled across spreadsheets and chat apps.',
+    role: 'The whole app, designed and built, behind a secure sign-in.',
   },
   {
     title: 'ESHB',
-    niche: 'Brand & Agency',
-    outcome: 'Gave a new agency a launch site built to read as premium and turn visitors into leads from day one.',
-    description: 'A modern agency landing site with bold typography, smooth scroll animations, and a clear conversion path.',
-    tags: ['React', 'Framer Motion', 'Tailwind'],
+    niche: 'Agency launch',
+    outcome: 'A new agency, looking premium and ready for inquiries from day one.',
+    description: 'A bold launch site for a new agency, with a clear path to get in touch.',
     href: 'https://eshb.vercel.app/',
-    problem: 'A new agency needed a landing page that communicates premium positioning and converts visitors into leads.',
-    role: 'Designed and built the entire site — typography system, scroll-triggered animations, and contact flow.',
-    result: 'Went live with a premium-feeling site and a working contact funnel in place from day one.',
-    highlights: [
-      'Custom typography and color system',
-      'Scroll-triggered animations with Framer Motion',
-      'Mobile-first responsive layout',
-    ],
+    problem: 'A new agency needed to look premium and win inquiries.',
+    role: 'The whole site: the look, the motion, the contact form.',
   },
   {
     title: 'Denaro',
-    niche: 'Fintech',
-    outcome: 'Built the dashboard, budgeting flows, and charts behind a finance app people actually read at a glance.',
-    description: 'A personal finance app for tracking income, expenses, and budgets with clean charts and clear insights.',
-    tags: ['Next.js', 'Tailwind', 'Charts', 'Auth'],
+    niche: 'Finance app',
+    outcome: 'Money and markets, made readable at a glance.',
+    description: 'A finance app that turns money and market numbers into charts you read at a glance.',
     href: 'https://denaro-one.vercel.app/',
-    problem: 'People juggle finances across notes, banking apps, and spreadsheets without a clear picture of where their money goes.',
-    role: 'Designed the dashboard and built the tracking flows, charting, and authenticated user accounts.',
-    result: 'Replaced scattered notes and banking apps with one dashboard showing exactly where the money goes.',
-    highlights: [
-      'Track income, expenses, and budget categories in one place',
-      'Visual breakdowns of spending with interactive charts',
-      'Authenticated accounts with persistent personal data',
-    ],
+    problem: 'Financial numbers spread out and hard to read.',
+    role: 'A clear dashboard with charts and private accounts.',
   },
 ]
 
@@ -365,41 +250,40 @@ export const templateStyles = [
   {
     title: 'Grandeur',
     niche: 'Real Estate',
-    description: 'Property listings, agent profiles, and inquiry forms — a starting point for realtors and property managers.',
+    description: 'Show listings and collect buyer inquiries. For realtors and property managers.',
     href: 'https://st.ourhtmldemo.com/new/Grandeur/?storefront=envato-elements',
   },
   {
     title: 'Doctor',
     niche: 'Medical & Clinics',
-    description: 'Appointment booking, doctor profiles, and service pages — a starting point for clinics and private practices.',
+    description: 'Let patients book appointments online. For clinics and private practices.',
     href: 'https://demoxml.com/html/doctor/?storefront=envato-elements',
   },
   {
     title: 'Construct',
     niche: 'Construction & Contracting',
-    description: 'Project galleries, service breakdowns, and quote requests — a starting point for contractors and builders.',
+    description: 'Show your projects and collect quote requests. For contractors and builders.',
     href: 'https://demoxml.com/html/construct/?storefront=envato-elements',
   },
   {
     title: 'MaxMuseum',
     niche: 'Museums & Culture',
-    description: 'Exhibit showcases, event calendars, and visitor info — a starting point for museums and cultural venues.',
+    description: 'Show exhibits and events, and tell visitors when to come. For museums and venues.',
     href: 'https://demoxml.com/html/maxmuseum/?storefront=envato-elements',
   },
   {
     title: 'Admin Dashboard',
-    niche: 'Internal Tools',
-    description: 'Data tables, charts, and role-based views — a starting point for internal or client-facing dashboards.',
+    niche: 'Business dashboards',
+    description: 'Tables, charts and staff-only views on one screen. For running your business.',
     href: 'https://innap.dexignzone.com/codeigniter/demo/index_2',
   },
 ]
 
-
 export const projectTypeOptions = [
-  { value: 'launch', label: 'Launch' },
-  { value: 'growth', label: 'Growth' },
-  { value: 'conversion', label: 'Conversion' },
-  { value: 'care', label: 'Care' },
+  { value: 'launch', label: 'Launch · one page' },
+  { value: 'growth', label: 'Growth · full site' },
+  { value: 'conversion', label: 'Conversion · custom system' },
+  { value: 'care', label: 'Care · monthly upkeep' },
   { value: 'not-sure', label: "Not sure yet" },
 ]
 

@@ -306,7 +306,7 @@ Four printing inks, laid flat, with greys existing only as tints of the black in
 ### Hierarchy
 - **Nameplate** (Anton 400, clamp(5.5rem, 31vw, 12rem), 0.8): ELJO, signal red, rotated up the left edge of the cover photo and stretched along its line; on the open spread it is measured in comp units (311u). The colophon repeats it as the footer mark.
 - **Cover title** (Anton 400, fitted so "better websites." always fits its page, up to 5.25rem; 143u on the open spread; 0.923): the cover's one headline, four lines that rise into place.
-- **Page title** (Anton 400, clamp(3.5rem, 1.5rem + 8vw, 8.5rem), 0.92): the h1 of each inner page (Cover stories, Pricing).
+- **Page title** (Anton 400, clamp(3.5rem, 1.5rem + 8vw, 8.5rem), 0.92): the h1 of each inner page (Real work. All live., Pricing).
 - **Display XL / LG / MD** (Anton 400; clamp(3.25rem → 6rem), clamp(2.75rem → 5.25rem), clamp(2.25rem → 3.75rem); 0.92): department headlines, case-study names, and the reply card's title.
 - **Cover line** (Anton 400, clamp(1.9rem, 1.2rem + 2.4vw, 3.25rem), 1.02): white capitals over a cover photo, two short lines and a red rule under them.
 - **Title** (Anton 400, clamp(1.6rem, 1.2rem + 1.1vw, 2.2rem), 1): names of steps, promises you can hold me to, interview questions, template names.
@@ -318,7 +318,7 @@ Four printing inks, laid flat, with greys existing only as tints of the black in
 - **Body strong** (Mulish 800, 1.1rem, 1.3): bold reading lines: who a package is for, the direct lines on the contact page, the cover's secondary link.
 - **Body** (Mulish 500, 1.0625rem, 1.55): running text; 44–66ch.
 - **Button** (Mulish 800, 1rem, 1.1): pill labels; 1.125rem on large pills.
-- **Body small** (Mulish 800, 0.95rem) and **Caption** (Mulish 800, 0.85rem): "Read the story", choice chips, timeframes; tags, price notes, screenshot captions.
+- **Body small** (Mulish 800, 0.95rem) and **Caption** (Mulish 800, 0.85rem): "Before & after", choice chips, timeframes; tags, price notes, screenshot captions.
 - **Label** (Mulish 800, 0.8125rem, 0.12em, uppercase): the running head title, field labels, case-study column heads, a story's project · niche line.
 - **Label small** (Mulish 800, 0.75rem, 0.14em, uppercase): running folios, colophon headings, the Recommended tag.
 
@@ -386,7 +386,7 @@ The issue's proof, one card per project.
 - **Corner Style:** square.
 - **Background:** the story's one ink (`ink` default, `acid`, `red`, or Bright White for `paper`, which adds a 2px black inset keyline to its meta strip).
 - **Plate:** the cover photo full-bleed (16:10; the two lead stories 3.41:1 on the open spread), with an optional silent loop over it, a 160° scrim from the top-left, and the cover line in white Anton with a short Signal Red rule under it.
-- **Meta strip:** project · niche in label capitals, "Read the story" with an arrow, and the outcome in body text at max 60ch.
+- **Meta strip:** project · niche in label capitals, "Before & after" with an arrow, and the outcome in body text at max 60ch.
 - **Behaviour:** the card's one link is stretched over the whole card, and focus outlines the whole card (3px Signal Red, 4px offset). On hover the plate scales to 1.035, the red rule stretches to 1.8×, the arrow nudges. Cards turn in like pages as they reach the reader, 90ms apart.
 - **Layout:** two lead stories side by side, then four more (two across from 700px, four across from 1280px).
 
@@ -398,7 +398,7 @@ The issue's proof, one card per project.
 
 ### Navigation
 - **Running head:** newsprint strip, 3.75rem tall (scaled to the comp's thin strip on the open spread). Left: ELJO · ISSUE 01 · TIRANA in label capitals with round dot separators. Right: section links in Mulish 700, the current or hovered one underlined by a 2px Signal Red rule that draws in from the left (240ms), then the black Start My Project pill.
-- **Contents page (phones and tablets):** a full-screen acid page that wipes down from the top (420ms, drawer easing; a plain fade under reduced motion). Sections are listed in Anton capitals with two-digit folio numbers, separated by rules, the current page in Proof Red, and a full-width black pill at the foot. Focus is trapped inside and returns to the button on close.
+- **Menu page (phones and tablets):** a full-screen acid page that wipes down from the top (420ms, drawer easing; a plain fade under reduced motion). Sections are listed in Anton capitals with two-digit folio numbers, separated by rules, the current page in Proof Red, and a full-width black pill at the foot. Focus is trapped inside and returns to the button on close.
 - **Colophon:** a black footer with the ELJO nameplate in Signal Red, the direct line, links elsewhere and the issue's contents in newsprint, hovering to acid.
 
 ### The Open Spread (signature)

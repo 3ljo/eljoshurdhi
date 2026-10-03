@@ -42,23 +42,14 @@ function CaseStudy({ study }) {
         </p>
         <div className="case__cols">
           <div>
-            <h3>The problem</h3>
+            <h3>Before</h3>
             <p>{study.problem}</p>
           </div>
           <div>
-            <h3>What I built</h3>
+            <h3>The fix</h3>
             <p>{study.role}</p>
           </div>
-          <div>
-            <h3>The result</h3>
-            <p>{study.result}</p>
-          </div>
         </div>
-        <ul className="tags" aria-label="Built with">
-          {study.tags.map(tag => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ul>
         <div className="shots">
           <Browser
             url={media.shotUrl ?? study.href}
@@ -67,10 +58,10 @@ function CaseStudy({ study }) {
             alt={`Screenshot of the live ${study.title} site`}
             note={
               media.loginOnly
-                ? 'The live app. The product sits behind sign-in, so this is its real login screen.'
+                ? 'Live now. The app sits behind a login, so this is its sign-in page.'
                 : media.long
-                  ? 'The live site. Scroll inside the frame to read the whole page.'
-                  : 'The live site.'
+                  ? 'Live now. Scroll inside to see the whole page.'
+                  : 'Live now.'
             }
           />
           <Phone shot={media.shot} alt={`${study.title} on a phone`} />
@@ -82,7 +73,7 @@ function CaseStudy({ study }) {
             rel="noopener noreferrer"
             className={`btn ${media.tone === 'ink' ? 'btn-acid' : ''}`}
           >
-            Open the live site
+            {media.loginOnly ? 'Open the live app' : 'Open the live site'}
             <span className="sr-only"> for {study.title}, opens in a new tab</span>
             <Icon name="arrowUpRight" className="btn-arrow" />
           </a>
@@ -99,13 +90,11 @@ export default function Work() {
         <div className="wrap">
           <div className="dept-head">
             <h1 className="display" style={{ fontSize: 'clamp(3.5rem, 1.5rem + 8vw, 8.5rem)' }}>
-              Cover stories
+              Real work. All live.
             </h1>
-            <p className="lead">
-              Six products, built and shipped, all live. Four you can click straight through; two sit behind a sign-in.
-            </p>
+            <p className="lead">Six projects. Open any of them and see for yourself.</p>
           </div>
-          <nav aria-label="Stories in this issue" style={{ marginTop: 'clamp(2rem, 4vw, 3rem)' }}>
+          <nav aria-label="Projects on this page" style={{ marginTop: 'clamp(2rem, 4vw, 3rem)' }}>
             <ul className="tags" style={{ marginTop: 0 }}>
               {caseStudies.map(study => (
                 <li key={study.title} style={{ padding: 0, border: 0 }}>
@@ -130,7 +119,7 @@ export default function Work() {
               Licensed templates
             </h2>
             <p className="lead">
-              Not my designs. Licensed starting points I customize with your brand, copy and content for a faster, lower-cost launch.
+              Not my designs: licensed templates I make yours with your brand, words and photos. Faster and cheaper than custom.
             </p>
           </div>
           <div className="templates">
@@ -152,7 +141,7 @@ export default function Work() {
         </div>
       </section>
 
-      <BackCover title="Want to be the next cover story?" />
+      <BackCover title="Your business could be next." />
     </main>
   )
 }

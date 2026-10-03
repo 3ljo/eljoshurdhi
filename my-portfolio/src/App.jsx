@@ -11,8 +11,8 @@ import NotFound from './pages/NotFound'
 import { focusSection } from './lib/focusSection'
 
 const titles = {
-  '/': 'Eljo Shurdhi — Custom Websites That Convert',
-  '/work': 'Cover stories — Eljo Shurdhi',
+  '/': 'Eljo Shurdhi — Websites Built to Bring You Customers',
+  '/work': 'Work — Eljo Shurdhi',
   '/pricing': 'Pricing — Eljo Shurdhi',
   '/about': 'Why me — Eljo Shurdhi',
   '/contact': 'Start your project — Eljo Shurdhi',

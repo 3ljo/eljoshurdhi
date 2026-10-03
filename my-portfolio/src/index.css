@@ -1550,11 +1550,6 @@
     grid-template-columns: 1fr 1fr;
   }
 }
-@media (min-width: 1200px) {
-  .holds {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
 .holds li {
   padding-block: 1.5rem 1.75rem;
   border-top: 2px solid currentColor;
@@ -1865,7 +1860,7 @@
 }
 @container (min-width: 36rem) {
   .case__cols {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 .case__cols h3 {

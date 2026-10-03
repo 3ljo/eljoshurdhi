@@ -28,7 +28,8 @@ export const largest = name => {
 // Cover lines, cover art, motion and real screenshots for each case study,
 // keyed by the project slug. ESHB and Sage Commerce carry the approved
 // cover's own lines; the other four restate the project's siteConfig result
-// in the magazine's voice. `tone` is the story's print colour (one per story,
+// in the magazine's voice (Nderto and Denaro stay true of both their brief
+// and their live site). `tone` is the story's print colour (one per story,
 // from the issue's four inks). `loginOnly` marks live apps whose product sits
 // behind sign-in: the screenshot shows the real login screen, at `shotUrl`,
 // and says so.
@@ -69,7 +70,7 @@ export const projectMedia = {
     shotUrl: 'https://ai-recepsionist-codo.vercel.app/login',
   },
   nderto: {
-    coverline: ['One dashboard', 'for the whole crew'],
+    coverline: ['The whole job,', 'in one place'],
     tone: 'acid',
     cover: 'nderto',
     coverAlt: 'Gloved hands holding a rugged tablet over rebar on a construction site',
@@ -78,7 +79,7 @@ export const projectMedia = {
     shotUrl: 'https://nderto.vercel.app/login',
   },
   denaro: {
-    coverline: ['Know where', 'the money goes'],
+    coverline: ['The numbers,', 'at a glance'],
     tone: 'paper',
     cover: 'denaro',
     coverAlt: 'A hand pulling folded notes from a worn leather wallet on a café table',

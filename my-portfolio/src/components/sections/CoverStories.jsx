@@ -51,7 +51,7 @@ function Story({ study, lead = false, index = 0 }) {
           </Link>
         </h3>
         <span className="story__go" aria-hidden="true">
-          Read the story
+          Before & after
           <Icon name="arrowRight" />
         </span>
         <p>{study.outcome}</p>
@@ -60,8 +60,8 @@ function Story({ study, lead = false, index = 0 }) {
   )
 }
 
-// Cover stories: the two lead features from the approved cover, then the
-// rest of the issue.
+// The work, as cover stories: the two lead features from the approved cover,
+// then the rest of the issue.
 export default function CoverStories() {
   const bySlug = Object.fromEntries(caseStudies.map(s => [projectSlug(s.title), s]))
   const lead = [bySlug.eshb, bySlug['sage-commerce']]
@@ -71,7 +71,7 @@ export default function CoverStories() {
     <section className="stories" aria-labelledby="stories-title">
       <div className="stories__head">
         <h2 id="stories-title" className="display stories__title">
-          Cover stories
+          Proof, not promises
         </h2>
       </div>
       <div className="stories__lead">
@@ -86,7 +86,7 @@ export default function CoverStories() {
       </div>
       <div className="stories__foot">
         <Link to="/work" className="text-link">
-          Every story, with the live sites
+          See them all live
           <Icon name="arrowUpRight" />
         </Link>
       </div>

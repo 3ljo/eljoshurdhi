@@ -124,18 +124,18 @@ export default function RunningHead() {
             onClick={() => setOpen(true)}
             aria-expanded={open}
             aria-controls="contents"
-            aria-label="Contents"
+            aria-label="Menu"
           >
             <Icon name="menu" />
-            <span className="runhead__menu-label">Contents</span>
+            <span className="runhead__menu-label">Menu</span>
           </button>
         </nav>
       </header>
 
-      <div ref={panel} id="contents" className="contents" role="dialog" aria-modal="true" aria-label="Contents" data-open={open}>
+      <div ref={panel} id="contents" className="contents" role="dialog" aria-modal="true" aria-label="Menu" data-open={open}>
         <div className="contents__top">
-          <span className="label">Issue 01 · Contents</span>
-          <button ref={closeButton} type="button" className="runhead__menu" onClick={() => setOpen(false)} aria-label="Close contents">
+          <span className="label">Issue 01 · Menu</span>
+          <button ref={closeButton} type="button" className="runhead__menu" onClick={() => setOpen(false)} aria-label="Close menu">
             <Icon name="close" />
           </button>
         </div>

@@ -114,10 +114,10 @@ export default function Contact() {
     <main id="main" className="reply">
       <section className="reply__side on-ink" aria-labelledby="contact-title">
         <h1 id="contact-title" className="display" style={{ fontSize: 'clamp(3.25rem, 1.5rem + 6vw, 7rem)' }}>
-          Tell me what you're building.
+          Tell me about your business.
         </h1>
         <p className="lead" style={{ color: 'var(--on-ink-2)' }}>
-          A few details now saves a back-and-forth later. I read every message myself and reply personally.
+          I read every message myself and reply with an honest take on what your business needs.
         </p>
         <div>
           <p className="label" style={{ color: 'var(--on-ink-2)', marginBottom: '0.5rem' }}>
@@ -160,10 +160,10 @@ export default function Contact() {
       <section className="reply__card" aria-labelledby="form-title">
         <form ref={formRef} onSubmit={handleSubmit} noValidate className="reply__form" aria-labelledby="form-title">
           <h2 id="form-title" className="display d-md">
-            Reply card
+            Start your project
           </h2>
           <p style={{ marginTop: '0.5rem', fontWeight: 700, maxWidth: '48ch' }}>
-            Fill it in and send it. It opens your email app with everything addressed to me.
+            Two minutes. Press send and your email app opens with it all filled in.
           </p>
           <div style={{ display: 'grid', gap: '1.5rem', marginTop: '1.75rem' }}>
             <div style={{ display: 'grid', gap: '1.5rem', gridTemplateColumns: 'repeat(auto-fit, minmax(14rem, 1fr))' }}>
@@ -181,7 +181,7 @@ export default function Contact() {
               />
             </div>
             <ChoiceField
-              legend="Project type"
+              legend="What do you need?"
               name="projectType"
               options={projectTypeOptions}
               value={fields.projectType}
@@ -189,7 +189,7 @@ export default function Contact() {
               error={errors.projectType}
             />
             <ChoiceField
-              legend="Budget range"
+              legend="Budget"
               name="budget"
               options={budgetOptions}
               value={fields.budget}
@@ -197,11 +197,11 @@ export default function Contact() {
               error={errors.budget}
             />
             <TextField
-              label="Project details"
+              label="About your business"
               name="message"
               multiline
               rows={6}
-              placeholder={'What are you building, and what does "done" look like?'}
+              placeholder="What do you sell, and what do you want more of: calls, bookings, sales?"
               value={fields.message}
               onChange={update('message')}
               error={errors.message}
@@ -209,7 +209,7 @@ export default function Contact() {
           </div>
 
           <button type="submit" className="btn btn-lg" style={{ width: '100%', marginTop: '2rem', whiteSpace: 'normal' }} disabled={status === 'sending'}>
-            {status === 'sending' ? 'Opening your email…' : 'Send project details'}
+            {status === 'sending' ? 'Opening your email…' : 'Send My Details'}
             {status !== 'sending' && <Icon name="arrowRight" className="btn-arrow" />}
           </button>
           <p style={{ marginTop: '0.9rem', textAlign: 'center', fontWeight: 600, fontSize: '0.95rem' }} aria-live="polite">
@@ -225,9 +225,7 @@ export default function Contact() {
                 </a>
                 . Your details are still here.
               </>
-            ) : (
-              'Nothing sends until you press send in your own email app.'
-            )}
+            ) : null}
           </p>
         </form>
       </section>
