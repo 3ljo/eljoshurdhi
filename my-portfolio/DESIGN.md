@@ -411,7 +411,7 @@ A ruled schedule, not a card grid: a 3px black rule on top, each package a row (
 Real screenshots of live sites, never mockups. A Frame Black browser window (12px corners) with three grey dots and the site's host in its bar, the capture beneath, and a caption saying what it shows (the live site; the live app's login screen when the product sits behind sign-in). Long captures scroll inside the frame and are keyboard focusable. On wider screens a phone frame with the mobile capture overlaps the browser's lower right corner, and the caption keeps clear of it.
 
 ### Running Folios
-Every department ends with "Eljo · Issue 01" in label-small capitals at its lower left and its page number in Anton at its lower right, at 70% of the field's ink: the issue's page furniture.
+Every department ends with "Eljo" in label-small capitals at its lower left and its page number in Anton at its lower right, at 70% of the field's ink: the issue's page furniture.
 
 ## Do's and Don'ts
 

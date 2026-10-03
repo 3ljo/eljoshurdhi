@@ -8,7 +8,7 @@ import { Picture } from '../Media'
 function Folio({ page }) {
   return (
     <div className="running-folio" aria-hidden="true">
-      <span>Eljo · Issue 01</span>
+      <span>Eljo</span>
       <span className="page">{page}</span>
     </div>
   )

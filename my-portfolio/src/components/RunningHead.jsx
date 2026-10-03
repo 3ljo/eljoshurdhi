@@ -92,10 +92,8 @@ export default function RunningHead() {
     <>
       <header className="runhead" data-hidden={hidden && !open} data-scrolled={scrolled}>
         <nav className="runhead__bar" aria-label="Main">
-          <Link to="/" className="runhead__title" aria-label="Eljo Shurdhi, Issue 01, Tirana. Home">
+          <Link to="/" className="runhead__title" aria-label="Eljo Shurdhi, Tirana. Home">
             <span>Eljo</span>
-            <span className="dot runhead__issue" aria-hidden="true" />
-            <span className="runhead__issue">Issue 01</span>
             <span className="dot runhead__city" aria-hidden="true" />
             <span className="runhead__city">Tirana</span>
           </Link>
@@ -134,7 +132,7 @@ export default function RunningHead() {
 
       <div ref={panel} id="contents" className="contents" role="dialog" aria-modal="true" aria-label="Menu" data-open={open}>
         <div className="contents__top">
-          <span className="label">Issue 01 · Menu</span>
+          <span className="label">Menu</span>
           <button ref={closeButton} type="button" className="runhead__menu" onClick={() => setOpen(false)} aria-label="Close menu">
             <Icon name="close" />
           </button>

@@ -450,7 +450,6 @@
   .runhead__bar {
     gap: 0.6rem;
   }
-  .runhead__city,
   .runhead__menu-label {
     display: none;
   }
@@ -461,7 +460,7 @@
   }
 }
 @media (max-width: 359px) {
-  .runhead__issue {
+  .runhead__city {
     display: none;
   }
 }

@@ -72,7 +72,7 @@ export default function Colophon() {
         </div>
         <div className="colophon__base">
           <span>
-            © {year} {brand.name} · Issue 01 · {brand.location}
+            © {year} {brand.name} · {brand.location}
           </span>
           <span>Made in Tirana.</span>
         </div>
