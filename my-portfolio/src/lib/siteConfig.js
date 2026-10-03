@@ -30,9 +30,9 @@ export const primaryCta = 'Start My Project'
 
 export const navLinks = [
   { label: 'Work', href: '/work', type: 'route' },
-  { label: 'How It Works', href: '/#how-it-works', type: 'hash' },
+  { label: 'How it works', href: '/#how-it-works', type: 'hash' },
   { label: 'Pricing', href: '/pricing', type: 'route' },
-  { label: 'Why Me', href: '/about', type: 'route' },
+  { label: 'Why me', href: '/about', type: 'route' },
 ]
 
 // Short, punchy marketing lines for the scrolling trust strip (<ProofStrip />)
@@ -256,9 +256,8 @@ export const objections = [
 // Case studies as proof, not a portfolio gallery: Problem → What I Changed →
 // Result. Results are stated honestly in plain terms — no invented numbers.
 //
-// `plan` picks the drawn preview shown for each project (see
-// src/components/drawing/ProjectPlan.jsx). To show a real screenshot instead,
-// put the image in public/work/ and set `screenshot: '/work/<file>'`.
+// Cover art, motion and the real screenshots for each project live in
+// src/lib/media.js, keyed by the project slug.
 export const caseStudies = [
   {
     title: 'Sage Commerce',
@@ -267,8 +266,6 @@ export const caseStudies = [
     description: 'A modern online store with product browsing, cart, and a smooth checkout flow built for conversion.',
     tags: ['Next.js', 'Tailwind', 'Stripe', 'React'],
     href: 'https://ecomerce-sage-eight.vercel.app/',
-    plan: 'store',
-    screenshot: null,
     problem: 'Small brands need a fast, clean storefront that handles product discovery and checkout without the bloat of off-the-shelf platforms.',
     role: 'Designed and built the storefront end-to-end — product catalog, cart logic, and a frictionless checkout experience.',
     result: 'Went from no online store to a full browse-to-checkout flow, live and taking orders.',
@@ -285,8 +282,6 @@ export const caseStudies = [
     description: 'AI-powered resume builder that helps job seekers craft standout CVs and climb the career ladder faster.',
     tags: ['Next.js', 'AI', 'Tailwind', 'Stripe'],
     href: 'https://www.cvclimber.lol/',
-    plan: 'cv',
-    screenshot: null,
     problem: 'Job seekers struggle to translate their experience into a CV that ranks well on ATS systems and stands out to recruiters.',
     role: 'Designed the product end-to-end, built the AI resume generator, payment flow, and templated PDF export.',
     result: 'Launched with Stripe payments live from day one — a working, paid SaaS product, not a prototype.',
@@ -303,8 +298,6 @@ export const caseStudies = [
     description: 'Voice AI that answers calls, books appointments, and handles customer queries 24/7 for service businesses.',
     tags: ['Next.js', 'OpenAI', 'Twilio', 'Supabase'],
     href: 'https://ai-recepsionist-codo.vercel.app/dashboard',
-    plan: 'voice',
-    screenshot: null,
     problem: 'Small businesses lose leads when calls go unanswered outside hours or while staff are busy with clients.',
     role: 'Built the dashboard, the Twilio voice integration, and the OpenAI prompt layer that handles real-time conversations.',
     result: 'Went from missed calls to a 24/7 answering system — every call now logged, transcribed, and turned into a lead.',
@@ -321,8 +314,6 @@ export const caseStudies = [
     description: 'A management platform for construction crews — projects, materials, and team coordination in one dashboard.',
     tags: ['Next.js', 'Auth', 'Postgres', 'Tailwind'],
     href: 'https://nderto.vercel.app/login',
-    plan: 'board',
-    screenshot: null,
     problem: 'Construction teams juggle projects, materials, and crew assignments across spreadsheets and chat apps.',
     role: 'Designed the data model, built the auth and project workflows, and shipped a clean dashboard UI.',
     result: 'Replaced spreadsheets and group chats with one login-protected dashboard the whole crew actually uses.',
@@ -339,8 +330,6 @@ export const caseStudies = [
     description: 'A modern agency landing site with bold typography, smooth scroll animations, and a clear conversion path.',
     tags: ['React', 'Framer Motion', 'Tailwind'],
     href: 'https://eshb.vercel.app/',
-    plan: 'agency',
-    screenshot: null,
     problem: 'A new agency needed a landing page that communicates premium positioning and converts visitors into leads.',
     role: 'Designed and built the entire site — typography system, scroll-triggered animations, and contact flow.',
     result: 'Went live with a premium-feeling site and a working contact funnel in place from day one.',
@@ -357,8 +346,6 @@ export const caseStudies = [
     description: 'A personal finance app for tracking income, expenses, and budgets with clean charts and clear insights.',
     tags: ['Next.js', 'Tailwind', 'Charts', 'Auth'],
     href: 'https://denaro-one.vercel.app/',
-    plan: 'finance',
-    screenshot: null,
     problem: 'People juggle finances across notes, banking apps, and spreadsheets without a clear picture of where their money goes.',
     role: 'Designed the dashboard and built the tracking flows, charting, and authenticated user accounts.',
     result: 'Replaced scattered notes and banking apps with one dashboard showing exactly where the money goes.',
@@ -407,10 +394,6 @@ export const templateStyles = [
   },
 ]
 
-// Live thumbnail for a template demo link, via thum.io's public screenshot
-// service — no API key, no manual asset sourcing. Renders the actual current
-// page, so it stays accurate if the template demo changes.
-export const templateScreenshot = href => `https://image.thum.io/get/width/1200/${href}`
 
 export const projectTypeOptions = [
   { value: 'launch', label: 'Launch' },

@@ -1,0 +1,14 @@
+{
+ "model": "gpt_image_2_5 (Higgsfield)",
+ "params": {
+  "aspect_ratio": "16:9",
+  "quality": "high",
+  "resolution": "2k"
+ },
+ "seed_key": "b439f356",
+ "round": "comp",
+ "reference": "public/Confident young man in black T-shirt.png (Higgsfield media 11c9f83a-0079-4ac9-9965-bb2437b12c36)",
+ "option": 2,
+ "job_id": "bb561eba-818c-43c3-bd89-4608dfcc4301",
+ "prompt": "A desktop website homepage at 1440px width, 16:9, rendered edge to edge as the web page itself: no browser window, no address bar, no device, no desk. The site is a street-culture magazine, and this page is its newsstand: the first viewport is the current issue's cover, and the section below is a rack of cover stories.\n\nRegions, top to bottom:\n1. Thin top bar like cover small print: left 'ISSUE 01 · TIRANA'; navigation 'Work', 'How it works', 'Pricing', 'Why me'; right a solid black rounded button 'Start My Project'.\n2. The cover (upper 60% of the page) on a flat signal-red field: the masthead 'ELJO' in an enormous ultra-heavy condensed black grotesque behind the cover star; the cover star is the man from the reference photo, cropped tight from the chest up and very large, his head breaking over the masthead letters. Cover lines on the left in heavy condensed white type: 'STOP LOSING CUSTOMERS TO BUSINESSES WITH BETTER WEBSITES.' and smaller 'Fixed price, in writing, before we start'. An acid-yellow round sticker button 'START MY PROJECT →'.\n3. The newsstand rack (lower 40%): a heading 'COVER STORIES' in heavy condensed black on white, then six small magazine covers standing side by side as clickable cards, each a different saturated colour with its own masthead and one cover line: 'SAGE COMMERCE' (green, a skincare storefront photo, 'From no store to taking orders'), 'CV CLIMBER' (cobalt, a resume on a laptop, 'Resumes that get the interview'), 'AI RECEPTIONIST' (violet, a phone ringing, 'Never miss a call again'), 'NDERTO' (orange, a construction site at dusk, 'One dashboard for every project'), 'ESHB' (black, an agency studio, 'A premium first impression'), 'DENARO' (teal, finance charts on a phone, 'Money you can read at a glance').\n\nStyle: glossy magazine print photography, flat saturated colour fields, black ink, high contrast, crisp edges, street-culture monthly energy. No serif fonts, no cream paper. Every word legible and spelled exactly as given."
+}

@@ -1,0 +1,14 @@
+{
+ "model": "gpt_image_2_5 (Higgsfield)",
+ "params": {
+  "aspect_ratio": "16:9",
+  "quality": "high",
+  "resolution": "2k"
+ },
+ "seed_key": "b439f356",
+ "round": "direction",
+ "card": "pick",
+ "direction": "Repainted: the site built on Tirana's colour-painted facades",
+ "job_id": "3fe1d290-2cb4-4df3-b55d-551b4817e993",
+ "prompt": "A desktop website homepage at 1440px width, 16:9, rendered edge to edge as the web page itself: no browser window, no address bar, no device, no desk around it. The page is built on the painted facade of a Tirana, Albania apartment block, seen perfectly straight-on: the facade is painted in bold flat geometric colour blocks (tangerine, cobalt blue, lime green, magenta and mustard) over raw concrete, with a regular grid of windows and small balconies. The website's working parts live on the facade:\n\n1. Navigation along the top, lettered on a row of small painted window shutters: 'Work', 'How it works', 'Pricing', 'Why me'; on the right a brass door plaque styled as a clear button reading 'Start My Project'. Top left, painted shop-sign lettering: 'Eljo Shurdhi'.\n2. The headline painted across the widest tangerine band in heavy white sans-serif capitals: 'STOP LOSING CUSTOMERS TO BUSINESSES WITH BETTER WEBSITES.'\n3. A cobalt panel below it carrying set text at reading size: 'I build fast, modern websites that make your business look as good as it actually is, and turn visitors into inquiries.' with a solid white button 'Start My Project →' and a text link 'See the work'.\n4. At street level, a small shopfront with a freshly painted sign, while the right edge of the facade is still bare grey concrete with a paint roller mid-stroke, showing the repaint in progress.\n5. The section below starts as the next building down the same street: a lime-green facade with the heading 'Your website might be losing you customers right now.' and three window-framed points.\n\nStyle: crisp architectural photography, orthographic straight-on view, saturated flat paint, bright Mediterranean daylight, high contrast. Every word legible and spelled exactly as given."
+}

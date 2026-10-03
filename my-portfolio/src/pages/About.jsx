@@ -1,8 +1,7 @@
-import PageHeader from '../components/sections/PageHeader'
-import ProofLegend from '../components/sections/ProofLegend'
-import FinalCta from '../components/sections/FinalCta'
-import { Builder, WhyMeList } from '../components/sections/Specifications'
-import { Icon } from '../components/drawing/Icons'
+import { Icon } from '../components/Icons'
+import { Picture } from '../components/Media'
+import { BackCover, HoldMeToIt } from '../components/sections/Departments'
+import { methodology } from '../lib/siteConfig'
 
 const fitFor = [
   'Founders and small businesses who need a site live in weeks, not a six-month agency retainer',
@@ -15,53 +14,77 @@ const notFitFor =
 
 export default function About() {
   return (
-    <main>
-      <PageHeader
-        title="No agency bloat. No templates. No excuses."
-        lead={`You're not hiring "a developer." You're hiring the person who builds it, talks to you directly, and has a single goal for your site: get you more customers.`}
-      >
-        <Builder className="mx-auto max-w-[420px] lg:max-w-none" />
-      </PageHeader>
-
-      <div className="wrap">
-        <ProofLegend />
-      </div>
-
-      <section className="section" aria-labelledby="spec-heading">
-        <div className="wrap">
-          <h2 id="spec-heading" className="t-h2 max-w-[18ch]">
-            What you can hold me to.
-          </h2>
-          <WhyMeList className="mt-10" />
+    <main id="main">
+      <header className="page-head page-head--ink">
+        <div className="page-head__media" style={{ minHeight: '28rem' }}>
+          <Picture
+            name="laptop"
+            eager
+            alt="Eljo working on a laptop on concrete steps at night, the screen lighting his face"
+            sizes="(min-width: 960px) 48vw, 100vw"
+            style={{ objectPosition: '50% 30%' }}
+          />
         </div>
-      </section>
+        <div className="page-head__text">
+          <h1 className="display" style={{ fontSize: 'clamp(3rem, 1.5rem + 5.5vw, 6rem)' }}>
+            No agency bloat. No templates. No excuses.
+          </h1>
+          <p className="lead" style={{ color: 'var(--on-ink-2)' }}>
+            You're not hiring "a developer." You're hiring the person who builds it, talks to you directly, and has a single goal for your
+            site: get you more customers.
+          </p>
+        </div>
+      </header>
 
-      <section className="section rule-top" aria-labelledby="fit-heading">
-        <div className="wrap grid gap-x-14 gap-y-10 lg:grid-cols-12">
-          <h2 id="fit-heading" className="t-h2 lg:col-span-5">
-            Who I work best with.
+      <HoldMeToIt />
+
+      <section className="dept dept--acid" aria-labelledby="fit-title">
+        <div className="wrap dept-head" style={{ alignItems: 'start' }}>
+          <h2 id="fit-title" className="display d-xl">
+            Who I work best with
           </h2>
-          <div className="lg:col-span-7">
-            <ul className="m-0 list-none p-0">
+          <div>
+            <ul className="holds" style={{ marginTop: 0, gridTemplateColumns: '1fr' }}>
               {fitFor.map(item => (
-                <li key={item} className="flex items-start gap-4 border-t border-rule py-5 text-[1.1rem] leading-snug">
-                  <Icon name="tick" className="mt-1 h-5 w-5 flex-none text-action" strokeWidth={2.25} />
-                  {item}
+                <li key={item} style={{ display: 'grid', gridTemplateColumns: '1.75rem 1fr', gap: '0.75rem' }}>
+                  <Icon name="tick" strokeWidth={2.8} />
+                  <p style={{ marginTop: 0, fontWeight: 800, fontSize: '1.15rem', maxWidth: '50ch' }}>{item}</p>
                 </li>
               ))}
             </ul>
-            <div className="grid gap-1 border-t-2 border-ink pt-5 sm:grid-cols-[10rem_1fr] sm:gap-6">
-              <p className="t-mono pt-1 text-ink-2">Not the right fit</p>
-              <p className="t-muted">{notFitFor}</p>
+            <div style={{ borderTop: '3px solid var(--ink)', paddingTop: '1.25rem' }}>
+              <p className="label">Not the right fit</p>
+              <p style={{ marginTop: '0.5rem', fontWeight: 600, maxWidth: '54ch' }}>{notFitFor}</p>
             </div>
           </div>
         </div>
       </section>
 
-      <FinalCta
-        title="Ready to stop losing customers to a bad website?"
-        body="Tell me about your business — I'll tell you honestly what it needs."
-      />
+      <section className="dept" aria-labelledby="method-title">
+        <div className="wrap">
+          <div className="dept-head">
+            <h2 id="method-title" className="display d-xl">
+              Why each step matters
+            </h2>
+            <p className="lead">A transformation, not a coding process. Skip a step and you get a pretty site that still doesn't sell.</p>
+          </div>
+          <ol className="steps" style={{ columns: 'auto' }}>
+            {methodology.map((item, i) => (
+              <li key={item.phase}>
+                <span className="num" aria-hidden="true">
+                  {i + 1}
+                </span>
+                <div>
+                  <h3>{item.phase}</h3>
+                  <p className="muted">{item.description}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <BackCover title="Ready to stop losing customers to a bad website?" body="Tell me about your business — I'll tell you honestly what it needs." />
     </main>
   )
 }

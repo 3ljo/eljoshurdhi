@@ -1,0 +1,305 @@
+{
+ "regions": [
+  {
+   "id": "page-ground",
+   "kind": "chrome",
+   "pixelBox": {
+    "x": 0,
+    "y": 0,
+    "w": 2688,
+    "h": 74
+   },
+   "note": "white newsprint ground above the spread carrying the running head"
+  },
+  {
+   "id": "running-head",
+   "kind": "text",
+   "pixelBox": {
+    "x": 66,
+    "y": 26,
+    "w": 424,
+    "h": 32
+   },
+   "note": "running head 'ELJO \u00b7 ISSUE 01 \u00b7 TIRANA' in small bold caps"
+  },
+  {
+   "id": "nav",
+   "kind": "control",
+   "pixelBox": {
+    "x": 1792,
+    "y": 26,
+    "w": 532,
+    "h": 34
+   },
+   "note": "navigation links Work, How it works, Pricing, Why me"
+  },
+  {
+   "id": "nav-cta",
+   "kind": "control",
+   "pixelBox": {
+    "x": 2378,
+    "y": 12,
+    "w": 246,
+    "h": 58
+   },
+   "note": "black pill button 'Start My Project'"
+  },
+  {
+   "id": "portrait",
+   "kind": "plate",
+   "pixelBox": {
+    "x": 18,
+    "y": 76,
+    "w": 1330,
+    "h": 1118
+   },
+   "bleed": true,
+   "note": "left page: full-bleed grainy black-and-white editorial portrait of Eljo, arms crossed, black t-shirt, graffiti wall behind"
+  },
+  {
+   "id": "masthead",
+   "kind": "text",
+   "pixelBox": {
+    "x": 60,
+    "y": 106,
+    "w": 278,
+    "h": 1026
+   },
+   "note": "vertical masthead 'ELJO' in signal-red ultra-heavy condensed capitals reading bottom to top"
+  },
+  {
+   "id": "gutter",
+   "kind": "chrome",
+   "pixelBox": {
+    "x": 1330,
+    "y": 74,
+    "w": 90,
+    "h": 1120
+   },
+   "note": "centre fold: soft shadow where the two pages meet"
+  },
+  {
+   "id": "yellow-page",
+   "kind": "chrome",
+   "container": true,
+   "pixelBox": {
+    "x": 1355,
+    "y": 74,
+    "w": 1307,
+    "h": 1118
+   },
+   "note": "right page: flat acid-yellow field"
+  },
+  {
+   "id": "headline-1",
+   "kind": "text",
+   "pixelBox": {
+    "x": 1432,
+    "y": 117,
+    "w": 708,
+    "h": 135
+   },
+   "note": "headline line 'STOP LOSING' in ultra-heavy condensed black capitals"
+  },
+  {
+   "id": "headline-2",
+   "kind": "text",
+   "pixelBox": {
+    "x": 1432,
+    "y": 249,
+    "w": 854,
+    "h": 135
+   },
+   "note": "headline line 'CUSTOMERS TO' in ultra-heavy condensed black capitals"
+  },
+  {
+   "id": "headline-3",
+   "kind": "text",
+   "pixelBox": {
+    "x": 1432,
+    "y": 381,
+    "w": 1008,
+    "h": 136
+   },
+   "note": "headline line 'BUSINESSES WITH' in ultra-heavy condensed black capitals"
+  },
+  {
+   "id": "headline-4",
+   "kind": "text",
+   "pixelBox": {
+    "x": 1432,
+    "y": 515,
+    "w": 1042,
+    "h": 135
+   },
+   "note": "headline line 'BETTER WEBSITES.' in ultra-heavy condensed black capitals"
+  },
+  {
+   "id": "promise-1-num",
+   "kind": "text",
+   "pixelBox": {
+    "x": 1438,
+    "y": 674,
+    "w": 146,
+    "h": 96
+   },
+   "note": "big condensed numeral 1"
+  },
+  {
+   "id": "promise-1-text",
+   "kind": "text",
+   "pixelBox": {
+    "x": 1600,
+    "y": 686,
+    "w": 356,
+    "h": 78
+   },
+   "note": "'Fixed price, in writing, before we start' bold sans, two lines"
+  },
+  {
+   "id": "promise-2-num",
+   "kind": "text",
+   "pixelBox": {
+    "x": 1436,
+    "y": 791,
+    "w": 148,
+    "h": 98
+   },
+   "note": "big condensed numeral 2"
+  },
+  {
+   "id": "promise-2-text",
+   "kind": "text",
+   "pixelBox": {
+    "x": 1600,
+    "y": 805,
+    "w": 418,
+    "h": 83
+   },
+   "note": "'A direct line to the person building it' bold sans, two lines"
+  },
+  {
+   "id": "promise-3-num",
+   "kind": "text",
+   "pixelBox": {
+    "x": 1436,
+    "y": 910,
+    "w": 146,
+    "h": 101
+   },
+   "note": "big condensed numeral 3"
+  },
+  {
+   "id": "promise-3-text",
+   "kind": "text",
+   "pixelBox": {
+    "x": 1600,
+    "y": 938,
+    "w": 406,
+    "h": 43
+   },
+   "note": "'Live in weeks, not months' bold sans, one line"
+  },
+  {
+   "id": "cta-primary",
+   "kind": "control",
+   "pixelBox": {
+    "x": 1436,
+    "y": 1037,
+    "w": 474,
+    "h": 104
+   },
+   "note": "large black pill button 'Start My Project \u2192' with white text"
+  },
+  {
+   "id": "cta-secondary",
+   "kind": "control",
+   "pixelBox": {
+    "x": 1956,
+    "y": 1070,
+    "w": 204,
+    "h": 46
+   },
+   "note": "underlined text link 'See the work'"
+  },
+  {
+   "id": "folio",
+   "kind": "text",
+   "pixelBox": {
+    "x": 2580,
+    "y": 1117,
+    "w": 44,
+    "h": 38
+   },
+   "note": "page folio '02'"
+  },
+  {
+   "id": "section-ground",
+   "kind": "chrome",
+   "pixelBox": {
+    "x": 0,
+    "y": 1196,
+    "w": 2688,
+    "h": 120
+   },
+   "note": "white band below the spread where the next section starts"
+  },
+  {
+   "id": "cover-stories-heading",
+   "kind": "text",
+   "pixelBox": {
+    "x": 62,
+    "y": 1229,
+    "w": 446,
+    "h": 74
+   },
+   "note": "section heading 'COVER STORIES' in ultra-heavy condensed black capitals"
+  },
+  {
+   "id": "story-1-image",
+   "kind": "image",
+   "pixelBox": {
+    "x": 67,
+    "y": 1321,
+    "w": 1260,
+    "h": 199
+   },
+   "bleed": true,
+   "note": "first cover-story photo, full-bleed card image (real project cover art in the build)"
+  },
+  {
+   "id": "story-1-title",
+   "kind": "text",
+   "pixelBox": {
+    "x": 100,
+    "y": 1352,
+    "w": 282,
+    "h": 112
+   },
+   "note": "white condensed cover-story title set in type on top of the card"
+  },
+  {
+   "id": "story-2-image",
+   "kind": "image",
+   "pixelBox": {
+    "x": 1362,
+    "y": 1321,
+    "w": 1259,
+    "h": 199
+   },
+   "bleed": true,
+   "note": "second cover-story photo, full-bleed card image (real project cover art in the build)"
+  },
+  {
+   "id": "story-2-title",
+   "kind": "text",
+   "pixelBox": {
+    "x": 1394,
+    "y": 1352,
+    "w": 312,
+    "h": 112
+   },
+   "note": "white condensed cover-story title set in type on top of the card"
+  }
+ ]
+}

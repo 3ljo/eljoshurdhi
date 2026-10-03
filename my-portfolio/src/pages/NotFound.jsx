@@ -1,37 +1,27 @@
-import CTAButton from '../components/ui/CTAButton'
-import RevisionCloud from '../components/drawing/RevisionCloud'
-import Plot from '../components/drawing/Plot'
-import { TitleBlock } from '../components/drawing/Marks'
+import { Link } from 'react-router-dom'
+import { Icon } from '../components/Icons'
+import { Picture } from '../components/Media'
 
 export default function NotFound() {
   return (
-    <main className="pt-[calc(68px+env(safe-area-inset-top,0px))]">
-      <div className="wrap grid min-h-[70vh] items-center gap-12 py-16 lg:grid-cols-12">
-        <div className="lg:col-span-6">
-          <h1 className="t-display">That page doesn't exist.</h1>
-          <p className="t-lead mt-6">The link might be old, or the URL has a typo. Here's where you probably meant to go.</p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            <CTAButton to="/" size="lg" arrow>
-              Back to home
-            </CTAButton>
-            <CTAButton to="/pricing" size="lg" variant="secondary">
-              See pricing
-            </CTAButton>
-          </div>
+    <main id="main" className="notfound on-ink">
+      <Picture name="posters" alt="" sizes="100vw" />
+      <div className="wrap" style={{ paddingBlock: 'clamp(4rem, 8vw, 7rem)' }}>
+        <h1 className="display" style={{ fontSize: 'clamp(3.25rem, 1.5rem + 7vw, 8rem)', maxWidth: '12ch' }}>
+          This page isn't in the issue.
+        </h1>
+        <p className="lead" style={{ marginTop: '1.25rem' }}>
+          The link may be old or mistyped. The cover and the stories are still here.
+        </p>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem 1.75rem', alignItems: 'center', marginTop: '2rem' }}>
+          <Link to="/" className="btn btn-acid btn-lg">
+            Back to the cover
+            <Icon name="arrowRight" className="btn-arrow" />
+          </Link>
+          <Link to="/work" className="text-link" style={{ color: '#fff' }}>
+            Read the cover stories
+          </Link>
         </div>
-        <Plot className="lg:col-span-5 lg:col-start-8">
-          <RevisionCloud className="p-6">
-            <TitleBlock
-              className="grid-cols-2"
-              cells={[
-                { label: 'Sheet', value: 'A-404' },
-                { label: 'Status', value: 'Not in this set' },
-                { label: 'Cover sheet', value: 'A-001 · Home' },
-                { label: 'Schedule', value: 'A-201 · Pricing' },
-              ]}
-            />
-          </RevisionCloud>
-        </Plot>
       </div>
     </main>
   )

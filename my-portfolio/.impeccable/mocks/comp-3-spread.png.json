@@ -1,0 +1,18 @@
+{
+ "model": "gpt_image_2_5 (Higgsfield)",
+ "params": {
+  "aspect_ratio": "16:9",
+  "quality": "high",
+  "resolution": "2k"
+ },
+ "seed_key": "b439f356",
+ "round": "comp",
+ "reference": "public/Confident young man in black T-shirt.png (Higgsfield media 11c9f83a-0079-4ac9-9965-bb2437b12c36)",
+ "option": 3,
+ "job_id": "c760cd39-fd60-4e15-ac23-1aa1dcd985e9",
+ "prompt": "A desktop website homepage at 1440px width, 16:9, rendered edge to edge as the web page itself: no browser window, no address bar, no device, no desk. The site is a street-culture magazine, and the first viewport is one open magazine spread filling the page: two facing pages meeting at a single centre fold (one gutter, a soft fold shadow), seen flat and straight-on.\n\nRegions:\n1. A thin top bar across both pages like running heads: left 'ELJO · ISSUE 01 · TIRANA'; navigation 'Work', 'How it works', 'Pricing', 'Why me'; right a solid black rounded button 'Start My Project'.\n2. Left page: a full-bleed high-contrast black-and-white editorial portrait of the man from the reference photo (same face, short dark hair, black t-shirt, arms crossed), looking straight at the camera; down the left edge of this page runs the masthead 'ELJO' set vertically in enormous signal-red ultra-heavy condensed grotesque letters.\n3. Right page: a flat acid-yellow page. At the top a huge headline in ultra-heavy condensed black capitals: 'STOP LOSING CUSTOMERS TO BUSINESSES WITH BETTER WEBSITES.' Below it three numbered points in heavy black type with short set text at reading size: '1  Fixed price, in writing, before we start', '2  A direct line to the person building it', '3  Live in weeks, not months'. Then a large solid black button 'Start My Project →' and a text link 'See the work'. A folio at the bottom corner: '02'.\n4. The section below the spread begins: a white band with the heading 'COVER STORIES' and the first two story thumbnails.\n\nStyle: glossy magazine print, flat saturated colour, black ink, high contrast, crisp edges, street-culture monthly energy. No serif fonts, no cream paper. Every word legible and spelled exactly as given.",
+ "bridge_note": "Pulled through the media bridge re-encoded as WebP q92 (the original PNG lives on the Higgsfield CDN).",
+ "approved": true,
+ "approved_by": "user, structured question: \"C: Open spread\"",
+ "file_note": "comp-3-spread.png is the lossless PNG of the bridged WebP render."
+}

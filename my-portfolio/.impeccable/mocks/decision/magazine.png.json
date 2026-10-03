@@ -1,0 +1,15 @@
+{
+ "model": "gpt_image_2_5 (Higgsfield)",
+ "params": {
+  "aspect_ratio": "16:9",
+  "quality": "high",
+  "resolution": "2k"
+ },
+ "seed_key": "b439f356",
+ "round": "direction",
+ "card": "assigned",
+ "direction": "Cover star: the site as a street-culture magazine issue",
+ "job_id": "a8ab6abf-66ef-411e-8323-b8c01d0839df",
+ "reference": "public/Confident young man in black T-shirt.png (Higgsfield media 11c9f83a-0079-4ac9-9965-bb2437b12c36)",
+ "prompt": "A desktop website homepage at 1440px width, 16:9, rendered edge to edge as the web page itself: no browser window, no address bar, no device, no desk around it. The site is designed as a bold street-culture magazine issue, and its first viewport IS the magazine cover built as a working web page with real, clickable parts.\n\nRegions, top to bottom:\n1. Thin top bar set like cover small print: on the left 'ISSUE 01 · TIRANA'; centred navigation links 'Work', 'How it works', 'Pricing', 'Why me'; on the right a solid black rounded button 'Start My Project'.\n2. Masthead: the word 'ELJO' in an enormous ultra-condensed, ultra-heavy black grotesque, spanning nearly the full page width, tight tracking, sitting on a flat saturated signal-red cover field (the entire first viewport background is that red).\n3. Cover star: the man from the reference photo (same face, short dark hair, black t-shirt, arms crossed) as a crisp studio-lit cut-out, standing centre-right, his head overlapping the bottom of the masthead letters so the masthead sits behind him (classic cover depth).\n4. Cover lines on the left, heavy condensed type in white and black: the main line very large, 'STOP LOSING CUSTOMERS TO BUSINESSES WITH BETTER WEBSITES.'; below it three smaller lines: 'Fixed price, in writing, before we start', 'A direct line to the person building it', 'Inside: 6 live projects'.\n5. A round acid-yellow sticker flash beside the cover star reading 'START MY PROJECT →', clearly a button.\n6. Bottom-right corner of the cover: a small white box with 'No. 01' and a barcode.\n7. The next section starts just below the cover: a bright white 'CONTENTS' page with a huge 'CONTENTS' heading and a list with page numbers and small photo thumbnails: '04  Your website might be losing you customers', '08  How it works', '12  Packages & prices', '16  Cover stories: Sage Commerce, CV Climber, AI Receptionist'.\n\nStyle: glossy magazine print photography, flat saturated colour fields, black ink, high contrast, crisp edges, the energy of a street-culture monthly. No serif fonts, no cream paper, no broadsheet hairlines. Every word legible and spelled exactly as given; body text at real reading size."
+}

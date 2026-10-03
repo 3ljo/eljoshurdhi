@@ -25,3 +25,6 @@ dist-ssr
 
 # Impeccable review captures (large, regenerated on each review; the written review is kept)
 .impeccable/review/*.png
+
+# Impeccable review captures are regenerated on every review round
+.impeccable/review/

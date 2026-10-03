@@ -1,59 +1,80 @@
+import eshbPlate from '../../assets/plates/story-1-image.png'
+import sagePlate from '../../assets/plates/story-2-image.png'
+import { Browser, Phone } from '../components/Browser'
+import { Icon } from '../components/Icons'
+import { LoopVideo, Picture } from '../components/Media'
+import { useTurnIn } from '../lib/useTurnIn'
+import { BackCover } from '../components/sections/Departments'
+import { projectMedia, templateShots } from '../lib/media'
 import { caseStudies, templateStyles } from '../lib/siteConfig'
-import PageHeader from '../components/sections/PageHeader'
-import FinalCta from '../components/sections/FinalCta'
-import { TemplateTiles } from '../components/sections/ProofSection'
 import { projectSlug } from '../lib/slug'
-import ProjectPlan from '../components/drawing/ProjectPlan'
-import CTAButton from '../components/ui/CTAButton'
-import { TitleBlock, ViewTitle } from '../components/drawing/Marks'
-import { Icon } from '../components/drawing/Icons'
 
-function CaseStudy({ project, index }) {
-  const flip = index % 2 === 1
+const plates = { eshb: eshbPlate, sage: sagePlate }
+
+function CaseStudy({ study }) {
+  const ref = useTurnIn()
+  const slug = projectSlug(study.title)
+  const media = projectMedia[slug]
+  const host = study.href.replace(/^https?:\/\//, '').split('/')[0]
   return (
-    <article id={projectSlug(project.title)} className="section rule-top scroll-mt-16" aria-labelledby={`${projectSlug(project.title)}-title`}>
-      <div className="wrap grid gap-x-14 gap-y-10 lg:grid-cols-12 lg:items-start">
-        <figure className={`m-0 lg:sticky lg:top-24 lg:col-span-7 ${flip ? 'lg:order-2' : ''}`}>
-          <ProjectPlan project={project} />
-          <figcaption className="mt-5">
-            <ViewTitle number={index + 1} title={`${project.title} · as built`} note="Drawing of the shipped product" />
-          </figcaption>
-        </figure>
-
-        <div className={`lg:col-span-5 ${flip ? 'lg:order-1' : ''}`}>
-          <h2 id={`${projectSlug(project.title)}-title`} className="t-h2">
-            {project.title}
-          </h2>
-          <p className="t-mono mt-3 text-ink-2">
-            {project.niche} · {project.tags.join(', ')}
-          </p>
-          <p className="t-lead mt-6">{project.outcome}</p>
-
-          <dl className="m-0 mt-8">
-            {[
-              ['The problem', project.problem],
-              ['What I changed', project.role],
-              ['Result', project.result],
-            ].map(([label, text]) => (
-              <div key={label} className="grid gap-1 border-t border-rule py-5 sm:grid-cols-[9rem_1fr] sm:gap-6">
-                <dt className="t-mono pt-1 text-ink-2">{label}</dt>
-                <dd className={`m-0 ${label === 'Result' ? 'font-semibold' : ''}`}>{text}</dd>
-              </div>
-            ))}
-          </dl>
-
-          <ul className="m-0 mt-2 list-none border-t border-rule p-0 pt-5">
-            {project.highlights.map(h => (
-              <li key={h} className="flex items-start gap-3 py-1.5">
-                <Icon name="tick" className="mt-1 h-4 w-4 flex-none text-action" strokeWidth={2.25} />
-                <span>{h}</span>
-              </li>
-            ))}
-          </ul>
-
-          <CTAButton href={project.href} size="lg" className="mt-8">
-            View live site
-          </CTAButton>
+    <article id={slug} className="case" aria-labelledby={`${slug}-title`}>
+      <div ref={ref} className="case__media">
+        <Picture name={media.cover} fallback={plates[media.cover]} alt={media.coverAlt} sizes="(min-width: 1024px) 50vw, 100vw" />
+        {media.video && <LoopVideo name={media.video} label={`the ${study.title} cover loop`} toggleStyle={{ right: '1rem', bottom: '1rem' }} />}
+        <p className="story__title display" aria-hidden="true">
+          {media.coverline.map(line => (
+            <span key={line}>{line}</span>
+          ))}
+        </p>
+      </div>
+      <div className="case__body">
+        <p className="label">{study.niche}</p>
+        <h2 id={`${slug}-title`} className="display d-lg" style={{ marginTop: '0.5rem' }}>
+          {study.title}
+        </h2>
+        <p className="case__deck" style={{ marginTop: '1rem' }}>
+          {study.outcome}
+        </p>
+        <div className="case__cols">
+          <div>
+            <h3>The problem</h3>
+            <p>{study.problem}</p>
+          </div>
+          <div>
+            <h3>What I built</h3>
+            <p>{study.role}</p>
+          </div>
+          <div>
+            <h3>The result</h3>
+            <p>{study.result}</p>
+          </div>
+        </div>
+        <ul className="tags" aria-label="Built with">
+          {study.tags.map(tag => (
+            <li key={tag}>{tag}</li>
+          ))}
+        </ul>
+        <div className="shots">
+          <Browser
+            url={study.href}
+            shot={media.shot}
+            long={media.long}
+            alt={`Screenshot of the live ${study.title} site`}
+            note={
+              media.loginOnly
+                ? 'The live app. The product sits behind sign-in, so this is its real login screen.'
+                : media.long
+                  ? 'The live site. Hover to scroll the whole page.'
+                  : 'The live site.'
+            }
+          />
+          <Phone shot={media.shot} alt={`${study.title} on a phone`} />
+        </div>
+        <div className="case__actions">
+          <a href={study.href} target="_blank" rel="noopener noreferrer" className="btn">
+            Open {host}
+            <Icon name="arrowUpRight" className="btn-arrow" />
+          </a>
         </div>
       </div>
     </article>
@@ -62,48 +83,65 @@ function CaseStudy({ project, index }) {
 
 export default function Work() {
   return (
-    <main>
-      <PageHeader
-        title="Case studies, not a screenshot gallery."
-        lead="Every project shipped to a real, working product. Each one is drawn here as built, with the problem, what I built and the live link."
-      >
-        <TitleBlock
-          className="grid-cols-2"
-          cells={[
-            { label: 'Sheet', value: 'A-101 · As-built drawings' },
-            { label: 'Projects', value: `${caseStudies.length}, all live` },
-            { label: 'Drawings', value: 'Illustrations of each product' },
-            { label: 'Live links', value: 'Open the real sites' },
-          ]}
-        />
-      </PageHeader>
-
-      {caseStudies.map((project, i) => (
-        <CaseStudy key={project.title} project={project} index={i} />
-      ))}
-
-      <section id="templates" className="section rule-top scroll-mt-16" aria-labelledby="templates-heading">
+    <main id="main">
+      <header className="dept dept--acid" style={{ paddingBottom: 'clamp(2.5rem, 5vw, 4rem)' }}>
         <div className="wrap">
-          <div className="grid gap-x-14 gap-y-6 lg:grid-cols-12">
-            <h2 id="templates-heading" className="t-h2 lg:col-span-6">
-              Or start from a proven layout.
-            </h2>
-            <p className="t-lead lg:col-span-5 lg:col-start-8 lg:self-end">
-              These aren't from my portfolio — they're licensed templates I customize with your brand, copy, and content
-              for a faster, lower-cost launch than a fully custom build. Good fit for the Launch package.
+          <div className="dept-head">
+            <h1 className="display" style={{ fontSize: 'clamp(3.5rem, 1.5rem + 8vw, 8.5rem)' }}>
+              Cover stories
+            </h1>
+            <p className="lead">
+              Six products, built and shipped. Every one is live: open it and click around.
             </p>
           </div>
-          <div className="mt-12">
-            <TemplateTiles templates={templateStyles} />
+          <nav aria-label="Stories in this issue" style={{ marginTop: 'clamp(2rem, 4vw, 3rem)' }}>
+            <ul className="tags" style={{ marginTop: 0 }}>
+              {caseStudies.map(study => (
+                <li key={study.title} style={{ padding: 0, border: 0 }}>
+                  <a href={`#${projectSlug(study.title)}`} className="btn btn-paper" style={{ minHeight: '2.6rem', padding: '0.5rem 1.1rem', fontSize: '0.95rem' }}>
+                    {study.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      {caseStudies.map(study => (
+        <CaseStudy key={study.title} study={study} />
+      ))}
+
+      <section className="dept" aria-labelledby="templates-title" style={{ borderTop: '3px solid var(--ink)' }}>
+        <div className="wrap">
+          <div className="dept-head">
+            <h2 id="templates-title" className="display d-xl">
+              Licensed templates
+            </h2>
+            <p className="lead">
+              Not my designs. Licensed starting points I customize with your brand, copy and content for a faster, lower-cost launch.
+            </p>
           </div>
-          <p className="mt-8 max-w-[60ch] text-[0.95rem] t-muted">
-            Licensed templates, not original designs — layout, colors, and content get customized to your business.
-            Mention a style by name when you reach out.
-          </p>
+          <div className="templates">
+            {templateStyles.map(template => (
+              <a key={template.title} href={template.href} target="_blank" rel="noopener noreferrer" className="template">
+                <span className="niche">{template.niche}</span>
+                <h3>{template.title}</h3>
+                <p>{template.description}</p>
+                <div style={{ marginTop: '1rem' }}>
+                  <Browser url={template.href.split('?')[0]} shot={templateShots[template.title]} alt={`Screenshot of the ${template.title} template demo`} sizes="(min-width: 1100px) 30vw, (min-width: 700px) 45vw, 100vw" />
+                </div>
+                <span className="text-link" style={{ marginTop: '1rem' }}>
+                  View the demo
+                  <Icon name="arrowUpRight" />
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
-      <FinalCta title="Want a project like these?" body="Tell me what you're building — I'll tell you honestly what it takes to ship it." />
+      <BackCover title="Want to be the next cover story?" />
     </main>
   )
 }

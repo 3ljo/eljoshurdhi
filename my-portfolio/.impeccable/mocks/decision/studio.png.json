@@ -1,0 +1,14 @@
+{
+ "model": "gpt_image_2_5 (Higgsfield)",
+ "params": {
+  "aspect_ratio": "16:9",
+  "quality": "high",
+  "resolution": "2k"
+ },
+ "seed_key": "b439f356",
+ "round": "direction",
+ "card": "canon",
+ "direction": "Studio dark: the category standard played straight",
+ "job_id": "5f055025-8325-48d5-8580-8f6cabe68616",
+ "prompt": "A desktop website homepage at 1440px width, 16:9, rendered edge to edge as the web page itself: no browser window, no address bar, no device frame around the page, no desk. A premium dark studio website for a freelance web developer, at the craft level of the best product-launch sites: near-black background with soft cinematic studio light.\n\n1. Top navigation: wordmark 'Eljo Shurdhi' on the left; links 'Work', 'How it works', 'Pricing', 'Why me'; a bright solid button 'Start My Project' on the right.\n2. Left half: a large bold sans-serif headline 'Stop losing customers to businesses with better websites.' with subcopy at reading size 'Fast, modern websites that turn visitors into inquiries. Fixed price, in writing, before we start.' and two buttons, 'Start My Project' (solid) and 'See the work' (outline).\n3. Right half: a cinematic 3D render of a laptop and a phone floating at a slight angle, their screens showing a bright, modern online-store website, soft reflections and a subtle colour glow beneath them.\n4. Below the fold, the next section begins: the heading 'Proof, not promises.' over three large project tiles, each a real-looking website screenshot with its name: 'Sage Commerce', 'CV Climber', 'AI Receptionist'.\n\nStyle: polished, high-contrast, product-launch aesthetic. Every word legible and spelled exactly as given."
+}

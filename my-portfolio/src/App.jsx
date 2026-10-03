@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
+import RunningHead from './components/RunningHead'
+import Colophon from './components/Colophon'
 import Home from './pages/Home'
 import Services from './pages/Services'
 import Work from './pages/Work'
@@ -32,8 +32,11 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <div className="min-h-svh">
-      <Navbar />
+    <div className="site">
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
+      <RunningHead />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -43,7 +46,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer />
+      <Colophon />
     </div>
   )
 }

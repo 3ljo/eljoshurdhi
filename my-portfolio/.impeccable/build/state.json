@@ -1,0 +1,226 @@
+{
+  "tool": "build-phase",
+  "version": 2,
+  "startedAt": "2026-10-02T23:07:53.397Z",
+  "comp": ".impeccable/mocks/comp-3-spread.png",
+  "direction": "b439f356",
+  "breakpoint": "2688x1520",
+  "artifact": "src/pages/Home.jsx",
+  "phase": "plates",
+  "phases": {
+    "comps": {
+      "status": "closed",
+      "openedAt": "2026-10-02T23:07:53.397Z",
+      "closedAt": "2026-10-02T23:34:58.116Z",
+      "attempts": 1,
+      "notes": [],
+      "gate": {
+        "ok": true,
+        "reasons": [],
+        "summary": "3 comps, 1 approved",
+        "approved": ".impeccable/mocks/comp-3-spread.png",
+        "at": "2026-10-02T23:34:58.116Z"
+      },
+      "forced": null
+    },
+    "spec": {
+      "status": "closed",
+      "openedAt": "2026-10-02T23:34:58.164Z",
+      "closedAt": "2026-10-02T23:38:00.951Z",
+      "attempts": 2,
+      "notes": [],
+      "gate": {
+        "ok": true,
+        "reasons": [],
+        "summary": "27 regions, 3 plates, 16 text regions measured",
+        "at": "2026-10-02T23:38:00.951Z"
+      },
+      "forced": null
+    },
+    "plates": {
+      "status": "open",
+      "openedAt": "2026-10-02T23:38:00.951Z",
+      "closedAt": null,
+      "attempts": 1,
+      "notes": [
+        {
+          "at": "2026-10-02T23:55:16.217Z",
+          "text": "Display face: Anton 400 (Anton SC is #3 in the catalog fingerprint) chosen over the catalog lead BBH Bogle after a side-by-side render against the comp headline crop; BBH Bogle reads narrower and lighter than the comp lettering. font-match --rank unavailable: no browser resolvable. Body and running head: Mulish."
+        },
+        {
+          "at": "2026-10-03T00:25:47.924Z",
+          "text": "Plan and asset review: the user approved in chat ('Approve, build it') after seeing the comp with raster regions outlined and the three selected plates (scratchpad plate-review.jpg). component-review serve could not reach a browser in this cloud session (session e1e5e1af6faf20443c8a98497beb16a49777252bc0501526627911cb9d62ff48), so no receipt exists; the approval is recorded here instead."
+        },
+        {
+          "at": "2026-10-03T00:35:44.248Z",
+          "text": "Hero measured with comp-diff at 2688x1520 (record hero refused: no review receipt in this session): overall 88% match, structure 79%, color 93%, no missing regions; story-2-image reads contradicted at 62% (the regenerated unbranded sneaker plate differs in shoe placement; the plate itself passes check-plate at 0.60). Cover lines kept verbatim from the comp and attached to real projects (ESHB, Sage Commerce); the other four projects got cover lines restating their siteConfig results."
+        }
+      ],
+      "gate": {
+        "ok": true,
+        "reasons": [],
+        "summary": "3/3 plates",
+        "at": "2026-10-03T00:24:55.145Z"
+      },
+      "forced": null
+    },
+    "hero": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "sections": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "motion": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "responsive": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "review": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    }
+  },
+  "finish": null,
+  "plates": {
+    "portrait": {
+      "id": "portrait",
+      "file": "assets/plates/portrait.png",
+      "status": "ok",
+      "assetHash": "b5b2344105dab4ce476aed0a21fb0dd83f96828409df41c562524ef6a6dee426",
+      "regionHash": "b87844b10b8793e65c09bee2220a2c9dc4ec076ea9b1b1c352d59a444a9cee2b",
+      "referenceHash": "ac2b028b8bb04355bf32974a501bfb36c17162d10f0f4fb4dc350db9e04b7497",
+      "reference": {
+        "policy": "plate-reference-v2",
+        "excludedPixels": 305352,
+        "totalPixels": 1486940,
+        "remainingPixels": 1181588,
+        "excludedFraction": 0.20535596594348124,
+        "fullyExcluded": false,
+        "regions": [
+          {
+            "id": "masthead",
+            "kind": "text",
+            "cropPx": {
+              "x": 42,
+              "y": 30,
+              "w": 278,
+              "h": 1026
+            },
+            "pixels": 285228
+          },
+          {
+            "id": "gutter",
+            "kind": "chrome",
+            "cropPx": {
+              "x": 1312,
+              "y": 0,
+              "w": 18,
+              "h": 1118
+            },
+            "pixels": 20124
+          }
+        ],
+        "ignoredContainers": []
+      },
+      "compHash": "e2574339fe12ac277a64929a481f703b6c2ac0012e906c090dfeb053a207c140",
+      "size": "2160x1920",
+      "score": 0.8069
+    },
+    "story-1-image": {
+      "id": "story-1-image",
+      "file": "assets/plates/story-1-image.png",
+      "status": "ok",
+      "assetHash": "71b684e60ebbf364d9f704ae089ecb7e833c623208c82b859a502c60417a73ca",
+      "regionHash": "29843790310c139b99df0de229b953ab9a37189058333a2f211aa4ea60522065",
+      "referenceHash": "ac2b028b8bb04355bf32974a501bfb36c17162d10f0f4fb4dc350db9e04b7497",
+      "reference": {
+        "policy": "plate-reference-v2",
+        "excludedPixels": 31584,
+        "totalPixels": 250740,
+        "remainingPixels": 219156,
+        "excludedFraction": 0.12596314907872697,
+        "fullyExcluded": false,
+        "regions": [
+          {
+            "id": "story-1-title",
+            "kind": "text",
+            "cropPx": {
+              "x": 33,
+              "y": 31,
+              "w": 282,
+              "h": 112
+            },
+            "pixels": 31584
+          }
+        ],
+        "ignoredContainers": []
+      },
+      "compHash": "e2574339fe12ac277a64929a481f703b6c2ac0012e906c090dfeb053a207c140",
+      "size": "2033x1124",
+      "score": 0.584
+    },
+    "story-2-image": {
+      "id": "story-2-image",
+      "file": "assets/plates/story-2-image.png",
+      "status": "ok",
+      "assetHash": "21061bbf0be93fb1a6a3aa8aca107a931f14c73db08992df6a1a7286a081919f",
+      "regionHash": "ef7e363619f0128d2c2d352ce7bf5d295d4ded900b545baba02c7b871d01af1a",
+      "referenceHash": "ac2b028b8bb04355bf32974a501bfb36c17162d10f0f4fb4dc350db9e04b7497",
+      "reference": {
+        "policy": "plate-reference-v2",
+        "excludedPixels": 34944,
+        "totalPixels": 250541,
+        "remainingPixels": 215597,
+        "excludedFraction": 0.13947417787906968,
+        "fullyExcluded": false,
+        "regions": [
+          {
+            "id": "story-2-title",
+            "kind": "text",
+            "cropPx": {
+              "x": 32,
+              "y": 31,
+              "w": 312,
+              "h": 112
+            },
+            "pixels": 34944
+          }
+        ],
+        "ignoredContainers": []
+      },
+      "compHash": "e2574339fe12ac277a64929a481f703b6c2ac0012e906c090dfeb053a207c140",
+      "size": "2688x1152",
+      "score": 0.5978
+    }
+  }
+}
