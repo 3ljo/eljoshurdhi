@@ -43,7 +43,7 @@ export const packages = [
     slug: 'launch',
     name: 'Launch',
     forWho: 'Get online fast and start taking inquiries',
-    problem: 'One sharp page built to turn visitors into messages and bookings.',
+    problem: 'One sharp page built to get you messages and bookings.',
     price: '$649',
     priceNote: 'starting at',
     timeframe: '5 days',
@@ -96,7 +96,7 @@ export const packages = [
     slug: 'care',
     name: 'Care',
     forWho: "Someone keeps watch on your site, so you don't have to",
-    problem: 'Broken forms and stale pages quietly lose customers. I keep watch and fix them.',
+    problem: 'Broken forms and stale pages quietly lose customers.',
     price: '$147',
     priceNote: '/mo',
     timeframe: 'Monthly retainer',
@@ -104,7 +104,7 @@ export const packages = [
     ctaLabel: 'Start My Care Plan',
     includes: [
       'Text, photo and small updates done for you',
-      'Your site watched for downtime and problems',
+      'Your site watched in case anything breaks',
       'Problems fixed, usually the same week',
       'Cancel anytime, no lock-in',
     ],
@@ -127,7 +127,7 @@ export const processSteps = [
   {
     step: '03',
     title: 'Go live',
-    description: 'Watch it come together, then launch a site ready to earn its keep.',
+    description: 'Watch it come together, then launch a site ready to bring in customers.',
   },
 ]
 
@@ -175,12 +175,12 @@ export const objections = [
   },
   {
     question: 'What about after it goes live?',
-    answer: "I'm still one message away. Want updates handled for you? Care covers it for $147 a month.",
+    answer: "I'm still one message away. Care handles updates for $147 a month.",
   },
 ]
 
 // Case studies as proof, not a portfolio gallery: the result first (outcome),
-// then Before → The fix. Results are stated honestly in plain terms — no
+// then Before → After. Results are stated honestly in plain terms — no
 // invented numbers, and no tool names: the reader is a business owner.
 //
 // Cover art, motion and the real screenshots for each project live in
@@ -189,16 +189,16 @@ export const caseStudies = [
   {
     title: 'Sage Commerce',
     niche: 'Online store',
-    outcome: 'An online store, live and taking orders.',
+    outcome: 'Live and taking orders.',
     description: 'An online store that takes shoppers from browsing to checkout.',
     href: 'https://ecomerce-sage-eight.vercel.app/',
-    problem: 'Small brands need a fast, simple shop, not a bloated one.',
+    problem: 'Small brands need a fast, simple shop.',
     role: 'The whole store, designed and built: products, cart and checkout.',
   },
   {
     title: 'CV Climber',
     niche: 'Career tool',
-    outcome: 'A polished CV in minutes, with payments live from day one.',
+    outcome: 'A polished CV in minutes, taking payments from day one.',
     description: 'An AI CV builder that helps job seekers write a standout CV and climb the career ladder faster.',
     href: 'https://www.cvclimber.lol/',
     problem: 'Job seekers struggle to write a CV recruiters notice.',
@@ -211,7 +211,7 @@ export const caseStudies = [
     description: 'An AI that answers calls, books appointments and handles questions 24/7 for service businesses.',
     href: 'https://ai-recepsionist-codo.vercel.app/dashboard',
     problem: 'Calls go unanswered after hours, and those customers are gone.',
-    role: 'An AI voice that answers callers, plus a dashboard for every call.',
+    role: 'An AI voice that answers callers, plus a record of every call.',
   },
   {
     title: 'Nderto',
@@ -225,7 +225,7 @@ export const caseStudies = [
   {
     title: 'ESHB',
     niche: 'Agency launch',
-    outcome: 'A new agency, looking premium and ready for inquiries from day one.',
+    outcome: 'Looking premium and ready for inquiries from day one.',
     description: 'A bold launch site for a new agency, with a clear path to get in touch.',
     href: 'https://eshb.vercel.app/',
     problem: 'A new agency needed to look premium and win inquiries.',
@@ -234,7 +234,7 @@ export const caseStudies = [
   {
     title: 'Denaro',
     niche: 'Finance app',
-    outcome: 'Financial numbers, made readable at a glance.',
+    outcome: 'Finance charts that are easy to read.',
     description: 'A finance app that turns financial numbers into charts you read at a glance.',
     href: 'https://denaro-one.vercel.app/',
     problem: 'Financial numbers spread out and hard to read.',

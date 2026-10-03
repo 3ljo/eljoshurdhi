@@ -46,7 +46,7 @@ function CaseStudy({ study }) {
             <p>{study.problem}</p>
           </div>
           <div>
-            <h3>The fix</h3>
+            <h3>After</h3>
             <p>{study.role}</p>
           </div>
         </div>
@@ -58,9 +58,9 @@ function CaseStudy({ study }) {
             alt={`Screenshot of the live ${study.title} site`}
             note={
               media.loginOnly
-                ? 'Live now. The app sits behind a login, so this is its sign-in page.'
+                ? 'Live now, behind a sign-in.'
                 : media.long
-                  ? 'Live now. Scroll inside to see the whole page.'
+                  ? 'Scroll inside for the whole page.'
                   : 'Live now.'
             }
           />

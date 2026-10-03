@@ -24,7 +24,7 @@ export function SoundFamiliar() {
             Sound familiar?
           </h2>
           <p className="lead" style={{ color: 'var(--on-ink-2)' }}>
-            Every one of these sends customers somewhere else.
+            Each of these hands customers to a competitor.
           </p>
         </div>
         <ul className="letters">
@@ -53,9 +53,6 @@ export function HowItWorks({ id }) {
           <h2 id="how-title" className="display d-xl">
             How it works
           </h2>
-          <p className="lead" style={{ marginTop: '1.25rem' }}>
-            Three steps from your first message to a site that earns.
-          </p>
           <ol className="steps">
             {processSteps.map((step, i) => (
               <li key={step.title}>
@@ -92,7 +89,7 @@ export function PriceList({ detailed = false, hideHead = false, headingLevel = 2
             <H id="prices-title" className="display d-xl">
               The price list
             </H>
-            <p className="lead">Three sites built to bring you customers. One plan to keep yours running.</p>
+            <p className="lead">Three ways to win more customers. One plan to keep your site running.</p>
           </div>
         )}
         <ul className="prices" style={hideHead ? { marginTop: 0 } : undefined}>

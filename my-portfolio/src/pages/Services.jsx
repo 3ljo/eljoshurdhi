@@ -10,7 +10,7 @@ export default function Services() {
             Pricing
           </h1>
           <p className="lead">
-            Pick where your business is today. Each one is built to bring you customers.
+            Pick where your business is today.
           </p>
         </div>
         <div className="page-head__media">
