@@ -459,11 +459,6 @@
     justify-content: center;
   }
 }
-@media (max-width: 359px) {
-  .runhead__city {
-    display: none;
-  }
-}
 @media (min-width: 1024px) {
   /* On the open spread the running head is the comp's thin strip, scaled
      with the page. */

@@ -4,7 +4,7 @@ import { navLinks, primaryCta } from '../lib/siteConfig'
 import { focusSection } from '../lib/focusSection'
 import { Icon } from './Icons'
 
-// The magazine's running head: title and issue on the left, sections and
+// The magazine's running head: the name on the left, sections and
 // the one call to action on the right. On phones the sections open as the
 // issue's contents page.
 export default function RunningHead() {
@@ -92,10 +92,8 @@ export default function RunningHead() {
     <>
       <header className="runhead" data-hidden={hidden && !open} data-scrolled={scrolled}>
         <nav className="runhead__bar" aria-label="Main">
-          <Link to="/" className="runhead__title" aria-label="Eljo Shurdhi, Tirana. Home">
+          <Link to="/" className="runhead__title" aria-label="Eljo Shurdhi. Home">
             <span>Eljo</span>
-            <span className="dot runhead__city" aria-hidden="true" />
-            <span className="runhead__city">Tirana</span>
           </Link>
 
           <div className="runhead__nav">
