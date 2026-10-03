@@ -83,7 +83,7 @@ function CaseStudy({ study }) {
             className={`btn ${media.tone === 'ink' ? 'btn-acid' : ''}`}
           >
             Open the live site
-            <span className="sr-only">: {study.title}, opens in a new tab</span>
+            <span className="sr-only"> for {study.title}, opens in a new tab</span>
             <Icon name="arrowUpRight" className="btn-arrow" />
           </a>
         </div>
@@ -136,8 +136,8 @@ export default function Work() {
           <div className="templates">
             {templateStyles.map(template => (
               <a key={template.title} href={template.href} target="_blank" rel="noopener noreferrer" className="template">
-                <span className="niche">{template.niche}</span>
                 <h3>{template.title}</h3>
+                <span className="niche">{template.niche}</span>
                 <p>{template.description}</p>
                 <div style={{ marginTop: '1rem' }}>
                   <Browser url={template.href.split('?')[0]} shot={templateShots[template.title]} alt={`Screenshot of the ${template.title} template demo`} sizes="(min-width: 1100px) 30vw, (min-width: 700px) 45vw, 100vw" />

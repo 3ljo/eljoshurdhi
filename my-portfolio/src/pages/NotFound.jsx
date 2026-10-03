@@ -5,6 +5,7 @@ import { Picture } from '../components/Media'
 export default function NotFound() {
   return (
     <main id="main" className="notfound on-ink">
+      <meta name="robots" content="noindex" />
       <Picture name="posters" alt="" sizes="100vw" />
       <div className="wrap" style={{ paddingBlock: 'clamp(4rem, 8vw, 7rem)' }}>
         <h1 className="display" style={{ fontSize: 'clamp(3.25rem, 1.5rem + 7vw, 8rem)', maxWidth: '12ch' }}>

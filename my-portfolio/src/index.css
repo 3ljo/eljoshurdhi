@@ -2034,7 +2034,7 @@
   margin-top: 0;
 }
 .template h3 {
-  margin-top: 1rem;
+  margin-top: 0.25rem;
   font-family: var(--font-display);
   font-weight: 400;
   text-transform: uppercase;
@@ -2048,6 +2048,7 @@
   font-size: 0.98rem;
 }
 .template .niche {
+  margin-top: 0.4rem;
   font-size: 0.8125rem;
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -2181,7 +2182,7 @@ textarea.field {
 }
 .field-error {
   margin-top: 0.45rem;
-  color: #a10000;
+  color: var(--signal-ink);
   font-weight: 800;
   font-size: 0.92rem;
 }

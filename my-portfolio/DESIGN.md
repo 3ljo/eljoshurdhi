@@ -1,288 +1,438 @@
 ---
-name: Eljo Shurdhi — The Drawing Set
-description: A freelance web studio site drawn as the construction set for the visitor's next website.
+name: Eljo Shurdhi — Issue 01
+description: A freelance web studio site set as an issue of a street-culture magazine whose cover star is the person who builds your website.
 colors:
-  safety-orange: "#f05a1a"
-  safety-orange-deep: "#d94b0d"
-  stamp-orange: "#c2410c"
-  whiteprint-paper: "#f1f4f6"
-  whiteprint-paper-shade: "#e6ebef"
-  drafting-ink: "#0e1f2e"
-  graphite: "#3e5468"
-  diazo-blue: "#2457a5"
-  rule: "rgb(14 31 46 / 0.16)"
-  line-soft: "rgb(36 87 165 / 0.4)"
-  field-border: "rgb(14 31 46 / 0.5)"
-  danger: "#b42318"
-  warm-white: "#fff6f0"
-  blueprint-ground: "#0d2c4d"
-  blueprint-ground-shade: "#0a2441"
-  blueprint-ink: "#eaf2f9"
-  blueprint-graphite: "#a9c1d9"
-  blueprint-line: "#cfe0f0"
-  blueprint-orange: "#ff6a2b"
-  blueprint-danger: "#ffa094"
+  acid: "#f1fa18"
+  signal: "#f80808"
+  signal-ink: "#c20000"
+  ink: "#0d0d0d"
+  ink-2: "#3d3d3b"
+  paper: "#fafafa"
+  paper-2: "#efeeec"
+  bright-white: "#ffffff"
+  on-ink: "#f7f7f5"
+  on-ink-2: "#b9b8b4"
+  rule: "rgb(13 13 13 / 0.14)"
+  rule-strong: "rgb(13 13 13 / 0.85)"
+  rule-on-ink: "rgb(255 255 255 / 0.2)"
+  cover-scrim: "rgb(0 0 0 / 0.55)"
+  card-stock: "#fffff4"
+  frame-black: "#1a1a1a"
+  ink-hover: "#2a2a2a"
+  acid-hover: "#fbff5c"
 typography:
-  display:
-    fontFamily: "Barlow Condensed, Arial Narrow, sans-serif"
-    fontSize: "clamp(3.1rem, 1.4rem + 5vw, 6rem)"
-    fontWeight: 700
-    lineHeight: 0.93
-    letterSpacing: "-0.012em"
-  headline:
-    fontFamily: "Barlow Condensed, Arial Narrow, sans-serif"
-    fontSize: "clamp(2.5rem, 1.5rem + 3.4vw, 4.4rem)"
-    fontWeight: 700
-    lineHeight: 0.96
-    letterSpacing: "-0.01em"
+  nameplate:
+    fontFamily: "Anton, Arial Narrow, sans-serif"
+    fontSize: "clamp(5.5rem, 31vw, 12rem)"
+    fontWeight: 400
+    lineHeight: 0.8
+  cover-title:
+    fontFamily: "Anton, Arial Narrow, sans-serif"
+    fontSize: "clamp(2.4rem, calc((100vw - 2 * var(--gutter)) / 6.95), 5.25rem)"
+    fontWeight: 400
+    lineHeight: 0.923
+    letterSpacing: "0.006em"
+  page-title:
+    fontFamily: "Anton, Arial Narrow, sans-serif"
+    fontSize: "clamp(3.5rem, 1.5rem + 8vw, 8.5rem)"
+    fontWeight: 400
+    lineHeight: 0.92
+    letterSpacing: "0.005em"
+  display-xl:
+    fontFamily: "Anton, Arial Narrow, sans-serif"
+    fontSize: "clamp(3.25rem, 1.5rem + 6.2vw, 6rem)"
+    fontWeight: 400
+    lineHeight: 0.92
+    letterSpacing: "0.005em"
+  display-lg:
+    fontFamily: "Anton, Arial Narrow, sans-serif"
+    fontSize: "clamp(2.75rem, 1.4rem + 4.6vw, 5.25rem)"
+    fontWeight: 400
+    lineHeight: 0.92
+    letterSpacing: "0.005em"
+  display-md:
+    fontFamily: "Anton, Arial Narrow, sans-serif"
+    fontSize: "clamp(2.25rem, 1.3rem + 3.2vw, 3.75rem)"
+    fontWeight: 400
+    lineHeight: 0.92
+    letterSpacing: "0.005em"
+  cover-line:
+    fontFamily: "Anton, Arial Narrow, sans-serif"
+    fontSize: "clamp(1.9rem, 1.2rem + 2.4vw, 3.25rem)"
+    fontWeight: 400
+    lineHeight: 1.02
+    letterSpacing: "0.005em"
   title:
-    fontFamily: "Barlow Condensed, Arial Narrow, sans-serif"
-    fontSize: "clamp(1.55rem, 1.2rem + 1vw, 2.1rem)"
-    fontWeight: 600
-    lineHeight: 1.04
-  price:
-    fontFamily: "Barlow Condensed, Arial Narrow, sans-serif"
-    fontWeight: 700
+    fontFamily: "Anton, Arial Narrow, sans-serif"
+    fontSize: "clamp(1.6rem, 1.2rem + 1.1vw, 2.2rem)"
+    fontWeight: 400
     lineHeight: 1
-    fontFeature: "lnum, tnum"
-  stamp:
-    fontFamily: "Barlow Condensed, Arial Narrow, sans-serif"
-    fontSize: "0.95rem"
-    fontWeight: 700
-    lineHeight: 1.1
-    letterSpacing: "0.08em"
+  numeral:
+    fontFamily: "Anton, Arial Narrow, sans-serif"
+    fontSize: "clamp(3rem, 2rem + 3vw, 4.75rem)"
+    fontWeight: 400
+    lineHeight: 0.82
+  price:
+    fontFamily: "Anton, Arial Narrow, sans-serif"
+    fontSize: "clamp(2.25rem, 1.8rem + 1.4vw, 3rem)"
+    fontWeight: 400
+    lineHeight: 1
+    fontFeature: "tnum"
+  folio:
+    fontFamily: "Anton, Arial Narrow, sans-serif"
+    fontSize: "1.1rem"
+    fontWeight: 400
+    lineHeight: 1
+  deck:
+    fontFamily: "Mulish, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(1.25rem, 1.05rem + 0.6vw, 1.6rem)"
+    fontWeight: 800
+    lineHeight: 1.3
   lead:
-    fontFamily: "Barlow, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(1.15rem, 1.05rem + 0.35vw, 1.3rem)"
-    fontWeight: 400
-    lineHeight: 1.55
+    fontFamily: "Mulish, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(1.15rem, 1rem + 0.45vw, 1.4rem)"
+    fontWeight: 600
+    lineHeight: 1.45
+  body-strong:
+    fontFamily: "Mulish, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "1.1rem"
+    fontWeight: 800
+    lineHeight: 1.3
   body:
-    fontFamily: "Barlow, ui-sans-serif, system-ui, sans-serif"
+    fontFamily: "Mulish, ui-sans-serif, system-ui, sans-serif"
     fontSize: "1.0625rem"
-    fontWeight: 400
-    lineHeight: 1.6
+    fontWeight: 500
+    lineHeight: 1.55
+  button:
+    fontFamily: "Mulish, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "1rem"
+    fontWeight: 800
+    lineHeight: 1.1
+  body-sm:
+    fontFamily: "Mulish, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "0.95rem"
+    fontWeight: 800
+  caption:
+    fontFamily: "Mulish, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "0.85rem"
+    fontWeight: 800
   label:
-    fontFamily: "Overpass Mono, ui-monospace, monospace"
+    fontFamily: "Mulish, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "0.8125rem"
+    fontWeight: 800
+    letterSpacing: "0.12em"
+  label-sm:
+    fontFamily: "Mulish, ui-sans-serif, system-ui, sans-serif"
     fontSize: "0.75rem"
-    fontWeight: 400
-    lineHeight: 1.35
-    letterSpacing: "0.06em"
-  annotation:
-    fontFamily: "Overpass Mono, ui-monospace, monospace"
-    fontSize: "0.6875rem"
-    fontWeight: 400
-    lineHeight: 1.35
-    letterSpacing: "0.08em"
+    fontWeight: 800
+    letterSpacing: "0.14em"
 rounded:
-  sheet: "2px"
-  stamp: "3px"
-  bubble: "9999px"
+  square: "0px"
+  focus: "2px"
+  field: "8px"
+  browser: "12px"
+  block: "14px"
+  phone: "20px"
+  pill: "999px"
 spacing:
-  gutter: "clamp(1.25rem, 5vw, 4.5rem)"
-  section: "clamp(5rem, 4rem + 6vw, 9rem)"
+  gutter: "clamp(1rem, 0.5rem + 2.4vw, 2.5rem)"
+  item: "1.5rem"
+  block: "clamp(2.5rem, 5vw, 4rem)"
+  department: "clamp(4.5rem, 3rem + 6vw, 9rem)"
+  page-max: "1680px"
 components:
   button-primary:
-    backgroundColor: "{colors.safety-orange}"
-    textColor: "{colors.drafting-ink}"
-    rounded: "{rounded.sheet}"
-    padding: "0 1.5rem"
-    height: "3.25rem"
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.on-ink}"
+    typography: "{typography.button}"
+    rounded: "{rounded.pill}"
+    padding: "0.7rem 1.4rem"
+    height: "3rem"
   button-primary-hover:
-    backgroundColor: "{colors.safety-orange-deep}"
-  button-secondary:
-    textColor: "{colors.drafting-ink}"
-    rounded: "{rounded.sheet}"
-    padding: "0 1.5rem"
-    height: "3.25rem"
-  button-secondary-hover:
-    backgroundColor: "{colors.drafting-ink}"
-    textColor: "{colors.whiteprint-paper}"
-  button-inverse:
-    backgroundColor: "{colors.drafting-ink}"
-    textColor: "{colors.warm-white}"
-    rounded: "{rounded.sheet}"
-  field:
-    backgroundColor: "{colors.whiteprint-paper}"
-    textColor: "{colors.drafting-ink}"
-    rounded: "{rounded.sheet}"
-    padding: "0.85rem 1rem"
-  chip-selected:
-    backgroundColor: "{colors.diazo-blue}"
-    textColor: "{colors.whiteprint-paper}"
-    rounded: "{rounded.sheet}"
+    backgroundColor: "{colors.ink-hover}"
+  button-acid:
+    backgroundColor: "{colors.acid}"
+    textColor: "{colors.ink}"
+    typography: "{typography.button}"
+    rounded: "{rounded.pill}"
+    padding: "0.7rem 1.4rem"
+    height: "3rem"
+  button-acid-hover:
+    backgroundColor: "{colors.acid-hover}"
+  button-paper:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+    typography: "{typography.button}"
+    rounded: "{rounded.pill}"
+  button-paper-hover:
+    backgroundColor: "{colors.acid}"
+  button-large:
+    padding: "0.9rem 1.8rem"
+    height: "3.6rem"
+  button-cover:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.on-ink}"
+    rounded: "{rounded.block}"
+    padding: "0 1.75rem"
+    height: "3.75rem"
+  chip-choice:
+    backgroundColor: "{colors.card-stock}"
+    textColor: "{colors.ink}"
+    typography: "{typography.body-sm}"
+    rounded: "{rounded.pill}"
+    padding: "0.45rem 1rem"
     height: "2.75rem"
-  stamp:
-    textColor: "{colors.stamp-orange}"
-    typography: "{typography.stamp}"
-    rounded: "{rounded.stamp}"
-    padding: "0.3rem 0.6rem 0.25rem"
-  callout-bubble:
-    backgroundColor: "{colors.whiteprint-paper}"
-    textColor: "{colors.diazo-blue}"
-    rounded: "{rounded.bubble}"
-    size: "2rem"
-  view-number:
-    backgroundColor: "{colors.diazo-blue}"
-    textColor: "{colors.whiteprint-paper}"
-    rounded: "{rounded.bubble}"
-    size: "2rem"
+  chip-choice-selected:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.acid}"
+  tag:
+    typography: "{typography.caption}"
+    rounded: "{rounded.pill}"
+    padding: "0.3rem 0.7rem"
+  price-tag:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.acid}"
+    typography: "{typography.label-sm}"
+    rounded: "{rounded.pill}"
+    padding: "0.25rem 0.6rem"
+  input-field:
+    backgroundColor: "{colors.card-stock}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.field}"
+    padding: "0.7rem 0.9rem"
+    height: "3.1rem"
+  running-head:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+    typography: "{typography.label}"
+    height: "3.75rem"
+  contents-page:
+    backgroundColor: "{colors.acid}"
+    textColor: "{colors.ink}"
+  department-ink:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.on-ink}"
+  department-acid:
+    backgroundColor: "{colors.acid}"
+    textColor: "{colors.ink}"
+  department-paper:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+  department-pulp:
+    backgroundColor: "{colors.paper-2}"
+    textColor: "{colors.ink}"
+  story-ink:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.on-ink}"
+    rounded: "{rounded.square}"
+  story-acid:
+    backgroundColor: "{colors.acid}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.square}"
+  story-red:
+    backgroundColor: "{colors.signal}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.square}"
+  story-paper:
+    backgroundColor: "{colors.bright-white}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.square}"
+  browser-frame:
+    backgroundColor: "{colors.frame-black}"
+    rounded: "{rounded.browser}"
+  phone-frame:
+    backgroundColor: "{colors.frame-black}"
+    rounded: "{rounded.phone}"
 ---
 
-# Design System: Eljo Shurdhi — The Drawing Set
+# Design System: Eljo Shurdhi — Issue 01
 
 ## Overview
 
-**Creative North Star: "The Drawing Set"**
+**Creative North Star: "The Street Issue"**
 
-The site is the construction drawing set for the visitor's next website: planned, priced in writing and approved before anything is built. Every page is a sheet with a number (A-001 Cover sheet, A-101 As-built drawings, A-201 Package schedule, A-301 The builder, A-401 Request for quote). The component language comes from the drawing set itself: title blocks, callout bubbles, view titles, revision clouds and deltas, schedules, general notes and rubber stamps. The hero is the proposed homepage drawn as linework that plots itself and then builds in.
+The site is one issue of a street-culture magazine, and the person who builds your website is its cover star. Every client project is a cover story; every section is a department of the issue with its own full-bleed print field and a folio in its foot. The visitor opens the issue on an open spread: a living black-and-white portrait of Eljo on the left page, an acid-yellow offer page on the right, a red ELJO nameplate running down the photo's edge. From there the issue reads in order: cover stories, reader letters, the feature on how it works, the price list, what you can hold me to, the interview, and the back cover's call.
 
-There are two prints of one drawing. The whiteprint is cool drafting paper with ink and diazo-blue linework on a faint drafting grid. The blueprint is a Prussian-blue ground with white linework. Layout, type and content are identical in both; only the tokens swap. Safety orange is the one loud colour and it marks action. The density is that of a well-kept sheet: generous margins, hairline structure, and nothing floating.
+The material is flat print. Four inks (acid yellow, signal red, white newsprint, black ink) are laid down as solid fields, never as tints or glows, and colour comes from the field a thing is printed on rather than from decoration on top of it. Headlines are an ultra-heavy condensed grotesque in capitals, set tight and big; everything you read is a friendly, heavy-weighted sans. Photography is grainy, high-contrast street and editorial work: the people and the department plates are black-and-white, and a story plate may keep one natural colour. Density is magazine density: big type, long scrolls of full-bleed fields, hairline and heavy rules instead of boxes.
 
-The world refuses the freelancer default: a dark page, one neon accent, glow orbs and a grid of equal cards.
+The thesis refuses two defaults by name: the dark-page, neon, glow-orb, equal-cards freelancer site, and the quiet white minimal portfolio. Black is one of the four inks and owns whole departments, but it is never the ground every section sits on, and no two cover stories share a colour.
 
 **Key Characteristics:**
-- Two prints (whiteprint / blueprint) driven by one token set; the reader toggles them like prints of the same drawing.
-- Safety orange reserved for action, stamps and revision marks.
-- Condensed drafting lettering for display; mono only for annotation.
-- Structure from hairline rules and 1.5px linework, 2px corners, no shadows on containers.
-- One authored motion: plot, then build.
+- Flat full-bleed print fields from four inks; one ink per cover story.
+- Anton capitals for everything seen from across the room, Mulish 500–900 for everything read.
+- Open two-page spreads on a single centre gutter from 1024px up; stacked pages below.
+- Magazine apparatus as navigation and rhythm: running head, folios, numbered points, Q. and A., a contents page, a colophon.
+- Square pages and plates; pills for actions and choices; rounded corners only on depicted devices and form controls.
+- One authored motion: pages turn in from the spine; cover photos breathe as silent loops.
 
 ## Colors
 
-A cool, low-chroma drafting palette (paper, ink, diazo blue) with one high-visibility safety orange.
+Four printing inks, laid flat, with greys existing only as tints of the black ink for reading text, rules and the pulp page.
 
 ### Primary
-- **Safety Orange** (#f05a1a; blueprint #ff6a2b): primary buttons, the solid final call-to-action field, the active-link underline, focus rings, text selection, the caret, tick marks and revision-cloud linework. Its hover is **Safety Orange Deep** (#d94b0d; blueprint #ff8450).
-- **Stamp Orange** (#c2410c; blueprint uses #ff6a2b): the same orange, deepened for lettering on paper (stamps and delta numbers). It reaches 4.7:1 on whiteprint, where safety orange as text reaches only 3.1:1.
+- **Acid Yellow** (#f1fa18): the issue's signature field. The cover's offer page, the contents page, How it works, the page heads of inner pages, the reply card, the recommended package row, text selection, and every headline set on a black field. Black ink on it reads at 17:1.
 
 ### Secondary
-- **Diazo Blue** (#2457a5; blueprint line #cfe0f0): all linework (drawings, title-block frames, view-title rules, callout bubbles), the selected choice chip, and the drafting grid at very low alpha (5.5% minor, 11% major).
+- **Signal Red** (#f80808): the nameplate (ELJO on the cover and in the colophon), the short rule under every cover line, the nav underline, the focus ring on light grounds, and the red cover-story field (black ink on it, 4.65:1). A display and graphic ink: on newsprint it reaches only 4.0:1.
+- **Proof Red** (#c20000): Signal Red's text cut, for red that must be read at reading size on light grounds: the Q. in the interview, the include ticks on the price list, the current page in the contents page, invalid field borders. 6.1:1 on newsprint, 5.6:1 on acid.
 
 ### Neutral
-- **Whiteprint Paper** (#f1f4f6) with **Paper Shade** (#e6ebef): the page ground and recessed frames. Blueprint: **Blueprint Ground** (#0d2c4d) and **Ground Shade** (#0a2441).
-- **Drafting Ink** (#0e1f2e; blueprint #eaf2f9): headings, body text, the secondary-button outline, and the text on orange.
-- **Graphite** (#3e5468; blueprint #a9c1d9): secondary text, leads, annotation labels and placeholders (7.1:1 on whiteprint, 7.6:1 on blueprint).
-- **Rule** (ink at 16%): section and row dividers. **Line Soft** (diazo at 40%): inner title-block dividers and link underlines. **Field Border** (ink at 50%): input and chip boundaries, which hold at least 3:1.
-- **Danger** (#b42318; blueprint #ffa094): field errors only.
-- **Warm White** (#fff6f0): lettering on the inverse button, which sits on the orange field.
+- **Press Black** (#0d0d0d): all reading text on light fields, every primary pill button, the black departments (Sound familiar, What you can hold me to), the colophon, the reply page's side, heavy rules (2–3px) between list items and stories.
+- **Ink Wash** (#3d3d3b): secondary reading text on light fields (problems under package names, answers in the interview, muted notes). 9.5:1 on acid, 10.4:1 on newsprint.
+- **White Newsprint** (#fafafa): the page ground: running head, cover stories, the price list, the plain departments, the browser's theme colour.
+- **Pulp Grey** (#efeeec): the one off-white department (the interview) and the scrollbar track; a second paper stock, not a surface tint.
+- **Bright White** (#ffffff): type laid over photographs (cover lines, back cover, 404) and the white-paper cover story, whiter than newsprint so the story reads as its own sheet.
+- **Newsprint on Ink** (#f7f7f5) and **Grey on Ink** (#b9b8b4): reading text and secondary text on black fields (9.8:1 for the grey).
+- **Rules** (`rule` 14% ink, `rule-strong` 85% ink, `rule-on-ink` 20% white): hairlines on light fields, the strong hairline under price rows and interview items, and hairlines on black fields.
+- **Cover Scrim** (55% black): the start of the 160° scrim that sits in the top-left of every cover photo so a white cover line stays legible.
+- **Card Stock** (#fffff4): the fill of form fields and choice chips on the yellow reply card, a warm white that reads as printed card, not as a UI input.
+- **Frame Black** (#1a1a1a): the chrome of the browser and phone frames that hold real screenshots; lifted off Press Black so a frame never merges with a black page.
+- **Button lifts** (`ink-hover` #2a2a2a, `acid-hover` #fbff5c): hover fills for the black and acid pills; the paper pill lifts to Acid Yellow.
 
 ### Named Rules
-**The Safety Orange Rule.** Orange means "act here" or "this was marked". It is never a background tint, a divider or decoration. The only orange field on a page is the final call to action.
+**The Four Inks Rule.** Every field is acid, signal red, newsprint or press black. Greys exist only as tints of the black ink for text and rules, plus one pulp stock. No fifth hue, no gradient fills, no tinted glass.
 
-**The Two Prints Rule.** Every surface ships in both prints from the same markup. A colour is chosen by token (`--paper`, `--ink`, `--line`, `--action`), never hard-coded per theme.
+**The One Ink Per Story Rule.** Each cover story is printed on exactly one ink (`ink`, `acid`, `red` or `paper`, set by `tone` in the media map), and that ink carries from its card on the cover through its case spread on /work. Neighbouring stories never share an ink.
+
+**The Two Reds Rule.** Signal Red is for fields, the nameplate, rules and focus; red text at reading size on a light ground is Proof Red.
 
 ## Typography
 
-**Display Font:** Barlow Condensed (fallback Arial Narrow), self-hosted
-**Body Font:** Barlow (fallback system sans), self-hosted
-**Label/Mono Font:** Overpass Mono (fallback ui-monospace), self-hosted
+**Display Font:** Anton (with Arial Narrow, sans-serif), self-hosted, weight 400 only
+**Body Font:** Mulish (with ui-sans-serif, system-ui, sans-serif), self-hosted at 500, 600, 700, 800 and 900
 
-**Character:** Barlow Condensed is the drafting hand: tall, compressed and engineered, like the lettering on a title block. Barlow is its readable sibling for running text. Overpass Mono is the annotation pen.
+**Character:** A poster-weight condensed grotesque shouting in capitals, against a round, open sans that stays heavy (body at 500, emphasis at 800) so it holds its own on saturated fields. The pair reads as a street magazine: loud cover, plain-spoken copy.
 
 ### Hierarchy
-- **Display** (700, clamp(3.1rem → 6rem), 0.93): the page's one headline (h1). It never exceeds 6rem.
-- **Headline** (700, clamp(2.5rem → 4.4rem), 0.96): section headings (h2), balanced, usually capped at 16–18ch.
-- **Title** (600, clamp(1.55rem → 2.1rem), 1.04): sub-sections such as methodology levels and package names.
-- **Price** (700 condensed, lining tabular figures): prices read as the key dimension on a sheet, from 1.9rem in the schedule to 3.25rem on the package sheets.
-- **Lead** (400, clamp(1.15rem → 1.3rem), 1.55, graphite, max 36em): the paragraph under a headline.
-- **Body** (400, 1.0625rem, 1.6): running text, with a measure of 65ch where it runs long.
-- **Label** (mono 400, 0.75rem, 0.06em, uppercase): sheet numbers in the header, package marks, case-study tag lines.
-- **Annotation** (mono 400, 0.6875rem, 0.08em, uppercase): title-block field labels, schedule headers, view-title notes and nav sheet numbers.
+- **Nameplate** (Anton 400, clamp(5.5rem, 31vw, 12rem), 0.8): ELJO, signal red, rotated up the left edge of the cover photo and stretched along its line; on the open spread it is measured in comp units (311u). The colophon repeats it as the footer mark.
+- **Cover title** (Anton 400, fitted so "better websites." always fits its page, up to 5.25rem; 143u on the open spread; 0.923): the cover's one headline, four lines that rise into place.
+- **Page title** (Anton 400, clamp(3.5rem, 1.5rem + 8vw, 8.5rem), 0.92): the h1 of each inner page (Cover stories, Pricing).
+- **Display XL / LG / MD** (Anton 400; clamp(3.25rem → 6rem), clamp(2.75rem → 5.25rem), clamp(2.25rem → 3.75rem); 0.92): department headlines, case-study names, and the reply card's title.
+- **Cover line** (Anton 400, clamp(1.9rem, 1.2rem + 2.4vw, 3.25rem), 1.02): white capitals over a cover photo, two short lines and a red rule under them.
+- **Title** (Anton 400, clamp(1.6rem, 1.2rem + 1.1vw, 2.2rem), 1): names of steps, promises you can hold me to, interview questions, template names.
+- **Numeral** (Anton 400, clamp(3rem, 2rem + 3vw, 4.75rem), 0.82): the big numbers beside steps and the cover's three promises.
+- **Price** (Anton 400, clamp(2.25rem, 1.8rem + 1.4vw, 3rem), 1, tabular): package prices.
+- **Folio** (Anton 400, 1.1rem, 1): page numbers in the corners of the cover and every department.
+- **Deck** (Mulish 800, clamp(1.25rem, 1.05rem + 0.6vw, 1.6rem), 1.3): the one-sentence outcome under a case study's name; max 34ch.
+- **Lead** (Mulish 600, clamp(1.15rem, 1rem + 0.45vw, 1.4rem), 1.45): the paragraph beside a department headline; max 38ch.
+- **Body strong** (Mulish 800, 1.1rem, 1.3): bold reading lines: who a package is for, the direct lines on the contact page, the cover's secondary link.
+- **Body** (Mulish 500, 1.0625rem, 1.55): running text; 44–66ch.
+- **Button** (Mulish 800, 1rem, 1.1): pill labels; 1.125rem on large pills.
+- **Body small** (Mulish 800, 0.95rem) and **Caption** (Mulish 800, 0.85rem): "Read the story", choice chips, timeframes; tags, price notes, screenshot captions.
+- **Label** (Mulish 800, 0.8125rem, 0.12em, uppercase): the running head title, field labels, case-study column heads, a story's project · niche line.
+- **Label small** (Mulish 800, 0.75rem, 0.14em, uppercase): running folios, colophon headings, the Recommended tag.
 
 ### Named Rules
-**The Annotation Rule.** Overpass Mono is reserved for annotation: dimensions, figures, sheet numbers, title-block field labels, schedule headers, scale notes and package marks. Headings, body, buttons and stamps never use mono.
+**The Two Faces Rule.** Anton for anything seen from across the room (headlines, cover lines, numerals, prices, folios), always in capitals at weight 400; Mulish for anything read. Anton never drops below folio size (1.1rem) and never sets a sentence of reading text.
 
-**The Lettering Rule.** Anything lettered for display (headings, view titles, stamps, prices) is set in Barlow Condensed. Tracking never goes tighter than -0.012em on display sizes.
+**The Tight Stack Rule.** Display lines sit at 0.92 line-height or tighter and balance their wrap; the headline is a block of ink, not a paragraph.
 
 ## Layout
 
-- **Container:** one centred column, `min(100% − 2 × gutter, 1320px)`.
-- **Gutter:** clamp(1.25rem, 5vw, 4.5rem).
-- **Sections:** vertical padding of clamp(5rem, 4rem + 6vw, 9rem), separated by a full-width 1px rule.
-- **Grid:** desktop compositions sit on a 12-column grid. Typical splits are a 5/7 hero (text left, drawing right), a 6 + 5 heading/lead pair offset to columns 8–12, and a 7/5 drawing-plus-text case study whose drawing is sticky on large screens. Case studies alternate sides.
-- **Breakpoints:** Tailwind's sm 640, md 768, lg 1024 and xl 1280. The schedule becomes a table at md, the nav goes horizontal at lg, and the nav shows sheet numbers at xl.
-- **Phones:** everything stacks in reading order, hero buttons go full width, the schedule becomes a ruled list, and the menu becomes a full-screen sheet index.
-- **Safe areas:** the header and the sheet index pad with `env(safe-area-inset-*)`, and full-height surfaces use svh.
-- **Ground:** the body carries the drafting grid (24px minor, 120px major). The footer's title block sits on plain paper.
+The issue is built from full-bleed horizontal fields, each a department with its own ink, stacked down the page and alternating so no two neighbours share a field (newsprint, black, acid, newsprint, black, pulp, then the photographic back cover). Inside a field, content sits in a wrap of at most 1680px with a fluid side gutter (clamp(1rem, 0.5rem + 2.4vw, 2.5rem)). Departments breathe at clamp(4.5rem, 3rem + 6vw, 9rem) top and bottom, blocks inside them step by clamp(2.5rem, 5vw, 4rem), and list items (letters, steps, promises, interview answers) are separated by rules with 1.5rem of padding rather than boxed.
+
+From 1024px the issue opens into spreads: two pages on one centre gutter. The cover spread, the case studies on /work (photo page and story page, alternating sides), the inner page heads (text page and photo page), the reply page (black side page and yellow reply card), the feature spread in How it works, and every department head (headline left, lead right). Below 1024px (900–960px for the department heads and the feature) the pages stack, photo page first.
+
+The cover spread and the cover-stories block are measured in comp units (`--u` = 1/2688 of the site's inline size, from a container query on the site wrapper), so from 1024px up the spread scales as one printed object, with page edges, a fold and its proportions intact. The spread takes a min-height, never a fixed height, so text the reader enlarges grows the page. On /work the photo page is sticky under the running head and one viewport tall, so the plate stays in view while its story is read.
+
+The running head is sticky, hides as you scroll down past 420px, returns on scroll up or on focus, and gains a hairline once the page has scrolled. On phones it keeps Start My Project and gives way on the title and the menu label instead; the sections open as a full-screen acid contents page. The site ships one light scheme.
+
+**Breakpoints:** below 600px (phone), 600–1023px (tablet, stacked cover held within the first screen), 1024px (the open spread, desktop nav, comp units, sticky plates), 1280px (cover stories four across).
+
+### Named Rules
+**The Centre Gutter Rule.** At 1024px and up, a section that pairs a picture with words is a two-page spread on one centre gutter; it never becomes a card grid with an image card and a text card.
+
+**The Comp Unit Rule.** The cover spread is drawn in comp units and scales as one object; nothing inside it is sized in viewport units or fixed pixels of its own.
 
 ## Elevation & Depth
 
-The system is flat. Depth comes from linework weight (1px rule, 1.5px frame, 2px emphasis) and from the two paper tones, never from shadows on containers. The single shadow belongs to the photographic cut-out of the builder, which stands on a drawn ground line.
+The issue is flat print. Fields, cards, stories, price rows and buttons carry no shadow; separation comes from a change of ink and from rules (hairline, 2px, 3px). Depth appears only where a physical object is depicted. The open spread has page edges stacked under it, the photo page darkens into the spine, the yellow page shades off the fold, and the right page lifts off the table with a soft shadow under its outer edge; stacked on phones, the photo page casts a short inset shadow onto the yellow page. Real screenshots sit in browser and phone frames with one soft drop shadow, because they depict devices. White cover lines carry a soft dark text shadow over the photo for legibility, never a glow.
 
 ### Shadow Vocabulary
-- **Figure shadow** (`filter: drop-shadow(0 18px 24px var(--figure-shadow))`; ink at 18%, or black at 35% on blueprint): only under the alpha-matted portrait.
+- **Page lift** (`box-shadow: calc(var(--u) * 6) calc(var(--u) * 10) calc(var(--u) * 28) calc(var(--u) * -10) rgb(0 0 0 / 0.28)`): the cover's right page on the open spread only.
+- **Device frame** (`box-shadow: 0 18px 40px -18px rgb(13 13 13 / 0.45)`; the phone at 0.5): browser and phone frames holding real screenshots.
+- **Cover-line legibility** (`text-shadow: 0 2px 18px rgb(0 0 0 / 0.35)`): white Anton over photographs.
+- **Running-head hairline** (`box-shadow: 0 1px 0 var(--rule)`): the sticky head once the page has scrolled.
 
 ### Named Rules
-**The Hairline Rule.** Containers are defined by rules and linework, never by a shadow and never by a border-plus-shadow. A frame is a 1.5px diazo line; a divider is a 1px rule.
+**The Printed Object Rule.** A shadow means a physical object: a page of the spread or a device holding a screenshot. Cards, buttons, sections and stories are printed flat and never lift.
 
 ## Shapes
 
-- Corners are 2px everywhere: buttons, fields, chips, frames.
-- Stamps are 3px and rotated −3°.
-- Callout bubbles and view numbers are full circles.
-- The revision cloud is a measured scalloped path (14px arcs).
-- Hatching marks sections: dots for below grade, cross-hatch, diagonal and vertical for the levels above.
-- Illustrations are geometric linework (wireframes, dimension lines, building sections) drawn with `pathLength=1` so they can plot. They are never sketch-style scenes.
+Pages are square. Fields, photo plates, cover-story cards, case spreads, price rows and the contents page have hard 0px corners and full-bleed edges; the spread's form is a rectangle with a fold. Round forms are reserved for things a hand touches: every action and choice is a full pill (999px): buttons, choice chips, tags, the Recommended tag, the menu button, the video pause control. Form fields take gently rounded 8px corners, the reply card a softly cornered dashed outline, and the cover's own call to action is a rounded block (14px; 16u on the open spread) as printed on the approved cover. Device frames take the corners of the devices they depict: a 12px browser window, a 20px phone with a 14px screen. Small dots (the running head's separators, the browser's traffic lights) are circles. Focus rings take a 2px corner.
+
+### Named Rules
+**The Square Page Rule.** Anything that is a page, a plate or a story is square-cornered; rounding belongs only to pills, form controls and depicted devices.
 
 ## Components
 
 ### Buttons
-Engineered and immediate.
-- **Shape:** squared, 2px corners; 3.25rem tall, or 3.75rem for large (`btn-lg`).
-- **Primary:** safety orange with ink lettering in Barlow 600. On hover (fine pointers only) it deepens to safety orange deep.
-- **Secondary:** a 1.5px ink outline on paper. On hover it fills with ink and the lettering turns to paper.
-- **Inverse:** ink with warm-white lettering, used on the orange field.
-- **Press:** scale(0.97) over 160ms ease-out. The trailing arrow nudges 3px on hover. External links add an up-right arrow and open in a new tab.
+Heavy, black, pill-shaped: a printed sticker you press.
+- **Shape:** full pill (999px); minimum 3rem tall, 3.6rem for large.
+- **Primary:** Press Black with newsprint lettering, Mulish 800 at 1rem, padding 0.7rem 1.4rem, an arrow after the label that nudges 3px right on hover.
+- **Acid:** Acid Yellow with black lettering, for black fields and the back cover (and for non-recommended packages on the price list, where the recommended row is itself acid).
+- **Paper:** newsprint with black lettering, used as jump links on an acid page head; lifts to acid on hover.
+- **Cover block:** the cover's own Start My Project is a rounded block (14px), not a pill, 3.75rem tall, as printed.
+- **Hover / Focus / Press:** hover only on fine pointers: black lifts to #2a2a2a, acid to #fbff5c, 200ms. Press scales to 0.97 in 160ms. Focus is a 3px Signal Red outline at 3px offset (Acid Yellow on black fields).
+- **Text link:** Mulish 800, underlined at 0.12em with 0.28em offset; the underline turns Signal Red on hover and the trailing arrow moves up-right 2px.
 
-### Text links
-Ink, weight 600, underlined in line-soft at a 0.22em offset. On hover the underline turns orange.
+### Chips and Tags
+- **Choice chips** (the reply card's project type and budget): Card Stock pill, 2px black border, Mulish 800 at 0.95rem, 2.75rem tall. Selected is black with acid lettering; hover whitens the unselected chip; press scales to 0.97; an invalid group turns its borders Proof Red.
+- **Tags** (what a case study was built with): outline pills in the current ink, 1.5px border, Mulish 800 at 0.85rem.
+- **Recommended tag:** black pill, acid lettering, label small in capitals.
 
-### Chips (choice)
-- **Style:** radio inputs drawn as 2.75rem chips with a 1.5px field-border on paper.
-- **State:** selected chips fill with diazo blue and paper lettering. Hover darkens the border to graphite, and invalid groups take the danger border.
+### Cover Stories
+The issue's proof, one card per project.
+- **Corner Style:** square.
+- **Background:** the story's one ink (`ink` default, `acid`, `red`, or Bright White for `paper`, which adds a 2px black inset keyline to its meta strip).
+- **Plate:** the cover photo full-bleed (16:10; the two lead stories 3.41:1 on the open spread), with an optional silent loop over it, a 160° scrim from the top-left, and the cover line in white Anton with a short Signal Red rule under it.
+- **Meta strip:** project · niche in label capitals, "Read the story" with an arrow, and the outcome in body text at max 60ch.
+- **Behaviour:** the card's one link is stretched over the whole card, and focus outlines the whole card (3px Signal Red, 4px offset). On hover the plate scales to 1.035, the red rule stretches to 1.8×, the arrow nudges. Cards turn in like pages as they reach the reader, 90ms apart.
+- **Layout:** two lead stories side by side, then four more (two across from 700px, four across from 1280px).
 
 ### Inputs / Fields
-- **Style:** a 1.5px field-border (at least 3:1), paper ground, 2px corners and 16px text so phones never zoom.
-- **Focus:** the border shifts to diazo blue and the global 2px orange focus ring sits 3px out.
-- **Error:** a danger border with an error message linked through `aria-describedby`. On submit, the first invalid field takes focus.
+- **Style:** Card Stock fill, 2px black border, 8px corners, 3.1rem tall, Mulish 600 at 1.0625rem; textareas at least 9.5rem and resizable. Labels sit above in label capitals.
+- **Focus:** a 3px black outline at 2px offset, drawn separately from the invalid state so both can show at once.
+- **Error:** Proof Red border with a 1px Proof Red ring, and a bold error line under the field; focus moves to the first invalid field.
+- **The reply card:** the form sits on the acid page inside a dashed outline (2px, 55% ink) with a faint white wash, like a tear-off reply card.
 
 ### Navigation
-- **Desktop (lg+):** the sheet index across the top. Links are Barlow 500 in graphite and turn ink on hover. The current page gets a 2px orange underline. From xl each link carries its sheet number in mono.
-- **Toggle and CTA:** the print toggle ("Blue print" / "White print" with a swatch) and the orange primary CTA sit at the right.
-- **On scroll:** the header hides when scrolling down and returns when scrolling up.
-- **Phone:** a "Menu" button opens a full-screen sheet index that drops in on the drawer curve (380ms) or fades with reduced motion. It holds sheet numbers with display-size links and a full-width CTA. Focus is trapped, Escape closes it, and focus returns to the opener.
+- **Running head:** newsprint strip, 3.75rem tall (scaled to the comp's thin strip on the open spread). Left: ELJO · ISSUE 01 · TIRANA in label capitals with round dot separators. Right: section links in Mulish 700, the current or hovered one underlined by a 2px Signal Red rule that draws in from the left (240ms), then the black Start My Project pill.
+- **Contents page (phones and tablets):** a full-screen acid page that wipes down from the top (420ms, drawer easing; a plain fade under reduced motion). Sections are listed in Anton capitals with two-digit folio numbers, separated by rules, the current page in Proof Red, and a full-width black pill at the foot. Focus is trapped inside and returns to the button on close.
+- **Colophon:** a black footer with the ELJO nameplate in Signal Red, the direct line, links elsewhere and the issue's contents in newsprint, hovering to acid.
 
-### Title block (signature)
-- **Structure:** a 1.5px diazo frame on paper with cells divided by line-soft rules. Each cell has a mono uppercase field label over a 600-weight value.
-- **Where it appears:** under the hero (with the circular seal portrait), in page headers, on the contact aside, and as the footer of every sheet. The footer's last cell shows the current sheet number in display lettering.
+### The Open Spread (signature)
+The cover. Left page: the full-bleed black-and-white portrait with a silent loop over it, the Signal Red ELJO nameplate rotated up its left edge. Right page: the acid offer page with the cover title, three numbered promises (Anton numerals beside Mulish 900 lines), the cover block button and a "See the work" text link, and folio 02 in the corner. On load, the photo page turns in from the spine, the portrait settles from 1.07 scale, the yellow page turns in after it, and the headline's four lines rise one after another 60ms apart.
 
-### Callouts and view titles (signature)
-- **Keynotes:** outlined circles in diazo blue.
-- **View numbers:** solid diazo discs, so they never read as keynotes.
-- **View title:** an uppercase condensed title on a 2px rule, with a mono scale or reference note below.
+### The Price List (signature)
+A ruled schedule, not a card grid: a 3px black rule on top, each package a row (name and tag; who it is for and the problem; note, price and timeframe; the call) separated by strong hairlines, four columns from 1100px. The recommended package's row is printed acid, bleeding past the column to the gutter.
 
-### Stamps
-Condensed bold uppercase in stamp orange inside a 2px frame, rotated −3°. On the orange field they are inked in action ink. Stamps mark a state: Recommended, Fixed price · in writing, Ready to build.
+### Browser and Phone Frames (signature)
+Real screenshots of live sites, never mockups. A Frame Black browser window (12px corners) with three grey dots and the site's host in its bar, the capture beneath, and a caption saying what it shows (the live site; the live app's login screen when the product sits behind sign-in). Long captures scroll inside the frame and are keyboard focusable. On wider screens a phone frame with the mobile capture overlaps the browser's lower right corner, and the caption keeps clear of it.
 
-### Schedule
-The package schedule is a table with a 2px ink top rule, mono column headers, ruled rows, right-aligned condensed prices and no-wrap action links. On phones it becomes a ruled list with the mark on the name's line.
-
-### Plot, then build (signature motion)
-Linework strokes draw themselves (1100ms, ease-in-out, staggered by `--d`), then fills wipe in with clip-path (700ms, ease-out, default delay 900ms), then labels appear (500ms). It starts when the drawing scrolls into view. Content never waits on it, and with reduced motion every drawing is simply finished.
+### Running Folios
+Every department ends with "Eljo · Issue 01" in label-small capitals at its lower left and its page number in Anton at its lower right, at 70% of the field's ink: the issue's page furniture.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** take every colour from the token pair so both prints stay correct (`--paper`, `--ink`, `--ink-2`, `--line`, `--action`, `--action-text`).
-- **Do** letter display text, stamps and prices in Barlow Condensed, and keep Overpass Mono for annotation (dimensions, figures, sheet numbers, field labels).
-- **Do** frame grouped facts as a title block, list sequences as numbered callouts, and present comparisons as a schedule.
-- **Do** keep UI motion under 300ms on ease-out (`cubic-bezier(0.23, 1, 0.32, 1)`), animate only transform, opacity and clip-path, and gate hover effects behind `(hover: hover) and (pointer: fine)`.
-- **Do** use stamp orange (#c2410c) for any orange lettering smaller than 24px on whiteprint.
+- **Do** print each department on one full-bleed field from the four inks and alternate fields down the page.
+- **Do** give every cover story exactly one ink from the media map's `tone`, and carry it from the card to the case spread.
+- **Do** set headlines, cover lines, numerals, prices and folios in Anton capitals at weight 400, line-height 0.92 or tighter, and everything read in Mulish at 500 or heavier.
+- **Do** make Start My Project a black pill on light fields and an acid pill on black fields, with the arrow after the label.
+- **Do** set red text at reading size in Proof Red (#c20000); keep Signal Red (#f80808) for fields, the nameplate, the rule under cover lines, nav underlines and focus.
+- **Do** put white cover lines on photographs over the 160° scrim, with the short Signal Red rule beneath.
+- **Do** separate items with rules (hairline, 2px or 3px) and padding instead of boxes.
+- **Do** show real screenshots in the browser and phone frames and say in the caption exactly what the capture is.
+- **Do** number things the way a magazine does: Anton numerals for steps and promises, two-digit folios, Q. and A. in the interview.
+- **Do** keep motion to page turns, rising headlines and silent photo loops; under reduced motion, fade in 300ms and never load the loops.
 
 ### Don't:
-- **Don't** use a dark page with one neon accent, glow orbs, or a grid of equal floating cards.
-- **Don't** put a kicker or eyebrow label above a heading; marks and numbers sit on the heading's line or in their own column.
-- **Don't** add shadows to containers, or pair a border with a shadow; the portrait cut-out is the only shadow.
-- **Don't** use orange as decoration, as a tint, or for body text.
-- **Don't** draw sketch-style illustrations; drawings are crisp geometric linework.
-- **Don't** set headings, buttons or stamps in mono.
+- **Don't** make black the ground every section sits on, and don't build neon, glow orbs or a grid of equal cards: the thesis refuses the dark-page freelancer default by name.
+- **Don't** fall back to a quiet white minimal portfolio either; newsprint is one field among four, not the whole site.
+- **Don't** round cards, plates, pages, stories or price rows; rounding belongs to pills, form controls and depicted devices.
+- **Don't** put a shadow on a card, button, section or story; shadows exist only on the spread's pages and the device frames.
+- **Don't** use gradients as decoration; the only gradients are light on a physical page (the fold, page edges) and the scrim under cover lines.
+- **Don't** set small red text in Signal Red on newsprint or acid (4.0:1 and 3.7:1).
+- **Don't** stretch type horizontally anywhere but the nameplate and the cover title, where the stretch reproduces the printed cover.
+- **Don't** set a small uppercase label above a headline as an eyebrow; a label names a field, a column or a story's niche, beside or below its subject.

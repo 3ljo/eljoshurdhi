@@ -54,6 +54,10 @@
         {
           "at": "2026-10-03T00:35:44.248Z",
           "text": "Hero measured with comp-diff at 2688x1520 (record hero refused: no review receipt in this session): overall 88% match, structure 79%, color 93%, no missing regions; story-2-image reads contradicted at 62% (the regenerated unbranded sneaker plate differs in shoe placement; the plate itself passes check-plate at 0.60). Cover lines kept verbatim from the comp and attached to real projects (ESHB, Sage Commerce); the other four projects got cover lines restating their siteConfig results."
+        },
+        {
+          "at": "2026-10-03T14:19:07.470Z",
+          "text": "Round 2: finish verdict 'fix' scored kickers, story inks and phone CTA resolved; spine, density partial then addressed (spine lift, stem ink, stretch kept inside the page; hero comp-diff 0.90); DESIGN.md and design.json rewritten by the documenter. Open: state.json phases cannot be closed without a review receipt in this browserless session (not hand-edited); placeholder prices flagged to the owner."
         }
       ],
       "gate": {
@@ -110,7 +114,13 @@
       "forced": null
     }
   },
-  "finish": null,
+  "finish": {
+    "disposition": "fix",
+    "at": "2026-10-03T14:19:07.482Z",
+    "phaseAtFinish": "plates",
+    "artifactInputsSha256": "62cb1a09642610ec5ab7732a1b1145c7f5f6a2e7b5ece6036a8a2a8cdeafe0b5",
+    "artifactSha256": "0cb46b8a48f844b9e6e6589c51ca007e29264dbd5dda715ae004aa5f90c64f8f"
+  },
   "plates": {
     "portrait": {
       "id": "portrait",

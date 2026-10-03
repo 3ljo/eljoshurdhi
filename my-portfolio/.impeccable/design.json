@@ -1,488 +1,645 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-02T16:43:33+00:00",
-  "title": "Design System: Eljo Shurdhi — The Drawing Set",
+  "generatedAt": "2026-10-03T14:15:35+00:00",
+  "title": "Design System: Eljo Shurdhi — Issue 01",
   "extensions": {
     "colorMeta": {
-      "safety-orange": {
+      "acid": {
         "role": "primary",
-        "displayName": "Safety Orange",
-        "canonical": "#f05a1a",
+        "displayName": "Acid Yellow",
+        "canonical": "#f1fa18",
+        "oklch": "oklch(94.7% 0.207 112.4)",
         "tonalRamp": [
-          "oklch(15.0% 0.137 39.7)",
-          "oklch(26.4% 0.150 39.7)",
-          "oklch(37.9% 0.164 39.7)",
-          "oklch(49.3% 0.177 39.7)",
-          "oklch(60.7% 0.191 39.7)",
-          "oklch(72.1% 0.189 39.7)",
-          "oklch(83.6% 0.176 39.7)",
-          "oklch(95.0% 0.162 39.7)"
+          "oklch(15.0% 0.114 112.4)",
+          "oklch(26.4% 0.128 112.4)",
+          "oklch(37.9% 0.141 112.4)",
+          "oklch(49.3% 0.154 112.4)",
+          "oklch(60.7% 0.168 112.4)",
+          "oklch(72.1% 0.181 112.4)",
+          "oklch(83.6% 0.194 112.4)",
+          "oklch(95.0% 0.207 112.4)"
         ]
       },
-      "safety-orange-deep": {
-        "role": "primary",
-        "displayName": "Safety Orange Deep",
-        "canonical": "#d94b0d",
-        "tonalRamp": [
-          "oklch(15.0% 0.137 39.0)",
-          "oklch(26.4% 0.150 39.0)",
-          "oklch(37.9% 0.163 39.0)",
-          "oklch(49.3% 0.176 39.0)",
-          "oklch(60.7% 0.188 39.0)",
-          "oklch(72.1% 0.175 39.0)",
-          "oklch(83.6% 0.162 39.0)",
-          "oklch(95.0% 0.149 39.0)"
-        ]
-      },
-      "stamp-orange": {
-        "role": "primary",
-        "displayName": "Stamp Orange",
-        "canonical": "#c2410c",
-        "tonalRamp": [
-          "oklch(15.0% 0.132 38.4)",
-          "oklch(26.4% 0.144 38.4)",
-          "oklch(37.9% 0.156 38.4)",
-          "oklch(49.3% 0.168 38.4)",
-          "oklch(60.7% 0.168 38.4)",
-          "oklch(72.1% 0.156 38.4)",
-          "oklch(83.6% 0.144 38.4)",
-          "oklch(95.0% 0.132 38.4)"
-        ]
-      },
-      "diazo-blue": {
+      "signal": {
         "role": "secondary",
-        "displayName": "Diazo Blue",
-        "canonical": "#2457a5",
+        "displayName": "Signal Red",
+        "canonical": "#f80808",
+        "oklch": "oklch(61.7% 0.251 29.0)",
         "tonalRamp": [
-          "oklch(15.0% 0.111 258.9)",
-          "oklch(26.4% 0.121 258.9)",
-          "oklch(37.9% 0.130 258.9)",
-          "oklch(49.3% 0.135 258.9)",
-          "oklch(60.7% 0.126 258.9)",
-          "oklch(72.1% 0.116 258.9)",
-          "oklch(83.6% 0.107 258.9)",
-          "oklch(95.0% 0.097 258.9)"
+          "oklch(15.0% 0.185 29.0)",
+          "oklch(26.4% 0.201 29.0)",
+          "oklch(37.9% 0.217 29.0)",
+          "oklch(49.3% 0.233 29.0)",
+          "oklch(60.7% 0.249 29.0)",
+          "oklch(72.1% 0.236 29.0)",
+          "oklch(83.6% 0.220 29.0)",
+          "oklch(95.0% 0.204 29.0)"
         ]
       },
-      "whiteprint-paper": {
-        "role": "neutral",
-        "displayName": "Whiteprint Paper",
-        "canonical": "#f1f4f6",
-        "tonalRamp": [
-          "oklch(15.0% 0.002 236.5)",
-          "oklch(26.4% 0.002 236.5)",
-          "oklch(37.9% 0.003 236.5)",
-          "oklch(49.3% 0.003 236.5)",
-          "oklch(60.7% 0.003 236.5)",
-          "oklch(72.1% 0.004 236.5)",
-          "oklch(83.6% 0.004 236.5)",
-          "oklch(95.0% 0.004 236.5)"
-        ]
-      },
-      "whiteprint-paper-shade": {
-        "role": "neutral",
-        "displayName": "Paper Shade",
-        "canonical": "#e6ebef",
-        "tonalRamp": [
-          "oklch(15.0% 0.004 241.7)",
-          "oklch(26.4% 0.005 241.7)",
-          "oklch(37.9% 0.005 241.7)",
-          "oklch(49.3% 0.006 241.7)",
-          "oklch(60.7% 0.006 241.7)",
-          "oklch(72.1% 0.007 241.7)",
-          "oklch(83.6% 0.007 241.7)",
-          "oklch(95.0% 0.008 241.7)"
-        ]
-      },
-      "drafting-ink": {
-        "role": "neutral",
-        "displayName": "Drafting Ink",
-        "canonical": "#0e1f2e",
-        "tonalRamp": [
-          "oklch(15.0% 0.035 246.8)",
-          "oklch(26.4% 0.036 246.8)",
-          "oklch(37.9% 0.034 246.8)",
-          "oklch(49.3% 0.031 246.8)",
-          "oklch(60.7% 0.029 246.8)",
-          "oklch(72.1% 0.026 246.8)",
-          "oklch(83.6% 0.024 246.8)",
-          "oklch(95.0% 0.021 246.8)"
-        ]
-      },
-      "graphite": {
-        "role": "neutral",
-        "displayName": "Graphite",
-        "canonical": "#3e5468",
-        "tonalRamp": [
-          "oklch(15.0% 0.035 246.4)",
-          "oklch(26.4% 0.038 246.4)",
-          "oklch(37.9% 0.041 246.4)",
-          "oklch(49.3% 0.041 246.4)",
-          "oklch(60.7% 0.038 246.4)",
-          "oklch(72.1% 0.035 246.4)",
-          "oklch(83.6% 0.033 246.4)",
-          "oklch(95.0% 0.030 246.4)"
-        ]
-      },
-      "danger": {
-        "role": "error",
-        "displayName": "Error Red",
-        "canonical": "#b42318",
-        "tonalRamp": [
-          "oklch(15.0% 0.144 29.5)",
-          "oklch(26.4% 0.156 29.5)",
-          "oklch(37.9% 0.169 29.5)",
-          "oklch(49.3% 0.181 29.5)",
-          "oklch(60.7% 0.170 29.5)",
-          "oklch(72.1% 0.158 29.5)",
-          "oklch(83.6% 0.145 29.5)",
-          "oklch(95.0% 0.133 29.5)"
-        ]
-      },
-      "blueprint-ground": {
-        "role": "neutral",
-        "displayName": "Blueprint Ground (Prussian Blue)",
-        "canonical": "#0d2c4d",
-        "tonalRamp": [
-          "oklch(15.0% 0.065 252.7)",
-          "oklch(26.4% 0.069 252.7)",
-          "oklch(37.9% 0.067 252.7)",
-          "oklch(49.3% 0.062 252.7)",
-          "oklch(60.7% 0.057 252.7)",
-          "oklch(72.1% 0.052 252.7)",
-          "oklch(83.6% 0.047 252.7)",
-          "oklch(95.0% 0.043 252.7)"
-        ]
-      },
-      "blueprint-ground-shade": {
-        "role": "neutral",
-        "displayName": "Blueprint Ground Shade",
-        "canonical": "#0a2441",
-        "tonalRamp": [
-          "oklch(15.0% 0.059 253.5)",
-          "oklch(26.4% 0.063 253.5)",
-          "oklch(37.9% 0.059 253.5)",
-          "oklch(49.3% 0.054 253.5)",
-          "oklch(60.7% 0.050 253.5)",
-          "oklch(72.1% 0.046 253.5)",
-          "oklch(83.6% 0.041 253.5)",
-          "oklch(95.0% 0.037 253.5)"
-        ]
-      },
-      "blueprint-ink": {
-        "role": "neutral",
-        "displayName": "Blueprint Ink",
-        "canonical": "#eaf2f9",
-        "tonalRamp": [
-          "oklch(15.0% 0.007 244.3)",
-          "oklch(26.4% 0.007 244.3)",
-          "oklch(37.9% 0.008 244.3)",
-          "oklch(49.3% 0.009 244.3)",
-          "oklch(60.7% 0.010 244.3)",
-          "oklch(72.1% 0.011 244.3)",
-          "oklch(83.6% 0.012 244.3)",
-          "oklch(95.0% 0.013 244.3)"
-        ]
-      },
-      "blueprint-graphite": {
-        "role": "neutral",
-        "displayName": "Blueprint Graphite",
-        "canonical": "#a9c1d9",
-        "tonalRamp": [
-          "oklch(15.0% 0.026 248.4)",
-          "oklch(26.4% 0.029 248.4)",
-          "oklch(37.9% 0.032 248.4)",
-          "oklch(49.3% 0.035 248.4)",
-          "oklch(60.7% 0.038 248.4)",
-          "oklch(72.1% 0.041 248.4)",
-          "oklch(83.6% 0.042 248.4)",
-          "oklch(95.0% 0.039 248.4)"
-        ]
-      },
-      "blueprint-line": {
+      "signal-ink": {
         "role": "secondary",
-        "displayName": "Blueprint Line",
-        "canonical": "#cfe0f0",
+        "displayName": "Proof Red",
+        "canonical": "#c20000",
+        "oklch": "oklch(51.1% 0.210 29.2)",
         "tonalRamp": [
-          "oklch(15.0% 0.016 246.5)",
-          "oklch(26.4% 0.018 246.5)",
-          "oklch(37.9% 0.020 246.5)",
-          "oklch(49.3% 0.022 246.5)",
-          "oklch(60.7% 0.024 246.5)",
-          "oklch(72.1% 0.026 246.5)",
-          "oklch(83.6% 0.027 246.5)",
-          "oklch(95.0% 0.028 246.5)"
+          "oklch(15.0% 0.167 29.2)",
+          "oklch(26.4% 0.181 29.2)",
+          "oklch(37.9% 0.194 29.2)",
+          "oklch(49.3% 0.208 29.2)",
+          "oklch(60.7% 0.198 29.2)",
+          "oklch(72.1% 0.185 29.2)",
+          "oklch(83.6% 0.171 29.2)",
+          "oklch(95.0% 0.158 29.2)"
         ]
       },
-      "blueprint-orange": {
+      "ink": {
+        "role": "neutral",
+        "displayName": "Press Black",
+        "canonical": "#0d0d0d",
+        "oklch": "oklch(15.9% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0 0)",
+          "oklch(26.4% 0 0)",
+          "oklch(37.9% 0 0)",
+          "oklch(49.3% 0 0)",
+          "oklch(60.7% 0 0)",
+          "oklch(72.1% 0 0)",
+          "oklch(83.6% 0 0)",
+          "oklch(95.0% 0 0)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink Wash",
+        "canonical": "#3d3d3b",
+        "oklch": "oklch(35.9% 0.003 106.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0 0)",
+          "oklch(26.4% 0 0)",
+          "oklch(37.9% 0 0)",
+          "oklch(49.3% 0 0)",
+          "oklch(60.7% 0 0)",
+          "oklch(72.1% 0 0)",
+          "oklch(83.6% 0 0)",
+          "oklch(95.0% 0 0)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "White Newsprint",
+        "canonical": "#fafafa",
+        "oklch": "oklch(98.5% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0 0)",
+          "oklch(26.4% 0 0)",
+          "oklch(37.9% 0 0)",
+          "oklch(49.3% 0 0)",
+          "oklch(60.7% 0 0)",
+          "oklch(72.1% 0 0)",
+          "oklch(83.6% 0 0)",
+          "oklch(95.0% 0 0)"
+        ]
+      },
+      "paper-2": {
+        "role": "neutral",
+        "displayName": "Pulp Grey",
+        "canonical": "#efeeec",
+        "oklch": "oklch(94.9% 0.003 84.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0 0)",
+          "oklch(26.4% 0 0)",
+          "oklch(37.9% 0 0)",
+          "oklch(49.3% 0 0)",
+          "oklch(60.7% 0 0)",
+          "oklch(72.1% 0 0)",
+          "oklch(83.6% 0 0)",
+          "oklch(95.0% 0 0)"
+        ]
+      },
+      "bright-white": {
+        "role": "neutral",
+        "displayName": "Bright White",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0 0)",
+          "oklch(26.4% 0 0)",
+          "oklch(37.9% 0 0)",
+          "oklch(49.3% 0 0)",
+          "oklch(60.7% 0 0)",
+          "oklch(72.1% 0 0)",
+          "oklch(83.6% 0 0)",
+          "oklch(95.0% 0 0)"
+        ]
+      },
+      "on-ink": {
+        "role": "neutral",
+        "displayName": "Newsprint on Ink",
+        "canonical": "#f7f7f5",
+        "oklch": "oklch(97.6% 0.003 106.4)",
+        "tonalRamp": [
+          "oklch(15.0% 0 0)",
+          "oklch(26.4% 0 0)",
+          "oklch(37.9% 0 0)",
+          "oklch(49.3% 0 0)",
+          "oklch(60.7% 0 0)",
+          "oklch(72.1% 0 0)",
+          "oklch(83.6% 0 0)",
+          "oklch(95.0% 0 0)"
+        ]
+      },
+      "on-ink-2": {
+        "role": "neutral",
+        "displayName": "Grey on Ink",
+        "canonical": "#b9b8b4",
+        "oklch": "oklch(78.2% 0.006 95.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.006 95.1)",
+          "oklch(26.4% 0.006 95.1)",
+          "oklch(37.9% 0.006 95.1)",
+          "oklch(49.3% 0.006 95.1)",
+          "oklch(60.7% 0.006 95.1)",
+          "oklch(72.1% 0.006 95.1)",
+          "oklch(83.6% 0.006 95.1)",
+          "oklch(95.0% 0.006 95.1)"
+        ]
+      },
+      "card-stock": {
+        "role": "neutral",
+        "displayName": "Card Stock",
+        "canonical": "#fffff4",
+        "oklch": "oklch(99.7% 0.014 106.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.014 106.7)",
+          "oklch(26.4% 0.014 106.7)",
+          "oklch(37.9% 0.014 106.7)",
+          "oklch(49.3% 0.014 106.7)",
+          "oklch(60.7% 0.014 106.7)",
+          "oklch(72.1% 0.014 106.7)",
+          "oklch(83.6% 0.014 106.7)",
+          "oklch(95.0% 0.014 106.7)"
+        ]
+      },
+      "frame-black": {
+        "role": "neutral",
+        "displayName": "Frame Black",
+        "canonical": "#1a1a1a",
+        "oklch": "oklch(21.8% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0 0)",
+          "oklch(26.4% 0 0)",
+          "oklch(37.9% 0 0)",
+          "oklch(49.3% 0 0)",
+          "oklch(60.7% 0 0)",
+          "oklch(72.1% 0 0)",
+          "oklch(83.6% 0 0)",
+          "oklch(95.0% 0 0)"
+        ]
+      },
+      "ink-hover": {
+        "role": "neutral",
+        "displayName": "Black Pill Lift",
+        "canonical": "#2a2a2a",
+        "oklch": "oklch(28.5% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0 0)",
+          "oklch(26.4% 0 0)",
+          "oklch(37.9% 0 0)",
+          "oklch(49.3% 0 0)",
+          "oklch(60.7% 0 0)",
+          "oklch(72.1% 0 0)",
+          "oklch(83.6% 0 0)",
+          "oklch(95.0% 0 0)"
+        ]
+      },
+      "acid-hover": {
         "role": "primary",
-        "displayName": "Blueprint Safety Orange",
-        "canonical": "#ff6a2b",
+        "displayName": "Acid Pill Lift",
+        "canonical": "#fbff5c",
+        "oklch": "oklch(96.8% 0.179 110.7)",
         "tonalRamp": [
-          "oklch(15.0% 0.131 40.7)",
-          "oklch(26.4% 0.144 40.7)",
-          "oklch(37.9% 0.158 40.7)",
-          "oklch(49.3% 0.171 40.7)",
-          "oklch(60.7% 0.184 40.7)",
-          "oklch(72.1% 0.193 40.7)",
-          "oklch(83.6% 0.180 40.7)",
-          "oklch(95.0% 0.167 40.7)"
-        ]
-      },
-      "blueprint-danger": {
-        "role": "error",
-        "displayName": "Blueprint Error",
-        "canonical": "#ffa094",
-        "tonalRamp": [
-          "oklch(15.0% 0.070 27.7)",
-          "oklch(26.4% 0.078 27.7)",
-          "oklch(37.9% 0.086 27.7)",
-          "oklch(49.3% 0.094 27.7)",
-          "oklch(60.7% 0.102 27.7)",
-          "oklch(72.1% 0.110 27.7)",
-          "oklch(83.6% 0.113 27.7)",
-          "oklch(95.0% 0.105 27.7)"
+          "oklch(15.0% 0.097 110.7)",
+          "oklch(26.4% 0.108 110.7)",
+          "oklch(37.9% 0.120 110.7)",
+          "oklch(49.3% 0.131 110.7)",
+          "oklch(60.7% 0.143 110.7)",
+          "oklch(72.1% 0.154 110.7)",
+          "oklch(83.6% 0.166 110.7)",
+          "oklch(95.0% 0.177 110.7)"
         ]
       },
       "rule": {
         "role": "neutral",
-        "displayName": "Rule",
-        "canonical": "rgb(14 31 46 / 0.16)"
+        "displayName": "Hairline Rule",
+        "canonical": "rgb(13 13 13 / 0.14)",
+        "note": "Translucent; no tonal ramp."
       },
-      "line-soft": {
+      "rule-strong": {
         "role": "neutral",
-        "displayName": "Line Soft",
-        "canonical": "rgb(36 87 165 / 0.4)"
+        "displayName": "Strong Rule",
+        "canonical": "rgb(13 13 13 / 0.85)",
+        "note": "Translucent; no tonal ramp."
       },
-      "field-border": {
+      "rule-on-ink": {
         "role": "neutral",
-        "displayName": "Field Border",
-        "canonical": "rgb(14 31 46 / 0.5)"
+        "displayName": "Hairline on Ink",
+        "canonical": "rgb(255 255 255 / 0.2)",
+        "note": "Translucent; no tonal ramp."
       },
-      "warm-white": {
+      "cover-scrim": {
         "role": "neutral",
-        "displayName": "Warm White",
-        "canonical": "#fff6f0"
+        "displayName": "Cover Scrim",
+        "canonical": "rgb(0 0 0 / 0.55)",
+        "note": "Translucent; no tonal ramp."
       }
     },
     "typographyMeta": {
-      "display": {
-        "displayName": "Display",
-        "purpose": "The page's one headline (h1); never above 6rem."
+      "nameplate": {
+        "displayName": "Nameplate",
+        "purpose": "ELJO in Signal Red up the cover photo's left edge; the colophon mark repeats it. 311u on the open spread, rotated -90deg and stretched 1.85x along its line."
       },
-      "headline": {
-        "displayName": "Headline",
-        "purpose": "Section headings (h2), balanced, capped near 16–18ch."
+      "cover-title": {
+        "displayName": "Cover Title",
+        "purpose": "The cover's one headline, four rising lines on the acid page; 143u on the open spread."
+      },
+      "page-title": {
+        "displayName": "Page Title",
+        "purpose": "The h1 of each inner page."
+      },
+      "display-xl": {
+        "displayName": "Display XL",
+        "purpose": "Department headlines."
+      },
+      "display-lg": {
+        "displayName": "Display LG",
+        "purpose": "Case-study names on /work."
+      },
+      "display-md": {
+        "displayName": "Display MD",
+        "purpose": "The reply card title."
+      },
+      "cover-line": {
+        "displayName": "Cover Line",
+        "purpose": "White capitals over a cover photo, with a Signal Red rule beneath."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Sub-sections: methodology levels, package names."
+        "purpose": "Names of steps, promises, interview questions, template names."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Big numbers beside steps and the cover promises."
       },
       "price": {
         "displayName": "Price",
-        "purpose": "Prices as the key dimension on a sheet; lining tabular figures."
+        "purpose": "Package prices, tabular figures."
       },
-      "stamp": {
-        "displayName": "Stamp",
-        "purpose": "Rubber-stamp lettering for states (Recommended, Ready to build)."
+      "folio": {
+        "displayName": "Folio",
+        "purpose": "Page numbers in the cover and department corners."
+      },
+      "deck": {
+        "displayName": "Deck",
+        "purpose": "A case study's one-sentence outcome; max 34ch."
       },
       "lead": {
         "displayName": "Lead",
-        "purpose": "The paragraph under a headline, in graphite, max 36em."
+        "purpose": "The paragraph beside a department headline; max 38ch."
+      },
+      "body-strong": {
+        "displayName": "Body Strong",
+        "purpose": "Bold reading lines: who a package is for, direct lines, the cover's secondary link."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Running text; 65ch measure where it runs long."
+        "purpose": "Running text, 44-66ch."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Pill labels; 1.125rem on large pills."
+      },
+      "body-sm": {
+        "displayName": "Body Small",
+        "purpose": "\"Read the story\", choice chips, timeframes."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Tags, price notes, screenshot captions."
       },
       "label": {
-        "displayName": "Annotation",
-        "purpose": "Mono label: header sheet numbers, package marks, case-study tag lines."
+        "displayName": "Label",
+        "purpose": "Uppercase: running head title, field labels, case column heads, a story's project and niche."
       },
-      "annotation": {
-        "displayName": "Annotation",
-        "purpose": "Mono annotation: title-block field labels, schedule headers, view-title notes, nav sheet numbers."
+      "label-sm": {
+        "displayName": "Label Small",
+        "purpose": "Uppercase: running folios, colophon headings, the Recommended tag."
       }
     },
     "shadows": [
       {
-        "name": "figure",
-        "value": "drop-shadow(0 18px 24px var(--figure-shadow))",
-        "purpose": "Only under the alpha-matted portrait cut-out standing on its ground line."
+        "name": "page-lift",
+        "value": "calc(var(--u) * 6) calc(var(--u) * 10) calc(var(--u) * 28) calc(var(--u) * -10) rgb(0 0 0 / 0.28)",
+        "purpose": "The cover's right page lifting off the table on the open spread. Nowhere else."
+      },
+      {
+        "name": "page-inset",
+        "value": "inset 0 14px 18px -14px rgb(60 62 0 / 0.45)",
+        "purpose": "Stacked cover on phones and tablets: the photo page casting onto the yellow page."
+      },
+      {
+        "name": "device-frame",
+        "value": "0 18px 40px -18px rgb(13 13 13 / 0.45)",
+        "purpose": "Browser frames holding real screenshots (the phone frame uses 0.5)."
+      },
+      {
+        "name": "cover-line-text",
+        "value": "0 2px 18px rgb(0 0 0 / 0.35)",
+        "purpose": "text-shadow for white cover lines over photographs; legibility, never glow."
+      },
+      {
+        "name": "runhead-hairline",
+        "value": "0 1px 0 var(--rule)",
+        "purpose": "The sticky running head once the page has scrolled."
+      },
+      {
+        "name": "paper-story-keyline",
+        "value": "inset 0 0 0 2px var(--ink)",
+        "purpose": "The white-paper cover story's meta strip, so white reads as its own sheet on newsprint."
+      },
+      {
+        "name": "focus-ring",
+        "value": "outline: 3px solid var(--signal); outline-offset: 3px; border-radius: 2px",
+        "purpose": "Every focus ring on light fields; Acid Yellow on black and red fields. Fields use a 3px ink outline at 2px offset."
       }
     ],
     "motion": [
       {
         "name": "ease-out",
         "value": "cubic-bezier(0.23, 1, 0.32, 1)",
-        "purpose": "All UI responses: press, hover nudges, header hide, fills building in."
-      },
-      {
-        "name": "ease-in-out",
-        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
-        "purpose": "Linework plotting itself (1100ms)."
+        "purpose": "Every UI response and every page turn."
       },
       {
         "name": "ease-drawer",
         "value": "cubic-bezier(0.32, 0.72, 0, 1)",
-        "purpose": "The phone sheet index dropping in (380ms in, 260ms out on ease-out)."
+        "purpose": "The contents page wiping down (420ms clip-path)."
       },
       {
         "name": "press",
-        "value": "scale(0.97) 160ms",
-        "purpose": "Button and chip press feedback."
+        "value": "160ms ease-out, scale(0.97)",
+        "purpose": "Buttons, chips and the menu button on press."
       },
       {
-        "name": "plot",
-        "value": "stroke-dashoffset 1 → 0, 1100ms",
-        "purpose": "Signature: drawings plot themselves when scrolled into view."
+        "name": "state-change",
+        "value": "200ms ease-out",
+        "purpose": "Button fills, link underline colour, arrow nudges (3px)."
       },
       {
-        "name": "build",
-        "value": "clip-path inset(0 100% 0 0) → inset(0), 700ms, delay 900ms",
-        "purpose": "Signature: fills wipe in after the linework."
+        "name": "nav-underline",
+        "value": "240ms ease-out, scaleX 0 to 1 from the left",
+        "purpose": "Signal Red rule under the current or hovered section link."
+      },
+      {
+        "name": "runhead-hide",
+        "value": "300ms ease-out, translateY(-100%)",
+        "purpose": "Running head hides on scroll down past 420px; returns on scroll up or focus."
+      },
+      {
+        "name": "page-turn",
+        "value": "900ms ease-out; from perspective(2400px) rotateY(-14deg to -16deg), opacity 0, brightness(0.8)",
+        "purpose": "The signature: cover pages and cover stories turn in from the spine as they reach the reader, 90ms apart."
+      },
+      {
+        "name": "headline-rise",
+        "value": "760ms ease-out; translateY(105%) to none; from 300ms, 60ms apart",
+        "purpose": "The cover title's four lines rising into place."
+      },
+      {
+        "name": "portrait-settle",
+        "value": "1600ms ease-out; scale(1.07) to none",
+        "purpose": "The cover portrait settling as the spread opens."
+      },
+      {
+        "name": "loop-fade",
+        "value": "700-900ms ease-out opacity",
+        "purpose": "Silent photo loops fading in over their stills once playing."
       },
       {
         "name": "reduced-motion",
-        "value": "drawings render finished; the sheet index fades (200ms)",
-        "purpose": "Gentler, not zero."
+        "value": "300ms ease-out opacity only",
+        "purpose": "Under prefers-reduced-motion: pages fade, the contents page fades, the head stops sliding, loops never load."
       }
     ],
     "breakpoints": [
       {
-        "name": "sm",
-        "value": "640px"
+        "name": "phone",
+        "value": "max-width: 599px",
+        "purpose": "Running head keeps the call; title and menu label give way."
       },
       {
-        "name": "md",
-        "value": "768px"
+        "name": "tablet",
+        "value": "600px-1023px",
+        "purpose": "Stacked cover held within the first screen."
       },
       {
-        "name": "lg",
-        "value": "1024px"
+        "name": "stories-two",
+        "value": "700px",
+        "purpose": "Cover stories two across."
       },
       {
-        "name": "xl",
-        "value": "1280px"
+        "name": "two-col-lists",
+        "value": "800px",
+        "purpose": "Letters and promises two across; colophon four columns."
+      },
+      {
+        "name": "dept-head",
+        "value": "900px-960px",
+        "purpose": "Department heads, page heads and the feature become spreads."
+      },
+      {
+        "name": "spread",
+        "value": "1024px",
+        "purpose": "The open spread: comp units, desktop nav, sticky case plates, case and reply spreads."
+      },
+      {
+        "name": "price-row",
+        "value": "1100px",
+        "purpose": "Price rows in four columns; templates three across."
+      },
+      {
+        "name": "wide",
+        "value": "1280px",
+        "purpose": "Cover stories four across."
+      }
+    ],
+    "units": [
+      {
+        "name": "u",
+        "value": "calc(100cqi / 2688)",
+        "purpose": "Comp unit: 1/2688 of the site wrapper's inline size (container query). The cover spread and the cover-stories block are measured in it from 1024px up so they scale as one printed object."
       }
     ]
   },
   "components": [
     {
-      "name": "Primary Button",
+      "name": "Primary Pill",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "The one action per view: safety orange, ink lettering, squared corners.",
-      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\">Start My Project <svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
-      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 0.65rem; min-height: 3.25rem; padding: 0 1.5rem; border-radius: 2px; border: 1.5px solid transparent; font-family: 'Barlow', system-ui, sans-serif; font-weight: 600; font-size: 1.0625rem; line-height: 1; text-decoration: none; cursor: pointer; transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 200ms ease, color 200ms ease; } .ds-btn svg { transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn:active { transform: scale(0.97); } .ds-btn:focus-visible { outline: 2px solid var(--action, #f05a1a); outline-offset: 3px; } .ds-btn-primary { background: var(--action, #f05a1a); color: var(--action-ink, #0e1f2e); } @media (hover: hover) and (pointer: fine) { .ds-btn-primary:hover { background: var(--action-hover, #d94b0d); } .ds-btn:hover svg { transform: translateX(3px); } }"
+      "description": "Start My Project and every main action on light fields: a black pill with an arrow after the label.",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\">Start My Project <svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6em; min-height: 3rem; padding: 0.7rem 1.4rem; border: 0; border-radius: 999px; font-family: 'Mulish', ui-sans-serif, system-ui, sans-serif; font-weight: 800; font-size: 1rem; line-height: 1.1; text-decoration: none; white-space: nowrap; cursor: pointer; transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 200ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn svg { flex: none; transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn:active { transform: scale(0.97); } .ds-btn:hover svg { transform: translateX(3px); } .ds-btn:focus-visible { outline: 3px solid var(--signal, #f80808); outline-offset: 3px; } .ds-btn-primary { background: var(--ink, #0d0d0d); color: var(--on-ink, #f7f7f5); } .ds-btn-primary:hover { background: #2a2a2a; }"
     },
     {
-      "name": "Secondary Button",
+      "name": "Acid Pill",
       "kind": "button",
-      "refersTo": "button-secondary",
-      "description": "The alternative action: an ink outline that fills with ink on hover.",
-      "html": "<a class=\"ds-btn2\" href=\"#\">See the work</a>",
-      "css": ".ds-btn2 { display: inline-flex; align-items: center; min-height: 3.25rem; padding: 0 1.5rem; border-radius: 2px; border: 1.5px solid var(--ink, #0e1f2e); color: var(--ink, #0e1f2e); background: transparent; font-family: 'Barlow', system-ui, sans-serif; font-weight: 600; font-size: 1.0625rem; line-height: 1; text-decoration: none; transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 200ms ease, color 200ms ease; } .ds-btn2:active { transform: scale(0.97); } .ds-btn2:focus-visible { outline: 2px solid var(--action, #f05a1a); outline-offset: 3px; } @media (hover: hover) and (pointer: fine) { .ds-btn2:hover { background: var(--ink, #0e1f2e); color: var(--paper, #f1f4f6); } }"
+      "refersTo": "button-acid",
+      "description": "The action on black fields and the back cover, and on non-recommended price rows.",
+      "html": "<div class=\"ds-ink-field\"><a class=\"ds-btn ds-btn-acid\" href=\"#\">Start My Project <svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a></div>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6em; min-height: 3rem; padding: 0.7rem 1.4rem; border: 0; border-radius: 999px; font-family: 'Mulish', ui-sans-serif, system-ui, sans-serif; font-weight: 800; font-size: 1rem; line-height: 1.1; text-decoration: none; white-space: nowrap; cursor: pointer; transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 200ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn svg { flex: none; transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn:active { transform: scale(0.97); } .ds-btn:hover svg { transform: translateX(3px); } .ds-btn:focus-visible { outline: 3px solid var(--signal, #f80808); outline-offset: 3px; } .ds-ink-field { background: var(--ink, #0d0d0d); padding: 1.5rem; } .ds-btn-acid { background: var(--acid, #f1fa18); color: var(--ink, #0d0d0d); } .ds-btn-acid:hover { background: #fbff5c; } .ds-ink-field .ds-btn:focus-visible { outline-color: var(--acid, #f1fa18); }"
     },
     {
-      "name": "Text Field",
-      "kind": "input",
-      "refersTo": "field",
-      "description": "A labelled field with a 3:1 boundary; 16px text so phones never zoom.",
-      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Email</span><input class=\"ds-input\" type=\"email\" placeholder=\"you@business.com\"></label>",
-      "css": ".ds-field { display: block; max-width: 22rem; font-family: 'Barlow', system-ui, sans-serif; color: var(--ink, #0e1f2e); } .ds-field-label { display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 1rem; } .ds-input { width: 100%; padding: 0.85rem 1rem; border: 1.5px solid var(--field-border, rgb(14 31 46 / 0.5)); border-radius: 2px; background: var(--paper, #f1f4f6); color: inherit; font: inherit; font-size: 16px; line-height: 1.4; transition: border-color 150ms ease; } .ds-input::placeholder { color: var(--ink-2, #3e5468); } .ds-input:hover { border-color: var(--ink-2, #3e5468); } .ds-input:focus { border-color: var(--line, #2457a5); } .ds-input:focus-visible { outline: 2px solid var(--action, #f05a1a); outline-offset: 3px; }"
+      "name": "Cover Block Button",
+      "kind": "button",
+      "refersTo": "button-cover",
+      "description": "The cover's own Start My Project: a rounded block, not a pill, as printed on the approved cover.",
+      "html": "<div class=\"ds-acid-page\"><a class=\"ds-btn ds-btn-cover\" href=\"#\">Start My Project <svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a> <a class=\"ds-link\" href=\"#\">See the work</a></div>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6em; min-height: 3rem; padding: 0.7rem 1.4rem; border: 0; border-radius: 999px; font-family: 'Mulish', ui-sans-serif, system-ui, sans-serif; font-weight: 800; font-size: 1rem; line-height: 1.1; text-decoration: none; white-space: nowrap; cursor: pointer; transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 200ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn svg { flex: none; transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn:active { transform: scale(0.97); } .ds-btn:hover svg { transform: translateX(3px); } .ds-btn:focus-visible { outline: 3px solid var(--signal, #f80808); outline-offset: 3px; } .ds-acid-page { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 2rem; background: var(--acid, #f1fa18); padding: 1.5rem; } .ds-btn-cover { min-height: 3.75rem; padding: 0 1.75rem; font-size: 1.15rem; border-radius: 14px; background: var(--ink, #0d0d0d); color: var(--on-ink, #f7f7f5); } .ds-btn-cover:hover { background: #2a2a2a; } .ds-link { font-family: 'Mulish', ui-sans-serif, system-ui, sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--ink, #0d0d0d); text-decoration: underline; text-decoration-thickness: 0.12em; text-underline-offset: 0.28em; transition: text-decoration-color 200ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-link:hover { text-decoration-color: var(--signal, #f80808); }"
+    },
+    {
+      "name": "Running Head",
+      "kind": "nav",
+      "refersTo": "running-head",
+      "description": "The magazine's running head: title and issue left, sections with a red underline, the one black call.",
+      "html": "<nav class=\"ds-runhead\" aria-label=\"Main\"><a class=\"ds-runhead-title\" href=\"#\">Eljo <i></i> Issue 01 <i></i> Tirana</a><span class=\"ds-runhead-nav\"><a href=\"#\" aria-current=\"page\">Work</a><a href=\"#\">How it works</a><a href=\"#\">Pricing</a><a href=\"#\">Why me</a></span><a class=\"ds-runhead-cta\" href=\"#\">Start My Project</a></nav>",
+      "css": ".ds-runhead { display: flex; align-items: center; gap: 1.5rem; height: 3.75rem; padding-inline: 1.5rem; background: var(--paper, #fafafa); color: var(--ink, #0d0d0d); box-shadow: 0 1px 0 rgb(13 13 13 / 0.14); font-family: 'Mulish', ui-sans-serif, system-ui, sans-serif; } .ds-runhead-title { display: inline-flex; align-items: center; gap: 0.85em; font-size: 0.8125rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; color: inherit; white-space: nowrap; } .ds-runhead-title i { width: 0.28em; height: 0.28em; border-radius: 50%; background: currentColor; } .ds-runhead-nav { display: inline-flex; gap: 1.5rem; margin-left: auto; } .ds-runhead-nav a { position: relative; font-size: 0.875rem; font-weight: 700; color: inherit; text-decoration: none; padding-block: 0.4em; } .ds-runhead-nav a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0.05em; height: 2px; background: var(--signal, #f80808); transform: scaleX(0); transform-origin: left; transition: transform 240ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-runhead-nav a:hover::after, .ds-runhead-nav a[aria-current='page']::after { transform: scaleX(1); } .ds-runhead a:focus-visible { outline: 3px solid var(--signal, #f80808); outline-offset: 3px; border-radius: 2px; } .ds-runhead-cta { display: inline-flex; align-items: center; min-height: 2.5rem; padding-inline: 1rem; border-radius: 999px; background: var(--ink, #0d0d0d); color: var(--on-ink, #f7f7f5); font-size: 0.8125rem; font-weight: 800; text-decoration: none; transition: background-color 200ms cubic-bezier(0.23, 1, 0.32, 1), transform 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-runhead-cta:hover { background: #2a2a2a; } .ds-runhead-cta:active { transform: scale(0.97); }"
     },
     {
       "name": "Choice Chips",
       "kind": "chip",
-      "refersTo": "chip-selected",
-      "description": "Radio choices drawn as chips; the selected one fills with diazo blue.",
-      "html": "<div class=\"ds-chips\"><label class=\"ds-chip\"><input type=\"radio\" name=\"ds-t\" checked><span>Growth</span></label><label class=\"ds-chip\"><input type=\"radio\" name=\"ds-t\"><span>Conversion</span></label><label class=\"ds-chip\"><input type=\"radio\" name=\"ds-t\"><span>Not sure yet</span></label></div>",
-      "css": ".ds-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; font-family: 'Barlow', system-ui, sans-serif; } .ds-chip { position: relative; } .ds-chip input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; } .ds-chip span { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 1rem; border: 1.5px solid var(--field-border, rgb(14 31 46 / 0.5)); border-radius: 2px; background: var(--paper, #f1f4f6); color: var(--ink, #0e1f2e); font-weight: 500; transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-chip input:checked + span { border-color: var(--line, #2457a5); background: var(--line, #2457a5); color: var(--paper, #f1f4f6); } .ds-chip input:active + span { transform: scale(0.97); } .ds-chip input:focus-visible + span { outline: 2px solid var(--action, #f05a1a); outline-offset: 2px; } @media (hover: hover) and (pointer: fine) { .ds-chip input:not(:checked):hover + span { border-color: var(--ink-2, #3e5468); } }"
+      "refersTo": "chip-choice",
+      "description": "Single-choice pills on the reply card: Card Stock with a black border; selected prints black with acid lettering.",
+      "html": "<fieldset class=\"ds-choices\"><legend>Project type</legend><label class=\"ds-choice\"><input type=\"radio\" name=\"ds-type\" checked><span>Launch</span></label><label class=\"ds-choice\"><input type=\"radio\" name=\"ds-type\"><span>Growth</span></label><label class=\"ds-choice\"><input type=\"radio\" name=\"ds-type\"><span>Not sure yet</span></label></fieldset>",
+      "css": ".ds-choices { display: flex; flex-wrap: wrap; gap: 0.5rem; border: 0; margin: 0; padding: 1.25rem; background: var(--acid, #f1fa18); font-family: 'Mulish', ui-sans-serif, system-ui, sans-serif; } .ds-choices legend { float: left; width: 100%; margin-bottom: 0.45rem; font-size: 0.8125rem; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink, #0d0d0d); } .ds-choice { position: relative; } .ds-choice input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; } .ds-choice span { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0.45rem 1rem; border: 2px solid var(--ink, #0d0d0d); border-radius: 999px; background: #fffff4; color: var(--ink, #0d0d0d); font-weight: 800; font-size: 0.95rem; transition: background-color 160ms cubic-bezier(0.23, 1, 0.32, 1), color 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-choice:hover span { background: #fff; } .ds-choice input:checked + span { background: var(--ink, #0d0d0d); color: var(--acid, #f1fa18); } .ds-choice input:focus-visible + span { outline: 3px solid var(--signal, #f80808); outline-offset: 2px; } .ds-choice input:active + span { transform: scale(0.97); }"
     },
     {
-      "name": "Sheet Index Nav",
-      "kind": "nav",
-      "refersTo": "navigation",
-      "description": "The header nav as the set's sheet index: sheet number, link, orange underline for the current sheet.",
-      "html": "<nav class=\"ds-nav\"><a href=\"#\"><span>A-101</span>Work</a><a href=\"#\"><span>A-001</span>How It Works</a><a href=\"#\" aria-current=\"page\"><span>A-201</span>Pricing</a><a href=\"#\"><span>A-301</span>Why Me</a></nav>",
-      "css": ".ds-nav { display: flex; gap: 1.75rem; align-items: center; font-family: 'Barlow', system-ui, sans-serif; } .ds-nav a { position: relative; padding: 0.5rem 0; color: var(--ink-2, #3e5468); font-weight: 500; text-decoration: none; transition: color 200ms ease; } .ds-nav a span { margin-right: 0.5rem; font-family: 'Overpass Mono', ui-monospace, monospace; font-size: 0.6875rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2, #3e5468); } .ds-nav a:hover, .ds-nav a[aria-current='page'] { color: var(--ink, #0e1f2e); } .ds-nav a[aria-current='page']::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--action, #f05a1a); } .ds-nav a:focus-visible { outline: 2px solid var(--action, #f05a1a); outline-offset: 3px; }"
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "A reply-card field: Card Stock fill, 2px black border, 8px corners, label capitals above; Proof Red when invalid.",
+      "html": "<div class=\"ds-field-wrap\"><label class=\"ds-field-label\" for=\"ds-name\">Name</label><input id=\"ds-name\" class=\"ds-field\" ><label class=\"ds-field-label\" for=\"ds-email\" style=\"margin-top:1rem\">Email</label><input id=\"ds-email\" class=\"ds-field\" aria-invalid=\"true\" value=\"eljo@\"><p class=\"ds-field-error\">Enter a valid email address.</p></div>",
+      "css": ".ds-field-wrap { padding: 1.25rem; background: var(--acid, #f1fa18); font-family: 'Mulish', ui-sans-serif, system-ui, sans-serif; max-width: 26rem; } .ds-field-label { display: block; margin-bottom: 0.45rem; font-size: 0.8125rem; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink, #0d0d0d); } .ds-field { display: block; width: 100%; box-sizing: border-box; min-height: 3.1rem; padding: 0.7rem 0.9rem; border: 2px solid var(--ink, #0d0d0d); border-radius: 8px; background: #fffff4; color: var(--ink, #0d0d0d); font: 600 1.0625rem 'Mulish', ui-sans-serif, system-ui, sans-serif; transition: box-shadow 160ms cubic-bezier(0.23, 1, 0.32, 1), border-color 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-field::placeholder { color: #5f5f58; opacity: 1; } .ds-field:focus { outline: 3px solid var(--ink, #0d0d0d); outline-offset: 2px; } .ds-field[aria-invalid='true'] { border-color: var(--signal-ink, #c20000); box-shadow: 0 0 0 1px var(--signal-ink, #c20000); } .ds-field-error { margin: 0.45rem 0 0; color: var(--signal-ink, #c20000); font-weight: 800; font-size: 0.92rem; }"
     },
     {
-      "name": "Title Block",
+      "name": "Cover Story",
+      "kind": "card",
+      "refersTo": "story-red",
+      "description": "One project as a cover story: square plate with a white cover line and red rule, then a meta strip printed on the story's one ink. The plate here is a grey stand-in for the photograph.",
+      "html": "<article class=\"ds-story\" data-tone=\"red\"><div class=\"ds-story-media\"><p class=\"ds-story-title\"><span>Climb the</span><span>ladder faster</span></p></div><div class=\"ds-story-meta\"><h3><a href=\"#\">CV Climber · Career SaaS</a></h3><span class=\"ds-story-go\">Read the story <svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></span><p>Built the AI resume tool that turns a rough work history into an ATS-ready CV in minutes.</p></div></article>",
+      "css": ".ds-story { position: relative; display: flex; flex-direction: column; max-width: 26rem; background: var(--signal, #f80808); color: var(--ink, #0d0d0d); font-family: 'Mulish', ui-sans-serif, system-ui, sans-serif; } .ds-story-media { position: relative; overflow: hidden; aspect-ratio: 16 / 10; background: #5a5a5a; } .ds-story-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(160deg, rgb(0 0 0 / 0.55), rgb(0 0 0 / 0.12) 38%, rgb(0 0 0 / 0) 55%); } .ds-story-title { position: absolute; z-index: 1; left: 1rem; top: 0.9rem; margin: 0; font-family: 'Anton', 'Arial Narrow', sans-serif; text-transform: uppercase; font-size: 2rem; line-height: 1.02; color: #fff; text-shadow: 0 2px 18px rgb(0 0 0 / 0.35); } .ds-story-title span { display: block; } .ds-story-title::after { content: ''; display: block; width: 2.75rem; height: 6px; margin-top: 0.5rem; background: var(--signal, #f80808); transform-origin: left; transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-story:hover .ds-story-title::after { transform: scaleX(1.8); } .ds-story-meta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.35rem 1.5rem; padding: 1rem 1rem 1.25rem; } .ds-story-meta h3 { margin: 0; font-size: 0.8125rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; } .ds-story-meta a { color: inherit; text-decoration: none; } .ds-story-meta a::after { content: ''; position: absolute; inset: 0; z-index: 3; } .ds-story-meta a:focus-visible { outline: none; } .ds-story:has(a:focus-visible) { outline: 3px solid var(--acid, #f1fa18); outline-offset: 4px; } .ds-story-go { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 800; font-size: 0.95rem; } .ds-story-go svg { width: 1rem; height: 1rem; transition: transform 220ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-story:hover .ds-story-go svg { transform: translateX(3px); } .ds-story-meta p { flex-basis: 100%; margin: 0; font-size: 1rem; line-height: 1.45; font-weight: 500; }"
+    },
+    {
+      "name": "Price Row",
       "kind": "custom",
-      "refersTo": "title-block",
-      "description": "The drawing sheet's title block: framed cells of mono field labels over values.",
-      "html": "<dl class=\"ds-tb\"><div><dt>Designed &amp; built by</dt><dd>Eljo Shurdhi</dd></div><div><dt>Price</dt><dd>Fixed, in writing, before we start</dd></div><div><dt>Sheet</dt><dd class=\"ds-tb-num\">A-001</dd></div></dl>",
-      "css": ".ds-tb { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; border: 1.5px solid var(--line, #2457a5); background: var(--paper, #f1f4f6); font-family: 'Barlow', system-ui, sans-serif; color: var(--ink, #0e1f2e); } .ds-tb > div { padding: 0.6rem 0.8rem 0.65rem; border-right: 1px solid var(--line-soft, rgb(36 87 165 / 0.4)); } .ds-tb > div:last-child { border-right: 0; } .ds-tb dt { font-family: 'Overpass Mono', ui-monospace, monospace; font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2, #3e5468); } .ds-tb dd { margin: 0.15rem 0 0; font-weight: 600; line-height: 1.3; text-wrap: balance; } .ds-tb .ds-tb-num { font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 700; font-size: 3rem; line-height: 1; }"
+      "refersTo": "price-tag",
+      "description": "One package on the ruled price list; the recommended row is printed acid and carries the Recommended tag.",
+      "html": "<ul class=\"ds-prices\"><li class=\"ds-price ds-price--pick\"><div><h3 class=\"ds-price-name\">Growth</h3><span class=\"ds-price-tag\">Recommended</span></div><div><p class=\"ds-price-for\">Your site gets visitors, but too few of them convert</p><p class=\"ds-price-problem\">Your business looks smaller and less credible online than it really is — and visitors leave without a word.</p></div><div><span class=\"ds-price-note\">starting at</span><span class=\"ds-price-amount\">$1,797</span><span class=\"ds-price-time\">2–3 weeks</span></div><div><a class=\"ds-btn ds-btn-primary\" href=\"#\">Yes, Let's Build This <svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a></div></li></ul>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6em; min-height: 3rem; padding: 0.7rem 1.4rem; border: 0; border-radius: 999px; font-family: 'Mulish', ui-sans-serif, system-ui, sans-serif; font-weight: 800; font-size: 1rem; line-height: 1.1; text-decoration: none; white-space: nowrap; cursor: pointer; transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 200ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn svg { flex: none; transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn:active { transform: scale(0.97); } .ds-btn:hover svg { transform: translateX(3px); } .ds-btn:focus-visible { outline: 3px solid var(--signal, #f80808); outline-offset: 3px; } .ds-btn-primary { background: var(--ink, #0d0d0d); color: var(--on-ink, #f7f7f5); } .ds-btn-primary:hover { background: #2a2a2a; } .ds-prices { list-style: none; margin: 0; padding: 0; border-top: 3px solid var(--ink, #0d0d0d); font-family: 'Mulish', ui-sans-serif, system-ui, sans-serif; color: var(--ink, #0d0d0d); } .ds-price { display: grid; gap: 0.75rem 2rem; padding: 1.5rem 1.25rem; border-bottom: 1px solid rgb(13 13 13 / 0.85); } @media (min-width: 900px) { .ds-price { grid-template-columns: minmax(12rem, 1.1fr) minmax(0, 2fr) minmax(8rem, 0.9fr) auto; align-items: center; } } .ds-price--pick { background: var(--acid, #f1fa18); } .ds-price-name { margin: 0; font-family: 'Anton', 'Arial Narrow', sans-serif; font-weight: 400; text-transform: uppercase; font-size: 2.75rem; line-height: 0.92; } .ds-price-tag { display: inline-block; margin-top: 0.5rem; padding: 0.25rem 0.6rem; border-radius: 999px; background: var(--ink, #0d0d0d); color: var(--acid, #f1fa18); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; } .ds-price-for { margin: 0; font-weight: 800; font-size: 1.1rem; line-height: 1.3; } .ds-price-problem { margin: 0.35rem 0 0; color: var(--ink-2, #3d3d3b); } .ds-price-note { display: block; font-size: 0.85rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2, #3d3d3b); } .ds-price-amount { display: block; font-family: 'Anton', 'Arial Narrow', sans-serif; font-size: 2.6rem; line-height: 1; font-variant-numeric: tabular-nums; } .ds-price-time { display: block; margin-top: 0.2rem; font-size: 0.95rem; font-weight: 700; }"
     },
     {
-      "name": "Callouts and View Title",
+      "name": "Browser Frame",
       "kind": "custom",
-      "refersTo": "callout-bubble",
-      "description": "Outlined keynote bubbles; a solid disc numbers the view under a drawing.",
-      "html": "<div class=\"ds-vt\"><span class=\"ds-bub ds-bub-solid\">1</span><div><span class=\"ds-vt-name\">Proposed homepage</span><span class=\"ds-vt-note\">A-001 · Not to scale</span></div></div><p class=\"ds-key\"><span class=\"ds-bub\">2</span>One obvious next step</p>",
-      "css": ".ds-vt { display: flex; align-items: center; gap: 0.75rem; } .ds-bub { display: inline-grid; place-items: center; flex: none; width: 2rem; height: 2rem; border-radius: 50%; border: 1.5px solid var(--line, #2457a5); background: var(--paper, #f1f4f6); color: var(--line, #2457a5); font: 600 0.8rem/1 'Overpass Mono', ui-monospace, monospace; } .ds-bub-solid { background: var(--line, #2457a5); color: var(--paper, #f1f4f6); } .ds-vt-name { font: 600 1.15rem/1 'Barlow Condensed', 'Arial Narrow', sans-serif; letter-spacing: 0.04em; text-transform: uppercase; padding-bottom: 0.3rem; border-bottom: 2px solid var(--line, #2457a5); color: var(--ink, #0e1f2e); } .ds-vt-note { display: block; margin-top: 0.3rem; font-family: 'Overpass Mono', ui-monospace, monospace; font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2, #3e5468); } .ds-key { display: flex; align-items: center; gap: 0.75rem; margin: 1rem 0 0; font-family: 'Barlow', system-ui, sans-serif; color: var(--ink, #0e1f2e); }"
+      "refersTo": "browser-frame",
+      "description": "A real screenshot of a live site in a plain Frame Black browser window, captioned with exactly what it shows. The view here is a blank stand-in for the capture.",
+      "html": "<figure class=\"ds-browser\"><div class=\"ds-browser-bar\" aria-hidden=\"true\"><i></i><i></i><i></i><span>ecomerce-sage-eight.vercel.app</span></div><div class=\"ds-browser-view\" tabindex=\"0\" role=\"region\" aria-label=\"Screenshot of the live site, scrollable\"><div class=\"ds-browser-shot\"></div></div><figcaption class=\"ds-browser-note\">The live site. Scroll inside the frame to read the whole page.</figcaption></figure>",
+      "css": ".ds-browser { margin: 0; max-width: 32rem; border-radius: 12px; overflow: hidden; background: #1a1a1a; box-shadow: 0 18px 40px -18px rgb(13 13 13 / 0.45); font-family: 'Mulish', ui-sans-serif, system-ui, sans-serif; } .ds-browser-bar { display: flex; align-items: center; gap: 0.75rem; height: 2.25rem; padding-inline: 0.85rem; color: #bdbdbd; font-size: 0.78rem; font-weight: 700; } .ds-browser-bar i { flex: none; width: 0.6rem; height: 0.6rem; border-radius: 50%; background: #4a4a4a; } .ds-browser-bar span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .ds-browser-view { aspect-ratio: 16 / 10; overflow-y: auto; overscroll-behavior: contain; background: #fff; scrollbar-width: thin; scrollbar-color: #8a8a8a #1a1a1a; } .ds-browser-view:focus-visible { outline: 3px solid var(--signal, #f80808); outline-offset: -3px; } .ds-browser-shot { height: 200%; background: #fff; } .ds-browser-note { padding: 0.6rem 0.85rem 0.75rem; color: #c7c7c7; font-size: 0.85rem; font-weight: 600; }"
     },
     {
-      "name": "Stamp",
+      "name": "Running Folio",
       "kind": "custom",
-      "refersTo": "stamp",
-      "description": "A rubber stamp marking a state, lettered in the condensed hand in stamp orange.",
-      "html": "<span class=\"ds-stamp\">Fixed price · in writing</span>",
-      "css": ".ds-stamp { display: inline-block; padding: 0.3rem 0.6rem 0.25rem; border: 2px solid var(--action-text, #c2410c); border-radius: 3px; color: var(--action-text, #c2410c); font: 700 0.95rem/1.1 'Barlow Condensed', 'Arial Narrow', sans-serif; letter-spacing: 0.08em; text-transform: uppercase; rotate: -3deg; }"
+      "refersTo": "department-ink",
+      "description": "The page furniture at the foot of every department: issue line left, Anton page number right, at 70% of the field's ink.",
+      "html": "<section class=\"ds-dept\"><h2 class=\"ds-dept-title\">Sound familiar?</h2><div class=\"ds-folio\" aria-hidden=\"true\"><span>Eljo · Issue 01</span><span class=\"ds-folio-page\">04</span></div></section>",
+      "css": ".ds-dept { position: relative; padding: 3rem 1.5rem 4.5rem; background: var(--ink, #0d0d0d); color: var(--on-ink, #f7f7f5); font-family: 'Mulish', ui-sans-serif, system-ui, sans-serif; } .ds-dept-title { margin: 0; font-family: 'Anton', 'Arial Narrow', sans-serif; font-weight: 400; text-transform: uppercase; font-size: 3.25rem; line-height: 0.92; letter-spacing: 0.005em; color: var(--acid, #f1fa18); } .ds-folio { position: absolute; left: 1.5rem; right: 1.5rem; bottom: 1.25rem; display: flex; justify-content: space-between; align-items: baseline; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.7; } .ds-folio-page { font-family: 'Anton', 'Arial Narrow', sans-serif; font-size: 1.1rem; letter-spacing: 0; line-height: 1; }"
     }
   ],
   "narrative": {
-    "northStar": "The Drawing Set",
-    "overview": "The site is the construction drawing set for the visitor's next website: planned, priced in writing and approved before anything is built. Every page is a sheet with a number (A-001 Cover sheet, A-101 As-built drawings, A-201 Package schedule, A-301 The builder, A-401 Request for quote). The component language comes from the drawing set itself: title blocks, callout bubbles, view titles, revision clouds and deltas, schedules, general notes and rubber stamps. The hero is the proposed homepage drawn as linework that plots itself and then builds in.\n\nThere are two prints of one drawing. The whiteprint is cool drafting paper with ink and diazo-blue linework on a faint drafting grid. The blueprint is a Prussian-blue ground with white linework. Layout, type and content are identical in both; only the tokens swap. Safety orange is the one loud colour and it marks action. The density is that of a well-kept sheet: generous margins, hairline structure, and nothing floating.\n\nThe world refuses the freelancer default: a dark page, one neon accent, glow orbs and a grid of equal cards.",
+    "northStar": "The Street Issue",
+    "overview": "The site is one issue of a street-culture magazine, and the person who builds your website is its cover star. Every client project is a cover story; every section is a department of the issue with its own full-bleed print field and a folio in its foot. The visitor opens the issue on an open spread: a living black-and-white portrait of Eljo on the left page, an acid-yellow offer page on the right, a red ELJO nameplate running down the photo's edge. From there the issue reads in order: cover stories, reader letters, the feature on how it works, the price list, what you can hold me to, the interview, and the back cover's call.\n\nThe material is flat print. Four inks (acid yellow, signal red, white newsprint, black ink) are laid down as solid fields, never as tints or glows, and colour comes from the field a thing is printed on rather than from decoration on top of it. Headlines are an ultra-heavy condensed grotesque in capitals, set tight and big; everything you read is a friendly, heavy-weighted sans. Photography is grainy, high-contrast street and editorial work: the people and the department plates are black-and-white, and a story plate may keep one natural colour. Density is magazine density: big type, long scrolls of full-bleed fields, hairline and heavy rules instead of boxes.\n\nThe thesis refuses two defaults by name: the dark-page, neon, glow-orb, equal-cards freelancer site, and the quiet white minimal portfolio. Black is one of the four inks and owns whole departments, but it is never the ground every section sits on, and no two cover stories share a colour.",
     "keyCharacteristics": [
-      "Two prints (whiteprint / blueprint) driven by one token set; the reader toggles them like prints of the same drawing.",
-      "Safety orange reserved for action, stamps and revision marks.",
-      "Condensed drafting lettering for display; mono only for annotation.",
-      "Structure from hairline rules and 1.5px linework, 2px corners, no shadows on containers.",
-      "One authored motion: plot, then build."
+      "Flat full-bleed print fields from four inks; one ink per cover story.",
+      "Anton capitals for everything seen from across the room, Mulish 500–900 for everything read.",
+      "Open two-page spreads on a single centre gutter from 1024px up; stacked pages below.",
+      "Magazine apparatus as navigation and rhythm: running head, folios, numbered points, Q. and A., a contents page, a colophon.",
+      "Square pages and plates; pills for actions and choices; rounded corners only on depicted devices and form controls.",
+      "One authored motion: pages turn in from the spine; cover photos breathe as silent loops."
     ],
     "rules": [
       {
-        "name": "The Safety Orange Rule",
-        "body": "Orange means \"act here\" or \"this was marked\". It is never a background tint, a divider or decoration. The only orange field on a page is the final call to action.",
+        "name": "The Four Inks Rule",
+        "body": "Every field is acid, signal red, newsprint or press black. Greys exist only as tints of the black ink for text and rules, plus one pulp stock. No fifth hue, no gradient fills, no tinted glass.",
         "section": "colors"
       },
       {
-        "name": "The Two Prints Rule",
-        "body": "Every surface ships in both prints from the same markup. A colour is chosen by token (`--paper`, `--ink`, `--line`, `--action`), never hard-coded per theme.",
+        "name": "The One Ink Per Story Rule",
+        "body": "Each cover story is printed on exactly one ink (`ink`, `acid`, `red` or `paper`, set by `tone` in the media map), and that ink carries from its card on the cover through its case spread on /work. Neighbouring stories never share an ink.",
         "section": "colors"
       },
       {
-        "name": "The Annotation Rule",
-        "body": "Overpass Mono is reserved for annotation: dimensions, figures, sheet numbers, title-block field labels, schedule headers, scale notes and package marks. Headings, body, buttons and stamps never use mono.",
+        "name": "The Two Reds Rule",
+        "body": "Signal Red is for fields, the nameplate, rules and focus; red text at reading size on a light ground is Proof Red.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Faces Rule",
+        "body": "Anton for anything seen from across the room (headlines, cover lines, numerals, prices, folios), always in capitals at weight 400; Mulish for anything read. Anton never drops below folio size (1.1rem) and never sets a sentence of reading text.",
         "section": "typography"
       },
       {
-        "name": "The Lettering Rule",
-        "body": "Anything lettered for display (headings, view titles, stamps, prices) is set in Barlow Condensed. Tracking never goes tighter than -0.012em on display sizes.",
+        "name": "The Tight Stack Rule",
+        "body": "Display lines sit at 0.92 line-height or tighter and balance their wrap; the headline is a block of ink, not a paragraph.",
         "section": "typography"
       },
       {
-        "name": "The Hairline Rule",
-        "body": "Containers are defined by rules and linework, never by a shadow and never by a border-plus-shadow. A frame is a 1.5px diazo line; a divider is a 1px rule.",
+        "name": "The Centre Gutter Rule",
+        "body": "At 1024px and up, a section that pairs a picture with words is a two-page spread on one centre gutter; it never becomes a card grid with an image card and a text card.",
+        "section": "layout"
+      },
+      {
+        "name": "The Comp Unit Rule",
+        "body": "The cover spread is drawn in comp units and scales as one object; nothing inside it is sized in viewport units or fixed pixels of its own.",
+        "section": "layout"
+      },
+      {
+        "name": "The Printed Object Rule",
+        "body": "A shadow means a physical object: a page of the spread or a device holding a screenshot. Cards, buttons, sections and stories are printed flat and never lift.",
         "section": "elevation"
+      },
+      {
+        "name": "The Square Page Rule",
+        "body": "Anything that is a page, a plate or a story is square-cornered; rounding belongs only to pills, form controls and depicted devices.",
+        "section": "shapes"
       }
     ],
     "dos": [
-      "**Do** take every colour from the token pair so both prints stay correct (`--paper`, `--ink`, `--ink-2`, `--line`, `--action`, `--action-text`).",
-      "**Do** letter display text, stamps and prices in Barlow Condensed, and keep Overpass Mono for annotation (dimensions, figures, sheet numbers, field labels).",
-      "**Do** frame grouped facts as a title block, list sequences as numbered callouts, and present comparisons as a schedule.",
-      "**Do** keep UI motion under 300ms on ease-out (`cubic-bezier(0.23, 1, 0.32, 1)`), animate only transform, opacity and clip-path, and gate hover effects behind `(hover: hover) and (pointer: fine)`.",
-      "**Do** use stamp orange (#c2410c) for any orange lettering smaller than 24px on whiteprint."
+      "Do print each department on one full-bleed field from the four inks and alternate fields down the page.",
+      "Do give every cover story exactly one ink from the media map's `tone`, and carry it from the card to the case spread.",
+      "Do set headlines, cover lines, numerals, prices and folios in Anton capitals at weight 400, line-height 0.92 or tighter, and everything read in Mulish at 500 or heavier.",
+      "Do make Start My Project a black pill on light fields and an acid pill on black fields, with the arrow after the label.",
+      "Do set red text at reading size in Proof Red (#c20000); keep Signal Red (#f80808) for fields, the nameplate, the rule under cover lines, nav underlines and focus.",
+      "Do put white cover lines on photographs over the 160° scrim, with the short Signal Red rule beneath.",
+      "Do separate items with rules (hairline, 2px or 3px) and padding instead of boxes.",
+      "Do show real screenshots in the browser and phone frames and say in the caption exactly what the capture is.",
+      "Do number things the way a magazine does: Anton numerals for steps and promises, two-digit folios, Q. and A. in the interview.",
+      "Do keep motion to page turns, rising headlines and silent photo loops; under reduced motion, fade in 300ms and never load the loops."
     ],
     "donts": [
-      "**Don't** use a dark page with one neon accent, glow orbs, or a grid of equal floating cards.",
-      "**Don't** put a kicker or eyebrow label above a heading; marks and numbers sit on the heading's line or in their own column.",
-      "**Don't** add shadows to containers, or pair a border with a shadow; the portrait cut-out is the only shadow.",
-      "**Don't** use orange as decoration, as a tint, or for body text.",
-      "**Don't** draw sketch-style illustrations; drawings are crisp geometric linework.",
-      "**Don't** set headings, buttons or stamps in mono."
+      "Don't make black the ground every section sits on, and don't build neon, glow orbs or a grid of equal cards: the thesis refuses the dark-page freelancer default by name.",
+      "Don't fall back to a quiet white minimal portfolio either; newsprint is one field among four, not the whole site.",
+      "Don't round cards, plates, pages, stories or price rows; rounding belongs to pills, form controls and depicted devices.",
+      "Don't put a shadow on a card, button, section or story; shadows exist only on the spread's pages and the device frames.",
+      "Don't use gradients as decoration; the only gradients are light on a physical page (the fold, page edges) and the scrim under cover lines.",
+      "Don't set small red text in Signal Red on newsprint or acid (4.0:1 and 3.7:1).",
+      "Don't stretch type horizontally anywhere but the nameplate and the cover title, where the stretch reproduces the printed cover.",
+      "Don't set a small uppercase label above a headline as an eyebrow; a label names a field, a column or a story's niche, beside or below its subject."
     ]
   }
 }

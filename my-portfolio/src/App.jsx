@@ -28,7 +28,9 @@ function ScrollToTop() {
   const first = useRef(true)
 
   useEffect(() => {
-    document.title = titles[pathname] ?? 'Page not found — Eljo Shurdhi'
+    // Router matching ignores case and trailing slashes; so does the title.
+    const route = pathname.replace(/\/+$/, '').toLowerCase() || '/'
+    document.title = titles[route] ?? 'Page not found — Eljo Shurdhi'
   }, [pathname])
 
   useEffect(() => {
