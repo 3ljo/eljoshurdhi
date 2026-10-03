@@ -92,7 +92,7 @@ export default function Work() {
             <h1 className="display" style={{ fontSize: 'clamp(3.5rem, 1.5rem + 8vw, 8.5rem)' }}>
               Real work. All live.
             </h1>
-            <p className="lead">Six projects. Open any of them and see for yourself.</p>
+            <p className="lead">Six projects. Four open straight away; two sit behind a sign-in.</p>
           </div>
           <nav aria-label="Projects on this page" style={{ marginTop: 'clamp(2rem, 4vw, 3rem)' }}>
             <ul className="tags" style={{ marginTop: 0 }}>

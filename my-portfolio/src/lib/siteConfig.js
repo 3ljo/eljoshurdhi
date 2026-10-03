@@ -43,7 +43,7 @@ export const packages = [
     slug: 'launch',
     name: 'Launch',
     forWho: 'Get online fast and start taking inquiries',
-    problem: 'One sharp page that turns visitors into messages and bookings.',
+    problem: 'One sharp page built to turn visitors into messages and bookings.',
     price: '$649',
     priceNote: 'starting at',
     timeframe: '5 days',
@@ -61,7 +61,7 @@ export const packages = [
     slug: 'growth',
     name: 'Growth',
     forWho: 'People visit, but too few get in touch',
-    problem: 'Look as established as you really are, so visitors trust you enough to call.',
+    problem: 'Look as established as you really are, and give visitors a reason to call.',
     price: '$1,797',
     priceNote: 'starting at',
     timeframe: '2–3 weeks',
@@ -95,7 +95,7 @@ export const packages = [
   {
     slug: 'care',
     name: 'Care',
-    forWho: "Your site keeps working, so you don't have to think about it",
+    forWho: "Someone keeps watch on your site, so you don't have to",
     problem: 'Broken forms and stale pages quietly lose customers. I keep watch and fix them.',
     price: '$147',
     priceNote: '/mo',
@@ -104,9 +104,9 @@ export const packages = [
     ctaLabel: 'Start My Care Plan',
     includes: [
       'Text, photo and small updates done for you',
-      'Your site watched so it stays online',
+      'Your site watched for downtime and problems',
       'Problems fixed, usually the same week',
-      'Cancel anytime, no contract',
+      'Cancel anytime, no lock-in',
     ],
   },
 ]
@@ -151,7 +151,7 @@ export const whyMe = [
     description: 'No account manager, no runaround. You talk to me.',
   },
   {
-    title: 'Live in days or weeks, not months',
+    title: 'Most sites live in days or weeks',
     description: 'Launch in 5 days, a full site in 2–3 weeks. It starts working for you sooner.',
   },
   {
@@ -163,7 +163,7 @@ export const whyMe = [
 export const objections = [
   {
     question: 'I already have a website.',
-    answer: "If it isn't bringing in customers, I'll tell you why on a quick call, or rebuild it so it does.",
+    answer: "If it isn't bringing in customers, I'll tell you why on a quick call, or rebuild it to win more of them.",
   },
   {
     question: "I don't have a big budget.",
@@ -234,8 +234,8 @@ export const caseStudies = [
   {
     title: 'Denaro',
     niche: 'Finance app',
-    outcome: 'Money and markets, made readable at a glance.',
-    description: 'A finance app that turns money and market numbers into charts you read at a glance.',
+    outcome: 'Financial numbers, made readable at a glance.',
+    description: 'A finance app that turns financial numbers into charts you read at a glance.',
     href: 'https://denaro-one.vercel.app/',
     problem: 'Financial numbers spread out and hard to read.',
     role: 'A clear dashboard with charts and private accounts.',

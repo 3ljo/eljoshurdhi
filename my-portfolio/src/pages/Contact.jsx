@@ -163,7 +163,7 @@ export default function Contact() {
             Start your project
           </h2>
           <p style={{ marginTop: '0.5rem', fontWeight: 700, maxWidth: '48ch' }}>
-            Two minutes. Press send and your email app opens with it all filled in.
+            Takes a moment. Press send and your email app opens with it all filled in.
           </p>
           <div style={{ display: 'grid', gap: '1.5rem', marginTop: '1.75rem' }}>
             <div style={{ display: 'grid', gap: '1.5rem', gridTemplateColumns: 'repeat(auto-fit, minmax(14rem, 1fr))' }}>

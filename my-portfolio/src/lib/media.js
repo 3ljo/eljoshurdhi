@@ -70,7 +70,7 @@ export const projectMedia = {
     shotUrl: 'https://ai-recepsionist-codo.vercel.app/login',
   },
   nderto: {
-    coverline: ['The whole job,', 'in one place'],
+    coverline: ['Materials,', 'under control'],
     tone: 'acid',
     cover: 'nderto',
     coverAlt: 'Gloved hands holding a rugged tablet over rebar on a construction site',
