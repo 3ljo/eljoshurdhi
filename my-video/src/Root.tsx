@@ -2,6 +2,7 @@ import "./fonts";
 import "./ad/fonts";
 import { Composition, Folder } from "remotion";
 import { MetaAd } from "./ad/MetaAd";
+import { NothingHappened } from "./ad3/NothingHappened";
 import { CtaScene as AdCtaScene } from "./ad/scenes/CtaScene";
 import { HookScene } from "./ad/scenes/HookScene";
 import { OfferScene } from "./ad/scenes/OfferScene";
@@ -19,6 +20,33 @@ import { WorkScene } from "./scenes/WorkScene";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      {/* "Nothing Happened.": the 20-second Meta ad, one component in three formats. */}
+      <Folder name="NothingHappened">
+        <Composition
+          id="Ad3-Reels-9x16"
+          component={NothingHappened}
+          durationInFrames={600}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="Ad3-Feed-4x5"
+          component={NothingHappened}
+          durationInFrames={600}
+          fps={30}
+          width={1080}
+          height={1350}
+        />
+        <Composition
+          id="Ad3-Square-1x1"
+          component={NothingHappened}
+          durationInFrames={600}
+          fps={30}
+          width={1080}
+          height={1080}
+        />
+      </Folder>
       {/* The 20-second Meta ad, one component in three formats. */}
       <Folder name="MetaAd">
         <Composition
