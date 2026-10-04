@@ -80,6 +80,37 @@ export const fitSize = (
   return Math.min(maxSize, (maxWidth / measure(shown, family, weight)) * 100 * 0.985);
 };
 
+// Poster lines: Anton capitals set 7% extended with a hair of stroke, like
+// the website's cover. Fit them with fitSize(text, width / EXTEND, max).
+export const EXTEND = 1.07;
+export const LEAD = 0.92;
+
+export const posterLine = (size: number, color: string): React.CSSProperties => ({
+  fontFamily: FONT.display,
+  fontSize: size,
+  lineHeight: LEAD,
+  height: size * LEAD,
+  letterSpacing: "0.005em",
+  textTransform: "uppercase",
+  whiteSpace: "nowrap",
+  color,
+  WebkitTextStroke: `0.012em ${color}`,
+});
+
+export const Extended: React.FC<{ readonly children: React.ReactNode }> = ({ children }) => (
+  <span style={{ display: "inline-block", scale: `${EXTEND} 1`, transformOrigin: "0% 50%" }}>{children}</span>
+);
+
+// Drop-in for a line landing on frame `at`: from 1.4x to rest with a tiny
+// settle, visible from two frames before the hit.
+export const land = (frame: number, at: number) => ({
+  opacity: interpolate(frame, [at - 3, at - 2], [0, 1], clamp),
+  scale: interpolate(frame, [at - 2, at, at + 1, at + 4], [1.4, 1, 0.985, 1], {
+    ...clamp,
+    easing: [Easing.in(Easing.quad), Easing.linear, Easing.out(Easing.quad)],
+  }),
+});
+
 // The ad's snap: fast in, a hair of overshoot, settled within ~8 frames.
 export const snap = (frame: number, at: number, fps: number) =>
   spring({
