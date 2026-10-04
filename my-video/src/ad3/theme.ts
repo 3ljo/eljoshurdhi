@@ -160,3 +160,5 @@ export const AT = {
   from: 450,
   end: 495,
 } as const;
+
+export const DOMAIN = "eljoshurdhi.com";

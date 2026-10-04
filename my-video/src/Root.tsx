@@ -1,13 +1,6 @@
 import "./fonts";
-import "./ad/fonts";
 import { Composition, Folder } from "remotion";
-import { MetaAd } from "./ad/MetaAd";
 import { NothingHappened } from "./ad3/NothingHappened";
-import { CtaScene as AdCtaScene } from "./ad/scenes/CtaScene";
-import { HookScene } from "./ad/scenes/HookScene";
-import { OfferScene } from "./ad/scenes/OfferScene";
-import { PainScene } from "./ad/scenes/PainScene";
-import { ProofScene } from "./ad/scenes/ProofScene";
 import { Promo } from "./Promo";
 import { CtaScene } from "./scenes/CtaScene";
 import { IntroScene } from "./scenes/IntroScene";
@@ -46,75 +39,6 @@ export const RemotionRoot: React.FC = () => {
           width={1080}
           height={1080}
         />
-      </Folder>
-      {/* The 20-second Meta ad, one component in three formats. */}
-      <Folder name="MetaAd">
-        <Composition
-          id="Ad-Reels-9x16"
-          component={MetaAd}
-          durationInFrames={600}
-          fps={30}
-          width={1080}
-          height={1920}
-        />
-        <Composition
-          id="Ad-Feed-4x5"
-          component={MetaAd}
-          durationInFrames={600}
-          fps={30}
-          width={1080}
-          height={1350}
-        />
-        <Composition
-          id="Ad-Square-1x1"
-          component={MetaAd}
-          durationInFrames={600}
-          fps={30}
-          width={1080}
-          height={1080}
-        />
-        <Folder name="AdScenes">
-          <Composition
-            id="AdHook"
-            component={HookScene}
-            durationInFrames={90}
-            fps={30}
-            width={1080}
-            height={1920}
-          />
-          <Composition
-            id="AdPain"
-            component={PainScene}
-            durationInFrames={135}
-            fps={30}
-            width={1080}
-            height={1920}
-          />
-          <Composition
-            id="AdProof"
-            component={ProofScene}
-            durationInFrames={165}
-            fps={30}
-            width={1080}
-            height={1920}
-          />
-          <Composition
-            id="AdOffer"
-            component={OfferScene}
-            durationInFrames={105}
-            fps={30}
-            width={1080}
-            height={1920}
-          />
-          <Composition
-            id="AdCta"
-            component={AdCtaScene}
-            durationInFrames={105}
-            fps={30}
-            width={1080}
-            height={1920}
-          />
-        </Folder>
       </Folder>
       <Composition
         id="Promo"

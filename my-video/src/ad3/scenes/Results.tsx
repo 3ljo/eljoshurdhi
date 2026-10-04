@@ -258,7 +258,7 @@ export const BookingsScene: React.FC<{ readonly L: Layout }> = ({ L }) => {
               ) : null}
             </div>
             <div style={{ position: "absolute", left: 404, top: 316 }}>
-              <Mask at={34} from="left">
+              <Mask at={31}>
                 <div style={display(56, C.midnight)}>Booked</div>
               </Mask>
             </div>

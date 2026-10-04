@@ -3,7 +3,7 @@
 //
 //   node scripts/ad-stills.mjs <compositionId> <frame,frame,...> <outDir>
 //
-// e.g. node scripts/ad-stills.mjs AdHook 0,8,20,45,80 /tmp/hook
+// e.g. node scripts/ad-stills.mjs Ad3-Reels-9x16 0,150,599 /tmp/ad3
 // The scene compositions are 1080x1920; the 4:5 and 1:1 rows override the
 // height, which is exactly how the full ad lays the scene out in that format.
 // Set REMOTION_BROWSER to a Chrome headless shell if the default download is

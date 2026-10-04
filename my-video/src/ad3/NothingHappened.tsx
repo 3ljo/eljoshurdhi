@@ -1,6 +1,5 @@
 import type React from "react";
 import { AbsoluteFill, interpolate, Sequence, useCurrentFrame, useVideoConfig } from "remotion";
-import { DOMAIN } from "../ad/brand";
 import { Ad3Sound } from "./Ad3Sound";
 import { useAdFonts } from "./fonts";
 import { Field, Grain, Shutter, TapRipple } from "./kit";
@@ -9,7 +8,7 @@ import { CostScene, GhostSpinner, HookScene, HookTouch } from "./scenes/Hook";
 import { DirectScene, LiveScene, PriceScene } from "./scenes/Promises";
 import { BookingsScene, CallsScene, SalesScene } from "./scenes/Results";
 import { TurnScene } from "./scenes/Turn";
-import { C, clamp, FIELDS, useLayout } from "./theme";
+import { C, clamp, DOMAIN, FIELDS, useLayout } from "./theme";
 
 // "Nothing Happened." — a 20-second Meta ad in three formats (9:16, 4:5,
 // 1:1) from one component. A customer taps "Book now" on a dead small
