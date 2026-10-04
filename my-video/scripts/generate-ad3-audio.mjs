@@ -40,8 +40,10 @@ const TARGET_LUFS = -14;
 // the master still comes out above TRUE_PEAK_MAX.
 const CEILING_DB = -2.0;
 const TRUE_PEAK_MAX = -2.0;
-// Peak level of every one-shot effect; the mix level lives in Ad3Sound.tsx.
-const SFX_PEAK_DB = -3;
+// Peak level of every one-shot effect, and the cap on its momentary
+// loudness; the mix level lives in Ad3Sound.tsx.
+const SFX_PEAK_DB = -5;
+const SFX_MAX_MOMENTARY = -14;
 
 // ---------------------------------------------------------------------------
 // DSP helpers (from scripts/generate-audio.mjs, Biquad extended with shelves)
@@ -917,7 +919,7 @@ PROGRESSION.forEach((name, k) => {
 });
 stab(lead, hall, OUTRO, [60, 64, 67, 74], 0.7, 1.3);
 padChord(pads, OUTRO, LEN - OUTRO, CADD9, 1.15, 0);
-sub808(bass, OUTRO, LEN - OUTRO, 36, 0.65);
+sub808(bass, OUTRO, LEN - OUTRO, 36, 0.5);
 
 // ---------------------------------------------------------------------------
 // Mix
@@ -1007,7 +1009,7 @@ const LEVEL = {
   fx: () => 0.8,
   verb: () => 0.9,
   hall: () => 1.7,
-  free: () => 0.8,
+  free: () => 0.65,
 };
 const STEM_BUSES = {
   muffle,
@@ -1078,7 +1080,37 @@ console.log(
 // Sound effects (each peak-normalized; the mix level lives in Ad3Sound.tsx)
 // ---------------------------------------------------------------------------
 
-const sfx = (file, seconds, fn, peakDb = SFX_PEAK_DB) => {
+// Highest momentary loudness (BS.1770 K-weighting, 400 ms window, 10 ms hop;
+// a sound shorter than the window counts as padded with silence).
+const maxMomentary = (bus) => {
+  const n = bus[0].length;
+  const block = Math.round(0.4 * SR);
+  const hop = Math.round(0.01 * SR);
+  const power = new Float64Array(n + 1);
+  for (const ch of bus) {
+    const shelf = new Biquad().set("hs", 1681.974, 0.7071752, 3.999843);
+    const hp = new Biquad().set("hp", 38.13547, 0.500327);
+    let acc = 0;
+    for (let i = 0; i < n; i++) {
+      const y = hp.process(shelf.process(ch[i]));
+      acc += y * y;
+      power[i + 1] += acc;
+    }
+  }
+  let best = 0;
+  for (let end = Math.min(n, hop); ; end = Math.min(n, end + hop)) {
+    best = Math.max(best, power[end] - power[Math.max(0, end - block)]);
+    if (end >= n) break;
+  }
+  return -0.691 + 10 * Math.log10(best / block);
+};
+
+const sfx = (
+  file,
+  seconds,
+  fn,
+  { peakDb = SFX_PEAK_DB, maxMomentaryDb = SFX_MAX_MOMENTARY } = {},
+) => {
   const bus = makeBus(Math.round(seconds * SR));
   fn(bus);
   // Click-free tail.
@@ -1090,9 +1122,20 @@ const sfx = (file, seconds, fn, peakDb = SFX_PEAK_DB) => {
   normalize(bus, peakDb);
   const over = truePeakDb(bus) - peakDb;
   if (over > 0) normalize(bus, peakDb - over);
+  // Sustained sounds (bells, subs, whooshes) would sit far louder than the
+  // clicks at the same peak: cap their momentary loudness so that a level in
+  // Ad3Sound.tsx means about the same prominence whatever the sound.
+  const loudOver = maxMomentary(bus) - maxMomentaryDb;
+  if (loudOver > 0) {
+    for (const ch of bus) {
+      for (let i = 0; i < ch.length; i++) ch[i] *= 10 ** (-loudOver / 20);
+    }
+  }
   writeWav(file, bus);
   console.log(
-    `${file.padEnd(20)}${seconds.toFixed(3)} s  true peak ${truePeakDb(bus).toFixed(2)} dBTP`,
+    `${file.padEnd(20)}${seconds.toFixed(3)} s  ` +
+      `true peak ${truePeakDb(bus).toFixed(2)} dBTP  ` +
+      `max momentary ${maxMomentary(bus).toFixed(1)} LUFS`,
   );
 };
 
@@ -1155,10 +1198,11 @@ const tap = (pitch) => (bus) => {
     ph += (2 * Math.PI * k * (1900 + 1100 * Math.exp(-t * 500))) / SR;
     const att = Math.min(1, t / 0.0002);
     const s =
-      hp.process(noise()) * Math.exp(-t * 2400) * 0.9 +
-      Math.sin(ph) * Math.exp(-t * 330) * 0.5 * att +
-      body.process(noise()) * Math.exp(-t * 220) * 1.4 +
-      Math.sin(2 * Math.PI * 340 * k * t) * Math.exp(-t * 140) * 0.16 * att;
+      (hp.process(noise()) * Math.exp(-t * 2400) * 0.9 +
+        Math.sin(ph) * Math.exp(-t * 330) * 0.5 +
+        body.process(noise()) * Math.exp(-t * 220) * 1.4 +
+        Math.sin(2 * Math.PI * 340 * k * t) * Math.exp(-t * 140) * 0.16) *
+      att;
     addTo(bus, i, s * 0.94, s);
   }
 };
@@ -1175,8 +1219,9 @@ const tick = (pitch) => (bus) => {
     const t = i / SR;
     ph += (2 * Math.PI * k * (3600 + 1400 * Math.exp(-t * 600))) / SR;
     const s =
-      Math.sin(ph) * Math.exp(-t * 520) * 0.55 * Math.min(1, t / 0.00015) +
-      hp.process(noise()) * Math.exp(-t * 1600) * 0.7;
+      (Math.sin(ph) * Math.exp(-t * 520) * 0.55 +
+        hp.process(noise()) * Math.exp(-t * 1600) * 0.7) *
+      Math.min(1, t / 0.00015);
     addTo(bus, i, s);
   }
 };
@@ -1274,16 +1319,18 @@ sfx("ad3-sink.wav", 0.6, (bus) => {
 });
 
 // Heavy sub hit on A1 (the hook's key) and on G1 (for the G bar at 466).
-sfx("ad3-sub.wav", 1.4, (bus) => subHit(bus, 0, 33, 1, 2.2, 1.4));
-sfx("ad3-sub-down2.wav", 1.4, (bus) => subHit(bus, 0, 31, 1, 2.2, 1.4));
+// Sub energy is felt more than K-weighting credits, so it gets a higher cap.
+const SUB = { maxMomentaryDb: -12 };
+sfx("ad3-sub.wav", 1.4, (bus) => subHit(bus, 0, 33, 1, 2.2, 1.4), SUB);
+sfx("ad3-sub-down2.wav", 1.4, (bus) => subHit(bus, 0, 31, 1, 2.2, 1.4), SUB);
 
 // Airy, wide swoosh: independent noise left and right through a wide
 // band-pass that climbs to 7 kHz at 0.2 s and settles back, with air on top.
 sfx("ad3-swoosh.wav", 0.5, (bus) => {
   const bp = [new Biquad(), new Biquad()];
   const air = [
-    new Biquad().set("hs", 7000, 0.7, 6),
-    new Biquad().set("hs", 7000, 0.7, 6),
+    new Biquad().set("hs", 7000, 0.7, 3),
+    new Biquad().set("hs", 7000, 0.7, 3),
   ];
   for (let i = 0; i < bus[0].length; i++) {
     const t = i / SR;
@@ -1371,8 +1418,12 @@ sfx("ad3-scribble.wav", 0.5, (bus) => {
   }
   const bpA = new Biquad();
   const bpB = new Biquad();
-  const hp = new Biquad().set("hp", 1500, 0.7);
+  const hp = new Biquad().set("hp", 1800, 0.7);
+  const lp = new Biquad().set("lp", 4400, 0.7);
   let k = 0;
+  // Paper grain: slow random pressure wobble (one-pole smoothed, ~150 Hz),
+  // so it roughens the strokes without spraying hiss above the band.
+  let grain = 0;
   for (let i = 0; i < bus[0].length; i++) {
     const t = i / SR;
     while (k < strokes.length - 1 && t >= strokes[k + 1][0]) k++;
@@ -1380,16 +1431,16 @@ sfx("ad3-scribble.wav", 0.5, (bus) => {
     const u = (t - s0) / len;
     const inStroke = u >= 0 && u <= 1;
     if (i % 32 === 0) {
-      const fc = 2300 + 1300 * (inStroke ? Math.sin(Math.PI * u) : 0);
+      const fc = 2300 + 1000 * (inStroke ? Math.sin(Math.PI * u) : 0);
       bpA.set("bp", fc, 1.6);
-      bpB.set("bp", fc * 1.3, 2);
+      bpB.set("bp", fc * 1.18, 2);
     }
-    const env = inStroke ? Math.sin(Math.PI * u) ** 0.6 * amp : 0;
-    const grain = 0.7 + 0.3 * noise();
-    const s =
-      hp.process(bpA.process(noise()) + bpB.process(noise()) * 0.6) *
-      env *
-      grain;
+    grain += 0.02 * (noise() - grain);
+    const env =
+      (inStroke ? Math.sin(Math.PI * u) ** 0.6 * amp : 0) * (1 + 4 * grain);
+    const s = lp.process(
+      hp.process(bpA.process(noise()) + bpB.process(noise()) * 0.6) * env,
+    );
     addTo(bus, i, s * 0.95, s);
   }
 });
@@ -1409,7 +1460,11 @@ sfx("ad3-swish.wav", 0.3, (bus) => {
       bp[1].set("bp", fc, 0.9);
     }
     const env = t < 0.018 ? (t / 0.018) ** 2 : Math.exp(-(t - 0.018) * 14);
-    const click = hp.process(noise()) * Math.exp(-t * 1800) * 0.35;
+    const click =
+      hp.process(noise()) *
+      Math.exp(-t * 1800) *
+      0.35 *
+      Math.min(1, t / 0.0002);
     const pan = Math.min(1, t / 0.25);
     const l = bp[0].process(noise()) * env + click;
     const r = bp[1].process(noise()) * env + click;

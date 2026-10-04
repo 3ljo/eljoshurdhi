@@ -1,6 +1,7 @@
 import type React from "react";
 import { AbsoluteFill, interpolate, Sequence, useCurrentFrame, useVideoConfig } from "remotion";
 import { DOMAIN } from "../ad/brand";
+import { Ad3Sound } from "./Ad3Sound";
 import { useAdFonts } from "./fonts";
 import { Field, Grain, Shutter, TapRipple } from "./kit";
 import { EndScene, FromScene } from "./scenes/Close";
@@ -19,7 +20,7 @@ import { C, clamp, FIELDS, useLayout } from "./theme";
 // Scenes change on the beat (120 BPM: 15 frames). Each scene stays mounted
 // 12 frames past its cut so the outgoing layer sits under the incoming
 // shutter; newer scenes stack on top.
-export const NothingHappened: React.FC<{ readonly sound?: React.ReactNode }> = ({ sound }) => {
+export const NothingHappened: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const L = useLayout();
@@ -89,7 +90,7 @@ export const NothingHappened: React.FC<{ readonly sound?: React.ReactNode }> = (
         </Sequence>
       </AbsoluteFill>
       <Grain />
-      {sound}
+      <Ad3Sound />
     </AbsoluteFill>
   );
 };
